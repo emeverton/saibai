@@ -1,0 +1,126 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "slideshow_saibai": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_hero": {
+          "type": "_slide",
+          "settings": {
+            "slide_background": true,
+            "container": "page-width page-width--full",
+            "height": "full",
+            "media_type_1": "image",
+            "image_1": "shopify://shop_images/0001-1726510141686771385.jpg",
+            "image_mb_1": "shopify://shop_images/0001-1726510141686771385.jpg",
+            "inherit_color_scheme": true
+          }
+        }
+      },
+      "block_order": [
+        "slide_hero"
+      ],
+      "settings": {
+        "slideshow_type": "default",
+        "section_width": "full-width",
+        "slide_height": "full-screen",
+        "slide_height_mb": "large",
+        "autoplay": false,
+        "loop": false,
+        "navigation": "none",
+        "image_behavior": "parallax",
+        "color_scheme": "scheme-7",
+        "color_scheme_mobile": "scheme-7",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "marquee_saibai": {
+      "type": "marquee",
+      "blocks": {
+        "marquee_txt": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Alcachofra Fresca · Produção Própria · Piedade, SP · Capital Nacional da Alcachofra · 50 Anos de Tradição · Chefs de São Paulo Escolhem Saibai · Safra Controlada ·</p>",
+            "width": "fit-content",
+            "type_preset": "custom",
+            "font": "var(--font-body--family)",
+            "font_size": "1.2rem",
+            "letter_spacing": "loose",
+            "case": "uppercase",
+            "wrap": "nowrap"
+          }
+        }
+      },
+      "block_order": [
+        "marquee_txt"
+      ],
+      "settings": {
+        "movement_direction": "reverse",
+        "gap_between_elements": 40,
+        "color_scheme": "scheme-5",
+        "background_media": "none",
+        "toggle_overlay": false,
+        "marquee_type": "auto",
+        "speed": 25,
+        "padding-block-start": 16,
+        "padding-block-end": 16
+      }
+    },
+    "editorial_cols": {
+      "type": "editorial-collections-list",
+      "settings": {
+        "selected_collections": [
+          "gid://shopify/Collection/487766425918",
+          "gid://shopify/Collection/489065447742",
+          "gid://shopify/Collection/501163983166",
+          "gid://shopify/Collection/501164114238"
+        ],
+        "section_width": "full-width",
+        "section_height": "large",
+        "color_scheme": "scheme-1",
+        "padding-block-start": 0,
+        "padding-block-end": 0,
+        "padding-inline-start": 0,
+        "padding-inline-end": 0
+      }
+    },
+    "featured_produtos": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "todos",
+        "layout_type": "carousel",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "columns_gap": 16,
+        "rows_gap": 16,
+        "navigation": "arrows",
+        "arrows_position": "inside",
+        "page_width": "page-width",
+        "color_scheme": "scheme-2",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "show_arrows": false,
+        "show_dots": true,
+        "padding-block-start": 60,
+        "padding-block-end": 60,
+        "padding-inline-start": 0,
+        "padding-inline-end": 0
+      }
+    }
+  },
+  "order": [
+    "slideshow_saibai",
+    "marquee_saibai",
+    "editorial_cols",
+    "featured_produtos"
+  ]
+}

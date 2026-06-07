@@ -225,7 +225,7 @@
         "page_width_custom": 1570,
         "section_height": "custom",
         "section_height_custom": 20,
-        "color_scheme": "scheme-4",
+        "color_scheme": "scheme-2",
         "background_media": "image",
         "video_position": "cover",
         "background_image_position": "cover",
@@ -307,7 +307,7 @@
         "section_height_custom": 50,
         "section_height_mobile": "",
         "section_height_mobile_custom": 50,
-        "color_scheme": "scheme-8",
+        "color_scheme": "scheme-2",
         "background_media": "none",
         "video_position": "cover",
         "background_image_position": "cover",
@@ -1302,7 +1302,7 @@
                       "type": "text",
                       "name": "t:names.text",
                       "settings": {
-                        "text": "<p>TEXT:091-123-ELLA</p>",
+                        "text": "<p>(15) 3261-0000</p>",
                         "collection_description_only": false,
                         "collapse_text": false,
                         "typing_text": false,
@@ -1476,7 +1476,7 @@
                       "type": "text",
                       "name": "t:names.text",
                       "settings": {
-                        "text": "<p>email@domain.com</p>",
+                        "text": "<p>contato@saibai.com.br</p>",
                         "collection_description_only": false,
                         "collapse_text": false,
                         "typing_text": false,
@@ -1642,7 +1642,7 @@
                       "type": "text",
                       "name": "t:names.text",
                       "settings": {
-                        "text": "<p>685 Market Street</p>",
+                        "text": "<p>Estrada Municipal Saibai, s/n</p>",
                         "collection_description_only": false,
                         "collapse_text": false,
                         "typing_text": false,
@@ -1718,7 +1718,7 @@
                       "type": "text",
                       "name": "t:names.text",
                       "settings": {
-                        "text": "<p>San Francisco, CA 94105,</p>",
+                        "text": "<p>Piedade, SP — CEP 18170-000</p>",
                         "collection_description_only": false,
                         "collapse_text": false,
                         "typing_text": false,

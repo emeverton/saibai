@@ -30,7 +30,7 @@
 -%}
 
 {%- if product_marquee_text != blank and show_product_marquee -%}
-    <div class="card-marquee marquee-{{ product_marquee_type }}{{ class }}" style="--bg-color: {{ settings.product_marquee_background_color }}; --fg-color: {{ settings.product_marquee_text_color }};">
+    <div class="card-marquee marquee-{{ product_marquee_type }}{{ class }}" style="--bg-color: var(--saibai-marquee-bg, {{ settings.product_marquee_background_color }}); --fg-color: {{ settings.product_marquee_text_color }};">
         <div class="card-marquee-box flex overflow-hidden">
             {%- capture card_marquee_item_html -%}
                 <div class="card-marquee__item flex items-center w-max shrink-0{% if settings.product_marquee_reverse_direction %} marquee-animate{% else %} marquee-animate-rtl{% endif %}" style="--marquee-duration: {{settings.product_marquee_speed | append: 's'}};">

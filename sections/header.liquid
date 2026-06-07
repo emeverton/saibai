@@ -58,8 +58,10 @@
     endif
   endif
 
+  assign header_logo = sec_stts.logo | default: settings.logo
+
   capture logo
-    render 'header-logo', header_settings: sec_stts, blocks: section.blocks, has_menu_tab: has_menu_tab
+    render 'header-logo', header_settings: sec_stts, blocks: section.blocks, has_menu_tab: has_menu_tab, custom_logo: header_logo
   endcapture
 
   capture menu
@@ -79,6 +81,7 @@
   endcapture
 
   capture actions
+    render 'saibai-header-cta'
     render 'header-functions', sec_stts: sec_stts, blocks: section.blocks, enable_cart: true, enable_wishlist: settings.show_wishlist, custom_header_utility: sec_stts.custom_header_utility, header_utility_size: sec_stts.header_utility_size, header_utility_font: sec_stts.header_utility_font, header_utility_weight: sec_stts.header_utility_weight, header_utility_line_height: sec_stts.header_utility_line_height, header_utility_letter_spacing: sec_stts.header_utility_letter_spacing, header_utility_case: sec_stts.header_utility_case, header_utility_wrap: sec_stts.header_utility_wrap
   endcapture
 
@@ -137,7 +140,7 @@
   # Handle logo row
   if sec_stts.logo_row == 'bottom'
     capture mobile_logo
-      render 'header-logo', header_settings: sec_stts, blocks: section.blocks, class: 'lg:none'
+      render 'header-logo', header_settings: sec_stts, blocks: section.blocks, class: 'lg:none', custom_logo: header_logo
     endcapture
   endif
 
@@ -344,8 +347,8 @@
     "name": {{ shop.name | json }},
     {% if settings.logo %}
       "logo": {{ settings.logo | image_url: width: 500 | prepend: "https:" | json }},
-    {% elsif settings.logo_svg %}
-      "logo": {{ settings.logo_svg | json }},
+    {% else %}
+      "logo": {{ 'logo-saibai.svg' | asset_url | json }},
     {% endif %}
     "sameAs": [
       {{ settings.social_twitter_link | json }},
@@ -1263,6 +1266,12 @@
       {
         "type": "header",
         "content": "t:content.logo"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo Saibai",
+        "info": "Substitui o texto da loja. Se vazio, usa o logo em Configurações do tema → Logo."
       },
       {
         "type": "range",

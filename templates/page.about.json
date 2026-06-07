@@ -4162,7 +4162,7 @@
                               "type": "text",
                               "name": "Text",
                               "settings": {
-                                "text": "<p>TEXT: 091-123-ELLA</p>",
+                                "text": "<p>(15) 3261-0000</p>",
                                 "typing_text": false,
                                 "primary_text": "Welcome to our store!",
                                 "secondary_text": "Exclusive offers just for you.",
@@ -4308,7 +4308,7 @@
                               "type": "text",
                               "name": "Text",
                               "settings": {
-                                "text": "<p>mail@domain.com</p>",
+                                "text": "<p>contato@saibai.com.br</p>",
                                 "typing_text": false,
                                 "primary_text": "Welcome to our store!",
                                 "secondary_text": "Exclusive offers just for you.",
@@ -4377,7 +4377,7 @@
                         "text_84Necg": {
                           "type": "text",
                           "settings": {
-                            "text": "<p>685 Market Street</p><p>San Francisco, CA 94105,</p><p>United States</p>",
+                            "text": "<p>Estrada Municipal Saibai, s/n</p><p>Piedade, SP — CEP 18170-000</p><p>Brasil</p>",
                             "typing_text": false,
                             "primary_text": "Welcome to our store!",
                             "secondary_text": "Exclusive offers just for you.",

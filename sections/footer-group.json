@@ -168,7 +168,7 @@
                   "type": "text",
                   "name": "Heading",
                   "settings": {
-                    "text": "<p><strong>NEWSLETTER SIGN UP</strong></p>",
+                    "text": "<p><strong>NOVIDADES DA SAIBAI</strong></p>",
                     "typing_text": false,
                     "primary_text": "Welcome to our store!",
                     "secondary_text": "Exclusive offers just for you.",
@@ -239,7 +239,7 @@
                   "type": "text",
                   "name": "Text",
                   "settings": {
-                    "text": "<p>Sign up for new arrivals, offers, and more!</p>",
+                    "text": "<p>Receba ofertas da safra, receitas com alcachofra e novidades do Empório Saibai.</p>",
                     "typing_text": false,
                     "primary_text": "Welcome to our store!",
                     "secondary_text": "Exclusive offers just for you.",
@@ -311,7 +311,7 @@
                   "name": "Email signup",
                   "settings": {
                     "show_subscription": false,
-                    "subscription_text": "Sign up to be the first to know when the event is live!",
+                    "subscription_text": "Receba novidades da safra, receitas e ofertas exclusivas do Empório Saibai.",
                     "subscription_button": "SUBSCRIBE",
                     "width": "fill",
                     "custom_width": 100,
@@ -336,7 +336,7 @@
                     "field-padding-block-end": 0,
                     "field-padding-inline-start": 0,
                     "field-padding-inline-end": 0,
-                    "input_label": "Email Address",
+                    "input_label": "Seu e-mail",
                     "border_style": "all",
                     "input_border_width": 1,
                     "input_border_radius": 0,
@@ -483,7 +483,7 @@
                   "name": "Menu",
                   "settings": {
                     "menu": "footer-shop-classic",
-                    "heading": "SHOP",
+                    "heading": "LOJA",
                     "margin-block-end": 10,
                     "content_direction": "column",
                     "content_direction_mobile": "column",
@@ -518,7 +518,7 @@
                   "name": "Menu",
                   "settings": {
                     "menu": "footer-about-classic",
-                    "heading": "ABOUT",
+                    "heading": "SOBRE",
                     "margin-block-end": 10,
                     "content_direction": "column",
                     "content_direction_mobile": "column",
@@ -553,7 +553,7 @@
                   "name": "Menu",
                   "settings": {
                     "menu": "footer-help-classic",
-                    "heading": "HELP",
+                    "heading": "AJUDA",
                     "margin-block-end": 10,
                     "content_direction": "column",
                     "content_direction_mobile": "column",
@@ -661,7 +661,7 @@
                       "type": "text",
                       "name": "Heading",
                       "settings": {
-                        "text": "<p><strong>CONTACT US</strong></p>",
+                        "text": "<p><strong>CONTATO</strong></p>",
                         "typing_text": false,
                         "primary_text": "Welcome to our store!",
                         "secondary_text": "Exclusive offers just for you.",
@@ -806,7 +806,7 @@
                           "type": "text",
                           "name": "Text",
                           "settings": {
-                            "text": "<p>EXT: (091)-123-ELLA</p>",
+                            "text": "<p><a href=\"https://chat.whatsapp.com/LmGiN0C8QT04AQ4VB9PDdO\" title=\"Grupo VIP Saibai no WhatsApp\" target=\"_blank\" rel=\"noopener\">WhatsApp — Grupo VIP</a></p>",
                             "typing_text": false,
                             "primary_text": "Welcome to our store!",
                             "secondary_text": "Exclusive offers just for you.",
@@ -877,7 +877,7 @@
                           "type": "text",
                           "name": "Text",
                           "settings": {
-                            "text": "<p>mail@domain.com</p>",
+                            "text": "<p><a href=\"mailto:contato@saibai.com.br\" title=\"E-mail Saibai\">contato@saibai.com.br</a></p>",
                             "typing_text": false,
                             "primary_text": "Welcome to our store!",
                             "secondary_text": "Exclusive offers just for you.",
@@ -948,7 +948,7 @@
                           "type": "text",
                           "name": "Text",
                           "settings": {
-                            "text": "<p>685 Market Street</p>",
+                            "text": "<p>Estrada dos Lavradores, 7 — Poço</p>",
                             "typing_text": false,
                             "primary_text": "Welcome to our store!",
                             "secondary_text": "Exclusive offers just for you.",
@@ -1019,7 +1019,7 @@
                           "type": "text",
                           "name": "Text",
                           "settings": {
-                            "text": "<p>San Francisco, CA 94105.</p>",
+                            "text": "<p>Piedade, SP — Capital Nacional da Alcachofra</p>",
                             "typing_text": false,
                             "primary_text": "Welcome to our store!",
                             "secondary_text": "Exclusive offers just for you.",
@@ -1192,7 +1192,7 @@
               "type": "jumbo-text",
               "name": "Jumbo text",
               "settings": {
-                "text": "Ella",
+                "text": "SAIBAI",
                 "font": "heading",
                 "line_height": "0.8",
                 "letter_spacing": "0.03em",
@@ -1308,7 +1308,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>© 2025, <a href=\"https://new-ella-demo-07.myshopify.com/\" title=\"https://new-ella-demo-07.myshopify.com/\"><span style=\"text-decoration:underline\">Ella 7</span></a>. <a href=\"https://www.shopify.com/?utm_campaign=poweredby&utm_medium=shopify&utm_source=onlinestore\" target=\"_blank\">Powered by Shopify</a>. SHOPIFY THEMES BY <a href=\"https://halothemes.net/\" title=\"https://halothemes.net/\">HALOTHEMES</a>.</p>",
+                    "text": "<p>© 2026, <a href=\"/\" title=\"Empório Saibai\">Empório Saibai</a>. Produtora e distribuidora de alcachofras frescas desde Piedade, SP.</p>",
                     "typing_text": false,
                     "primary_text": "Welcome to our store!",
                     "secondary_text": "Exclusive offers just for you.",
@@ -1407,7 +1407,7 @@
                           "type": "text",
                           "name": "Text",
                           "settings": {
-                            "text": "<p>SHOPIFY THEMES BY <a href=\"https://halothemes.net/\" title=\"https://halothemes.net/\">HALOTHEMES</a>.</p>",
+                            "text": "<p>Desenvolvido por <a href=\"https://veltrus.com.br\" title=\"Veltrus Growth &amp; Technology\" target=\"_blank\" rel=\"noopener\">Veltrus</a></p>",
                             "typing_text": false,
                             "primary_text": "Welcome to our store!",
                             "secondary_text": "Exclusive offers just for you.",

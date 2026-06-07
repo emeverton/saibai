@@ -1,4 +1,5 @@
 {%- liquid
+  echo 'saibai-tokens.css' | asset_url | stylesheet_tag: preload: true
   echo 'vendor.css' | asset_url | stylesheet_tag: preload: true
   echo 'base.css' | asset_url | stylesheet_tag: preload: true
   

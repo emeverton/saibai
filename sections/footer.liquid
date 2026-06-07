@@ -34,6 +34,9 @@
       "
     >
       {% content_for 'blocks' %}
+      <div class="saibai-footer-credit page-width w-full">
+        {% render 'saibai-veltrus-credit' %}
+      </div>
     </div>
   </div>
 </{% if section.settings.animation_type == 'parallax' %}footer-parallax{% else %}div{% endif %}>
