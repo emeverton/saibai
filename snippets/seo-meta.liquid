@@ -1,0 +1,27 @@
+{%- comment -%}
+  Saibai Empório — Open Graph + Twitter Card
+  Desenvolvido por Veltrus Growth & Technology
+{%- endcomment -%}
+{%- liquid
+  assign og_image = page_image
+  if og_image == blank and product.featured_image
+    assign og_image = product.featured_image
+  elsif og_image == blank and settings.logo
+    assign og_image = settings.logo
+  endif
+-%}
+<meta property="og:site_name" content="{{ shop.name }}">
+<meta property="og:title" content="{{ page_title | escape }}">
+<meta property="og:description" content="{{ page_description | default: shop.description | escape }}">
+<meta property="og:url" content="{{ canonical_url }}">
+<meta property="og:type" content="{% if template.name == 'product' %}product{% else %}website{% endif %}">
+{%- if og_image -%}
+  <meta property="og:image" content="{{ og_image | image_url: width: 1200 }}">
+  <meta property="og:image:secure_url" content="{{ og_image | image_url: width: 1200 }}">
+{%- endif -%}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ page_title | escape }}">
+<meta name="twitter:description" content="{{ page_description | default: shop.description | escape }}">
+{%- if og_image -%}
+  <meta name="twitter:image" content="{{ og_image | image_url: width: 1200 }}">
+{%- endif -%}

@@ -13,12 +13,24 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <link
+      rel="preload"
+      as="image"
+      href="{{ 'LOGO_SAIBAI_RUCULA_2022_f61dca0b-ac73-4665-a141-c6ecf6689198.png' | file_url }}"
+      fetchpriority="high"
+    >
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+
+    {% render 'critical-css' %}
+
     <meta name="theme-color" content="">
     <link
       rel="canonical"
       href="{{ canonical_url }}"
       canonical-url="{{ shop.url }}/"
     >
+    <meta name="robots" content="index, follow">
 
     {%- if settings.favicon != blank -%}
       <link
@@ -40,23 +52,15 @@
     {%- endunless -%}
 
     <title>
-      {{ page_title }}
-      {%- if current_tags %}
-        &ndash; tagged "{{ current_tags | join: ', ' }}"
-      {%- endif -%}
-      {%- if current_page != 1 %}
-        &ndash; Page {{ current_page -}}
-      {%- endif -%}
-      {%- unless page_title contains shop.name %}
-        &ndash; {{ shop.name -}}
-      {%- endunless -%}
+      {{ page_title -}}
+      {%- unless page_title contains shop.name %} | {{ shop.name }}{% endunless -%}
     </title>
 
-    {% if page_description %}
-      <meta name="description" content="{{ page_description | escape }}">
-    {% endif %}
+    <meta name="description" content="{{ page_description | default: shop.description | escape }}">
 
-    {% render 'meta-tags' %}
+    {% render 'seo-meta' %}
+    {% render 'schema-organization' %}
+    {% render 'tracking-meta-pixel' %}
 
     {% render 'global-style' %}
 

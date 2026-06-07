@@ -14,20 +14,24 @@
   @param {string} [fetch_priority] - custom image fetch priority
   @param {string} [alt] - custom image alt
   @param {boolean} [preload] - custom image preload
+  @param {boolean} [is_lcp] - first/LCP image: eager + high priority
 
   @example
-  {% render 'image', image: product.featured_image, height: 300, class: 'product-image', loading: loading, fetch_priority: fetch_priority, sizes: sizes, widths: widths %}
+  {% render 'image', image: product.featured_image, class: 'product-image', is_lcp: true %}
 {% enddoc %}
 {% if image != blank %}
-  {% assign image_height = height | default: image.height %}
-  {% assign image_height_2x = height | default: image_height | times: 2 %}
-  {% assign image_height_3x = height | default: image_height | times: 3 %}
-
   {%- liquid
-    assign loading_default = 'lazy'
-    assign image_loading = loading | default: loading_default
+    assign image_render_width = width | default: 800
 
-    assign fetch_priority_default = 'auto'
+    if is_lcp or preload or fetch_priority == 'high'
+      assign loading_default = 'eager'
+      assign fetch_priority_default = 'high'
+    else
+      assign loading_default = 'lazy'
+      assign fetch_priority_default = 'auto'
+    endif
+
+    assign image_loading = loading | default: loading_default
     assign image_fetch_priority = fetch_priority | default: fetch_priority_default
 
     assign alt_default = image.alt | default: 'Image'
@@ -39,13 +43,9 @@
     assign sizes_default = 'auto, (min-width: 750px) ' | append: media_width_desktop | append: ', ' | append: media_width_mobile
     assign image_sizes = sizes | default: sizes_default
 
-    assign widths_default = '300, 450, 600, 750, 900, 1050, 1200, 1350, 1500, 1650, 1800, 1950, 2000, 2500, 3000, 3500, 4000, 5000'
+    assign widths_default = '300, 450, 600, 750, 800, 900, 1050, 1200, 1500, 1800, 2000'
     assign image_widths = widths | default: widths_default
   -%}
-
-  {% capture image_srcset -%}
-    {{ image | image_url: height: image_height, format: 'webp' }} 1x, {{ image | image_url: height: image_height_2x, format: 'webp' }} 2x, {{ image | image_url: height: image_height_3x, format: 'webp' }} 3x
-  {%- endcapture %}
 
   {% assign style_value = style | default: '' %}
 
@@ -55,18 +55,17 @@
 
   {{
     image
-    | image_url: height: image_height, format: 'webp'
+    | image_url: width: image_render_width, format: 'webp'
     | image_tag:
       widths: image_widths,
       loading: image_loading,
       class: class,
-      srcset: image_srcset,
       sizes: image_sizes,
       fetchpriority: image_fetch_priority,
       style: style_value,
       alt: image_alt,
       preload: preload,
-      width: width
+      width: image_render_width
   }}
 {% elsif text_fallback %}
   {{ text_fallback }}

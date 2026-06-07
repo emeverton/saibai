@@ -137,6 +137,10 @@
             can_add_to_cart: can_add_to_cart,
             form_obj: form
           %}
+          {%- assign urgency_variant = product.selected_or_first_available_variant -%}
+          {%- if urgency_variant.inventory_management == 'shopify' and urgency_variant.inventory_quantity > 0 and urgency_variant.inventory_quantity < 10 -%}
+            <p class="saibai-urgency">⚡ Apenas {{ urgency_variant.inventory_quantity }} em estoque</p>
+          {%- endif -%}
         </div>
       {%- endform -%}
     </product-form-component>

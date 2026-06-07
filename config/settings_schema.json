@@ -3539,4 +3539,15 @@
       }
     ]
   }
+  ,
+  {
+    "name": "Saibai Tracking",
+    "settings": [
+      {
+        "type": "text",
+        "id": "meta_pixel_id",
+        "label": "Meta Pixel ID"
+      }
+    ]
+  }
 ]

@@ -144,6 +144,21 @@
     {%- endif -%}
 
     {%- content_for 'blocks'-%}
+
+    {%- if settings.meta_pixel_id != blank -%}
+      <script defer>
+        document.querySelector('#product-form-{{ section.id }} [name="add"]')?.addEventListener('click', function() {
+          if (typeof fbq !== 'undefined') {
+            fbq('track', 'AddToCart', {
+              content_name: {{ closest.product.title | json }},
+              content_ids: [{{ closest.product.id | json }}],
+              value: {{ closest.product.selected_or_first_available_variant.price | divided_by: 100.0 }},
+              currency: 'BRL'
+            });
+          }
+        });
+      </script>
+    {%- endif -%}
   </product-info>
 
   {% content_for 'block',
