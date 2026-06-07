@@ -242,6 +242,16 @@
               {% if enable_pagination %}
                 {{ pagi_html }}
               {% endif %}
+
+              {%- if sec_stts.autoplay -%}
+                {% render 'saibai-slideshow-autoplay' %}
+              {%- endif -%}
+            </div>
+          </div>
+        {% elsif sec_stts.autoplay %}
+          <div class="swiper-actions w-full">
+            <div class="swiper-btns-wrap bottom_center">
+              {% render 'saibai-slideshow-autoplay' %}
             </div>
           </div>
         {% endif %}

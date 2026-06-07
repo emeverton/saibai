@@ -1,0 +1,36 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "blocks": {
+        "heading": {
+          "type": "text",
+          "settings": {
+            "text": "<h1>Política de Privacidade</h1>",
+            "type_preset": "h1",
+            "padding-block-end": 16
+          },
+          "blocks": {}
+        },
+        "content": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>Empório Saibai</strong> — Piedade, SP</p><p>Esta política descreve como coletamos, usamos e protegemos seus dados pessoais, em conformidade com a Lei Geral de Proteção de Dados (LGPD — Lei nº 13.709/2018).</p><p><strong>Dados coletados</strong></p><p>Nome, e-mail, telefone, endereço de entrega e dados de pagamento processados de forma segura pelo Shopify e gateways homologados.</p><p><strong>Finalidade</strong></p><p>Processamento de pedidos, comunicação sobre compras, envio de newsletter (quando autorizado) e melhoria da experiência na loja.</p><p><strong>Compartilhamento</strong></p><p>Compartilhamos dados apenas com prestadores essenciais: Shopify, transportadoras, processadores de pagamento e ferramentas de marketing (Klaviyo, Meta) quando você consente.</p><p><strong>Cookies e analytics</strong></p><p>Utilizamos cookies para funcionamento da loja, analytics (Google Analytics) e publicidade (Meta Pixel). Você pode gerenciar preferências no banner de cookies ou nas configurações do navegador.</p><p><strong>Seus direitos</strong></p><p>Você pode solicitar acesso, correção, exclusão ou portabilidade dos seus dados entrando em contato conosco.</p><p><strong>Contato do encarregado</strong></p><p>E-mail: <a href=\"mailto:contato@saibai.com.br\">contato@saibai.com.br</a></p><p>Última atualização: junho de 2025.</p>",
+            "type_preset": "rte"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": ["heading", "content"],
+      "settings": {
+        "content_direction": "column",
+        "content_direction_mobile": "column",
+        "section_width": "page-width",
+        "color_scheme": "scheme-2",
+        "padding-block-start": 36,
+        "padding-block-end": 36
+      }
+    }
+  },
+  "order": ["main"]
+}

@@ -23,19 +23,34 @@
             "image_mb_1": "shopify://shop_images/0001-1726510141686771385.jpg",
             "inherit_color_scheme": true
           }
+        },
+        "slide_hero_2": {
+          "type": "_slide",
+          "settings": {
+            "slide_background": true,
+            "container": "page-width page-width--full",
+            "height": "full",
+            "media_type_1": "image",
+            "image_1": "shopify://shop_images/0001-1726510141686771385.jpg",
+            "image_mb_1": "shopify://shop_images/0001-1726510141686771385.jpg",
+            "inherit_color_scheme": true
+          }
         }
       },
       "block_order": [
-        "slide_hero"
+        "slide_hero",
+        "slide_hero_2"
       ],
       "settings": {
         "slideshow_type": "default",
         "section_width": "full-width",
         "slide_height": "full-screen",
         "slide_height_mb": "large",
-        "autoplay": false,
-        "loop": false,
-        "navigation": "none",
+        "autoplay": true,
+        "autoplay_speed": 6,
+        "loop": true,
+        "navigation": "pagination",
+        "pagination_type": "bullets",
         "image_behavior": "parallax",
         "color_scheme": "scheme-7",
         "color_scheme_mobile": "scheme-7",

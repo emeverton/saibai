@@ -3547,6 +3547,12 @@
         "type": "text",
         "id": "meta_pixel_id",
         "label": "Meta Pixel ID"
+      },
+      {
+        "type": "text",
+        "id": "ga4_measurement_id",
+        "label": "GA4 Measurement ID",
+        "info": "Formato: G-XXXXXXXXXX"
       }
     ]
   }

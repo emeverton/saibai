@@ -123,6 +123,23 @@
       >
         {%- render 'card-product-media', show_secondary_image: show_secondary_image, card_product: card_product -%}
 
+        {%- if quick_add != blank and quick_add != false -%}
+          <div class="saibai-card-overlay">
+            <button
+              type="button"
+              class="saibai-card-overlay__btn button"
+              aria-label="{%- if card_product.variants.size > 1 -%}{{ 'products.product.choose_options' | t }}{%- else -%}{{ 'products.product.add_to_cart' | t }}{%- endif -%}"
+              onclick="this.closest('.saibai-product-card')?.querySelector('.quick-add__submit')?.click()"
+            >
+              {%- if card_product.variants.size > 1 -%}
+                {{ 'products.product.choose_options' | t }}
+              {%- else -%}
+                {{ 'products.product.add_to_cart' | t }}
+              {%- endif -%}
+            </button>
+          </div>
+        {%- endif -%}
+
         <div class="card-product__group-wrapper">
           <div class="card-product__group flex flex-column absolute top-0 right-0 z-2" style="--gap-y: 1rem; --p: .5rem; --pb: 1rem; --md-p: 1rem; --md-pb: 1rem; --lg-p: 1.6rem; --lg-pb: 1rem;">
             {%- assign class_button = 'card-product__group-btn rounded-full bor-none center cursor-pointer flex items-center justify-center relative' -%}

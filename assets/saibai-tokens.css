@@ -57,6 +57,57 @@ a:not(.button):not(.button-secondary):not(.shopify-payment-button__button):not(.
 .saibai-product-card .price .price-item--regular, .saibai-product-card .price__compare, .saibai-product-card .price--on-sale .price-item--regular { text-decoration: line-through; opacity: 0.6; }
 .saibai-product-card .price .price-item--sale, .saibai-product-card .price-item--last { font-weight: 600; }
 
+.saibai-product-card .card__inner { position: relative; overflow: hidden; }
+.saibai-product-card .saibai-card-overlay {
+  position: absolute; inset: 0; z-index: 3; display: flex; align-items: flex-end; justify-content: center;
+  padding: 16px; background: linear-gradient(to top, rgb(42 58 26 / 0.55) 0%, transparent 55%);
+  opacity: 0; pointer-events: none; transition: opacity var(--saibai-transition);
+}
+.saibai-product-card .saibai-card-overlay__btn {
+  width: 100%; max-width: 220px; min-height: 44px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em;
+}
+@media (hover: hover) {
+  .saibai-product-card:hover .saibai-card-overlay { opacity: 1; pointer-events: auto; }
+}
+@media (max-width: 749px) {
+  .saibai-product-card .saibai-card-overlay { display: none; }
+}
+
+.slide-wrapper .swiper-actions { pointer-events: none; }
+.slide-wrapper .swiper-btns-wrap { pointer-events: auto; justify-content: flex-start; padding: 0 24px 24px; position: relative; min-height: 44px; }
+.slide-wrapper .swiper-pagination { --dot-bottom: 24px; }
+.slide-wrapper .swiper-pagination-bullet-active { background: var(--saibai-primary) !important; border-color: var(--saibai-primary) !important; }
+.saibai-slideshow-toggle {
+  position: absolute; left: 24px; bottom: 24px; z-index: 4;
+  display: flex; align-items: center; justify-content: center; width: 44px; height: 44px;
+  border: none; border-radius: 50%; background: rgb(42 58 26 / 0.65); color: var(--saibai-white); cursor: pointer;
+  transition: background var(--saibai-transition), transform var(--saibai-transition);
+}
+.saibai-slideshow-toggle:hover { background: rgb(42 58 26 / 0.85); transform: scale(1.05); }
+.saibai-slideshow-toggle svg { width: 18px; height: 18px; fill: currentColor; }
+
+.saibai-footer-logo { padding-block: 0 24px; text-align: center; }
+.saibai-footer-logo__link { display: inline-block; transition: opacity var(--saibai-transition); }
+.saibai-footer-logo__link:hover { opacity: 0.85; }
+.saibai-footer-logo .saibai-logo { width: 140px; margin: 0 auto; }
+
+@media screen and (min-width: 768px) and (max-width: 989px) {
+  .product-grid:not(.swiper-wrapper), .collection-grid:not(.swiper-wrapper) {
+    display: grid !important; grid-template-columns: repeat(2, 1fr); gap: 16px; overflow: visible;
+  }
+  .product-grid:not(.swiper-wrapper) .grid__item, .collection-grid:not(.swiper-wrapper) .grid__item {
+    min-width: 0; width: auto; flex-shrink: 1;
+  }
+}
+@media screen and (min-width: 990px) {
+  .product-grid:not(.swiper-wrapper), .collection-grid:not(.swiper-wrapper) {
+    display: grid !important; grid-template-columns: repeat(4, 1fr); gap: 20px; overflow: visible;
+  }
+  .product-grid:not(.swiper-wrapper) .grid__item, .collection-grid:not(.swiper-wrapper) .grid__item {
+    min-width: 0; width: auto; flex-shrink: 1;
+  }
+}
+
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 { font-family: var(--saibai-font-heading); color: var(--saibai-dark); }
 h1, .h1 { font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; font-size: clamp(2rem, 5vw, 4rem); }
 h2, .h2 { font-size: clamp(1.5rem, 4vw, 3rem); }

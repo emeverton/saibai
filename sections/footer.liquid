@@ -34,6 +34,11 @@
       "
     >
       {% content_for 'blocks' %}
+      <div class="saibai-footer-logo page-width w-full">
+        <a href="{{ routes.root_url }}" class="saibai-footer-logo__link" aria-label="Empório Saibai — Início">
+          {% render 'saibai-logo', variant: 'default', width: 140 %}
+        </a>
+      </div>
       <div class="saibai-footer-credit page-width w-full">
         {% render 'saibai-veltrus-credit' %}
       </div>

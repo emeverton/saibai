@@ -1,0 +1,64 @@
+{%- comment -%}
+  Empório Saibai — Tema Oficial
+  Desenvolvido por Veltrus Growth & Technology
+  Shopify Partner ID: 4969609
+  Versão: 1.0.0 | 2025
+  PROPRIEDADE INTELECTUAL PROTEGIDA
+  Reprodução proibida sem autorização
+{%- endcomment -%}
+<button
+  type="button"
+  class="saibai-slideshow-toggle"
+  aria-label="{{ 'content.pause_slideshow' | t | default: 'Pausar slideshow' }}"
+  data-playing="true"
+>
+  <span class="saibai-slideshow-toggle__icon saibai-slideshow-toggle__icon--pause" aria-hidden="true">
+    {{- 'icon-pause.svg' | inline_asset_content -}}
+  </span>
+  <span class="saibai-slideshow-toggle__icon saibai-slideshow-toggle__icon--play visually-hidden" aria-hidden="true">
+    {{- 'icon-play.svg' | inline_asset_content -}}
+  </span>
+</button>
+<script defer>
+  (function () {
+    'use strict';
+    if (window.__saibaiSlideshowInit) return;
+    window.__saibaiSlideshowInit = true;
+    document.querySelectorAll('.slide-wrapper .saibai-slideshow-toggle').forEach(function (toggle) {
+      var component = toggle.closest('swiper-component');
+      if (!component) return;
+
+      function getSwiper() {
+        return component.initSwiper || null;
+      }
+
+      function setPlaying(playing) {
+        toggle.dataset.playing = playing ? 'true' : 'false';
+        toggle.setAttribute(
+          'aria-label',
+          playing ? 'Pausar slideshow' : 'Reproduzir slideshow'
+        );
+        toggle.querySelector('.saibai-slideshow-toggle__icon--pause').classList.toggle('visually-hidden', !playing);
+        toggle.querySelector('.saibai-slideshow-toggle__icon--play').classList.toggle('visually-hidden', playing);
+      }
+
+      toggle.addEventListener('click', function () {
+        var swiper = getSwiper();
+        if (!swiper || !swiper.autoplay) return;
+        if (toggle.dataset.playing === 'true') {
+          swiper.autoplay.stop();
+          setPlaying(false);
+        } else {
+          swiper.autoplay.start();
+          setPlaying(true);
+        }
+      });
+
+      var attempts = 0;
+      var waitSwiper = setInterval(function () {
+        attempts += 1;
+        if (getSwiper() || attempts > 40) clearInterval(waitSwiper);
+      }, 250);
+    });
+  })();
+</script>
