@@ -6,10 +6,11 @@
 {%- liquid
   assign logo_variant = variant | default: 'default'
   assign logo_width = width | default: settings.logo_width | default: 160
+  assign inverse_logo = 'LOGO_SAIBAI_22_fundo_branco_1.png' | file_url
 -%}
 {%- if logo_variant == 'inverse' -%}
   <img
-    src="{{ 'LOGO_SAIBAI_22_fundo_branco_1.png' | file_url }}"
+    src="{{ inverse_logo }}"
     alt="Empório Saibai"
     class="header-logo__image saibai-logo{% if class != blank %} {{ class }}{% endif %}"
     width="{{ logo_width }}"
