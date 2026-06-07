@@ -5,6 +5,9 @@
   assign color_scheme_image = sec_stts.color_scheme_image
   assign section_height = sec_stts.section_height
   assign collection_image = sec_stts.collection_image
+  if collection_image == blank and collection.image != blank
+    assign collection_image = collection.image
+  endif
   assign image_overlay_opacity = sec_stts.image_overlay_opacity
   assign scroll_reveal = settings.animations_reveal_on_scroll
   assign alignment = sec_stts.alignment
@@ -98,7 +101,7 @@
           </div>
         </div>
       {%- else -%}
-        <div class="collection-hero__inner{% if scroll_reveal %} scroll-trigger animate--fade-in{% endif %}">
+        <div class="collection-hero__inner{% if scroll_reveal %} scroll-trigger animate--fade-in{% endif %}" style="background-color: var(--saibai-secondary, #4E7E8A);">
           <div
             class="collection-hero__text-wrapper"
           >

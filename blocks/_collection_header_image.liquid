@@ -7,7 +7,11 @@
     when 'portrait'
       assign ratio = '4 / 5'
     when 'adapt'
-      assign ratio = block.settings.image.aspect_ratio
+      if block.settings.image != blank
+        assign ratio = block.settings.image.aspect_ratio
+      elsif collection.image != blank
+        assign ratio = collection.image.aspect_ratio
+      endif
   endcase
 
   if ratio == 0 or ratio == null
@@ -15,11 +19,14 @@
   endif
 
   assign image = block.settings.image
-  assign image_height = block.settings.image.height
+  if image == blank and collection.image != blank
+    assign image = collection.image
+  endif
+  assign image_height = image.height
   assign image_height_2x = image_height | times: 2
-  assign image_width = block.settings.image.width
+  assign image_width = image.width
   assign image_width_2x = image_width | times: 2
-  assign image_aspect_ratio = block.settings.image.aspect_ratio
+  assign image_aspect_ratio = image.aspect_ratio
 %}
 
 
@@ -86,7 +93,12 @@ style="{{ style }}"
 
   -%}
 {%- else -%}
-  {{ 'hero-apparel-1' | placeholder_svg_tag: 'image-block__image placeholder-svg' }}
+  <div
+    class="image-block__image image-block__fallback"
+    style="background-color: var(--saibai-secondary, #4E7E8A); width: 100%; aspect-ratio: var(--ratio); min-height: 12rem;"
+    role="presentation"
+    aria-hidden="true"
+  ></div>
 {%- endif -%}
 </{{ element }}>
 

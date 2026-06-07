@@ -152,7 +152,7 @@
               "settings": {
                 "collapse": true,
                 "collapse_default": "open",
-                "text": "<p>RECENT ARTICLES</p>",
+                "text": "<p>Artigos Recentes</p>",
                 "number": 1
               },
               "blocks": {}
