@@ -94,7 +94,7 @@ Aplica-se automaticamente em: featured-collection, collection grid, search, rela
 | `sections/footer-group.json` | WhatsApp VIP, newsletter Saibai, removido HALOTHEMES |
 | `templates/page.contact.json` | Endereço Piedade SP, contato@saibai.com.br, telefone |
 | `templates/page.about.json` | Idem |
-| `templates/page.faqs.json` | email@domain.com → contato@saibai.com.br |
+| `templates/page.faqs.json` | econtato@saibai.com.br → contato@saibai.com.br |
 
 ---
 

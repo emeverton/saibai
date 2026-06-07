@@ -3,6 +3,11 @@
  * Desenvolvido por Veltrus Growth & Technology
  */
 
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
 :root {
   --saibai-primary: #76BD22;
   --saibai-primary-hover: #5A9018;
@@ -149,7 +154,37 @@ a:not(.button):not(.button-secondary):not(.shopify-payment-button__button):not(.
 }
 
 @media screen and (max-width: 749px) {
-  .saibai-logo { width: var(--header-logo-image-width-mobile, 120px); }
+  .saibai-logo {
+    width: var(--header-logo-image-width-mobile, 120px);
+    max-width: 120px;
+  }
+}
+
+.header-wrapper,
+.shopify-section-group-header-group {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+.header__icon,
+.header__icon--menu,
+.header__icon--cart,
+.header__icon--account,
+.header__icon--search,
+.saibai-header-cta,
+.menu-drawer__menu-item > a,
+.menu-drawer__close-button {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+header .header__icon:hover,
+header .header__icon:hover svg {
+  color: var(--saibai-primary);
+}
+
+.icon, svg {
+  transition: color 0.2s ease;
 }
 
 .header-logo--has-settings-logo .logo-fallback {
@@ -206,8 +241,22 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   color: var(--saibai-dark);
 }
 
-h1, .h1 { font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
-body { font-family: var(--saibai-font-body); }
+h1, .h1 {
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: clamp(2rem, 5vw, 4rem);
+}
+
+h2, .h2 { font-size: clamp(1.5rem, 4vw, 3rem); }
+h3, .h3 { font-size: clamp(1.2rem, 3vw, 2rem); }
+
+body {
+  font-family: var(--saibai-font-body);
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+}
+
+html { font-size: 16px; }
 
 .saibai-footer-credit { padding-block: 0.8rem 0; text-align: center; width: 100%; }
 @media screen and (min-width: 750px) { .saibai-footer-credit { text-align: right; } }
@@ -215,3 +264,71 @@ body { font-family: var(--saibai-font-body); }
 .saibai-credit { font-size: 1rem; color: rgb(var(--saibai-dark-rgb) / 0.45); }
 .saibai-credit a { color: inherit; text-decoration: none; }
 .saibai-credit a:hover { color: var(--saibai-primary); text-decoration: underline; }
+
+@media screen and (max-width: 767px) {
+  .product-grid,
+  .collection-grid,
+  [class*="grid--"] {
+    display: flex !important;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 12px;
+    padding-bottom: 16px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .product-grid::-webkit-scrollbar,
+  .collection-grid::-webkit-scrollbar,
+  [class*="grid--"]::-webkit-scrollbar { display: none; }
+
+  .product-grid .grid__item,
+  .collection-grid .grid__item,
+  [class*="grid--"] > li,
+  [class*="grid--"] > div {
+    min-width: 66.66vw;
+    scroll-snap-align: start;
+    flex-shrink: 0;
+  }
+}
+
+.section-footer .layout-panel-flex,
+.section-footer [class*="footer-group"],
+.section-footer [class*="footer-column"] {
+  flex-direction: column;
+}
+
+@media screen and (max-width: 749px) {
+  .section-footer .footer-block__details-content a,
+  .section-footer .list-menu__item--link,
+  .section-footer .footer__list-social a,
+  .section-footer .menu-drawer__menu-item > a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
+.saibai-payment-icons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.saibai-payment-icons__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+}
+
+.saibai-payment-icons__item svg,
+.saibai-payment-icons__item img {
+  height: 24px;
+  width: auto;
+  max-width: 40px;
+}

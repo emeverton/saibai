@@ -1,24 +1,28 @@
 {%- comment -%}
-  Saibai Empório — Logo fallback
+  Saibai Empório — Logo via Shopify Files
   Desenvolvido por Veltrus Growth & Technology
   variant: default | inverse
 {%- endcomment -%}
 {%- liquid
   assign logo_variant = variant | default: 'default'
-  if logo_variant == 'inverse'
-    assign logo_asset = 'logo-saibai-inverse.svg'
-  else
-    assign logo_asset = 'logo-saibai.svg'
-  endif
-  assign logo_width = width | default: 200
-  assign logo_height = height | default: 43
+  assign logo_width = width | default: settings.logo_width | default: 160
 -%}
-<img
-  src="{{ logo_asset | asset_url }}"
-  alt="{{ shop.name | escape }}"
-  class="header-logo__image saibai-logo{% if class != blank %} {{ class }}{% endif %}"
-  width="{{ logo_width }}"
-  height="{{ logo_height }}"
-  loading="eager"
-  fetchpriority="high"
->
+{%- if logo_variant == 'inverse' -%}
+  <img
+    src="{{ 'LOGO_SAIBAI_22_fundo_branco_1.png' | file_url }}"
+    alt="Empório Saibai"
+    class="header-logo__image saibai-logo{% if class != blank %} {{ class }}{% endif %}"
+    width="{{ logo_width }}"
+    loading="eager"
+    fetchpriority="high"
+  >
+{%- else -%}
+  <img
+    src="{{ 'LOGO_SAIBAI_RUCULA_2022_f61dca0b-ac73-4665-a141-c6ecf6689198.png' | file_url }}"
+    alt="Empório Saibai"
+    class="header-logo__image saibai-logo{% if class != blank %} {{ class }}{% endif %}"
+    width="{{ logo_width }}"
+    loading="eager"
+    fetchpriority="high"
+  >
+{%- endif -%}

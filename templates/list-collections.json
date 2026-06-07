@@ -65,7 +65,7 @@
             "typing_text": false,
             "primary_text": "Welcome to our store!",
             "secondary_text": "Exclusive offers just for you.",
-            "third_text": "Shop now and enjoy deals!",
+            "third_text": "Ver produtos da safra Saibai",
             "highlight_text": false,
             "highlight_text_content": "",
             "highlight_text_type": "text",
@@ -238,7 +238,7 @@
               "type": "_collection-button",
               "name": "Collection link",
               "settings": {
-                "label": "Shop now",
+                "label": "Ver produtos",
                 "open_in_new_tab": false,
                 "style_class": "button-secondary",
                 "button_style": "default",
@@ -361,7 +361,7 @@
                       "disabled": true,
                       "static": true,
                       "settings": {
-                        "label": "Shop now",
+                        "label": "Ver produtos",
                         "open_in_new_tab": false,
                         "style_class": "button",
                         "button_style": "default",

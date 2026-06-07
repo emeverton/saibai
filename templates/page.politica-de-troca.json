@@ -1,0 +1,36 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "blocks": {
+        "heading": {
+          "type": "text",
+          "settings": {
+            "text": "<h1>Política de Troca e Devolução</h1>",
+            "type_preset": "h1",
+            "padding-block-end": 16
+          },
+          "blocks": {}
+        },
+        "content": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>Direito de arrependimento</strong></p><p>Conforme o Código de Defesa do Consumidor, você pode solicitar a devolução em até 7 dias corridos após o recebimento do produto, desde que esteja lacrado e em condições de revenda (produtos não perecíveis).</p><p><strong>Produtos frescos</strong></p><p>Alcachofras frescas e produtos perecíveis: em caso de produto danificado, fora do padrão ou com problemas no transporte, entre em contato em até 24 horas após o recebimento com fotos do produto e da embalagem.</p><p><strong>Como solicitar</strong></p><p>Envie e-mail para <a href=\"mailto:contato@saibai.com.br\">contato@saibai.com.br</a> informando número do pedido, motivo e fotos (quando aplicável). Nossa equipe retorna em até 2 dias úteis.</p><p><strong>Reembolso</strong></p><p>Após aprovação, o reembolso é processado no mesmo meio de pagamento em até 10 dias úteis.</p>",
+            "type_preset": "rte"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": ["heading", "content"],
+      "settings": {
+        "content_direction": "column",
+        "content_direction_mobile": "column",
+        "section_width": "page-width",
+        "color_scheme": "scheme-2",
+        "padding-block-start": 36,
+        "padding-block-end": 36
+      }
+    }
+  },
+  "order": ["main"]
+}

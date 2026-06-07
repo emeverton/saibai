@@ -1,0 +1,25 @@
+<style>
+  .saibai-home-newsletter { padding: 80px 40px; background: var(--saibai-dark, #2A3A1A); color: var(--saibai-white, #fff); text-align: center; }
+  .saibai-home-newsletter__title { color: var(--saibai-white, #fff); margin: 0 0 12px; }
+  .saibai-home-newsletter__text { color: rgb(255 255 255 / 0.85); margin: 0 auto 28px; max-width: 48ch; line-height: 1.6; }
+  .saibai-home-newsletter__form { display: flex; gap: 12px; justify-content: center; max-width: 520px; margin: 0 auto; }
+  .saibai-home-newsletter__input { flex: 1; min-height: 48px; padding: 0 16px; border: 1px solid rgb(255 255 255 / 0.25); border-radius: 4px; background: rgb(255 255 255 / 0.08); color: #fff; font-size: 1rem; }
+  .saibai-home-newsletter__input::placeholder { color: rgb(255 255 255 / 0.55); }
+  .saibai-home-newsletter__btn { min-height: 48px; padding: 0 28px; border: none; border-radius: 4px; background: var(--saibai-primary, #76BD22); color: #fff; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; cursor: pointer; }
+  .saibai-home-newsletter__btn:hover { background: var(--saibai-primary-hover, #5A9018); }
+  @media (max-width: 767px) {
+    .saibai-home-newsletter { padding: 40px 20px; }
+    .saibai-home-newsletter__form { flex-direction: column; align-items: stretch; }
+    .saibai-home-newsletter__btn { width: 100%; }
+  }
+</style>
+<div class="saibai-home-newsletter">
+  <h2 class="saibai-home-newsletter__title">Receba novidades da safra</h2>
+  <p class="saibai-home-newsletter__text">Ofertas exclusivas, receitas com alcachofra e avisos de lançamento direto no seu e-mail.</p>
+  {% form 'customer', class: 'saibai-home-newsletter__form' %}
+    <input type="hidden" name="contact[tags]" value="newsletter">
+    <label class="visually-hidden" for="SaibaiHomeNewsletterEmail">E-mail</label>
+    <input id="SaibaiHomeNewsletterEmail" class="saibai-home-newsletter__input" type="email" name="contact[email]" placeholder="Seu e-mail" required autocomplete="email">
+    <button type="submit" class="saibai-home-newsletter__btn">Inscrever-se</button>
+  {% endform %}
+</div>

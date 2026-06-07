@@ -1,0 +1,22 @@
+{%- comment -%}
+  Saibai Empório — Selos de pagamento BR
+  Desenvolvido por Veltrus Growth & Technology
+{%- endcomment -%}
+<span class="visually-hidden">Formas de pagamento</span>
+<ul class="saibai-payment-icons payment-icons__list list-unstyled" role="list">
+  <li class="saibai-payment-icons__item payment-icons__icon">
+    {{ 'pix' | payment_type_svg_tag: class: 'icon icon--full-color' }}
+  </li>
+  <li class="saibai-payment-icons__item payment-icons__icon">
+    {{ 'visa' | payment_type_svg_tag: class: 'icon icon--full-color' }}
+  </li>
+  <li class="saibai-payment-icons__item payment-icons__icon">
+    {{ 'master' | payment_type_svg_tag: class: 'icon icon--full-color' }}
+  </li>
+  <li class="saibai-payment-icons__item payment-icons__icon">
+    {{ 'elo' | payment_type_svg_tag: class: 'icon icon--full-color' }}
+  </li>
+  <li class="saibai-payment-icons__item payment-icons__icon">
+    {{ 'boleto' | payment_type_svg_tag: class: 'icon icon--full-color' }}
+  </li>
+</ul>

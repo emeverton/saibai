@@ -1,0 +1,24 @@
+<style>
+  .saibai-farm-story { display: flex; align-items: stretch; gap: 0; max-width: 100%; overflow: hidden; }
+  .saibai-farm-story__media { flex: 1 1 50%; min-height: 420px; background: var(--saibai-light, #F4F9F0) center/cover no-repeat; }
+  .saibai-farm-story__content { flex: 1 1 50%; display: flex; flex-direction: column; justify-content: center; padding: 60px 48px; background: var(--saibai-white, #fff); }
+  .saibai-farm-story__eyebrow { color: var(--saibai-secondary, #4E7E8A); font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 12px; }
+  .saibai-farm-story__title { color: var(--saibai-dark, #2A3A1A); margin: 0 0 16px; }
+  .saibai-farm-story__text { color: var(--saibai-dark-muted, #4E6040); line-height: 1.7; margin: 0 0 24px; max-width: 42ch; }
+  .saibai-farm-story__cta { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 28px; background: var(--saibai-primary, #76BD22); color: #fff; border-radius: 4px; text-decoration: none; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
+  .saibai-farm-story__cta:hover { background: var(--saibai-primary-hover, #5A9018); color: #fff; }
+  @media (max-width: 767px) {
+    .saibai-farm-story { flex-direction: column; }
+    .saibai-farm-story__media { min-height: 300px; flex: none; width: 100%; }
+    .saibai-farm-story__content { padding: 40px 20px; }
+  }
+</style>
+<div class="saibai-farm-story page-width page-width--full">
+  <div class="saibai-farm-story__media" style="background:linear-gradient(135deg, var(--saibai-light,#F4F9F0) 0%, var(--saibai-secondary,#4E7E8A) 100%);" role="img" aria-label="Plantação de alcachofras em Piedade, SP"></div>
+  <div class="saibai-farm-story__content">
+    <p class="saibai-farm-story__eyebrow">Piedade, SP · Capital Nacional da Alcachofra</p>
+    <h2 class="saibai-farm-story__title">50 anos cultivando alcachofra com excelência</h2>
+    <p class="saibai-farm-story__text">Do campo ao seu prato: produção própria, safra controlada e tradição familiar que conquistou chefs de São Paulo. Conheça a história do Empório Saibai.</p>
+    <a href="/pages/sobre" class="saibai-farm-story__cta">Nossa história</a>
+  </div>
+</div>

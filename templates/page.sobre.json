@@ -1,0 +1,36 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "blocks": {
+        "heading": {
+          "type": "text",
+          "settings": {
+            "text": "<h1>Sobre Nós</h1>",
+            "type_preset": "h1",
+            "padding-block-end": 16
+          },
+          "blocks": {}
+        },
+        "content": {
+          "type": "text",
+          "settings": {
+            "text": "<p>O <strong>Empório Saibai</strong> nasceu em Piedade, SP — Capital Nacional da Alcachofra — com mais de 50 anos de tradição familiar no cultivo e comercialização de alcachofras frescas.</p><p>Produzimos nossas próprias alcachofras com safra controlada, seleção rigorosa e embalagem especial para preservar qualidade do campo até a sua cozinha. Chefs de São Paulo e consumidores exigentes escolhem a Saibai pela consistência, sabor e origem garantida.</p><p>Além das alcachofras frescas, oferecemos conservas artesanais, antepastos e produtos derivados preparados com receitas da família.</p><p><strong>Endereço:</strong> Piedade, SP — Brasil<br><strong>E-mail:</strong> <a href=\"mailto:contato@saibai.com.br\">contato@saibai.com.br</a></p>",
+            "type_preset": "rte"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": ["heading", "content"],
+      "settings": {
+        "content_direction": "column",
+        "content_direction_mobile": "column",
+        "section_width": "page-width",
+        "color_scheme": "scheme-2",
+        "padding-block-start": 36,
+        "padding-block-end": 36
+      }
+    }
+  },
+  "order": ["main"]
+}

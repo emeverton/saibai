@@ -348,7 +348,7 @@
     {% if settings.logo %}
       "logo": {{ settings.logo | image_url: width: 500 | prepend: "https:" | json }},
     {% else %}
-      "logo": {{ 'logo-saibai.svg' | asset_url | json }},
+      "logo": {{ 'LOGO_SAIBAI_RUCULA_2022_f61dca0b-ac73-4665-a141-c6ecf6689198.png' | file_url | json }},
     {% endif %}
     "sameAs": [
       {{ settings.social_twitter_link | json }},

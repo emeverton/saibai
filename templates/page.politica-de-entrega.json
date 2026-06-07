@@ -1,0 +1,36 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "blocks": {
+        "heading": {
+          "type": "text",
+          "settings": {
+            "text": "<h1>Política de Entrega</h1>",
+            "type_preset": "h1",
+            "padding-block-end": 16
+          },
+          "blocks": {}
+        },
+        "content": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>Prazos de envio</strong></p><p>Os pedidos são processados em até 2 dias úteis após a confirmação do pagamento. O prazo de entrega varia conforme a região e a transportadora selecionada no checkout.</p><p><strong>Frete grátis</strong></p><p>Frete grátis para pedidos acima de R$ 280,00 (consulte regiões elegíveis no carrinho).</p><p><strong>Alcachofras frescas</strong></p><p>Produtos frescos são enviados com embalagem térmica especial para preservar qualidade. Recomendamos consumir em até 5 dias após o recebimento, refrigerando imediatamente.</p><p><strong>Rastreamento</strong></p><p>Você receberá o código de rastreamento por e-mail assim que o pedido for despachado.</p><p>Dúvidas: <a href=\"mailto:contato@saibai.com.br\">contato@saibai.com.br</a></p>",
+            "type_preset": "rte"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": ["heading", "content"],
+      "settings": {
+        "content_direction": "column",
+        "content_direction_mobile": "column",
+        "section_width": "page-width",
+        "color_scheme": "scheme-2",
+        "padding-block-start": 36,
+        "padding-block-end": 36
+      }
+    }
+  },
+  "order": ["main"]
+}
