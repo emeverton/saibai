@@ -118,7 +118,7 @@ if (!customElements.get('quick-add-bulk')) {
             this.renderSections(parsedState, ids);
             publish(PUB_SUB_EVENTS.cartUpdate, { source: 'quick-add-bulk', cartData: parsedState });
           })
-          .catch((e) => console.log(e, 'error'))
+          .catch(() => {})
           .finally(() => {
             this.selectProgressBar().classList.add('hidden');
             this.requestStarted = false;

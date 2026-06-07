@@ -352,7 +352,7 @@ if (!customElements.get('product-info')) {
           })
           .catch((error) => {
             if (error.name === 'AbortError') {
-              console.log('Fetch aborted by user');
+              /* fetch aborted */
             } else {
               console.error(error);
             }

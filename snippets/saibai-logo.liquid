@@ -1,11 +1,16 @@
 {%- comment -%}
-  Saibai Empório — Logo via Shopify Files
+  Empório Saibai — Tema Oficial
   Desenvolvido por Veltrus Growth & Technology
+  Shopify Partner ID: 4969609
+  Versão: 1.0.0 | 2025
+  PROPRIEDADE INTELECTUAL PROTEGIDA
+  Reprodução proibida sem autorização
   variant: default | inverse
 {%- endcomment -%}
 {%- liquid
   assign logo_variant = variant | default: 'default'
   assign logo_width = width | default: settings.logo_width | default: 160
+  assign logo_height = height | default: settings.logo_width | divided_by: 3.5 | round
   assign inverse_logo = 'LOGO_SAIBAI_22_fundo_branco_1.png' | file_url
 -%}
 {%- if logo_variant == 'inverse' -%}
@@ -14,6 +19,7 @@
     alt="Empório Saibai"
     class="header-logo__image saibai-logo{% if class != blank %} {{ class }}{% endif %}"
     width="{{ logo_width }}"
+    height="{{ logo_height }}"
     loading="eager"
     fetchpriority="high"
   >
@@ -23,6 +29,7 @@
     alt="Empório Saibai"
     class="header-logo__image saibai-logo{% if class != blank %} {{ class }}{% endif %}"
     width="{{ logo_width }}"
+    height="{{ logo_height }}"
     loading="eager"
     fetchpriority="high"
   >

@@ -25,14 +25,6 @@ if (typeof window.MainEvents === 'undefined') {
 } else if (typeof window.MainEvents.mediaStartedPlaying === 'undefined') {
   window.MainEvents.mediaStartedPlaying = 'media:started-playing';
 }
-console.log(
-  `%c${window.info.name} %c(${window.info.version})%c by Halothemes\n%cLearn more at %chttps://halothemes.net/`,
-  'color: #ff8800; font-weight: bold; font-size: 1.2rem;',
-  'color: #ffa733; font-style: italic; font-size: 1.1rem;',
-  'color: #ffa733; font-size: 1rem;',
-  'color: #ff8800;',
-  'color: #d35400; text-decoration: underline;'
-);
 
 const ON_CHANGE_DEBOUNCE_TIMER = 300;
 
@@ -3193,7 +3185,7 @@ class WishlistView extends HTMLElement {
       const item = this.wishlistContainer?.querySelector(`.card--block[data-product-handle="${handle}"]`);
 
       if (item != null) {
-        // debug: console.log(item);
+        // debug: item
         item.querySelector('[data-wishlist]').classList.add('wishlist-added');
         item.querySelector('[data-wishlist] .text').textContent = window.wishlist.remove;
         item.classList.add('is-in-grid');

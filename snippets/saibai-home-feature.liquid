@@ -1,3 +1,11 @@
+{%- comment -%}
+  Empório Saibai — Tema Oficial
+  Desenvolvido por Veltrus Growth & Technology
+  Shopify Partner ID: 4969609
+  Versão: 1.0.0 | 2025
+  PROPRIEDADE INTELECTUAL PROTEGIDA
+  Reprodução proibida sem autorização
+{%- endcomment -%}
 <style>
   .saibai-feature { display: flex; align-items: stretch; gap: 0; max-width: 100%; overflow: hidden; }
   .saibai-feature__media { flex: 1 1 50%; min-height: 420px; background: var(--saibai-secondary, #4E7E8A) center/cover no-repeat; order: 2; }
@@ -7,6 +15,9 @@
   .saibai-feature__text { color: var(--saibai-dark-muted, #4E6040); line-height: 1.7; margin: 0 0 24px; max-width: 42ch; }
   .saibai-feature__cta { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 28px; background: var(--saibai-primary, #76BD22); color: #fff; border-radius: 4px; text-decoration: none; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
   .saibai-feature__cta:hover { background: var(--saibai-primary-hover, #5A9018); color: #fff; }
+  .saibai-feature__actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .saibai-feature__cta--outline { background: transparent; color: var(--saibai-dark, #2A3A1A); border: 2px solid var(--saibai-secondary, #4E7E8A); }
+  .saibai-feature__cta--outline:hover { background: var(--saibai-secondary, #4E7E8A); color: #fff; }
   @media (max-width: 767px) {
     .saibai-feature { flex-direction: column; }
     .saibai-feature__content { order: 1; padding: 40px 20px; }
@@ -18,7 +29,10 @@
     <p class="saibai-feature__eyebrow">Alcachofra fresca</p>
     <h2 class="saibai-feature__title">Colhida no ponto certo, entregue com cuidado</h2>
     <p class="saibai-feature__text">Selecionamos cada alcachofra na safra ideal. Embalagem especial para preservar textura e sabor até a sua cozinha — do produtor direto para você.</p>
-    <a href="/collections/todos" class="saibai-feature__cta">Ver produtos</a>
+    <div class="saibai-feature__actions">
+      <a href="/collections/todos" class="saibai-feature__cta">Ver coleção</a>
+      <a href="/pages/contato" class="saibai-feature__cta saibai-feature__cta--outline">Sou restaurante</a>
+    </div>
   </div>
   <div class="saibai-feature__media" style="background:linear-gradient(135deg, var(--saibai-secondary,#4E7E8A) 0%, var(--saibai-primary,#76BD22) 100%);" role="img" aria-label="Alcachofras frescas Saibai"></div>
 </div>

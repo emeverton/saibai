@@ -498,7 +498,7 @@
     "settings": [
       {
         "type": "header",
-        "content": "t:content.fonts",
+        "content": "t:content.fonts"
       },
       {
         "type": "paragraph",

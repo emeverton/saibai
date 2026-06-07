@@ -385,7 +385,7 @@ class ProductBundle extends HTMLElement {
         if (availableVariants != undefined) {
           selectedVariant = availableVariants;
         } else {
-          console.log('Bundle Error: variant was soldout, on option selection #2');
+          /* variant sold out on option selection */
         }
 
         break;
@@ -397,7 +397,7 @@ class ProductBundle extends HTMLElement {
         if (availableVariants != undefined) {
           selectedVariant = availableVariants;
         } else {
-          console.log('Bundle Error: variant was soldout, on option selection #3');
+          /* variant sold out on option selection */
         }
 
         break;
