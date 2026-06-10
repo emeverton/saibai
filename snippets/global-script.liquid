@@ -1,5 +1,89 @@
+{%- liquid
+  assign saibai_perf_index = false
+  if template.name == 'index'
+    assign saibai_perf_index = true
+  endif
+-%}
+{%- if saibai_perf_index -%}
+<script>
+(function () {
+  'use strict';
+  if (window.__saibaiPerfIndex) return;
+  window.__saibaiPerfIndex = { loaded: {} };
+
+  var core = [
+    {{ 'vendor.js' | asset_url | json }},
+    {{ 'global.js' | asset_url | json }},
+    {{ 'details-disclosure.js' | asset_url | json }}
+  ];
+
+  function loadOne(src, cb) {
+    if (window.__saibaiPerfIndex.loaded[src] === true) {
+      if (cb) cb();
+      return;
+    }
+    if (window.__saibaiPerfIndex.loaded[src] === 'loading') {
+      if (cb) document.addEventListener('saibai:core-ready', cb, { once: true });
+      return;
+    }
+    window.__saibaiPerfIndex.loaded[src] = 'loading';
+    var s = document.createElement('script');
+    s.src = src;
+    s.onload = function () {
+      window.__saibaiPerfIndex.loaded[src] = true;
+      if (cb) cb();
+    };
+    s.onerror = function () {
+      window.__saibaiPerfIndex.loaded[src] = false;
+      if (cb) cb();
+    };
+    document.head.appendChild(s);
+  }
+
+  function loadSeq(urls, done) {
+    var i = 0;
+    function next() {
+      if (i >= urls.length) {
+        document.dispatchEvent(new Event('saibai:core-ready'));
+        if (done) done();
+        return;
+      }
+      loadOne(urls[i++], next);
+    }
+    next();
+  }
+
+  window.saibaiLoadCore = function (cb) {
+    loadSeq(core, cb);
+  };
+
+  var coreActivated = false;
+  function activateCore() {
+    if (coreActivated) return;
+    coreActivated = true;
+    loadSeq(core);
+  }
+
+  ['pointerdown', 'keydown', 'touchstart'].forEach(function (ev) {
+    window.addEventListener(ev, activateCore, { passive: true, once: true });
+  });
+
+  function scheduleCore() {
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(activateCore, { timeout: 4000 });
+    } else {
+      setTimeout(activateCore, 3000);
+    }
+  }
+
+  if (document.readyState === 'complete') scheduleCore();
+  else window.addEventListener('load', scheduleCore, { once: true });
+})();
+</script>
+{%- else -%}
 <script src="{{ 'vendor.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
 
 {%- if settings.show_calculator_free_shipping_message -%}
   <script src="{{ 'currencies.js' | shopify_asset_url }}" defer="defer"></script>
@@ -14,15 +98,30 @@
   <script src="{{ 'localization-form.js' | asset_url }}" defer="defer"></script>
 {%- endif -%}
 
+{%- liquid
+  assign saibai_perf_skip_veltrus = 'index,blog,article,page,404,list-collections,password,collection,search,cart' | split: ','
+  assign saibai_perf_defer_veltrus = 'product' | split: ','
+  assign saibai_skip_veltrus_base = false
+  if saibai_perf_skip_veltrus contains template.name
+    assign saibai_skip_veltrus_base = true
+  endif
+  assign saibai_defer_veltrus_base = false
+  if saibai_perf_defer_veltrus contains template.name
+    assign saibai_defer_veltrus_base = true
+  endif
+-%}
 {%- if settings.animations_reveal_on_scroll -%}
+  {%- unless saibai_skip_veltrus_base or saibai_defer_veltrus_base -%}
   <script src="{{ 'animations.js' | asset_url }}" defer="defer"></script>
+  {%- endunless -%}
 {%- endif -%}
-<script src="{{ 'text-animation.js' | asset_url }}" defer="defer"></script>
 
+{%- unless saibai_perf_index -%}
 <script src="{{ 'details-disclosure.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'details-modal.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'search-form.js' | asset_url }}" defer="defer"></script>
- 
+{%- endunless -%}
+
 <script>
   window.shopUrl = {{ request.origin | json }};
   window.routes = {
@@ -33,7 +132,7 @@
     cart_change_url: {{ routes.cart_change_url | json }},
     cart_update_url: {{ routes.cart_update_url | json }},
     cart_url: {{ routes.cart_url | json }},
-    collection_all: {{ routes.all_products_collection_url | json }},
+    collection_all: {{ '/collections/todos' | json }},
     predictive_search_url: {{ routes.predictive_search_url | json }},
     search_url: {{ routes.search_url | json }}
   };
@@ -179,3 +278,8 @@
 
   document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
 </script>
+{%- if saibai_perf_index -%}
+<script type="text/saibai-defer" data-src="{{ 'saibai-license.js' | asset_url }}"></script>
+{%- else -%}
+<script src="{{ 'saibai-license.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}

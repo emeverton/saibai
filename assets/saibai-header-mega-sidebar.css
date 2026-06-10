@@ -1,0 +1,175 @@
+/* Empório Saibai — Mega sidebar
+ * Veltrus Growth & Technology
+ */
+
+html body .saibai-mega__center {
+  padding: 0 2.5rem;
+}
+
+html body .saibai-mega__center-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.15rem 2rem;
+  max-width: 34rem;
+}
+
+html body .saibai-mega__center-link,
+html body .saibai-mega__center-link.is-soon {
+  display: block;
+  padding: 0.5rem 0;
+  color: var(--sh-text);
+  font-size: 0.875rem;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: opacity 0.25s ease, color 0.25s ease;
+}
+
+html body .saibai-mega__center-link:hover,
+html body .saibai-mega__center-link.is-active {
+  color: var(--sh-muted);
+}
+
+html body .saibai-mega__center-item--view-all {
+  grid-column: 1 / -1;
+  margin-top: 0.5rem;
+  padding-top: 0.75rem;
+  border-top: 0;
+}
+
+html body .saibai-mega__center-link.is-view-all {
+  color: var(--sh-highlight);
+  font-weight: 500;
+}
+
+html body .saibai-mega__feature {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+html body .saibai-mega__feature-link {
+  display: block;
+  width: 100%;
+  max-width: 230px;
+  color: inherit;
+  text-decoration: none;
+  transition: opacity 0.25s ease;
+}
+
+html body .saibai-mega__feature-link:hover {
+  opacity: 0.88;
+}
+
+html body .saibai-mega__feature-img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  object-position: center;
+  transition: opacity var(--sh-mega-duration) var(--sh-mega-ease);
+}
+
+html body .saibai-mega__feature-img.is-fading {
+  opacity: 0;
+}
+
+html body .saibai-mega__feature-info {
+  margin-top: 0.85rem;
+  padding: 0.85rem 0.5rem 0;
+  background: transparent;
+  text-align: center;
+}
+
+html body .saibai-mega__feature-title {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: var(--sh-text);
+}
+
+html body .saibai-mega__feature-cta {
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  color: var(--sh-muted);
+}
+
+html body .saibai-header.is-mega-open .saibai-header__menu-trigger.is-active,
+html body .saibai-header.is-mega-open .saibai-header__menu-trigger[aria-expanded="true"] {
+  color: var(--saibai-primary);
+}
+
+html body .saibai-header.is-mega-pending .saibai-header__menu-trigger.is-pending {
+  opacity: 0.72;
+}
+
+html body .saibai-header.is-mega-open .saibai-header__body {
+  border-bottom-color: transparent;
+  background: var(--sh-bg, #F2F5EE);
+}
+
+html body .saibai-header.is-mega-open .saibai-header__logo-row,
+html body .saibai-header.is-mega-open .saibai-header__nav-row {
+  background: var(--sh-bg, #F2F5EE);
+}
+
+html body .saibai-header .saibai-header__submenu-link.is-soon,
+html body .saibai-header .saibai-header__drawer-sublink.is-soon,
+html body .saibai-mega__center-link.is-soon {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  cursor: default;
+  opacity: 0.72;
+  pointer-events: none;
+}
+
+html body .saibai-menu-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+html body .saibai-menu-label__text {
+  color: var(--sh-text);
+}
+
+html body .saibai-nav-badge {
+  display: inline-block;
+  padding: 0.1rem 0.4rem;
+  border-radius: 999px;
+  background: #E8F5D4;
+  color: var(--sh-muted);
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+html body .saibai-header__submenu-item--view-all,
+html body .saibai-header__drawer-item--view-all {
+  margin-top: 0.3rem;
+  padding-top: 0.3rem;
+  border-top: 1px solid var(--sh-line);
+}
+
+html body .saibai-header .saibai-header__submenu-link.is-view-all,
+html body .saibai-header .saibai-header__drawer-sublink.is-view-all {
+  color: var(--sh-highlight);
+  font-weight: 500;
+}
+
+html body .saibai-header .saibai-header__submenu-link.is-view-all:hover,
+html body .saibai-header .saibai-header__drawer-sublink.is-view-all:hover {
+  color: var(--sh-accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html body .saibai-mega__panel {
+    transition: none !important;
+  }
+}

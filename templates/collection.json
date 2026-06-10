@@ -9,8 +9,13 @@
  */
 {
   "sections": {
+    "saibai_plp_hero": {
+      "type": "saibai-plp-hero",
+      "settings": {}
+    },
     "banner": {
       "type": "main-collection-banner",
+      "disabled": true,
       "blocks": {
         "breadcrumb_EKT3dP": {
           "type": "_breadcrumb",
@@ -58,10 +63,10 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<h1>{{ closest.collection.title }}</h1>",
+            "text": "<h2>{{ closest.collection.title }}</h2>",
             "typing_text": false,
-            "primary_text": "Welcome to our store!",
-            "secondary_text": "Exclusive offers just for you.",
+            "primary_text": "Empório Saibai",
+            "secondary_text": "Produtos da safra, direto do produtor.",
             "third_text": "Ver produtos da safra Saibai",
             "highlight_text": false,
             "highlight_text_content": "",
@@ -102,7 +107,7 @@
             "font_size": "2.4rem",
             "line_height": "normal",
             "letter_spacing": "normal",
-            "case": "uppercase",
+            "case": "none",
             "wrap": "pretty",
             "color": "var(--color-foreground)",
             "background": false,
@@ -133,8 +138,8 @@
             "collection_description_only": true,
             "collapse_text": true,
             "typing_text": false,
-            "primary_text": "Welcome to our store!",
-            "secondary_text": "Exclusive offers just for you.",
+            "primary_text": "Empório Saibai",
+            "secondary_text": "Produtos da safra, direto do produtor.",
             "third_text": "Ver produtos da safra Saibai",
             "highlight_text": false,
             "highlight_text_content": "",
@@ -200,20 +205,18 @@
         }
       },
       "block_order": [
-        "breadcrumb_EKT3dP",
         "text_QYCLHk",
         "text_Lw7jtn"
       ],
-      "disabled": true,
       "settings": {
         "content_stacked": true,
-        "page_width": "full-width",
-        "section_height": "adapt",
+        "page_width": "page-width",
+        "section_height": "small",
         "alignment": "center",
         "vertical_alignment": "center",
         "color_scheme": "scheme-1",
-        "collection_image": "{{ collection.image }}",
-        "image_overlay_opacity": 40,
+        "collection_image": "",
+        "image_overlay_opacity": 0,
         "color_scheme_image": "scheme-1",
         "padding-block-start": 36,
         "padding-block-end": 36,
@@ -224,6 +227,7 @@
     "breadcrumb_ztwnCj": {
       "type": "breadcrumb",
       "name": "Breadcrumb",
+      "disabled": true,
       "settings": {
         "separator": "caret",
         "horizontal_alignment": "space-between",
@@ -253,8 +257,8 @@
             "filter_style": "vertical",
             "filter_position": "left",
             "filter_width": "full-width",
-            "heading_label_case": "uppercase",
-            "text_label_case": "uppercase",
+            "heading_label_case": "none",
+            "text_label_case": "none",
             "style": "underline",
             "enable_sticky_filters": false,
             "enable_hover_reveal": false,
@@ -311,7 +315,7 @@
                 "collapse": true,
                 "collapse_icon": "icon-caret",
                 "collapse_default": "open",
-                "text": "<p>FEATURED PRODUCTS</p>",
+                "text": "",
                 "layout": "slider",
                 "limit": 8,
                 "dots": true,
@@ -487,8 +491,8 @@
               "settings": {
                 "collapse": true,
                 "collapse_default": "close",
-                "text": "<p>CUSTOM CMS BLOCK</p>",
-                "content": "Custom CMS block displayed at the left sidebar on the Catalog Page. Put your own content here: text, html, images, media... or whatever you like.\n\nThere are many similar sample content placeholders across the store. All editable from admin panel."
+                "text": "",
+                "content": ""
               },
               "blocks": {}
             },
@@ -498,7 +502,7 @@
               "settings": {
                 "collapse": true,
                 "collapse_default": "close",
-                "text": "<p>CATEGORIES</p>",
+                "text": "<p>Categorias</p>",
                 "type": "3_level",
                 "link_list": "main-menu"
               },
@@ -558,10 +562,10 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h1>{{ closest.collection.title }}</h1>",
+                "text": "<h2>{{ closest.collection.title }}</h2>",
                 "typing_text": false,
-                "primary_text": "Welcome to our store!",
-                "secondary_text": "Exclusive offers just for you.",
+                "primary_text": "Empório Saibai",
+                "secondary_text": "Produtos da safra, direto do produtor.",
                 "third_text": "Ver produtos da safra Saibai",
                 "highlight_text": false,
                 "highlight_text_content": "",
@@ -602,7 +606,7 @@
                 "font_size": "3.0rem",
                 "line_height": "normal",
                 "letter_spacing": "normal",
-                "case": "uppercase",
+                "case": "none",
                 "wrap": "pretty",
                 "color": "var(--color-foreground-heading)",
                 "background": false,
@@ -631,8 +635,8 @@
                 "collection_description_only": true,
                 "collapse_text": true,
                 "typing_text": false,
-                "primary_text": "Welcome to our store!",
-                "secondary_text": "Exclusive offers just for you.",
+                "primary_text": "Empório Saibai",
+                "secondary_text": "Produtos da safra, direto do produtor.",
                 "third_text": "Ver produtos da safra Saibai",
                 "highlight_text": false,
                 "highlight_text_content": "",
@@ -893,6 +897,7 @@
         "divider_P9KCbQ"
       ],
       "name": "t:names.custom_section",
+      "disabled": true,
       "settings": {
         "content_direction": "column",
         "content_direction_mobile": "column",
@@ -1165,6 +1170,7 @@
         }
       },
       "name": "t:names.recently_viewed_products",
+      "disabled": true,
       "settings": {
         "layout_type": "carousel",
         "carousel_on_mobile": false,
@@ -1191,6 +1197,7 @@
     }
   },
   "order": [
+    "saibai_plp_hero",
     "banner",
     "breadcrumb_ztwnCj",
     "product-grid",

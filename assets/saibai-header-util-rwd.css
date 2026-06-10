@@ -1,0 +1,65 @@
+/* Empório Saibai — Header util rwd
+ * Veltrus Growth & Technology
+ */
+
+/* Desktop: esconde label da busca quando estreito (só ícone, padrão LP) */
+@media (min-width: 1025px) and (max-width: 1199px) {
+  html body .saibai-header__search-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  html body .saibai-header .saibai-header__search-trigger {
+    justify-content: center;
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 479px) {
+  html body .saibai-header {
+    --sh-mobile-h: 52px;
+    --sh-mb-icon: 16px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  html body .saibai-header {
+    --sh-mobile-h: 60px;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1180px) {
+  html body .saibai-mega__grid {
+    grid-template-columns: minmax(200px, 240px) minmax(0, 1fr) 220px;
+  }
+
+  html body .saibai-mega__center {
+    padding-inline: 1.5rem;
+  }
+
+  html body .saibai-mega__center-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html body .saibai-header .saibai-header__menu-link,
+  html body .saibai-header .saibai-header__search-trigger,
+  html body .saibai-header button.saibai-header__icon-btn,
+  html body .saibai-mega__panel,
+  html body .saibai-mega__feature-img {
+    transition: none;
+  }
+}
+
+html.saibai-header-drawer-open,
+html.saibai-mega-open {
+  overflow: hidden;
+}

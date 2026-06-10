@@ -1,0 +1,24 @@
+{%- comment -%} Empório Saibai — Split editorial institucional {%- endcomment -%}
+<section class="saibai-inst-split{% if section.settings.reverse %} saibai-inst-split--reverse{% endif %}" aria-label="{{ section.settings.title | escape }}">
+  <div
+    class="saibai-inst-split__media"
+    {% if section.settings.image != blank %}
+      style="background-image:url({{ section.settings.image | image_url: width: 1200 }})"
+    {% elsif section.settings.asset_fallback != blank %}
+      style="background-image:url({{ section.settings.asset_fallback | asset_url }})"
+    {% else %}
+      style="background-image:url({{ 'saibai-farm-harvest.webp' | asset_url }})"
+    {% endif %}
+    role="img"
+    aria-label="{{ section.settings.image_alt | default: section.settings.title | escape }}"
+  ></div>
+  <div class="saibai-inst-split__content">
+    {%- if section.settings.eyebrow != blank -%}
+      <p class="saibai-inst-split__eyebrow">{{ section.settings.eyebrow }}</p>
+    {%- endif -%}
+    <h2 class="saibai-inst-split__title">{{ section.settings.title }}</h2>
+    {%- if section.settings.text != blank -%}
+      <div class="saibai-inst-split__body rte">{{ section.settings.text }}</div>
+    {%- endif -%}
+  </div>
+</section>

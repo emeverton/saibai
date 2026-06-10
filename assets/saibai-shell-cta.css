@@ -1,0 +1,72 @@
+/* Empório Saibai — CTA
+ * Veltrus Growth & Technology | Shopify Partner ID 4969609
+ * PROPRIEDADE INTELECTUAL PROTEGIDA
+ */
+
+/* ── Regra 0 — CTA grafite #2A3A1A (cor do footer) · cascade final ── */
+html body.saibai-theme .button:not(.button-secondary):not(.button--tertiary):not(.button-unstyled):not(.header__icon):not(.sold-out--button):not([disabled]),
+html body.saibai-theme .quick-add__submit:not(.link):not([disabled]),
+html body.saibai-theme button.product-form__submit:not([disabled]),
+html body.saibai-theme .add-to-cart-button .product-form__submit:not([disabled]),
+html body.saibai-theme .shopify-payment-button__button--unbranded:not([disabled]),
+html body.saibai-theme .button-hover--effect .button:not(.button-unstyled):not(.header__icon):not(.button--outline):not([disabled]) {
+  background: #2A3A1A !important;
+  background-color: #2A3A1A !important;
+  border-color: #2A3A1A !important;
+  --button-background-color: #2A3A1A !important;
+  --button-border-color: #2A3A1A !important;
+  --color-primary-button-background: #2A3A1A !important;
+  --color-primary-button-border: #2A3A1A !important;
+  --color-effect-background: #384E28 !important;
+  color: #fff !important;
+  --button-color: #fff !important;
+}
+
+html body.saibai-theme .button:not(.button-secondary):not(.button--tertiary):not(.button-unstyled):not(.header__icon):not([disabled]):hover,
+html body.saibai-theme .quick-add__submit:not(.link):not([disabled]):hover,
+html body.saibai-theme button.product-form__submit:not([disabled]):hover,
+html body.saibai-theme .shopify-payment-button__button--unbranded:not([disabled]):hover {
+  background: #384E28 !important;
+  background-color: #384E28 !important;
+  border-color: #384E28 !important;
+  --button-background-color: #384E28 !important;
+  --color-primary-button-hover-background: #384E28 !important;
+  color: #fff !important;
+}
+
+html body.saibai-theme .quantity__button:not([disabled]),
+html body.saibai-theme quantity-input .quantity__button:not([disabled]),
+html body.saibai-theme .sticky-atc .quantity__button:not([disabled]) {
+  background: #2A3A1A !important;
+  background-color: #2A3A1A !important;
+  border-color: #2A3A1A !important;
+  color: #fff !important;
+}
+
+html body.saibai-theme .sale-badge,
+html body.saibai-theme .badge.sale-badge,
+html body.saibai-theme .badge--sale,
+html body.saibai-theme .price__badge-sale,
+html body.saibai-theme .card__badge .badge.sale-badge {
+  background-color: #2A3A1A !important;
+  border-color: #2A3A1A !important;
+  color: #fff !important;
+  --color-badge-background: #2A3A1A !important;
+  --color-badge-border: #2A3A1A !important;
+  --color-badge-foreground: #fff !important;
+}
+
+html body.saibai-theme .price__sale > span:first-of-type,
+html body.saibai-theme .price-item--percent {
+  color: #2A3A1A !important;
+}
+
+html body.saibai-theme .color-scheme-custom,
+html body.saibai-theme [class*="color-scheme"],
+html body.saibai-theme .shopify-section,
+html body.saibai-theme .product-details {
+  --color-primary-button-background: #2A3A1A !important;
+  --color-primary-button-border: #2A3A1A !important;
+  --color-primary-button-hover-background: #384E28 !important;
+  --color-sale-badge-background: #2A3A1A !important;
+}

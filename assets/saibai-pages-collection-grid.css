@@ -1,0 +1,219 @@
+/* Empório Saibai — PLP grid
+ * Veltrus Growth & Technology
+ */
+
+/* Empório Saibai — PLP layout
+ * Veltrus Growth & Technology | Shopify Partner ID 4969609
+ * PROPRIEDADE INTELECTUAL PROTEGIDA
+ */
+
+/* ── PLP — Collection (padrão LP) ── */
+body.saibai-theme.template-collection .breadcrumb,
+body.saibai-theme.template-collection [class*="breadcrumb"],
+body.saibai-theme.template-collection .section-breadcrumb {
+  display: none !important;
+}
+
+body.saibai-theme.template-collection .shopify-section.section-wrapper:has(.collection-hero),
+body.saibai-theme.template-collection .shopify-section:has(.main-collection-banner) {
+  display: none !important;
+}
+
+body.saibai-theme.template-collection .collection-hero,
+body.saibai-theme.template-collection .collection-hero__inner {
+  background: var(--saibai-bg, var(--saibai-bg, #F2F5EE)) !important;
+  min-height: auto;
+}
+
+body.saibai-theme.template-collection .product-count,
+body.saibai-theme.template-collection .product-count__text {
+  display: none !important;
+}
+
+body.saibai-theme.template-collection .collection-hero .text-block p {
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: rgb(42 58 26 / 0.65);
+  max-width: 42rem;
+  margin-inline: auto;
+}
+
+body.saibai-theme.template-collection .collection-hero__image-wrapper {
+  display: none !important;
+}
+
+body.saibai-theme.template-collection .facets__heading,
+body.saibai-theme.template-collection .facets__summary,
+body.saibai-theme.template-collection .facets__label,
+body.saibai-theme.template-collection .facet-filters__label,
+body.saibai-theme.template-collection .product-count {
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  color: #2A3A1A;
+}
+
+body.saibai-theme.template-collection .facets__disclosure,
+body.saibai-theme.template-collection .facets-vertical {
+  border-color: rgb(42 58 26 / 0.12);
+}
+
+body.saibai-theme.template-collection .facets__summary:hover,
+body.saibai-theme.template-collection .facets__label:hover {
+  color: #2A3A1A;
+}
+
+/* Oculta blocos demo Veltrus na sidebar PLP */
+body.saibai-theme.template-collection .blog-post-sidebar-text,
+body.saibai-theme.template-collection [class*="blog-post-sidebar-text"],
+body.saibai-theme.template-collection [class*="blog-post-sidebar-products"],
+body.saibai-theme.template-collection [class*="blog-post-sidebar-image"] {
+  display: none !important;
+}
+
+/* Título duplicado — banner já renderiza h1 */
+body.saibai-theme.template-collection [class*="collection-header"] h1,
+body.saibai-theme.template-collection .main-collection-product-grid [class*="collection-header"] .text-block h1 {
+  display: none !important;
+}
+
+body.saibai-theme.template-collection .pagination__item--current {
+  background: #2A3A1A !important;
+  border-color: #2A3A1A !important;
+}
+
+body.saibai-theme.template-collection .product-card-wrapper .card__heading a,
+body.saibai-theme.template-collection .product-card-wrapper .card--block-title a {
+  color: #2A3A1A !important;
+  text-decoration: none !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.02em !important;
+  text-transform: none !important;
+}
+
+body.saibai-theme.template-collection .product-card-wrapper .card__heading a:hover,
+body.saibai-theme.template-collection .product-card-wrapper .card--block-title a:hover {
+  color: #2A3A1A !important;
+}
+
+body.saibai-theme.template-collection .product-card-wrapper .product-description__collection {
+  display: none !important;
+}
+
+/* PLP — grid LP full-width (sem sidebar demo Veltrus) */
+body.saibai-theme.template-collection .sub-collection-block,
+body.saibai-theme.template-collection .facets-block-wrapper--vertical,
+body.saibai-theme.template-collection .facet-per-page,
+body.saibai-theme.template-collection .products-per-page,
+body.saibai-theme.template-collection [class*="grid-layout-switcher"],
+body.saibai-theme.template-collection [class*="layout-switcher"],
+body.saibai-theme.template-collection .collection-header .text-block h2 {
+  display: none !important;
+}
+
+body.saibai-theme.template-collection .collection-wrapper:has(.facets--vertical) {
+  display: block !important;
+}
+
+body.saibai-theme.template-collection .product-grid-container,
+body.saibai-theme.template-collection .collection-wrapper .facets-vertical-sort ~ .product-grid-container {
+  width: 100% !important;
+  max-width: var(--saibai-lp-max, 86rem);
+  margin-inline: auto;
+  padding-inline: var(--saibai-lp-pad-x, clamp(1.5rem, 5vw, 3.5rem));
+  grid-column: 1 / -1 !important;
+}
+
+body.saibai-theme.template-collection .facets-vertical-sort {
+  max-width: var(--saibai-lp-max, 86rem);
+  margin-inline: auto;
+  padding-inline: var(--saibai-lp-pad-x, clamp(1.5rem, 5vw, 3.5rem));
+  border: 0;
+}
+
+body.saibai-theme.template-collection mobile-facets .mobile-facets__open-wrapper {
+  display: none !important;
+}
+
+/* PLP — C-level: grid editorial LP (sem ruído Veltrus) */
+body.saibai-theme.template-collection .collection-header.saibai-plp-header-fallback[hidden],
+body.saibai-theme.template-collection .collection-header.saibai-plp-header-fallback {
+  display: none !important;
+}
+
+body.saibai-theme.template-collection .collection-header,
+body.saibai-theme.template-collection [class*="collection_header_image"],
+body.saibai-theme.template-collection .collection-header .image-block,
+body.saibai-theme.template-collection .collection-header .image-block__fallback {
+  display: none !important;
+}
+
+body.saibai-theme.template-collection .facets-wrapper,
+body.saibai-theme.template-collection .facets-container,
+body.saibai-theme.template-collection .facets__form-vertical,
+body.saibai-theme.template-collection mobile-facets,
+body.saibai-theme.template-collection .active-facets-desktop,
+body.saibai-theme.template-collection .active-facets-vertical-filter {
+  display: none !important;
+}
+
+body.saibai-theme.template-collection .switcher-grid,
+body.saibai-theme.template-collection grid-view,
+body.saibai-theme.template-collection .grid-view--list,
+body.saibai-theme.template-collection .facet-per-page,
+body.saibai-theme.template-collection .products-per-page {
+  display: none !important;
+}
+
+body.saibai-theme.template-collection .facets-vertical-sort {
+  max-width: var(--saibai-lp-max, 86rem);
+  margin: 0 auto;
+  padding: clamp(1.25rem, 2.5vw, 1.75rem) var(--saibai-lp-pad-x, clamp(1.5rem, 5vw, 3.5rem)) 1rem;
+  border: 0;
+  border-bottom: 1px solid rgb(42 58 26 / 0.08);
+  background: transparent;
+}
+
+body.saibai-theme:is(.template-collection, .template-search) .facets-vertical-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0;
+  gap: 0.75rem 1.5rem;
+}
+
+body.saibai-theme:is(.template-collection, .template-search) .saibai-plp-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 0.85rem;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+body.saibai-theme:is(.template-collection, .template-search) .saibai-plp-toolbar__title {
+  margin: 0;
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-size: clamp(1.125rem, 2vw, 1.5rem);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: #2A3A1A;
+  line-height: 1.2;
+}
+
+body.saibai-theme:is(.template-collection, .template-search) .saibai-plp-toolbar__count {
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: rgb(42 58 26 / 0.5);
+}
+
+body.saibai-theme:is(.template-collection, .template-search) .saibai-plp-toolbar__count::before {
+  content: '·';
+  margin-right: 0.85rem;
+  color: rgb(42 58 26 / 0.28);
+}

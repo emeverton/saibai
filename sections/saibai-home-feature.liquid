@@ -1,0 +1,223 @@
+{%- comment -%} v3 · product-set LP · CSS via saibai-conditional-assets {%- endcomment -%}
+<!-- saibai-feat-v3 -->
+
+{%- liquid
+  assign feat_title = section.settings.title | default: 'Na mesa'
+  assign feat_cta_label = section.settings.cta_label | default: 'Ver todos os produtos'
+  assign feat_cta_url = section.settings.cta_url | default: '/collections/in-natura-1'
+  assign feat_hero_url = section.settings.hero_url | default: '/collections/in-natura-1'
+
+  if section.settings.collection != blank
+    assign feat_collection = section.settings.collection
+  else
+    assign feat_collection = collections['in-natura-1']
+  endif
+
+  assign feat_hero_image = section.settings.hero_image
+  if feat_hero_image == blank
+    assign feat_hero_asset = 'saibai-feat-mesa-hero.webp'
+  endif
+
+  assign feat_primary_handle = section.settings.featured_product_handle | default: 'alcachofra-mini-saibai-caixa'
+  assign feat_product_handles = feat_primary_handle
+  if feat_collection != blank
+    for product in feat_collection.products
+      unless product.handle == feat_primary_handle
+        assign feat_product_handles = feat_product_handles | append: ',' | append: product.handle
+      endunless
+    endfor
+  endif
+  assign feat_product_handles_arr = feat_product_handles | split: ','
+
+  assign feat_slide_limit = 3
+-%}
+
+<section class="saibai-feat" aria-label="{{ feat_title | escape }}">
+  <div class="saibai-feat__row">
+    <div class="saibai-feat__hero">
+      <a href="{{ feat_hero_url }}" class="saibai-feat__hero-link">
+        <span class="saibai-feat__hero-inner">
+          {%- if feat_hero_image != blank -%}
+            {{
+              feat_hero_image
+              | image_url: width: 1200
+              | image_tag:
+                loading: 'lazy',
+                widths: '600, 900, 1200',
+                sizes: '(min-width: 990px) 50vw, 100vw',
+                class: 'saibai-feat__hero-img',
+                alt: feat_hero_image.alt | default: 'Alcachofra Saibai'
+            }}
+          {%- else -%}
+            <img
+              src="{{ feat_hero_asset | asset_url }}"
+              alt="Alcachofras frescas Saibai"
+              class="saibai-feat__hero-img"
+              loading="lazy"
+              width="1200"
+              height="900"
+            >
+          {%- endif -%}
+        </span>
+      </a>
+    </div>
+
+    <div class="saibai-feat__panel">
+      <div class="saibai-feat__panel-inner">
+        <h2 class="saibai-feat__heading">{{ feat_title }}</h2>
+
+        {%- if feat_collection != blank and feat_collection.products_count > 0 -%}
+          <div class="saibai-feat__set">
+            <div class="saibai-feat__carousel">
+              {%- assign feat_slide_index = 0 -%}
+              {%- for handle in feat_product_handles_arr -%}
+                {%- if handle == blank -%}{%- continue -%}{%- endif -%}
+                {%- assign feat_product = all_products[handle] -%}
+                {%- if feat_product == blank -%}{%- continue -%}{%- endif -%}
+                {%- assign feat_slide_index = feat_slide_index | plus: 1 -%}
+                {%- if feat_slide_index > feat_slide_limit -%}{%- break -%}{%- endif -%}
+                <input
+                  type="radio"
+                  name="saibai-feat-slide-{{ section.id }}"
+                  id="SaibaiFeatSlide-{{ section.id }}-{{ feat_slide_index }}"
+                  class="saibai-feat__radio"
+                  {% if feat_slide_index == 1 %}checked{% endif %}
+                >
+              {%- endfor -%}
+
+              <div class="saibai-feat__slides">
+                {%- assign feat_slide_index = 0 -%}
+                {%- for handle in feat_product_handles_arr -%}
+                  {%- if handle == blank -%}{%- continue -%}{%- endif -%}
+                  {%- assign feat_product = all_products[handle] -%}
+                  {%- if feat_product == blank -%}{%- continue -%}{%- endif -%}
+                  {%- assign feat_slide_index = feat_slide_index | plus: 1 -%}
+                  {%- if feat_slide_index > feat_slide_limit -%}{%- break -%}{%- endif -%}
+                  <article class="saibai-feat__slide" aria-hidden="{% if feat_slide_index == 1 %}false{% else %}true{% endif %}">
+                    <a href="{{ feat_product.url }}" class="saibai-feat__product-link">
+                      <span class="saibai-feat__product-media">
+                        <span class="saibai-feat__product-media-inner">
+                          {%- if feat_product.featured_media -%}
+                            {%- assign product_alt = feat_product.featured_media.alt | default: feat_product.title | escape -%}
+                            {{
+                              feat_product.featured_media
+                              | image_url: width: 900
+                              | image_tag:
+                                loading: 'lazy',
+                                widths: '300, 450, 600, 900',
+                                sizes: '(min-width: 990px) 26vw, 72vw',
+                                class: 'saibai-feat__product-img',
+                                alt: product_alt
+                            }}
+                          {%- else -%}
+                            {{ 'product-apparel-2' | placeholder_svg_tag: 'saibai-feat__product-placeholder' }}
+                          {%- endif -%}
+                        </span>
+                      </span>
+                    </a>
+                    <div class="saibai-feat__product-copy">
+                      <h3 class="saibai-feat__product-name">
+                        <a href="{{ feat_product.url }}">{{ feat_product.title | escape }}</a>
+                      </h3>
+                      {%- if feat_product.type != blank -%}
+                        <p class="saibai-feat__product-meta">{{ feat_product.type }}</p>
+                      {%- endif -%}
+                      <p class="saibai-feat__product-price">
+                        {%- if feat_product.compare_at_price > feat_product.price -%}
+                          <span class="saibai-feat__compare">{{ feat_product.compare_at_price | money }}</span>
+                        {%- endif -%}
+                        <span class="saibai-feat__amount">{{ feat_product.price | money }}</span>
+                      </p>
+                    </div>
+                  </article>
+                {%- endfor -%}
+              </div>
+
+              {%- assign feat_visible_slides = feat_slide_index -%}
+              {%- if feat_visible_slides > 1 -%}
+                <div class="saibai-feat__dots" role="tablist" aria-label="Produtos em destaque">
+                  {%- assign feat_slide_index = 0 -%}
+                  {%- for handle in feat_product_handles_arr -%}
+                    {%- if handle == blank -%}{%- continue -%}{%- endif -%}
+                    {%- assign feat_product = all_products[handle] -%}
+                    {%- if feat_product == blank -%}{%- continue -%}{%- endif -%}
+                    {%- assign feat_slide_index = feat_slide_index | plus: 1 -%}
+                    {%- if feat_slide_index > feat_slide_limit -%}{%- break -%}{%- endif -%}
+                    <label
+                      class="saibai-feat__dot"
+                      for="SaibaiFeatSlide-{{ section.id }}-{{ feat_slide_index }}"
+                      role="tab"
+                      aria-label="{{ feat_product.title | escape }}"
+                    ></label>
+                  {%- endfor -%}
+                </div>
+              {%- endif -%}
+            </div>
+          </div>
+        {%- else -%}
+          <p class="saibai-feat__empty">Produtos em breve.</p>
+        {%- endif -%}
+
+        <div class="saibai-feat__cta">
+          <a href="{{ feat_cta_url }}" class="saibai-feat__btn">{{ feat_cta_label }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Saibai Feature",
+  "class": "saibai-feature-section",
+  "enabled_on": {
+    "templates": ["index"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título do painel",
+      "default": "Na mesa"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Coleção em destaque"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Imagem lifestyle (coluna esquerda)"
+    },
+    {
+      "type": "text",
+      "id": "featured_product_handle",
+      "label": "Produto em destaque (handle)",
+      "default": "alcachofra-mini-saibai-caixa",
+      "info": "Primeiro slide do carrossel Na mesa"
+    },
+    {
+      "type": "url",
+      "id": "hero_url",
+      "label": "Link da imagem lifestyle"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Texto do botão",
+      "default": "Ver todos os produtos"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Link do botão"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Saibai Feature"
+    }
+  ]
+}
+{% endschema %}

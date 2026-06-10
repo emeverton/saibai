@@ -1,0 +1,144 @@
+/* Empório Saibai — KV global
+ * Veltrus Growth & Technology | Shopify Partner ID 4969609
+ * PROPRIEDADE INTELECTUAL PROTEGIDA
+ */
+
+/* ── KV Saibai — 100% das páginas ── */
+body.saibai-theme {
+  --saibai-primary: #8ABE0A;
+  --saibai-primary-hover: #7AAA08;
+  --saibai-primary-dark: #729908;
+  --saibai-primary-rgb: 138 190 10;
+  --saibai-secondary: #4E7E8A;
+  --saibai-accent: #9B8EC4;
+  --saibai-dark: #2A3A1A;
+  --saibai-light: var(--saibai-bg, #F2F5EE);
+  --saibai-white: #FFFFFF;
+  --saibai-transition: all 0.2s ease;
+  --saibai-tile-aspect: 558 / 780;
+  --saibai-tile-img-max-w: 78%;
+  --saibai-tile-img-max-h: 82%;
+  background: var(--saibai-bg, #F2F5EE);
+  color: var(--saibai-dark);
+  overflow-x: clip;
+  max-width: 100vw;
+}
+
+/* Sobrescreve color-scheme inline do Veltrus (scheme_primary / botões) */
+body.saibai-theme,
+body.saibai-theme .product-details,
+body.saibai-theme .shopify-section,
+body.saibai-theme .color-scheme-custom,
+body.saibai-theme [class*="color-scheme"] {
+  --saibai-primary: #8ABE0A !important;
+  --saibai-primary-hover: #7AAA08 !important;
+  --saibai-primary-dark: #729908 !important;
+  --saibai-primary-rgb: 138 190 10 !important;
+  --color-primary: #8ABE0A !important;
+  --color-primary-rgb: 138 190 10 !important;
+  --color-primary-hover: #7AAA08 !important;
+  --color-primary-hover-rgb: 122 170 8 !important;
+  --color-primary-button-background: #2A3A1A !important;
+  --color-primary-button-background-rgb: 42 58 26 !important;
+  --color-primary-button-border: #2A3A1A !important;
+  --color-primary-button-text: #ffffff !important;
+  --color-primary-button-text-rgb: 255 255 255 !important;
+  --color-primary-button-hover-background: #384E28 !important;
+  --color-primary-button-hover-border: #384E28 !important;
+  --color-primary-button-hover-text: #ffffff !important;
+  --button-background-color: #2A3A1A !important;
+  --button-border-color: #2A3A1A !important;
+  --button-color: #ffffff !important;
+  --color-sale-badge-background: #2A3A1A !important;
+  --color-sale-badge-border: #2A3A1A !important;
+  --color-sale-badge-foreground: #ffffff !important;
+  --color-badge-sale-background: #2A3A1A !important;
+  --color-badge-sale-border: #2A3A1A !important;
+  --color-badge-sale-foreground: #ffffff !important;
+}
+
+body.saibai-theme .content-for-layout,
+body.saibai-theme main,
+body.saibai-theme .gradient {
+  background-color: var(--saibai-bg, #F2F5EE);
+}
+
+/* ── Neutraliza widgets demo Veltrus ── */
+body.saibai-theme .section-multitasking-bar,
+body.saibai-theme .section-toolbar-mobile,
+body.saibai-theme .section-promotion-popup,
+body.saibai-theme .section-before-you-leave,
+body.saibai-theme .multitasking-bar,
+body.saibai-theme .toolbar-mobile,
+body.saibai-theme promotion-popup,
+body.saibai-theme before-you-leave {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  height: 0 !important;
+  overflow: hidden !important;
+}
+
+/* ── Regra 5 — Hovers padronizados ── */
+body.saibai-theme a:not(.button):not(.saibai-whatsapp-float):not(.saibai-header__logo-link):not([class*="saibai-header__"]) {
+  transition: var(--saibai-transition);
+}
+
+body.saibai-theme a:not(.button):not(.saibai-whatsapp-float):not(.saibai-header__logo-link):not([class*="saibai-header__"]):hover {
+  color: var(--saibai-primary);
+}
+
+body.saibai-theme .rte a:hover,
+body.saibai-theme .link--text:hover,
+body.saibai-theme .text-block a:hover,
+body.saibai-theme .copyright__content a:hover,
+body.saibai-theme .underlined-link:hover {
+  color: var(--saibai-primary);
+  text-decoration: underline;
+  text-decoration-color: var(--saibai-primary);
+}
+
+body.saibai-theme .button-secondary:hover {
+  background: var(--saibai-primary);
+  border-color: var(--saibai-primary);
+  color: var(--saibai-white);
+}
+
+/* ── Regra 10 — Ícones ── */
+body.saibai-theme .icon,
+body.saibai-theme svg.icon,
+body.saibai-theme .list-social svg,
+body.saibai-theme .footer__list-social svg {
+  color: var(--saibai-dark);
+  stroke-width: 1.5px;
+  fill: currentColor;
+  transition: var(--saibai-transition);
+}
+
+body.saibai-theme .list-social a:hover svg,
+body.saibai-theme .footer__list-social a:hover svg,
+body.saibai-theme a:hover .icon {
+  color: var(--saibai-primary);
+}
+
+/* Ícones qty — minus usa class="icon"; não herdar verde escuro do botão */
+body.saibai-theme .quantity__button .icon,
+body.saibai-theme .quantity__button svg.icon,
+body.saibai-theme quantity-input .quantity__button .svg-wrapper,
+body.saibai-theme quantity-input .quantity__button svg,
+body.saibai-theme quantity-input .quantity__button svg path {
+  color: #fff !important;
+  fill: currentColor;
+  stroke: currentColor;
+}
+
+body.saibai-theme .quantity__button.disabled {
+  opacity: 1 !important;
+  cursor: not-allowed;
+}
+
+body.saibai-theme .quantity__button.disabled .svg-wrapper,
+body.saibai-theme .quantity__button.disabled svg,
+body.saibai-theme .quantity__button.disabled svg path {
+  opacity: 0.6;
+}

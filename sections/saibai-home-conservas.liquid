@@ -1,0 +1,72 @@
+{%- comment -%} v2 · split LP · par com farm story {%- endcomment -%}
+<!-- saibai-cons-v2 -->
+<section class="saibai-split saibai-split--flip saibai-split--conservas" aria-label="Conservas artesanais">
+  <div class="saibai-split__media">
+    {%- if section.settings.image != blank -%}
+      {{
+        section.settings.image
+        | image_url: width: 1600
+        | image_tag:
+          loading: 'lazy',
+          widths: '600, 900, 1200, 1600',
+          sizes: '(min-width: 990px) 50vw, 100vw',
+          class: 'saibai-split__img saibai-split__img--cover',
+          alt: section.settings.image.alt | default: 'Conservas artesanais Saibai'
+      }}
+    {%- else -%}
+      <img
+        src="{{ 'saibai-conservas-jars.webp' | asset_url }}"
+        alt="Conservas artesanais Saibai"
+        class="saibai-split__img saibai-split__img--cover"
+        loading="lazy"
+        width="2172"
+        height="724"
+      >
+    {%- endif -%}
+  </div>
+  <div class="saibai-split__content">
+    <p class="saibai-split__eyebrow">Conservas artesanais</p>
+    <h2 class="saibai-split__title">{{ section.settings.title | default: 'O sabor da alcachofra o ano inteiro' }}</h2>
+    <p class="saibai-split__text">{{ section.settings.text | default: 'Corações de alcachofra, antepastos e conservas preparados com receitas da família Saibai. Perfeitos para montar pratos especiais em minutos.' }}</p>
+    <a href="{{ section.settings.cta_url | default: '/collections/em-conserva' }}" class="saibai-split__link">{{ section.settings.cta_label | default: 'Ver conservas' }}</a>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Saibai Conservas",
+  "class": "saibai-split-section saibai-conservas-section",
+  "enabled_on": { "templates": ["index"] },
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "O sabor da alcachofra o ano inteiro"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Texto",
+      "default": "Corações de alcachofra, antepastos e conservas preparados com receitas da família Saibai. Perfeitos para montar pratos especiais em minutos."
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Texto do link",
+      "default": "Ver conservas"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Imagem"
+    }
+  ],
+  "presets": [{ "name": "Saibai Conservas" }]
+}
+{% endschema %}

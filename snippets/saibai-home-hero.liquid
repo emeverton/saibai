@@ -1,0 +1,67 @@
+{%- comment -%}
+  Empório Saibai — Hero homepage (padrão Loro Piana)
+  Dobra 1: mídia 16:9 · faixa 179px · box desce nessa faixa
+  CSS: assets/saibai-hero.css | JS: assets/saibai-hero.js
+{%- endcomment -%}
+{%- liquid
+  assign hero_title = section.settings.title | default: 'Safra 2026'
+  assign link_1_label = section.settings.link_1_label | default: 'Conservas'
+  assign link_1_url = section.settings.link_1_url | default: '/collections/em-conserva'
+  assign link_2_label = section.settings.link_2_label | default: 'Fresca'
+  assign link_2_url = section.settings.link_2_url | default: '/collections/in-natura-1'
+  assign default_tab = section.settings.default_tab | default: 'fresca'
+-%}
+<section class="saibai-hero" data-saibai-hero data-saibai-prod-default="{{ default_tab }}" data-saibai-hero-media="image" aria-label="{{ hero_title | escape }}">
+  <div class="saibai-hero__stage" data-saibai-hero-stage>
+    <div class="saibai-hero__frame" data-saibai-hero-frame>
+      <div class="saibai-hero__media">
+        <div class="saibai-hero__media-scaler" data-saibai-hero-scaler>
+          <div class="saibai-hero__cover">
+            <picture>
+              <source
+                media="(min-width: 990px)"
+                srcset="{{ 'saibai-hero-fresca-1920.webp' | asset_url }}"
+                type="image/webp"
+              >
+              <source
+                media="(min-width: 550px)"
+                srcset="{{ 'saibai-hero-fresca-800.webp' | asset_url }}"
+                type="image/webp"
+              >
+              <source
+                srcset="{{ 'saibai-hero-fresca-480.webp' | asset_url }}"
+                type="image/webp"
+              >
+              <img
+                class="saibai-hero__poster"
+                src="{{ 'saibai-hero-fresca-480.webp' | asset_url }}"
+                alt=""
+                width="480"
+                height="270"
+                fetchpriority="high"
+                loading="eager"
+                decoding="sync"
+              >
+            </picture>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="saibai-hero__zone" data-saibai-hero-zone aria-hidden="true"></div>
+
+    <div class="saibai-hero__box" data-saibai-hero-box>
+      <div class="saibai-hero__box-body">
+        <h2 class="saibai-hero__title">{{ hero_title }}</h2>
+        <div class="saibai-hero__links">
+          {%- if link_1_label != blank -%}
+            <a href="{{ link_1_url }}" class="saibai-hero__link">{{ link_1_label }}</a>
+          {%- endif -%}
+          {%- if link_2_label != blank -%}
+            <a href="{{ link_2_url }}" class="saibai-hero__link">{{ link_2_label }}</a>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

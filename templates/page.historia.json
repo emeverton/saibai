@@ -1,0 +1,48 @@
+{
+  "sections": {
+    "hero": {
+      "type": "saibai-inst-hero",
+      "settings": {
+        "eyebrow": "Piedade, SP · Capital Nacional da Alcachofra",
+        "title": "Nossa história",
+        "lead": "Mais de 50 anos de tradição familiar no cultivo de alcachofras — e a jornada da Saibai do campo à mesa de chefs e famílias em todo o Brasil.",
+        "asset_fallback": "saibai-inst-variedades.webp"
+      }
+    },
+    "mvv": {
+      "type": "saibai-inst-mvv",
+      "settings": {}
+    },
+    "values": {
+      "type": "saibai-inst-values",
+      "settings": {}
+    },
+    "timeline": {
+      "type": "saibai-inst-timeline",
+      "settings": {}
+    },
+    "fundacao": {
+      "type": "saibai-inst-split",
+      "settings": {
+        "reverse": false,
+        "eyebrow": "Fundação",
+        "title": "A origem da Saibai",
+        "text": "<p>Antes mesmo da marca existir, nossas famílias já cultivavam alcachofras em Piedade há décadas. A Saibai nasceu para unir essa tradição à estrutura comercial necessária para levar a alcachofra fresca nacional a quem antes só encontrava produto importado ou industrializado.</p><p>Hoje, somos produtores e distribuidores — do plantio à entrega — com receitas da família nas conservas, logística refrigerada e um compromisso inegociável com a qualidade no campo.</p>",
+        "asset_fallback": "saibai-inst-planta.webp",
+        "image_alt": "Plantação de alcachofras Saibai em Piedade"
+      }
+    },
+    "nav": {
+      "type": "saibai-inst-nav",
+      "settings": {}
+    }
+  },
+  "order": [
+    "hero",
+    "mvv",
+    "values",
+    "timeline",
+    "fundacao",
+    "nav"
+  ]
+}

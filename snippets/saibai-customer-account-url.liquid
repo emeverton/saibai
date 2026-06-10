@@ -1,0 +1,30 @@
+{%- doc -%}
+  URL de conta Saibai — classic vs novas contas Shopify.
+  @param {string} context - login | account | register | recover | addresses | logout | profile
+{%- enddoc -%}
+{%- liquid
+  assign account_context = context | default: 'account'
+  assign classic_accounts = shop.features.login_with_shop_classic_customer_accounts?
+
+  case account_context
+    when 'login'
+      if classic_accounts
+        assign saibai_account_url = routes.account_login_url
+      else
+        assign saibai_account_url = routes.storefront_login_url
+      endif
+    when 'register'
+      assign saibai_account_url = routes.account_register_url
+    when 'recover'
+      assign saibai_account_url = routes.account_recover_url
+    when 'addresses'
+      assign saibai_account_url = routes.account_addresses_url
+    when 'logout'
+      assign saibai_account_url = routes.account_logout_url
+    when 'profile'
+      assign saibai_account_url = routes.account_profile_url
+    else
+      assign saibai_account_url = routes.account_url
+  endcase
+-%}
+{{- saibai_account_url -}}

@@ -1,0 +1,19 @@
+{%- comment -%}
+  Empório Saibai — Avaliações resumo PDP (buy box)
+  Veltrus Growth & Technology | Shopify Partner ID 4969609
+{%- endcomment -%}
+{%- liquid
+  assign review_product = product | default: closest.product
+-%}
+{%- if review_product != blank -%}
+  <div class="saibai-pdp-reviews-summary" data-saibai-pdp-reviews-summary hidden>
+    {% render 'saibai-product-rating',
+      product: review_product,
+      link_to_reviews: false,
+      class: 'saibai-pdp-reviews-summary__rating'
+    %}
+    <a class="saibai-pdp-reviews-summary__link" href="#saibai-pdp-avaliacoes">
+      Ver avaliações
+    </a>
+  </div>
+{%- endif -%}

@@ -338,6 +338,11 @@ if (!customElements.get('product-info')) {
         this.abortController?.abort();
         this.abortController = new AbortController();
 
+        const isSaibaiTheme = document.body.classList.contains('saibai-theme');
+        if (isSaibaiTheme) {
+          this.classList.add('saibai-variant-syncing');
+        }
+
         fetch(requestUrl, { signal: this.abortController.signal })
           .then((response) => response.text())
           .then((responseText) => {
@@ -355,6 +360,11 @@ if (!customElements.get('product-info')) {
               /* fetch aborted */
             } else {
               console.error(error);
+            }
+          })
+          .finally(() => {
+            if (isSaibaiTheme) {
+              this.classList.remove('saibai-variant-syncing');
             }
           });
       }
@@ -378,9 +388,23 @@ if (!customElements.get('product-info')) {
 
       updateOptionValues(html) {
         const variantSelects = html.querySelector('variant-selects');
-        if (variantSelects) {
-          HTMLUpdateUtility.viewTransition(this.variantSelectors, variantSelects, this.preProcessHtmlCallbacks);
+        if (!variantSelects || !this.variantSelectors) return;
+
+        if (document.body.classList.contains('saibai-theme')) {
+          const nextVariantSelects = variantSelects.cloneNode(true);
+          this.variantSelectors.replaceWith(nextVariantSelects);
+          nextVariantSelects.querySelectorAll('input[type="radio"]').forEach((input) => {
+            const label = input.nextElementSibling;
+            const isChecked = input.checked || input.hasAttribute('checked');
+            input.classList.toggle('checked', isChecked);
+            if (label && label.tagName === 'LABEL') {
+              label.classList.toggle('checked', isChecked);
+            }
+          });
+          return;
         }
+
+        HTMLUpdateUtility.viewTransition(this.variantSelectors, variantSelects, this.preProcessHtmlCallbacks);
       }
 
       handleUpdateProductInfo(productUrl, target) {
@@ -475,6 +499,28 @@ if (!customElements.get('product-info')) {
           };
 
           updateSourceFromDestination('price');
+
+          if (document.body.classList.contains('saibai-theme')) {
+            const syncBlock = (selector) => {
+              const source = html.querySelector(selector);
+              const destination = this.querySelector(selector);
+              if (source && destination) {
+                destination.innerHTML = source.innerHTML;
+              }
+            };
+
+            syncBlock('[data-saibai-pdp-pay]');
+            syncBlock('[data-product-subtotal]');
+
+            const subtotalNode = this.querySelector('[data-product-subtotal]');
+            if (subtotalNode) {
+              delete subtotalNode.dataset.subtotalReady;
+              if (typeof window.initProductSubtotals === 'function') {
+                window.initProductSubtotals(this);
+              }
+            }
+          }
+
           updateSourceFromDestination('Sku', ({ classList }) => classList.contains('hidden'));
           updateSourceFromDestination('Inventory', ({ innerText }) => innerText === '');
           updateSourceFromDestination('Volume');
@@ -1132,6 +1178,23 @@ if (!customElements.get("variant-selects")){
             .closest(`.product-form__input`)
             .querySelector("[data-selected-value]");
           if (selectedSwatchValue) selectedSwatchValue.innerHTML = value;
+
+          if (document.body.classList.contains('saibai-theme')) {
+            const wrapper =
+              target.closest('.product-form__input') ||
+              target.closest('.variant-option') ||
+              target.closest('fieldset');
+            if (wrapper) {
+              wrapper.querySelectorAll('input[type="radio"]').forEach((input) => {
+                const label = input.nextElementSibling;
+                const isChecked = input.checked;
+                input.classList.toggle('checked', isChecked);
+                if (label && label.tagName === 'LABEL') {
+                  label.classList.toggle('checked', isChecked);
+                }
+              });
+            }
+          }
         }
       }
 

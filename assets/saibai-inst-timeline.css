@@ -1,0 +1,82 @@
+/* Empório Saibai — Institucional timeline
+ * Veltrus Growth & Technology | Shopify Partner ID 4969609
+ */
+
+/* ── Timeline ── */
+.saibai-inst-timeline {
+  padding: var(--inst-pad-y) var(--inst-pad-x);
+  background: var(--inst-bg);
+}
+
+.saibai-inst-timeline__inner {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.saibai-inst-timeline__header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.saibai-inst-timeline__title {
+  margin: 0 0 0.75rem;
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 400;
+}
+
+.saibai-inst-timeline__lead {
+  margin: 0;
+  color: var(--inst-muted);
+  line-height: 1.65;
+}
+
+.saibai-inst-timeline__track {
+  position: relative;
+  padding-left: 2rem;
+  border-left: 2px solid var(--inst-border);
+}
+
+.saibai-inst-timeline__item {
+  position: relative;
+  padding: 0 0 2.5rem 1.5rem;
+}
+
+.saibai-inst-timeline__item:last-child { padding-bottom: 0; }
+
+.saibai-inst-timeline__dot {
+  position: absolute;
+  left: -2rem;
+  top: 0.35rem;
+  width: 12px;
+  height: 12px;
+  margin-left: -5px;
+  border-radius: 50%;
+  background: var(--inst-green);
+  border: 2px solid var(--inst-white);
+  box-shadow: 0 0 0 2px var(--inst-green);
+}
+
+.saibai-inst-timeline__year {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--inst-green);
+}
+
+.saibai-inst-timeline__item-title {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-size: 1.15rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.saibai-inst-timeline__item-text {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--inst-muted);
+}

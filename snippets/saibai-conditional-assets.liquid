@@ -1,0 +1,25 @@
+{%- comment -%} Empório Saibai — CSS homepage (1× via global-css) {%- endcomment -%}
+{%- if template.name == 'index' -%}
+  {{ 'saibai-hero.css' | asset_url | stylesheet_tag }}
+  {{ 'saibai-split.css' | asset_url | stylesheet_tag }}
+  {{ 'saibai-prod-home-shell.css' | asset_url | stylesheet_tag }}
+  {{ 'saibai-prod-home-cards.css' | asset_url | stylesheet_tag }}
+  {{ 'saibai-prod-home-nav.css' | asset_url | stylesheet_tag }}
+  {{ 'saibai-editorial.css' | asset_url | stylesheet_tag }}
+  {{ 'saibai-feature-layout.css' | asset_url | stylesheet_tag }}
+  {{ 'saibai-feature-product.css' | asset_url | stylesheet_tag }}
+  {{ 'saibai-services.css' | asset_url | stylesheet_tag }}
+  {{ 'saibai-inside.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
+
+{%- if request.page_type == 'page' -%}
+  {%- assign saibai_inst_handles = 'historia,sobre,fazenda,conquistas,contato,contact' | split: ',' -%}
+  {%- if saibai_inst_handles contains page.handle -%}
+    {%- render 'saibai-inst-css' -%}
+  {%- endif -%}
+{%- elsif request.page_type == 'blog' or request.page_type == 'article' -%}
+  {%- render 'saibai-inst-css' -%}
+{%- elsif template.name == 'collection' -%}
+  {{ 'saibai-inst-base.css' | asset_url | stylesheet_tag }}
+  {{ 'saibai-inst-hero.css' | asset_url | stylesheet_tag }}
+{%- endif -%}

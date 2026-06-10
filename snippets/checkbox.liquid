@@ -1,15 +1,16 @@
 {%- doc -%}
   Renders a checkbox input and label
 
-  @param {string} alignment - alignment of the checkbox
+  @param {string} [alignment] - alignment of the checkbox
   @param {string} id - input id attribute
   @param {string} name - input name attribute
-  @param {string} value - input value attribute
+  @param {string} [value] - input value attribute
   @param {string} label - label text
-  @param {string} label_content - label content
-  @param {boolean} checked - whether the input is checked
-  @param {string} events - event attributes for the input, e.g. 'on:click="/action"'
-  @param {boolean} disabled - whether the input is disabled
+  @param {string} [label_content] - label content
+  @param {boolean} [checked] - whether the input is checked
+  @param {string} [events] - event attributes for the input, e.g. 'on:click="/action"'
+  @param {boolean} [disabled] - whether the input is disabled
+  @param {boolean} [required] - whether the input is HTML-required
   @param {boolean} [autofocus] - whether the input should be autofocused
   @param {string} [class] - additional class for the label
 {%- enddoc -%}
@@ -32,6 +33,9 @@
     {% endif %}
     {% if autofocus %}
       autofocus
+    {% endif %}
+    {% if required %}
+      required
     {% endif %}
   >
   <label

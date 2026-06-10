@@ -2,8 +2,8 @@
 
 **Desenvolvido por:** [Veltrus Growth & Technology](https://veltrus.com.br) — Shopify Partner ID 4969609  
 **Cliente:** Empório Saibai — Piedade, SP  
-**Base técnica:** Ella 7.2.0 (customizado)  
-**Versão Saibai:** 1.0.0 | 2025
+**Base técnica:** Veltrus Commerce Stack (Halothemes Ella 7.2.0 fork)  
+**Versão Saibai:** 1.2.4 | 2026-06-09
 
 ---
 
@@ -25,7 +25,10 @@ Arquivos nativos do tema Ella permanecem sujeitos à licença original do fornec
 
 | Arquivo | Função |
 |---------|--------|
-| `assets/saibai-tokens.css` | Design tokens, hovers, cards, responsivo |
+| `assets/saibai-tokens.css` | Design tokens, hovers, cards, home LP |
+| `snippets/saibai-shell-css.liquid` | KV global modular (5–6 CSS por template) |
+| `snippets/saibai-pages-css.liquid` | KV por template modular (cart, PDP, PLP…) |
+| `assets/saibai-header.css` | Header modular LP × Saibai |
 | `snippets/saibai-logo.liquid` | Logo PNG via CDN Shopify Files |
 | `snippets/saibai-whatsapp-float.liquid` | Botão WhatsApp VIP |
 | `snippets/saibai-payment-icons.liquid` | Selos Pix, Visa, MC, Amex, Elo, Boleto |
@@ -47,9 +50,14 @@ Arquivos nativos do tema Ella permanecem sujeitos à licença original do fornec
 
 ## Documentação
 
-- `GUIA_DO_LEIGO.md` — instruções para o merchant
-- `RELATORIO_EXECUTIVO_SAIBAI.md` — impacto de negócio
-- `SPRINT2_LOG.md` … `SPRINT7_LOG.md` — histórico técnico
+Documentação do projeto em `docs/`:
+
+- `docs/GUIA_SAIBAI_LEIGO.md` — instruções para o merchant (sem código)
+- `docs/RELATORIO_DIRETORIA_SAIBAI.md` — impacto de negócio para diretoria
+- `docs/SPRINT2_LOG.md` … `docs/SPRINT9_LOG.md` — histórico técnico
+
+Scripts operacionais Shopify: `../ops/scripts/` (fora deste repo).  
+Mídia e materiais do cliente: `../client-assets/` (fora deste repo).
 
 ---
 

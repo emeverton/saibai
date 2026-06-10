@@ -2,11 +2,18 @@
   Display pagination for a list of products or articles.
 
   @param {object} paginate - Shopify paginate object
-  @param {object} section - section object with settings
+  @param {object} [section] - section object with settings
+  @param {object} [settings] - pagination settings override
+  @param {string} [suffix] - id suffix for pagination links
+  @param {string} [anchor] - url anchor for pagination links
 {% enddoc %}
 
 {% liquid
-  assign sec_stts = section.settings
+  if section != blank
+    assign sec_stts = section.settings
+  elsif settings != blank
+    assign sec_stts = settings
+  endif
   assign pagination_type = sec_stts.pagination_type
 %}
 

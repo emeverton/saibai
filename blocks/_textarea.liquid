@@ -1,3 +1,9 @@
+{%- doc -%}
+  Contact form textarea block.
+
+  @param {boolean} [show_label] - Whether to show the field label
+{%- enddoc -%}
+
 {% liquid
     assign pl = block.settings.padding_left
     assign pr = block.settings.padding_right
@@ -17,6 +23,7 @@
     assign input_alignment = block.settings.input_alignment
     assign label_type_preset = block.settings.label_type_preset
     assign form_row_width = block.settings.form_row_width
+    assign show_label = show_label | default: block.settings.show_label
 
     if label == blank or show_label == false
       assign label_name = placeholder | handleize | append: '-textarea'

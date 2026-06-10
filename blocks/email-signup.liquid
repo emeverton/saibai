@@ -191,8 +191,8 @@ email-signup__button--size-{{ block.settings.submit_width }}
             {%- endif -%}
             {%- endif -%}
 
-            {% if  block.settings.button_type_preset == 'custom' %}
-            {%  render 'typography-style', settings: block.settings, preset: 'custom', type: type %}
+            {% if block.settings.button_type_preset == 'custom' %}
+            {%  render 'typography-style', settings: block.settings, preset: 'custom' %}
             {% endif %}
             {% if block.settings.custom_button_padding %}
             --submit-padding-vertical: {{ block.settings.vertical_padding }}px;

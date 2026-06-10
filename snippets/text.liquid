@@ -6,13 +6,22 @@
   @param {string} [width] - width of the text block
   @param {string} [width_tablet] - width of the text block on tablet
   @param {string} [width_mobile] - width of the text block on mobile
-  @param {object} block - block object
+  @param {object} [block] - block object
   @param {boolean} [is_heading] - if true, the text block is a heading
+  @param {string} [type_block] - Block type context (e.g. product card title)
+  @param {string} [type_preset] - Typography preset override
+  @param {boolean} [is_card_heading] - card heading mode
+  @param {string} [class_heading] - extra heading class
+  @param {string} [text] - inline text override
+  @param {boolean} [is_card_title_custom_width] - custom width for card titles
 {%- enddoc -%}
 
 {% liquid
-  assign bl_stts = block.settings
+  if block != blank
+    assign bl_stts = block.settings
+  endif
   assign type_preset = type_preset | default: bl_stts.type_preset
+  assign type_block = type_block | default: ''
   assign plain_text = fallback_text | default: bl_stts.text | strip_newlines | strip_html | strip
   assign inherit_text_alignment = bl_stts.inherit_text_alignment
   assign inherit_text_alignment_tablet = bl_stts.inherit_text_alignment_tablet
@@ -51,14 +60,6 @@
 
   if text == blank
     assign text = fallback_text | default: bl_stts.text
-  endif
-
-  if bl_stts.font_size contains 'heading-lg' or bl_stts.font_size contains 'heading-xl'
-    assign type = 'display'
-  elsif bl_stts.font_size contains 'heading'
-    assign type = 'heading'
-  else
-    assign type = 'body'
   endif
 
   assign text_font_weight = bl_stts.font_weight
@@ -232,7 +233,9 @@
 {% endcapture %}
 {% liquid
   assign element = 'div'
-  if is_rte
+  if is_heading
+    assign element = 'h2'
+  elsif is_rte
     assign element = 'rte-formatter'
   endif
 

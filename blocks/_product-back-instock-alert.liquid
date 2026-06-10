@@ -40,7 +40,7 @@
           {%- endunless -%}
 
           <label for="{{ block.id }}" class="hidden">{{ 'content.label' | t }}</label>
-          <input id="{{ block.id }}" type="email" name="contact[email]" placeholder="Email" autocomplete="email" required="required" class="w-full flex-1">
+          <input id="{{ block.id }}" type="email" name="contact[email]" placeholder="{{ 'saibai.back_in_stock.email_placeholder' | t }}" autocomplete="email" required="required" class="w-full flex-1">
 
           <button class="button{% if button_style == 'outline' %}-secondary{% endif %} whitespace-nowrap" type="submit">{{ button_label }}</button>
         </div>
@@ -142,7 +142,7 @@
       "type": "text",
       "id": "notification_message",
       "label": "t:settings.notification_message",
-      "default": "Please notify me when this product is back in stock.",
+      "default": "Avise-me quando este produto voltar ao estoque.",
       "info": "t:info.notification_message_info"
     }
   ],
@@ -154,7 +154,7 @@
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>Leave your email and we will notify as soon as the product/variant is back in stock</p>",
+            "text": "<p>Deixe seu e-mail e avisaremos assim que o produto estiver disponível novamente.</p>",
             "typing_text": false,
             "primary_text": "Welcome to our store!",
             "secondary_text": "Exclusive offers just for you.",

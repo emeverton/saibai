@@ -19,6 +19,9 @@
   @param {object} video - The Shopify video object or a string containing a YouTube ID or Vimeo ID
   @param {object} [block] - The block object
   @param {string} [section] - The section object
+  @param {string} [placeholder] - Placeholder SVG name when video is blank
+  @param {string} [section_id] - The section ID
+  @param {string} [id] - Element id suffix
 
   Video from URL:
 
@@ -29,7 +32,7 @@
   {% render 'video', video: section.settings.video, video_autoplay: true, video_loop: true, section_id: section.id %}
 {% enddoc %}
 
-{% assign video_id = section.settings.video.id | default: section.settings.video_url.id | default: video_id %}
+{% assign video_id = section.settings.video.id | default: section.settings.video_url.id | default: video_id | default: id %}
 {% assign video_alt = video_alt | default: video.alt %}
 {% assign alt = 'content.load_video' | t: description: video_alt | escape %}
 {% assign video_preview_image = video_preview_image | default: video.preview_image %}
@@ -191,6 +194,8 @@
     {{ additional_attributes }}
     class="{%- if video_class -%}{{ video_class }} {%- endif -%}video-placeholder-wrapper"
     style="{%- if video_style -%}{{ video_style }} {%- endif -%}--video-placeholder-width: {{ block.settings.custom_width | default: 100 }}%;"
+    {% if section_id != blank %}data-section-id="{{ section_id }}"{% endif %}
+    {% if id != blank %}data-video-id-suffix="{{ id }}"{% endif %}
   >
     {% if video_preview_image != blank and video_autoplay == false %}
       {{ video_preview_image | image_url: width: 3840 | image_tag: widths: widths, sizes: sizes, loading: loading }}

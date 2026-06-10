@@ -1,9 +1,11 @@
 {%- doc -%}
   Renders a category list for a blog post sidebar in filters.
 
-  @param {boolean} in_facets - whether the category list is in a facets panel
-  @param {string} heading_label_case - the case of the heading label
-  @param {string} text_label_case - the case of the text label
+  @param {boolean} [in_facets] - whether the category list is in a facets panel
+  @param {string} [heading_label_case] - the case of the heading label
+  @param {string} [text_label_case] - the case of the text label
+  @param {string} [heading_label_font_size] - font size token for the heading label
+  @param {string} [text_label_font_size] - font size token for the text label
 {%- enddoc -%}
 
 {{ 'blog-post-sidebar-category.css' | asset_url | stylesheet_tag }}

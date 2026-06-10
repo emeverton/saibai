@@ -1,0 +1,115 @@
+/* Empório Saibai — Institucional hub
+ * Veltrus Growth & Technology | Shopify Partner ID 4969609
+ */
+
+/* ── Hub nav ── */
+.saibai-inst-nav {
+  padding: var(--inst-pad-y) var(--inst-pad-x);
+  background: var(--inst-bg);
+  border-top: 0;
+}
+
+.saibai-inst-nav__inner {
+  max-width: var(--inst-max, 86rem);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.saibai-inst-nav__title {
+  margin: 0 0 1.5rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--inst-muted);
+}
+
+.saibai-inst-nav__links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem 1.25rem;
+}
+
+.saibai-inst-nav__link {
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  color: var(--inst-accent);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.saibai-inst-nav__link:hover { color: var(--inst-green); }
+
+/* ── Hub cards (sobre) ── */
+.saibai-inst-hub {
+  padding: var(--inst-pad-y) var(--inst-pad-x);
+  background: var(--inst-bg);
+}
+
+.saibai-inst-hub__inner {
+  max-width: var(--inst-max);
+  margin: 0 auto;
+}
+
+.saibai-inst-hub__intro {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 3rem;
+}
+
+.saibai-inst-hub__title {
+  margin: 0 0 1rem;
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 400;
+}
+
+.saibai-inst-hub__text {
+  margin: 0;
+  line-height: 1.75;
+  color: var(--inst-muted);
+}
+
+.saibai-inst-hub__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.saibai-inst-hub__card {
+  display: block;
+  padding: 2rem;
+  background: var(--inst-bg);
+  border: 0;
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s ease;
+}
+
+.saibai-inst-hub__card:hover {
+  color: var(--inst-green);
+}
+
+.saibai-inst-hub__card-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--inst-muted);
+}
+
+.saibai-inst-hub__card-title {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--inst-dark);
+}
+
+.saibai-inst-hub__card-desc {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--inst-muted);
+}

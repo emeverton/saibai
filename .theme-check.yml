@@ -1,0 +1,5 @@
+# Empório Saibai — Theme Check config (Veltrus)
+# OrphanedSnippet: card-product é referenciado por blocks/card-product-flex.liquid
+# (Theme Check não rastreia blocks/ como entry point desse check).
+OrphanedSnippet:
+  enabled: false

@@ -1,0 +1,25 @@
+<div class="saibai-inst">
+  {% render 'saibai-inst-hero', section: section %}
+</div>
+<script src="{{ 'saibai-inst-hero.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "Saibai Inst — Hero",
+  "class": "saibai-inst-section",
+  "enabled_on": { "templates": ["page", "blog", "article"] },
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Piedade, SP · Capital Nacional da Alcachofra" },
+    { "type": "text", "id": "title", "label": "Título", "default": "Nossa história" },
+    { "type": "textarea", "id": "lead", "label": "Subtítulo" },
+    { "type": "image_picker", "id": "image", "label": "Imagem de fundo" },
+    {
+      "type": "text",
+      "id": "asset_fallback",
+      "label": "Asset fallback (ex: saibai-inst-campo.webp)",
+      "default": "saibai-inst-campo.webp"
+    }
+  ],
+  "presets": [{ "name": "Saibai Inst Hero" }]
+}
+{% endschema %}

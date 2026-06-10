@@ -1,0 +1,180 @@
+/* Empório Saibai — Header drawer
+ * Veltrus Growth & Technology
+ */
+
+/* ── Drawer mobile ── */
+html body .saibai-header__drawer[hidden] { display: none; }
+
+html body .saibai-header__drawer:not([hidden]) {
+  display: block;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+}
+
+html body .saibai-header__drawer-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgb(42 58 26 / 0.35);
+}
+
+html body .saibai-header__drawer-panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: min(88vw, 340px);
+  height: 100%;
+  padding: 1.1rem 1.25rem 1.75rem;
+  background: var(--sh-bg);
+  box-shadow: 4px 0 24px rgb(0 0 0 / 0.08);
+  overflow-y: auto;
+}
+
+html body .saibai-header__drawer-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+html body .saibai-header__drawer-title {
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--sh-muted);
+}
+
+html body .saibai-header__drawer-menu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+html body .saibai-header .saibai-header__drawer-link {
+  display: block;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--sh-line);
+  color: var(--sh-text);
+  font-size: 0.9375rem;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: var(--sh-transition);
+}
+
+html body .saibai-header .saibai-header__drawer-link:hover,
+html body .saibai-header .saibai-header__drawer-link.is-active {
+  color: var(--sh-muted);
+}
+
+html body .saibai-header__drawer-submenu {
+  margin: 0 0 0.25rem;
+  padding: 0 0 0.5rem 0.85rem;
+  list-style: none;
+  border-bottom: 1px solid var(--sh-line);
+}
+
+html body .saibai-header .saibai-header__drawer-sublink {
+  display: block;
+  padding: 0.45rem 0;
+  color: var(--sh-text);
+  font-size: 0.875rem;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  opacity: 0.82;
+  transition: var(--sh-transition);
+}
+
+html body .saibai-header .saibai-header__drawer-sublink:hover,
+html body .saibai-header .saibai-header__drawer-sublink.is-active {
+  color: var(--sh-muted);
+  opacity: 1;
+}
+
+html body .saibai-header__drawer-foot {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+html body .saibai-header .saibai-header__drawer-account {
+  color: var(--sh-text);
+  font-size: 0.875rem;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+}
+
+/* ── Mobile / tablet: drawer C-level ── */
+@media (max-width: 1024px) {
+  html body .saibai-header {
+    --sh-pad: clamp(1rem, 4vw, 1.5rem);
+    --sh-icon: var(--sh-mb-icon, 22px);
+  }
+
+  html body .saibai-header__desktop { display: none; }
+  html body .saibai-header__mobile { display: flex; }
+
+  html body .saibai-header__mobile .saibai-header__menu-open {
+    flex-shrink: 0;
+  }
+
+  html body .saibai-header__mobile .saibai-header__logo-link {
+    display: inline-flex;
+    flex: 1;
+    justify-content: center;
+    min-width: 0;
+  }
+
+  html body .saibai-header__mobile-actions {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  html body .saibai-header__logo:not(.saibai-logo--wordmark-mono),
+  html body .saibai-header .saibai-logo:not(.saibai-logo--wordmark-mono) {
+    max-width: min(var(--sh-logo-size-mb, var(--sh-logo-cap-mb)), var(--sh-logo-cap-mb));
+    max-height: var(--sh-logo-h-mb, 40px);
+  }
+
+  html body .saibai-header .saibai-logo--wordmark-mono {
+    width: clamp(86px, 26vw, var(--sh-logo-size-mb, var(--sh-logo-cap-mb)));
+    height: auto;
+    max-width: clamp(86px, 26vw, var(--sh-logo-size-mb, var(--sh-logo-cap-mb)));
+    max-height: none;
+  }
+
+  html body .saibai-header a.saibai-header__icon-btn,
+  html body .saibai-header button.saibai-header__icon-btn {
+    width: var(--sh-touch, 44px);
+    height: var(--sh-touch, 44px);
+    min-width: var(--sh-touch, 44px);
+    min-height: var(--sh-touch, 44px);
+  }
+
+  html body .saibai-header .saibai-header__icon,
+  html body .saibai-header .saibai-header__icon svg {
+    width: var(--sh-mb-icon, 18px);
+    height: var(--sh-mb-icon, 18px);
+    max-width: var(--sh-mb-icon, 18px);
+    max-height: var(--sh-mb-icon, 18px);
+  }
+
+  html body .saibai-header__drawer-panel {
+    width: min(92vw, 360px);
+    padding: 1.25rem 1.5rem 2rem;
+  }
+
+  html body .saibai-header .saibai-header__drawer-link {
+    min-height: var(--sh-touch, 44px);
+    padding: 0.625rem 0;
+    display: flex;
+    align-items: center;
+  }
+
+  html body .saibai-header .saibai-header__drawer-sublink {
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+  }
+}

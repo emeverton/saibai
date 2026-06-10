@@ -1,14 +1,12 @@
+{%- doc -%}
+  Renders product price inside a flex product card.
+
+  @param {string} [quick_add] - Quick add mode from parent card (e.g. 'bulk')
+{%- enddoc -%}
+
 {% liquid
   assign bl_stts = block.settings
   assign card_product = bl_stts.product
-
-   if bl_stts.font_size contains 'heading-lg' or bl_stts.font_size contains 'heading-xl'
-    assign type = 'display'
-  elsif bl_stts.font_size contains 'heading'
-    assign type = 'heading'
-  else
-    assign type = 'body'
-  endif
 %}
 
 {%- capture text_block_classes -%}
@@ -36,7 +34,13 @@
       {% endif -%}
     "
   >
-    {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
+    {%- liquid
+      assign saibai_lp_min_price = false
+      if template.name == 'collection' or template.name == 'search'
+        assign saibai_lp_min_price = true
+      endif
+    -%}
+    {% render 'price', product: card_product, price_class: '', show_compare_at_price: true, saibai_lp_min_price: saibai_lp_min_price %}
     {%- if card_product.quantity_price_breaks_configured? -%}
       {% if card_product.variants.size == 1 and quick_add == 'bulk' %}
         {% liquid

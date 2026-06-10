@@ -1,0 +1,298 @@
+{%- comment -%} v4 · Footer KV Saibai · inset LP · grafite + cream {%- endcomment -%}
+<!-- saibai-ft-v4 -->
+{%- render 'saibai-footer-css' -%}
+
+{%- liquid
+  assign ft_nl_title = section.settings.nl_title | default: 'Receba novidades da safra'
+  assign ft_nl_text = section.settings.nl_text | default: 'Ofertas exclusivas, receitas com alcachofra e avisos de safra direto no seu e-mail.'
+  assign ft_nl_legal = section.settings.nl_legal | default: 'Ao inscrever-se, você concorda em receber comunicações da Saibai. Consulte nossa Política de Privacidade para saber como tratamos seus dados.'
+
+  assign menu_shop = section.settings.menu_shop
+  if menu_shop != blank
+    assign links_shop = linklists[menu_shop]
+  else
+    assign links_shop = linklists['footer-shop-classic']
+  endif
+
+  assign menu_content = section.settings.menu_content
+  if menu_content != blank
+    assign links_content = linklists[menu_content]
+  else
+    assign links_content = linklists['footer-about-classic']
+  endif
+
+  assign menu_help = section.settings.menu_help
+  if menu_help != blank
+    assign links_help = linklists[menu_help]
+  else
+    assign links_help = linklists['footer-help-classic']
+  endif
+
+  assign col_shop = section.settings.col_shop | default: 'Loja'
+  assign col_content = section.settings.col_content | default: 'Conteúdo'
+  assign col_help = section.settings.col_help | default: 'Ajuda'
+  assign col_contact = section.settings.col_contact | default: 'Contato'
+-%}
+
+<footer class="saibai-ft" data-saibai-footer aria-label="Rodapé Empório Saibai">
+  <div class="saibai-ft__bridge" aria-hidden="true">
+    <div class="saibai-ft__shell">
+      <hr class="saibai-ft__rule-line">
+    </div>
+  </div>
+  <div class="saibai-ft__main">
+    <div class="saibai-ft__shell">
+      <div class="saibai-ft__inner">
+      <div class="saibai-ft__newsletter">
+        <h2 class="saibai-ft__nl-title">{{ ft_nl_title }}</h2>
+        {%- if ft_nl_text != blank -%}
+          <p class="saibai-ft__nl-text">{{ ft_nl_text }}</p>
+        {%- endif -%}
+
+        {%- form 'customer', class: 'saibai-ft__form', id: 'SaibaiFooterNewsletter' -%}
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          <label class="visually-hidden" for="SaibaiFooterNewsletterEmail">E-mail</label>
+          <input
+            id="SaibaiFooterNewsletterEmail"
+            class="saibai-ft__input"
+            type="email"
+            name="contact[email]"
+            placeholder="Seu e-mail"
+            required
+            autocomplete="email"
+            {% if form.errors %}
+              aria-invalid="true"
+              aria-describedby="SaibaiFooterNewsletterError"
+            {% endif %}
+          >
+          <button type="submit" class="saibai-ft__submit" aria-label="Inscrever-se na newsletter">
+            <span aria-hidden="true">→</span>
+          </button>
+
+          {%- if form.posted_successfully? -%}
+            <p class="saibai-ft__form-msg saibai-ft__form-msg--success" role="status">
+              Obrigado por se inscrever.
+            </p>
+          {%- elsif form.errors -%}
+            <p class="saibai-ft__form-msg saibai-ft__form-msg--error" id="SaibaiFooterNewsletterError" role="alert">
+              {{ form.errors.messages.email | first | default: 'Verifique o e-mail informado.' }}
+            </p>
+          {%- endif -%}
+        {%- endform -%}
+
+        {%- if ft_nl_legal != blank -%}
+          <p class="saibai-ft__privacy">
+            {{ ft_nl_legal }}
+            <a href="/pages/politica-de-privacidade">Política de Privacidade</a>.
+          </p>
+        {%- endif -%}
+      </div>
+
+      <div class="saibai-ft__cols">
+        <div class="saibai-ft__col">
+          <h3 class="saibai-ft__col-title">{{ col_contact }}</h3>
+          <ul class="saibai-ft__list">
+            <li>
+              <a href="https://chat.whatsapp.com/LmGiN0C8QT04AQ4VB9PDdO" target="_blank" rel="noopener">
+                WhatsApp, Grupo VIP
+              </a>
+            </li>
+            <li>
+              <a href="mailto:contato@saibai.com.br">contato@saibai.com.br</a>
+            </li>
+            <li>Estrada dos Lavradores, 7, Poço</li>
+            <li>Piedade, SP, Capital Nacional da Alcachofra</li>
+          </ul>
+        </div>
+
+        <div class="saibai-ft__col">
+          <h3 class="saibai-ft__col-title">{{ col_shop }}</h3>
+          {%- if links_shop.links.size > 0 -%}
+            <ul class="saibai-ft__list">
+              {%- for link in links_shop.links -%}
+                <li>
+                  <a href="{{ link.url }}"{% if link.url contains 'http' %} target="_blank" rel="noopener"{% endif %}>
+                    {{ link.title }}
+                  </a>
+                </li>
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+        </div>
+
+        <div class="saibai-ft__col">
+          <h3 class="saibai-ft__col-title">{{ col_content }}</h3>
+          {%- if links_content.links.size > 0 -%}
+            <ul class="saibai-ft__list">
+              {%- for link in links_content.links -%}
+                <li>
+                  <a href="{{ link.url }}"{% if link.url contains 'http' %} target="_blank" rel="noopener"{% endif %}>
+                    {{ link.title }}
+                  </a>
+                </li>
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+        </div>
+
+        <div class="saibai-ft__col">
+          <h3 class="saibai-ft__col-title">{{ col_help }}</h3>
+          {%- if links_help.links.size > 0 -%}
+            <ul class="saibai-ft__list">
+              {%- for link in links_help.links -%}
+                <li>
+                  <a href="{{ link.url }}"{% if link.url contains 'http' %} target="_blank" rel="noopener"{% endif %}>
+                    {{ link.title }}
+                  </a>
+                </li>
+              {%- endfor -%}
+              <li><a href="#" data-saibai-consent-open>Preferências de cookies</a></li>
+            </ul>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <div class="saibai-ft__bar">
+    <div class="saibai-ft__shell saibai-ft__shell--bar">
+      <div class="saibai-ft__bar-inner">
+        <div class="saibai-ft__locale">
+          <svg class="saibai-ft__locale-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.25"/>
+            <path d="M3 12h18M12 3c2.5 2.8 4 6.2 4 9s-1.5 6.2-4 9M12 3c-2.5 2.8-4 6.2-4 9s1.5 6.2 4 9" fill="none" stroke="currentColor" stroke-width="1.25"/>
+          </svg>
+          <span>BR (Português)</span>
+        </div>
+
+        <a href="{{ routes.root_url }}" class="saibai-ft__logo-link" aria-label="Empório Saibai, Início">
+          {% render 'saibai-logo', variant: 'default', layout: 'wordmark-mono', width: 160, class: 'saibai-ft__logo' %}
+        </a>
+
+        <div class="saibai-ft__social">
+          {%- if settings.social_instagram_link != blank -%}
+            <a href="{{ settings.social_instagram_link }}" target="_blank" rel="noopener">Instagram</a>
+          {%- endif -%}
+          {%- if settings.social_facebook_link != blank -%}
+            <a href="{{ settings.social_facebook_link }}" target="_blank" rel="noopener">Facebook</a>
+          {%- endif -%}
+        </div>
+      </div>
+
+      <div class="saibai-ft__meta">
+        <p class="saibai-ft__copy">
+          &copy; {{ 'now' | date: '%Y' }},
+          <a href="{{ routes.root_url }}">{{ shop.name }}</a>.
+          Produtora e distribuidora de alcachofras frescas desde Piedade, SP.
+        </p>
+
+        {%- if shop.enabled_payment_types.size > 0 -%}
+          <ul class="saibai-ft__payments" role="list">
+            {%- for type in shop.enabled_payment_types -%}
+              <li class="saibai-ft__payment-item">
+                {{ type | payment_type_svg_tag: class: 'saibai-ft__payment-icon' }}
+              </li>
+            {%- endfor -%}
+          </ul>
+        {%- else -%}
+          <div class="saibai-ft__payments saibai-ft__payments--fallback">
+            {% render 'saibai-payment-icons' %}
+          </div>
+        {%- endif -%}
+
+        <div class="saibai-ft__credit">
+          {% render 'saibai-veltrus-credit' %}
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Saibai Footer",
+  "class": "saibai-footer-section",
+  "enabled_on": {
+    "groups": ["footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Newsletter"
+    },
+    {
+      "type": "text",
+      "id": "nl_title",
+      "label": "Título",
+      "default": "Receba novidades da safra"
+    },
+    {
+      "type": "textarea",
+      "id": "nl_text",
+      "label": "Texto",
+      "default": "Ofertas exclusivas, receitas com alcachofra e avisos de safra direto no seu e-mail."
+    },
+    {
+      "type": "textarea",
+      "id": "nl_legal",
+      "label": "Texto legal (sem link de privacidade)",
+      "default": "Ao inscrever-se, você concorda em receber comunicações da Saibai. Consulte nossa"
+    },
+    {
+      "type": "header",
+      "content": "Colunas de links"
+    },
+    {
+      "type": "text",
+      "id": "col_contact",
+      "label": "Título coluna contato",
+      "default": "Contato"
+    },
+    {
+      "type": "text",
+      "id": "col_shop",
+      "label": "Título coluna loja",
+      "default": "Loja"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_shop",
+      "label": "Menu loja"
+    },
+    {
+      "type": "text",
+      "id": "col_content",
+      "label": "Título coluna conteúdo",
+      "default": "Conteúdo"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_content",
+      "label": "Menu conteúdo"
+    },
+    {
+      "type": "text",
+      "id": "col_help",
+      "label": "Título coluna ajuda",
+      "default": "Ajuda"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_help",
+      "label": "Menu ajuda"
+    },
+    {
+      "type": "text",
+      "id": "col_legal",
+      "label": "Título coluna legal",
+      "default": "Legal"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Saibai Footer"
+    }
+  ]
+}
+{% endschema %}

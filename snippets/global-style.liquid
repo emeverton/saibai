@@ -1040,6 +1040,34 @@
     font-style: var(--font-body--style);
     font-weight: var(--font-body--weight);
   }
+
+  /* Saibai KV — sobrescreve color_schemes Veltrus (logo #8ABE0A) */
+  body.saibai-theme,
+  body.saibai-theme.color-scheme-1,
+  body.saibai-theme [class*="color-"] {
+    --saibai-primary: #8ABE0A;
+    --saibai-primary-hover: #7AAA08;
+    --color-primary: #8ABE0A;
+    --color-primary-rgb: 138 190 10;
+    --color-primary-hover: #7AAA08;
+    --color-primary-hover-rgb: 122 170 8;
+    --saibai-cta: #2A3A1A;
+    --saibai-cta-hover: #384E28;
+    --color-primary-button-background: #2A3A1A;
+    --color-primary-button-background-rgb: 42 58 26;
+    --color-primary-button-border: #2A3A1A;
+    --color-primary-button-text: #ffffff;
+    --color-primary-button-text-rgb: 255 255 255;
+    --color-primary-button-hover-background: #384E28;
+    --color-primary-button-hover-border: #384E28;
+    --color-primary-button-hover-text: #ffffff;
+    --button-background-color: #2A3A1A;
+    --button-border-color: #2A3A1A;
+    --button-color: #ffffff;
+    --color-sale-badge-background: #2A3A1A;
+    --color-sale-badge-border: #2A3A1A;
+    --color-sale-badge-foreground: #ffffff;
+  }
 {% endstyle %}
 
 {% comment %}theme-check-disable AssetPreload{% endcomment %}

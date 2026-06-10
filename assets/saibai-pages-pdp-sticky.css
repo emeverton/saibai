@@ -1,0 +1,150 @@
+/* Empório Saibai — PDP sticky ATC
+ * Veltrus Growth & Technology | Shopify Partner ID 4969609
+ * PROPRIEDADE INTELECTUAL PROTEGIDA
+ */
+
+/* Sticky ATC — discreto */
+body.saibai-theme.template-product .sticky-atc {
+  border-top: 1px solid rgb(42 58 26 / 0.12);
+  background: rgb(242 245 238 / 0.96);
+  backdrop-filter: blur(8px);
+}
+
+body.saibai-theme.template-product .sticky-atc .quantity__button,
+body.saibai-theme.template-product .sticky-atc quantity-input .quantity__button {
+  background: #2A3A1A !important;
+  border-color: #2A3A1A !important;
+  color: #fff !important;
+}
+
+body.saibai-theme.template-product .sticky-atc .quantity__button .icon,
+body.saibai-theme.template-product .sticky-atc .quantity__button svg.icon,
+body.saibai-theme.template-product .sticky-atc quantity-input .quantity__button svg,
+body.saibai-theme.template-product .sticky-atc quantity-input .quantity__button svg path {
+  color: #fff !important;
+  fill: currentColor;
+  stroke: currentColor;
+}
+
+body.saibai-theme.template-product .sticky-atc quantity-input .quantity__button .svg-wrapper svg.icon-minus {
+  width: 0.75rem !important;
+  height: 3px !important;
+  min-height: 3px;
+}
+
+body.saibai-theme.template-product .sticky-atc .quantity__button:hover:not(:disabled),
+body.saibai-theme.template-product .sticky-atc quantity-input .quantity__button:hover:not(:disabled) {
+  background: #384E28 !important;
+  border-color: #384E28 !important;
+}
+
+body.saibai-theme.template-product .sticky-atc .button:not(.button-secondary):not([disabled]),
+body.saibai-theme.template-product .sticky-atc .product-form__submit:not([disabled]) {
+  background: #2A3A1A !important;
+  border-color: #2A3A1A !important;
+  color: #fff !important;
+}
+
+/* Combine com — card premium LP */
+body.saibai-theme.template-product .shopify-section:has(product-recommendations),
+body.saibai-theme.template-product .shopify-section:has(.product-recommendations) {
+  background: var(--saibai-bg, #F2F5EE);
+  padding-inline: var(--saibai-lp-pad-x, clamp(1rem, 2.5vw, 2rem));
+  padding-block: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+body.saibai-theme.template-product .shopify-section:has(product-recommendations) > *,
+body.saibai-theme.template-product .shopify-section:has(.product-recommendations) > * {
+  max-width: var(--saibai-lp-shell-max, min(86rem, 1376px));
+  margin-inline: auto;
+}
+
+body.saibai-theme.template-product product-recommendations .section-background,
+body.saibai-theme.template-product .product-recommendations .section-background {
+  display: none !important;
+}
+
+body.saibai-theme.template-product product-recommendations > .section,
+body.saibai-theme.template-product .product-recommendations > .section {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+}
+
+body.saibai-theme.template-product product-recommendations .collection,
+body.saibai-theme.template-product .product-recommendations .collection {
+  background: transparent;
+}
+
+body.saibai-theme.template-product product-recommendations .section-resource-list__content,
+body.saibai-theme.template-product .product-recommendations .section-resource-list__content {
+  margin-bottom: 0.25rem;
+}
+
+body.saibai-theme.template-product product-recommendations h2,
+body.saibai-theme.template-product .product-recommendations h2,
+body.saibai-theme.template-product product-recommendations .text-block h2,
+body.saibai-theme.template-product .product-recommendations .text-block h2 {
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-size: clamp(1rem, 1.6vw, 1.25rem) !important;
+  font-weight: 500 !important;
+  font-style: normal !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  text-align: left !important;
+  color: #2A3A1A;
+  margin: 0 0 1.125rem !important;
+}
+
+body.saibai-theme.template-product product-recommendations .swiper-slide,
+body.saibai-theme.template-product .product-recommendations .swiper-slide {
+  height: auto !important;
+  display: flex !important;
+}
+
+body.saibai-theme.template-product product-recommendations .swiper-slide > *,
+body.saibai-theme.template-product .product-recommendations .swiper-slide > * {
+  width: 100%;
+  height: 100%;
+}
+
+body.saibai-theme.template-product product-recommendations .swiper-actions .swiper-button,
+body.saibai-theme.template-product product-recommendations .slider-buttons .slider-button,
+body.saibai-theme.template-product .product-recommendations .swiper-actions .swiper-button,
+body.saibai-theme.template-product .product-recommendations .slider-buttons .slider-button,
+body.saibai-theme.template-product .product-information__media .swiper-button,
+body.saibai-theme.template-product .product-information__media .slider-buttons .slider-button {
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 1px solid rgb(42 58 26 / 0.12);
+  border-radius: 999px;
+  background: #fff;
+  opacity: 1;
+  color: #2A3A1A;
+  box-shadow: 0 4px 12px rgb(42 58 26 / 0.06);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+@media screen and (min-width: 1025px) {
+  body.saibai-theme.template-product .product-information__media .swiper:hover .swiper-button:not(.swiper-button-disabled) {
+    opacity: 1;
+  }
+
+  body.saibai-theme.template-product .product-information__media .swiper-button.swiper-button-disabled {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+body.saibai-theme.template-product product-recommendations .swiper-pagination-bullet,
+body.saibai-theme.template-product .product-recommendations .swiper-pagination-bullet {
+  background: rgb(42 58 26 / 0.2);
+  opacity: 1;
+}
+
+body.saibai-theme.template-product product-recommendations .swiper-pagination-bullet-active,
+body.saibai-theme.template-product .product-recommendations .swiper-pagination-bullet-active {
+  background: #2A3A1A;
+}

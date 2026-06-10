@@ -2,8 +2,6 @@
   assign variant_selected = variant_selected | handleize
   assign variant_count = product.variants | size
   assign swatch_type = settings.swatch_type
-  assign color_list = '|'
-  assign color = ''
   assign count = 0
   if settings.enable_custom_position_swatch_layout_card_1
     assign number_limit = 5
@@ -81,17 +79,6 @@
                 elsif variant.image != blank
                   assign background_image = variant.image | image_url: width: 40
                   assign enable_variant_image = true
-
-                  assign image_sources = 'jpg,png,webp,avif' | split: ','
-                  assign found_image = false
-                  for ext in image_sources
-                    assign ext = ext | strip
-                    assign item_image = background_color | append: '.' | append: ext
-                    if images[item_image] != blank and found_image == false
-                      assign found_image = true
-                      assign image = item_image | file_url
-                    endif
-                  endfor
                 else
                   assign background_color = color | handle
                   assign has_metaobject = true

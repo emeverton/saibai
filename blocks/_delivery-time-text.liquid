@@ -1,6 +1,5 @@
 {% capture text %}
   {%- liquid
-    assign delivery_time_icon = block.settings.delivery_time_icon
     assign text = block.settings.text
     assign hr = block.settings.hr
     assign min = block.settings.min
@@ -19,13 +18,13 @@
     data-time="{{time}}"
   >
     <span class="productView-dlvr__text">
-      {%- capture remainHTML -%}
+      {%- capture remain_html -%}
         <span data-hour-delivery class="productView-dlvr__remaining">
           <span class="productView-dlvr__remaining-hr"></span> {{hr}} <span class="productView-dlvr__remaining-mins"></span> {{min}}
         </span>
       {%- endcapture -%}
       {{ text
-        | replace:'[hour]',remainHTML
+        | replace:'[hour]',remain_html
         | replace:'[date_start]','<span data-start-delivery class="productView-dlvr__date-start txt-d-underline"></span>'
         | replace:'[date_end]','<span data-end-delivery class="productView-dlvr__date-end txt-d-underline"></b>'
       }}

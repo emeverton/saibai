@@ -33,8 +33,8 @@
             "dot_background": "#ffffff",
             "dot_border_radius": 0,
             "aspect_ratio": "adapt",
-            "constrain_to_viewport": true,
-            "media_fit": "cover",
+            "constrain_to_viewport": false,
+            "media_fit": "contain",
             "media_radius": 0,
             "extend_media": false,
             "zoom": true,
@@ -156,8 +156,8 @@
                     "collection_description_only": false,
                     "collapse_text": false,
                     "typing_text": false,
-                    "primary_text": "Welcome to our store!",
-                    "secondary_text": "Exclusive offers just for you.",
+                    "primary_text": "Empório Saibai",
+                    "secondary_text": "Produtos da safra, direto do produtor.",
                     "third_text": "Ver produtos da safra Saibai",
                     "highlight_text": false,
                     "highlight_text_content": "",
@@ -226,22 +226,23 @@
                 },
                 "product_info_cExQYf": {
                   "type": "product-info",
-                  "name": "t:names.product_info",
-                  "settings": {
-                    "show_vendor": true,
-                    "show_sku": true,
-                    "show_barcode": true,
-                    "show_availability": true,
-                    "stock_level_display": "none",
-                    "show_product_type": true,
-                    "gap": 10,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                }
+                  "disabled": true,
+              "name": "t:names.product_info",
+              "settings": {
+                "show_vendor": false,
+                "show_sku": false,
+                "show_barcode": false,
+                "show_availability": false,
+                "stock_level_display": "none",
+                "show_product_type": false,
+                "gap": 10,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
               },
               "block_order": [
                 "text_xrnftG",
@@ -259,7 +260,7 @@
                 "width": "100%",
                 "alignment": "left",
                 "font": "var(--font-heading--family)",
-                "font_size": "1.8rem",
+                "font_size": "2.125rem",
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
@@ -273,6 +274,7 @@
             },
             "product_countdown_KjGgKH": {
               "type": "product-countdown",
+              "disabled": true,
               "name": "t:names.countdown",
               "settings": {
                 "font_size": "1.2rem",
@@ -299,6 +301,7 @@
             },
             "product_hot_stock_PQa77U": {
               "type": "product-hot-stock",
+              "disabled": true,
               "name": "Product Hot Stock",
               "settings": {
                 "product_max_stock": 20,
@@ -317,6 +320,7 @@
             },
             "perks_PXqft4": {
               "type": "_perks",
+              "disabled": true,
               "name": "t:names.product_perks",
               "settings": {
                 "content_direction": "row",
@@ -433,8 +437,8 @@
                         "collection_description_only": false,
                         "collapse_text": false,
                         "typing_text": false,
-                        "primary_text": "Welcome to our store!",
-                        "secondary_text": "Exclusive offers just for you.",
+                        "primary_text": "Empório Saibai",
+                        "secondary_text": "Produtos da safra, direto do produtor.",
                         "third_text": "Ver produtos da safra Saibai",
                         "highlight_text": false,
                         "highlight_text_content": "",
@@ -520,8 +524,8 @@
                         "collection_description_only": false,
                         "collapse_text": false,
                         "typing_text": false,
-                        "primary_text": "Welcome to our store!",
-                        "secondary_text": "Exclusive offers just for you.",
+                        "primary_text": "Empório Saibai",
+                        "secondary_text": "Produtos da safra, direto do produtor.",
                         "third_text": "Ver produtos da safra Saibai",
                         "highlight_text": false,
                         "highlight_text_content": "",
@@ -711,8 +715,8 @@
                         "collection_description_only": false,
                         "collapse_text": false,
                         "typing_text": false,
-                        "primary_text": "Welcome to our store!",
-                        "secondary_text": "Exclusive offers just for you.",
+                        "primary_text": "Empório Saibai",
+                        "secondary_text": "Produtos da safra, direto do produtor.",
                         "third_text": "Ver produtos da safra Saibai",
                         "highlight_text": false,
                         "highlight_text_content": "",
@@ -796,12 +800,12 @@
                       "type": "text",
                       "static": true,
                       "settings": {
-                        "text": "<h4>Ask The Fashion Expert Anything On Ella</h4>",
+                        "text": "<h4>Tire suas dúvidas — Saibai by Veltrus</h4>",
                         "collection_description_only": false,
                         "collapse_text": false,
                         "typing_text": false,
-                        "primary_text": "Welcome to our store!",
-                        "secondary_text": "Exclusive offers just for you.",
+                        "primary_text": "Empório Saibai",
+                        "secondary_text": "Produtos da safra, direto do produtor.",
                         "third_text": "Ver produtos da safra Saibai",
                         "highlight_text": false,
                         "highlight_text_content": "",
@@ -876,8 +880,8 @@
                         "collection_description_only": false,
                         "collapse_text": false,
                         "typing_text": false,
-                        "primary_text": "Welcome to our store!",
-                        "secondary_text": "Exclusive offers just for you.",
+                        "primary_text": "Empório Saibai",
+                        "secondary_text": "Produtos da safra, direto do produtor.",
                         "third_text": "Ver produtos da safra Saibai",
                         "highlight_text": false,
                         "highlight_text_content": "",
@@ -965,8 +969,8 @@
                         "collection_description_only": false,
                         "collapse_text": false,
                         "typing_text": false,
-                        "primary_text": "Welcome to our store!",
-                        "secondary_text": "Exclusive offers just for you.",
+                        "primary_text": "Empório Saibai",
+                        "secondary_text": "Produtos da safra, direto do produtor.",
                         "third_text": "Ver produtos da safra Saibai",
                         "highlight_text": false,
                         "highlight_text_content": "",
@@ -1071,6 +1075,7 @@
             "customization_option_GtKNKe": {
               "type": "_customization-option",
               "name": "t:names.customization_option",
+              "disabled": true,
               "settings": {
                 "gap": 12,
                 "padding-block-start": 0,
@@ -1105,7 +1110,7 @@
               "type": "buy-buttons",
               "settings": {
                 "stacking": false,
-                "show_pickup_availability": true,
+                "show_pickup_availability": false,
                 "gift_card_form": true,
                 "gap": 10,
                 "padding-block-start": 0,
@@ -1139,8 +1144,8 @@
                     "buttons_padding_vertical_mobile": 10,
                     "buttons_padding_horizontal_mobile": 10,
                     "group_buttons_position": "right",
-                    "enable_wishlist": true,
-                    "show_social": true
+                    "enable_wishlist": false,
+                    "show_social": false
                   },
                   "blocks": {}
                 },
@@ -1148,23 +1153,43 @@
                   "type": "accelerated-checkout",
                   "static": true,
                   "settings": {
-                    "agree_condition": true,
+                    "agree_condition": false,
                     "agree_condition_text": "I agree with the [popup_text]",
                     "agree_condition_popup_text": "Terms & Conditions",
                     "agree_condition_popup_page": "terms-and-conditions",
                     "condition-padding-block-start": 20,
                     "condition-padding-block-end": 20,
-                    "style_class": "button-secondary"
+                    "style_class": "button"
                   },
                   "blocks": {}
                 }
               },
               "block_order": []
+            },
+            "saibai_pdp_reviews": {
+              "type": "saibai-pdp-reviews",
+              "settings": {}
+            },
+            "saibai_pdp_payments": {
+              "type": "saibai-pdp-payments",
+              "settings": {}
+            },
+            "saibai_pdp_frete": {
+              "type": "saibai-pdp-shipping",
+              "settings": {}
+            },
+            "saibai_pdp_highlights": {
+              "type": "saibai-pdp-highlights",
+              "settings": {}
             }
           },
           "block_order": [
             "group_icgrde",
+            "saibai_pdp_reviews",
+            "saibai_pdp_highlights",
+            "saibai_pdp_frete",
             "price_wUxKFf",
+            "saibai_pdp_payments",
             "product_countdown_KjGgKH",
             "variant_picker_R3rGDr",
             "product_hot_stock_PQa77U",
@@ -1221,16 +1246,20 @@
       },
       "settings": {
         "page_width": "custom",
-        "page_width_custom": 1170,
+        "page_width_custom": 1360,
         "desktop_media_position": "left",
         "equal_columns": false,
         "product_details_overlay_on_scroll_mobile": false,
-        "limit_details_width": false,
-        "gap": 60,
+        "limit_details_width": true,
+        "gap": 48,
         "color_scheme": "scheme-1",
         "padding-block-start": 0,
         "padding-block-end": 0
       }
+    },
+    "saibai_pdp_details": {
+      "type": "saibai-pdp-details",
+      "settings": {}
     },
     "quick_order_list_XTrabM": {
       "type": "quick-order-list",
@@ -1252,12 +1281,13 @@
     },
     "section_product_tabs_U8mYg9": {
       "type": "section-product-tabs",
+      "disabled": true,
       "blocks": {
         "description_KGH7xF": {
           "type": "description",
           "name": "t:settings.description",
           "settings": {
-            "title": "Description",
+            "title": "Descrição",
             "open_by_default": false
           }
         },
@@ -1296,10 +1326,7 @@
         }
       },
       "block_order": [
-        "description_KGH7xF",
-        "html_bpg6VR",
-        "html_HcKXRM",
-        "html_NRR4gL"
+        "description_KGH7xF"
       ],
       "name": "t:names.product_tabs",
       "settings": {
@@ -1612,6 +1639,7 @@
         }
       },
       "name": "t:names.recently_viewed_products",
+      "disabled": true,
       "settings": {
         "layout_type": "carousel",
         "carousel_on_mobile": false,
@@ -1643,12 +1671,12 @@
           "type": "text",
           "name": "t:names.header",
           "settings": {
-            "text": "<h2>Related products</h2>",
+            "text": "<h2>Combine com</h2>",
             "collection_description_only": false,
             "collapse_text": false,
             "typing_text": false,
-            "primary_text": "Welcome to our store!",
-            "secondary_text": "Exclusive offers just for you.",
+            "primary_text": "Empório Saibai",
+            "secondary_text": "Produtos da safra, direto do produtor.",
             "third_text": "Ver produtos da safra Saibai",
             "highlight_text": false,
             "highlight_text_content": "",
@@ -1689,10 +1717,10 @@
             "alignment_mobile": "left",
             "type_preset": "custom",
             "font": "var(--font-heading--family)",
-            "font_size": "4.0rem",
+            "font_size": "1.375rem",
             "line_height": "normal",
             "letter_spacing": "normal",
-            "case": "uppercase",
+            "case": "none",
             "wrap": "pretty",
             "color": "var(--color-foreground)",
             "background": false,
@@ -1741,8 +1769,8 @@
             "gap": 12,
             "width": "fill",
             "custom_width": 100,
-            "padding-block-start": 36,
-            "padding-block-end": 36,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
             "padding-inline-start": 0,
             "padding-inline-end": 0
           },
@@ -1752,7 +1780,7 @@
               "name": "Group: Product media",
               "settings": {
                 "product": "{{ closest.product }}",
-                "image_ratio": "adapt",
+                "image_ratio": "square",
                 "show_secondary_image": true,
                 "width_option": "full",
                 "custom_width": 80,
@@ -1929,11 +1957,11 @@
                   "settings": {
                     "product": "{{ closest.product }}",
                     "quick_add": "standard",
-                    "style_class": "link",
-                    "corner_radius": 0,
-                    "link_underline": true,
-                    "font_size": "1.6rem",
-                    "case": "uppercase",
+                    "style_class": "button",
+                    "corner_radius": 8,
+                    "link_underline": false,
+                    "font_size": "1.4rem",
+                    "case": "none",
                     "width": "fill",
                     "custom_width": 100,
                     "width_mobile": "fill",
@@ -1963,14 +1991,15 @@
         "text_ita9tU"
       ],
       "name": "t:names.product_recommendations",
+      "disabled": false,
       "settings": {
         "product": "{{ closest.product }}",
         "recommendation_type": "related",
         "layout_type": "carousel",
         "carousel_on_mobile": false,
-        "products_to_show": 5,
-        "columns_desktop": 3,
-        "columns_gap": 12,
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "columns_gap": 10,
         "rows_gap": 24,
         "show_more_product": false,
         "show_more_product_text": "Show more",
@@ -1986,24 +2015,25 @@
         "custom_width_mobile_pixel": 100,
         "show_more_product_top_offset": 40,
         "loop": false,
-        "full_width": false,
+        "full_width": true,
         "navigation": "arrows",
         "arrows_position": "inside",
         "pagination_type": "bullets",
         "dots_top_offset": 40,
         "progress_top_offset": 40,
         "page_width": "custom",
-        "page_width_custom": 1170,
-        "gap": 28,
+        "page_width_custom": 1360,
+        "gap": 20,
         "color_scheme": "scheme-1",
         "columns_mobile": "2",
-        "padding-block-start": 48,
-        "padding-block-end": 48
+        "padding-block-start": 0,
+        "padding-block-end": 0
       }
     }
   },
   "order": [
     "main",
+    "saibai_pdp_details",
     "quick_order_list_XTrabM",
     "section_product_tabs_U8mYg9",
     "recently_viewed_products_WcH46k",

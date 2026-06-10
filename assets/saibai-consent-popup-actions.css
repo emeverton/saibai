@@ -1,0 +1,179 @@
+/* Empório Saibai — LGPD actions
+ * Veltrus Growth & Technology
+ */
+
+/* LP: reset + estilo no MESMO seletor (all:unset vence modifiers com menor especificidade) */
+html body .saibai-consent button.saibai-consent__btn {
+  all: unset;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 38px;
+  padding: 9px 12px;
+  border-radius: 0;
+  font-family: var(--saibai-font-body, 'Jost', sans-serif);
+  font-size: 0.65625rem;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  line-height: 1.25;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+html body .saibai-consent button.saibai-consent__btn--solid {
+  background: var(--sc-accent);
+  color: var(--sc-bg);
+  border: 1px solid var(--sc-accent);
+  box-shadow: inset 0 0 0 1px rgb(244 249 240 / 0.14);
+}
+
+html body .saibai-consent button.saibai-consent__btn--solid:hover {
+  background: var(--sc-hover);
+  border-color: var(--sc-hover);
+}
+
+html body .saibai-consent button.saibai-consent__btn--ghost {
+  background: transparent;
+  color: var(--sc-text-strong);
+  border: 1px solid var(--sc-accent);
+}
+
+html body .saibai-consent button.saibai-consent__btn--ghost:hover {
+  background: rgb(42 58 26 / 0.04);
+}
+
+html body .saibai-consent__prefs {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+html body .saibai-consent__pref {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--sc-line);
+}
+
+html body .saibai-consent__pref:last-child {
+  border-bottom: 0;
+}
+
+html body .saibai-consent__pref-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 0.6875rem;
+  line-height: 1.6;
+  color: var(--sc-text);
+}
+
+html body .saibai-consent__pref-copy strong {
+  font-family: var(--saibai-font-heading, 'Jost', sans-serif);
+  font-weight: 500;
+  font-size: 0.75rem;
+  color: var(--sc-text-strong);
+}
+
+html body .saibai-consent__pref-badge {
+  flex-shrink: 0;
+  font-size: 0.5625rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgb(78 96 64 / 0.75);
+}
+
+html body .saibai-consent__toggle {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+html body .saibai-consent__toggle input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+html body .saibai-consent__toggle-ui {
+  width: 38px;
+  height: 20px;
+  border-radius: 0;
+  background: rgb(42 58 26 / 0.1);
+  transition: background 0.2s ease;
+}
+
+html body .saibai-consent__toggle-ui::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 0;
+  background: var(--sc-bg);
+  transition: transform 0.2s ease;
+}
+
+html body .saibai-consent__toggle input:checked + .saibai-consent__toggle-ui {
+  background: var(--sc-accent);
+}
+
+html body .saibai-consent__toggle input:checked + .saibai-consent__toggle-ui::after {
+  transform: translateX(18px);
+}
+
+html {
+  scrollbar-gutter: stable;
+}
+
+html body.saibai-modal-scroll-lock {
+  overflow: hidden;
+  padding-right: var(--saibai-scrollbar-w, 0px);
+}
+
+html body.saibai-modal-scroll-lock #header-group {
+  padding-right: var(--saibai-scrollbar-w, 0px);
+}
+
+@media (max-width: 749px) {
+  html body .saibai-consent__dialog {
+    padding: 36px 24px 32px;
+  }
+
+  html body .saibai-consent__logo {
+    margin-bottom: 22px;
+  }
+
+  html body .saibai-consent__logo-img {
+    width: 148px;
+    max-width: min(148px, 72vw);
+  }
+
+  html body .saibai-consent__body {
+    margin-bottom: 22px;
+  }
+
+  html body .saibai-consent__actions {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  html body .saibai-consent__actions--prefs {
+    grid-template-columns: 1fr;
+  }
+
+  html body .saibai-consent__pref {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}

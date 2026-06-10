@@ -1,0 +1,38 @@
+/* Empório Saibai — Header responsive
+ * Veltrus Growth & Technology
+ */
+
+/* ── Responsivo LP · escala fluida C-level ── */
+
+/* Desktop médio: 1200–1439 */
+@media (min-width: 1025px) and (max-width: 1439px) {
+  html body .saibai-header {
+    --sh-pad: clamp(1rem, 2vw, 1.75rem);
+    --sh-nav-h: 120px;
+    --sh-nav-strip-h: 60px;
+    --sh-logo-pad-top: 16px;
+  }
+}
+
+/* Desktop compacto: 1025–1199 */
+@media (min-width: 1025px) and (max-width: 1199px) {
+  html body .saibai-header {
+    --sh-side-w: 82px;
+    --sh-search-h: 38px;
+    --sh-util-h: 31px;
+    --sh-nav-h: 110px;
+    --sh-nav-strip-h: 55px;
+    --sh-nav: 0.9rem;
+    --sh-util: 0.9rem;
+    --sh-menu-pad-x: 10px;
+    --sh-logo-pad-top: 14px;
+  }
+}
+
+/* Tablet landscape: menu ainda desktop, mais denso */
+@media (min-width: 1025px) and (max-width: 1100px) {
+  html body .saibai-header {
+    --sh-menu-pad-x: 8px;
+    --sh-nav: 0.8625rem;
+    --sh-util: 0.8625rem;
+  }

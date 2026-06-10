@@ -1,14 +1,12 @@
-{% assign placeholder = 'content.featured_products' | t %}
-
 {% liquid
-  assign arrTemp = '<p></p>,'
+  assign arr_temp = '<p></p>,'
   for i in (1..6)
     assign tag = '<h' | append: i | append: '></h' | append: i | append: '>'
-    assign arrTemp = arrTemp | append: tag
+    assign arr_temp = arr_temp | append: tag
   endfor
 %}
 
-{% if arrTemp contains block.settings.text %}
+{% if arr_temp contains block.settings.text %}
   {% assign collection_title = nil %}
 {% elsif block.settings.text != blank %}
   {% assign collection_title = '<h2>' | append: block.settings.text | append: '</h2>' %}

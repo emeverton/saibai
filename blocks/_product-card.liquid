@@ -1,30 +1,14 @@
 {% doc %}
-  Renders a product card
+  Renders a product card block.
 
-  Accepts:
-  - card_product: {Object} Product Liquid object (optional)
-  - media_aspect_ratio: {String} Size of the product image card. Values are "square" and "portrait". Default is "square" (optional)
-  - image_shape: {String} Image mask to apply to the product image card. Values are "arch", "blob", "chevronleft", "chevronright", "diamond", "parallelogram", and "round". (optional)
-  - show_secondary_image: {Boolean} Show the secondary image on hover. Default: false (optional)
-  - show_vendor: {Boolean} Show the product vendor. Default: false
-  - show_rating: {Boolean} Show the product rating. Default: false
-  - extend_height: {Boolean} Card height extends to available container space. Default: true (optional)
-  - lazy_load: {Boolean} Image should be lazy loaded. Default: true (optional)
-  - skip_styles: {Boolean} Don't include component styles. Useful when rendering multiple product cards in a loop. Default: false (optional)
-  - quick_add: {Boolean} Show the quick add button.
-  - section_id: {String} The ID of the section that contains this card.
-  - horizontal_class: {Boolean} Add a card--horizontal class if set to true. Default: false (optional)
-  - horizontal_quick_add: {Boolean} Changes the quick add button styles when set to true. Default: false (optional)
-  - placeholder_image: {String} The placeholder image to use when no product exists. Default: 'product-apparel-2' (optional)
-
-  Usage:
-  {% render 'card-product', show_vendor: section.settings.show_vendor %}
+  @param {boolean} [horizontal_class] - Add card--horizontal class when true
 {% enddoc %}
 
 {%- liquid
   assign bl_stts = block.settings
   assign product = closest.product
   assign show_badges = bl_stts.show_badges
+  assign horizontal_class = horizontal_class | default: false
 -%}
 
 {%- capture product_card_class -%}
@@ -286,9 +270,11 @@
                 "product": "{{ closest.product }}"
               }
             }
-          }
+          },
+          "block_order": ["card-product-title", "card-product-price"]
         }
-      }
+      },
+      "block_order": ["card-product-media", "card-product-information"]
     }
   ]
 }

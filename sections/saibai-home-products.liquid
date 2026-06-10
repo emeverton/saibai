@@ -1,0 +1,55 @@
+{%- comment -%} v10 · CSS/JS no layout (index) — evita page-cache da section {%- endcomment -%}
+{% render 'saibai-home-products', section: section %}
+
+{% schema %}
+{
+  "name": "Saibai Products",
+  "class": "saibai-products-section",
+  "enabled_on": { "templates": ["index"] },
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "lead",
+      "label": "Texto introdutório",
+      "default": "A safra Saibai apresenta alcachofra fresca e conservas artesanais, da terra de Piedade direto para a sua mesa."
+    },
+    {
+      "type": "text",
+      "id": "tab_1_label",
+      "label": "Toggle 1",
+      "default": "Fresca"
+    },
+    {
+      "type": "text",
+      "id": "tab_2_label",
+      "label": "Toggle 2",
+      "default": "Conservas"
+    },
+    {
+      "type": "select",
+      "id": "default_tab",
+      "label": "Aba inicial",
+      "default": "fresca",
+      "options": [
+        { "value": "fresca", "label": "Fresca" },
+        { "value": "conservas", "label": "Conservas" }
+      ]
+    },
+    {
+      "type": "collection",
+      "id": "collection_fresca",
+      "label": "Coleção Fresca"
+    },
+    {
+      "type": "collection",
+      "id": "collection_conservas",
+      "label": "Coleção Conservas"
+    },
+    {
+      "type": "paragraph",
+      "content": "A aba inicial também pode ser definida na seção Saibai Hero (prioridade via JavaScript)."
+    }
+  ],
+  "presets": [{ "name": "Saibai Products" }]
+}
+{% endschema %}

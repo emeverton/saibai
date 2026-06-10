@@ -1,0 +1,59 @@
+{%- comment -%}
+  Empório Saibai — Barra fixa rotativa (padrão Loro Piana)
+  Slides: snippets/saibai-announcement-bar-slides.liquid
+  CSS: assets/saibai-announcement-bar.css
+  JS:  assets/saibai-announcement-bar.js
+{%- endcomment -%}
+<!-- saibai-ab-v2 -->
+<div class="saibai-ab-frame">
+  <div class="saibai-ab" data-saibai-ab>
+    <div
+      class="saibai-ab__inner"
+      data-saibai-ab-carousel
+      data-interval="6000"
+      role="region"
+      aria-roledescription="carousel"
+      aria-label="Anúncios Saibai"
+    >
+      <button type="button" class="saibai-ab__btn saibai-ab__btn--prev" aria-label="Anúncio anterior">
+        <span class="svg-wrapper saibai-ab__svg-wrap">
+          <svg viewBox="0 0 32 32" width="32" height="32" aria-hidden="true" focusable="false">
+            <path d="M19.5 8.5 11.5 16l8 7.5" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </button>
+
+      <div class="saibai-ab__viewport" aria-live="polite" aria-atomic="true">
+        <div class="saibai-ab__slides">
+          {% render 'saibai-announcement-bar-slides' %}
+        </div>
+      </div>
+
+      <button
+        type="button"
+        class="saibai-ab__btn saibai-ab__btn--pause"
+        aria-label="Pausar anúncios"
+        aria-pressed="false"
+      >
+        <span class="svg-wrapper saibai-ab__svg-wrap">
+          <svg class="saibai-ab__icon-pause" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true" focusable="false">
+            <path d="M12 9v14M20 9v14" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round"/>
+          </svg>
+          <svg class="saibai-ab__icon-play" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true" focusable="false" hidden>
+            <path d="M13 10.5 22 16l-9 5.5V10.5z" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </button>
+
+      <button type="button" class="saibai-ab__btn saibai-ab__btn--next" aria-label="Próximo anúncio">
+        <span class="svg-wrapper saibai-ab__svg-wrap">
+          <svg viewBox="0 0 32 32" width="32" height="32" aria-hidden="true" focusable="false">
+            <path d="M12.5 8.5 20.5 16l-8 7.5" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </button>
+    </div>
+  </div>
+
+  <div class="saibai-ab__rules saibai-ab__rules--bottom" aria-hidden="true"></div>
+</div>

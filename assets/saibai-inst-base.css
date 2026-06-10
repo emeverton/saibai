@@ -1,0 +1,20 @@
+/* Empório Saibai — Institucional base
+ * Veltrus Growth & Technology | Shopify Partner ID 4969609
+ */
+
+.shopify-section.saibai-inst-section { margin: 0; padding: 0; }
+
+.saibai-inst {
+  --inst-bg: var(--saibai-bg, #F2F5EE);
+  --inst-white: #FFFFFF;
+  --inst-dark: #2A3A1A;
+  --inst-muted: rgb(42 58 26 / 0.65);
+  --inst-border: rgb(42 58 26 / 0.08);
+  --inst-accent: #3D2B1F;
+  --inst-green: var(--saibai-primary, #8ABE0A);
+  --inst-pad-x: var(--saibai-lp-pad-x, clamp(1.5rem, 5vw, 3.5rem));
+  --inst-pad-y: var(--saibai-lp-pad-y, clamp(4.5rem, 9vw, 7rem));
+  --inst-max: var(--saibai-lp-max, 86rem);
+  color: var(--inst-dark);
+  background: var(--inst-bg);
+}

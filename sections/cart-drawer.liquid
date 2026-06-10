@@ -30,8 +30,78 @@
 
   {%- render 'cart-drawer', cart_drawer_product_block: cart_drawer_product_block, cart_drawer_popular_products_block: cart_drawer_popular_products_block, section_fetch: section_fetch -%}
 
-  <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
-  <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
+  {%- if template.name == 'index' -%}
+    <script>
+      (function () {
+        'use strict';
+        var scripts = [
+          {{ 'cart.js' | asset_url | json }},
+          {{ 'cart-drawer.js' | asset_url | json }}
+        ];
+        var loaded = false;
+
+        function loadCartScripts(cb) {
+          if (loaded) {
+            if (cb) cb();
+            return;
+          }
+          loaded = true;
+          var i = 0;
+          function next() {
+            if (i >= scripts.length) {
+              if (cb) cb();
+              return;
+            }
+            var s = document.createElement('script');
+            s.src = scripts[i++];
+            s.defer = true;
+            s.onload = next;
+            s.onerror = next;
+            document.head.appendChild(s);
+          }
+          next();
+        }
+
+        window.saibaiLoadCart = loadCartScripts;
+
+        function onCartIntent() {
+          if (window.saibaiLoadCore) {
+            window.saibaiLoadCore(function () {
+              loadCartScripts();
+            });
+          } else {
+            loadCartScripts();
+          }
+        }
+
+        document.addEventListener('pointerdown', function (e) {
+          if (e.target.closest && e.target.closest('side-drawer-opener,[data-side-drawer="#Cart-Drawer"],.saibai-header__icon-btn--cart')) {
+            onCartIntent();
+          }
+        }, { passive: true });
+
+        function scheduleCart() {
+          if ('requestIdleCallback' in window) {
+            requestIdleCallback(function () {
+              if (window.saibaiLoadCore) window.saibaiLoadCore(function () { loadCartScripts(); });
+              else loadCartScripts();
+            }, { timeout: 6000 });
+          } else {
+            setTimeout(function () {
+              if (window.saibaiLoadCore) window.saibaiLoadCore(function () { loadCartScripts(); });
+              else loadCartScripts();
+            }, 5000);
+          }
+        }
+
+        if (document.readyState === 'complete') scheduleCart();
+        else window.addEventListener('load', scheduleCart, { once: true });
+      })();
+    </script>
+  {%- else -%}
+    <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
+  {%- endif -%}
 {%- endif -%}
 
 {% schema %}

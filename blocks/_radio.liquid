@@ -1,3 +1,10 @@
+{%- doc -%}
+  Contact form radio option block.
+
+  @param {number} [input_width] - Row width percentage from parent form
+  @param {string} [label_type_preset] - Typography preset for the field label
+{%- enddoc -%}
+
 {% liquid
     assign pl = block.settings.padding_left
     assign pr = block.settings.padding_right
@@ -9,23 +16,15 @@
     assign show_label = block.settings.show_label
     assign label_mb = block.settings.label_mb
     assign option_type_preset = block.settings.option_type_preset
+    assign input_width = input_width | default: 100
+    assign label_type_preset = label_type_preset | default: 'paragraph'
 
     assign options = block.settings.options | split: '|'
     assign options_layout = block.settings.options_layout
 %}
 
-{%- capture attr -%}
-class=" w-full block contact-form-select" {{ block.shopify_attributes }}
-style="
-{% if pl != 0 %}--pl:{{ pl }}px;{% endif %}
-{% if pt != 0 %}--pt:{{ pt }}px;{% endif %}
-{% if pb != 0 %}--pb:{{ pb }}px;{% endif %}
-{% if pr != 0 %}--pr:{{ pr }}px;{% endif %}
-"
-{%- endcapture -%}
-
-{% if label != blank %}
-  <div class="contact-form-row" style="--formRowWidth: {{ input_width }}%;">
+{% if label != blank and show_label %}
+  <div class="contact-form-row" style="--formRowWidth: {{ input_width }}%;{% if pl != 0 %} --pl: {{ pl }}px;{% endif %}{% if pr != 0 %} --pr: {{ pr }}px;{% endif %}{% if pt != 0 %} --pt: {{ pt }}px;{% endif %}{% if pb != 0 %} --pb: {{ pb }}px;{% endif %}">
     <label for="{{ block.id }}" style="--mb:{{ label_mb }}px;" class="block {{ label_type_preset }}">{{ label }}</label>
     <div class="form-ratio form-ratio--{{ options_layout }}">
       {% for option in options %}

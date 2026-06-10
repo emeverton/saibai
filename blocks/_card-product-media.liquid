@@ -80,6 +80,13 @@
           </div>
         {%- endif -%}
       </div>
+      {%- if template.name == 'collection' or template.name == 'search' -%}
+        {%- unless card_product.available == false -%}
+          <div class="saibai-plp-card-cta" aria-hidden="true">
+            <span class="saibai-plp-card-cta__label">Ver produto</span>
+          </div>
+        {%- endunless -%}
+      {%- endif -%}
       <div class="card--block-blocks">
         {% content_for 'blocks' %}
       </div>

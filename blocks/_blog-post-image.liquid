@@ -1,11 +1,19 @@
+{%- doc -%}
+  Blog post featured image block.
+
+  @param {object} image - Image object passed from parent block
+  @param {object} [card_article] - Article object passed from parent group media block
+{%- enddoc -%}
+
 {% liquid
+  assign image = image | default: card_article.image
   assign ratio = 1
 
   case block.settings.image_ratio
     when 'landscape'
       assign ratio = '16 / 9'
     when 'portrait'
-      assign ratio = '4 / 5'
+      assign ratio = '558 / 780'
     when 'adapt'
       assign ratio = image.aspect_ratio
   endcase

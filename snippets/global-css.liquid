@@ -1,12 +1,38 @@
 {%- liquid
-  echo 'saibai-tokens.css' | asset_url | stylesheet_tag: preload: true
-  echo 'vendor.css' | asset_url | stylesheet_tag: preload: true
-  echo 'base.css' | asset_url | stylesheet_tag: preload: true
-  
   if direction == 'rtl'
     echo 'rtl.css' | asset_url | stylesheet_tag: preload: true
   endif
 -%}
+
+{%- liquid
+  assign saibai_perf_skip_veltrus = 'index,blog,article,page,404,list-collections,password,collection,search,cart' | split: ','
+  assign saibai_perf_defer_veltrus = 'product' | split: ','
+  assign saibai_perf_async_pages = 'index,collection,search,cart,page,blog,article,404,list-collections' | split: ','
+  assign saibai_skip_veltrus_base = false
+  if saibai_perf_skip_veltrus contains template.name
+    assign saibai_skip_veltrus_base = true
+  endif
+  assign saibai_defer_veltrus_base = false
+  if saibai_perf_defer_veltrus contains template.name
+    assign saibai_defer_veltrus_base = true
+  endif
+  assign saibai_async_pages_css = false
+  if saibai_perf_async_pages contains template.name
+    assign saibai_async_pages_css = true
+  endif
+-%}
+{%- comment -%} Fase 2d/2e: skip base.css em templates Saibai; PDP mantém base+vendor async {%- endcomment -%}
+{%- if saibai_defer_veltrus_base -%}
+  <link rel="stylesheet" href="{{ 'vendor.css' | asset_url }}" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="{{ 'base.css' | asset_url }}" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="{{ 'vendor.css' | asset_url }}">
+    <link rel="stylesheet" href="{{ 'base.css' | asset_url }}">
+  </noscript>
+{%- elsif saibai_skip_veltrus_base == false -%}
+  {{ 'vendor.css' | asset_url | stylesheet_tag }}
+  {{ 'base.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
 
 <link rel="stylesheet" href="{{ 'section.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'component-slider.css' | asset_url }}" media="print" onload="this.media='all'">
@@ -27,7 +53,15 @@
 <link rel="stylesheet" href="{{ 'component-card.css' | asset_url }}"  media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'component-price.css' | asset_url }}"  media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'component-cart-items.css' | asset_url }}"  media="print" onload="this.media='all'">
+{%- unless template.name == 'index' -%}
 <link rel="stylesheet" href="{{ 'animation.css' | asset_url }}"  media="print" onload="this.media='all'">
+{%- endunless -%}
+
+{%- comment -%} Saibai KV — após base Veltrus/components {%- endcomment -%}
+{{ 'saibai-tokens.css' | asset_url | stylesheet_tag }}
+{%- render 'saibai-shell-css', async: saibai_async_pages_css -%}
+{%- render 'saibai-pages-css', async: saibai_async_pages_css -%}
+{%- render 'saibai-conditional-assets' -%}
 
 {% comment %} Fallback for browsers that don't support preload {% endcomment %}
 <noscript>
@@ -50,5 +84,7 @@
   <link rel="stylesheet" href="{{ 'component-card.css' | asset_url }}">
   <link rel="stylesheet" href="{{ 'component-price.css' | asset_url }}">
   <link rel="stylesheet" href="{{ 'component-cart-items.css' | asset_url }}">
+  {%- unless template.name == 'index' -%}
   <link rel="stylesheet" href="{{ 'animation.css' | asset_url }}">
+  {%- endunless -%}
 </noscript>

@@ -1,0 +1,149 @@
+/* Empório Saibai — Prod cards tile
+ * Veltrus Growth & Technology
+ */
+
+/* ── Card LP (product-tile) — só nesta section ── */
+html body .shopify-section.saibai-products-section .saibai-prod__card {
+  min-width: 0;
+  overflow: visible;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+html body .shopify-section.saibai-products-section .saibai-prod__tile {
+  position: relative;
+  margin-bottom: 0;
+  overflow: visible;
+  width: 100%;
+  max-width: none;
+  margin-inline: auto;
+  transform: translate3d(0, 0, 0);
+  transition: transform var(--pd-lift-dur) var(--pd-lift-ease);
+  will-change: transform;
+}
+
+html body .shopify-section.saibai-products-section .saibai-prod__media {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: var(--pd-aspect);
+  overflow: hidden;
+  background: var(--pd-cream) !important;
+  margin: 0;
+  text-decoration: none;
+  transform: none !important;
+  transition: none !important;
+}
+
+html body .shopify-section.saibai-products-section .saibai-prod__media-inner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--pd-cream) !important;
+}
+
+html body .shopify-section.saibai-products-section .saibai-prod__placeholder,
+html body .shopify-section.saibai-products-section img.saibai-prod__img--main,
+html body .shopify-section.saibai-products-section img.saibai-prod__img--hover {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  display: block;
+  width: auto !important;
+  height: auto !important;
+  max-width: var(--pd-img-max-w) !important;
+  max-height: var(--pd-img-max-h) !important;
+  object-fit: contain !important;
+  object-position: center center;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+  background: transparent !important;
+}
+
+html body .shopify-section.saibai-products-section img.saibai-prod__img--main {
+  transition:
+    opacity var(--pd-fade-dur) cubic-bezier(0.4, 0, 0.2, 1),
+    transform var(--pd-lift-dur) var(--pd-lift-ease);
+}
+
+html body .shopify-section.saibai-products-section img.saibai-prod__img--hover {
+  opacity: 0;
+  transition:
+    opacity var(--pd-fade-dur) cubic-bezier(0.4, 0, 0.2, 1),
+    transform var(--pd-lift-dur) var(--pd-lift-ease);
+}
+
+html body .shopify-section.saibai-products-section .saibai-prod__info {
+  position: relative;
+  z-index: 2;
+  margin-top: 1.125rem;
+  padding: 0 0.25rem;
+  min-height: 4.75rem;
+  text-align: center;
+  background: transparent !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+html body .shopify-section.saibai-products-section .saibai-prod__name {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+}
+
+html body .shopify-section.saibai-products-section .saibai-prod__name a {
+  color: var(--pd-dark);
+  text-decoration: none;
+  transition: opacity 0.25s ease;
+}
+
+html body .shopify-section.saibai-products-section .saibai-prod__meta {
+  margin: 0;
+  min-height: 1.4em;
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-size: clamp(0.8125rem, 1vw, 0.9375rem);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  line-height: 1.4;
+  color: var(--pd-terra);
+}
+
+html body .shopify-section.saibai-products-section .saibai-prod__price {
+  margin: 0;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  color: var(--pd-muted);
+  opacity: 0;
+  visibility: hidden;
+  max-height: 0;
+  overflow: hidden;
+  transition:
+    opacity var(--pd-lift-dur) var(--pd-lift-ease),
+    visibility var(--pd-lift-dur) var(--pd-lift-ease),
+    max-height var(--pd-lift-dur) var(--pd-lift-ease),
+    margin var(--pd-lift-dur) var(--pd-lift-ease);
+}
+
+html body .shopify-section.saibai-products-section .saibai-prod__compare {
+  margin-inline-end: 0.35rem;
+  text-decoration: line-through;
+  opacity: 0.55;
+}
+
+html body .shopify-section.saibai-products-section .saibai-prod__amount {
+  color: var(--pd-dark);
+}
+
+html body .shopify-section.saibai-products-section .saibai-prod__empty {
+  margin: 2rem 0 0;
+  text-align: center;
+  font-size: 0.8125rem;
+  color: var(--pd-muted);
+}

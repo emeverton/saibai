@@ -1,11 +1,11 @@
 [
   {
     "name": "theme_info",
-    "theme_name": "Ella",
-    "theme_version": "7.2.0",
-    "theme_author": "Halothemes",
-    "theme_documentation_url": "https:\/\/halosoft.gitbook.io\/ella-7-documentation\/",
-    "theme_support_url": "https:\/\/halosoft.ticksy.com\/"
+    "theme_name": "Saibai by Veltrus",
+    "theme_version": "1.2.4",
+    "theme_author": "Veltrus Growth & Technology",
+    "theme_documentation_url": "https://veltrus.com.br",
+    "theme_support_url": "https://veltrus.com.br"
   },
   {
     "name": "t:names.logo_and_favicon",
@@ -473,7 +473,7 @@
       {
         "type": "color",
         "id": "default_price",
-        "label": "Default price",  
+        "label": "Default price",
         "default": "#000000",
         "alpha": true
       },
@@ -1461,13 +1461,12 @@
         "label": "Enable right to left",
         "default": false,
         "info": "Enable this option to switch the overall layout to right-to-left (RTL) direction for languages such as: ar (Arabic), ae (Avestan), arc (Aramaic), fa (Persian), he (Hebrew), ur (Urdu), ps (Pashto), sd (Sindhi), dv (Divehi), yi (Yiddish), ug (Uyghur), ha (Hausa), ckb (Central Kurdish), ku (Kurdish), ks (Kashmiri), pnb (Punjabi), bcc (Southern Balochi), bqi (Bakhtiari), azb (South Azerbaijani), mzn (Mazanderani), glk (Gilaki), nqo (N'Ko), kwh (Khowar)"
-      },
+      }
     ]
   },
   {
     "name": "Features",
     "settings": [
-      // Countdown
       {
         "type": "header",
         "content": "t:content.countdown"
@@ -1555,7 +1554,7 @@
           }
         ],
         "default": "none",
-        "visible_if": "{{ settings.show_countdown == true and settings.show_countdown == true }}"
+        "visible_if": "{{ settings.show_countdown == true }}"
       },
       {
         "type": "range",
@@ -1598,7 +1597,6 @@
         "alpha": true,
         "visible_if": "{{ settings.show_countdown == true and settings.countdown_border != 'none' }}"
       },
-      // Mobile menu
       {
         "type": "header",
         "content": "t:settings.mobile_menu"
@@ -1609,7 +1607,6 @@
         "label": "t:settings.enable_tabs_layout_for_mobile_menu",
         "default": false
       },
-      // Wishlist
       {
         "type": "header",
         "content": "t:content.wishlist"
@@ -1626,7 +1623,6 @@
         "label": "t:settings.link",
         "visible_if": "{{ settings.show_wishlist == true }}"
       },
-      // Hot Stock
       {
         "type": "header",
         "content": "t:content.hot_stock"
@@ -1644,7 +1640,6 @@
         "default": "20",
         "visible_if": "{{ settings.show_hot_stock == true }}"
       },
-      // Dynamic browser tab title
       {
         "type": "header",
         "content": "Dynamic browser tab title"
@@ -1666,7 +1661,6 @@
         "default": "Come back ⚡",
         "visible_if": "{{ settings.show_dynamic_browser_title == true }}"
       },
-      // Floating & falling icons
       {
         "type": "header",
         "content": "Floating & falling icons"
@@ -1804,51 +1798,51 @@
         "id": "button_type_size_primary",
         "label": "t:settings.size",
         "options": [
-        {
-          "value": "",
-          "label": "t:options.default"
-        },
-        {
-          "value": "1.0rem",
-          "label": "10px"
-        },
-        {
-          "value": "1.2rem",
-          "label": "12px"
-        },
-        {
-          "value": "1.4rem",
-          "label": "14px"
-        },
-        {
-          "value": "1.6rem",
-          "label": "16px"
-        },
-        {
-          "value": "1.8rem",
-          "label": "18px"
-        },
-        {
-          "value": "2.0rem",
-          "label": "20px"
-        },
-        {
-          "value": "2.2rem",
-          "label": "22px"
-        },
-        {
-          "value": "2.4rem",
-          "label": "24px"
-        },
-        {
-          "value": "2.6rem",
-          "label": "26px"
-        },
-        {
-          "value": "2.8rem",
-          "label": "28px"
-        }
-      ],
+          {
+            "value": "",
+            "label": "t:options.default"
+          },
+          {
+            "value": "1.0rem",
+            "label": "10px"
+          },
+          {
+            "value": "1.2rem",
+            "label": "12px"
+          },
+          {
+            "value": "1.4rem",
+            "label": "14px"
+          },
+          {
+            "value": "1.6rem",
+            "label": "16px"
+          },
+          {
+            "value": "1.8rem",
+            "label": "18px"
+          },
+          {
+            "value": "2.0rem",
+            "label": "20px"
+          },
+          {
+            "value": "2.2rem",
+            "label": "22px"
+          },
+          {
+            "value": "2.4rem",
+            "label": "24px"
+          },
+          {
+            "value": "2.6rem",
+            "label": "26px"
+          },
+          {
+            "value": "2.8rem",
+            "label": "28px"
+          }
+        ],
         "default": "1.6rem"
       },
       {
@@ -2037,7 +2031,7 @@
       },
       {
         "type": "header",
-        "content":  "t:content.shadow"
+        "content": "t:content.shadow"
       },
       {
         "type": "range",
@@ -2162,7 +2156,7 @@
       },
       {
         "type": "header",
-        "content":  "t:content.shadow"
+        "content": "t:content.shadow"
       },
       {
         "type": "range",
@@ -2928,7 +2922,7 @@
       },
       {
         "type": "header",
-        "content":  "t:content.shadow"
+        "content": "t:content.shadow"
       },
       {
         "type": "range",
@@ -3122,7 +3116,7 @@
       },
       {
         "type": "header",
-        "content":  "t:content.shadow"
+        "content": "t:content.shadow"
       },
       {
         "type": "range",
@@ -3394,7 +3388,7 @@
         "type": "textarea",
         "id": "quick_keywords",
         "label": "t:settings.quick_keywords",
-        "info": "Example: fashion,dresses,skirts,etc.."
+        "info": "Exemplo: alcachofras,conservas,frutas desidratadas,etc."
       },
       {
         "type": "link_list",
@@ -3538,21 +3532,24 @@
         "visible_if": "{{ settings.enable_preloading_screen == true }}"
       }
     ]
-  }
-  ,
+  },
   {
     "name": "Saibai Tracking",
     "settings": [
       {
+        "type": "paragraph",
+        "content": "Deixe vazio se Google Analytics e Meta Pixel já estão ativos em Vendas online → Preferências. Preencher aqui dispara tags extras pelo banner LGPD e duplica conversões. Purchase/checkout: use o pixel Customer Events (scripts/saibai-customer-events-pixel.js), não estes campos."
+      },
+      {
         "type": "text",
         "id": "meta_pixel_id",
-        "label": "Meta Pixel ID"
+        "label": "Meta Pixel ID (fallback — normalmente vazio)"
       },
       {
         "type": "text",
         "id": "ga4_measurement_id",
-        "label": "GA4 Measurement ID",
-        "info": "Formato: G-XXXXXXXXXX"
+        "label": "GA4 Measurement ID (fallback — normalmente vazio)",
+        "info": "Formato: G-XXXXXXXXXX. Só use se NÃO houver canal Google ativo."
       }
     ]
   }

@@ -1,0 +1,107 @@
+/* Empório Saibai — Header nav
+ * Veltrus Growth & Technology
+ */
+
+/* ── Nav row LP — compacta ── */
+html body .saibai-header__nav-row {
+  height: var(--sh-nav-h);
+  min-height: var(--sh-nav-h);
+  padding: 0;
+  border-bottom: 0;
+}
+
+html body .saibai-header__shell {
+  display: grid;
+  grid-template-columns: var(--sh-side-w) minmax(0, 1fr) var(--sh-side-w);
+  align-items: center;
+  gap: 0;
+  height: var(--sh-nav-h);
+  min-height: var(--sh-nav-h);
+  max-width: var(--sh-shell-max);
+  margin: 0 auto;
+  padding: 0 var(--sh-pad);
+}
+
+html body .saibai-header__col--start {
+  justify-self: start;
+  width: var(--sh-side-w);
+}
+
+html body .saibai-header__col--center {
+  justify-self: center;
+  width: 100%;
+  max-width: var(--sh-nav-max);
+}
+
+html body .saibai-header__col--end {
+  justify-self: end;
+  width: var(--sh-side-w);
+}
+
+/* ── Menu ── */
+html body .saibai-header__menu {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  height: var(--sh-nav-strip-h);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+html body .saibai-header__menu-item.has-children {
+  position: relative;
+}
+
+html body .saibai-header button.saibai-header__menu-link,
+html body .saibai-header button.saibai-header__menu-trigger,
+html body .saibai-header .saibai-header__menu-link {
+  display: flex;
+  align-items: center;
+  height: var(--sh-nav-strip-h);
+  padding: 0 var(--sh-menu-pad-x, 12px);
+  color: var(--sh-text);
+  font-family: inherit;
+  font-size: var(--sh-nav);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  text-decoration: none;
+  white-space: nowrap;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  transition: opacity 0.25s ease, color 0.25s ease;
+}
+
+html body .saibai-header .saibai-header__menu-trigger[aria-expanded="true"] {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.28em;
+  opacity: 1;
+}
+
+html body .saibai-header .saibai-header__menu-link:hover {
+  color: var(--sh-text);
+  opacity: 0.55;
+}
+
+html body .saibai-header .saibai-header__menu-link.is-active {
+  color: var(--sh-text);
+  font-weight: 400;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.28em;
+  opacity: 1;
+}
+
+html body .saibai-header .saibai-header__menu-link.is-accent {
+  color: var(--sh-text);
+}
+
+html body .saibai-header .saibai-header__menu-link.is-accent:hover {
+  color: var(--sh-text);
+  opacity: 0.55;
+}

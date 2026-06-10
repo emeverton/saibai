@@ -1,0 +1,195 @@
+/*
+ * Empório Saibai — Barra fixa rotativa
+ * Padrão Loro Piana · módulo isolado · KV Saibai
+ * saibai-ab-v3 · LP barra dupla
+ */
+
+/* LP: section neutra — moldura fica no .saibai-ab-frame */
+html body #header-group .shopify-section.section-announcement-bar {
+  position: relative;
+  z-index: 3;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  background: transparent;
+  border: 0;
+}
+
+/* LP: barra dupla — top mais clara · header = logo bg · sem linhas */
+html body .saibai-ab-frame {
+  --ab-bg: var(--saibai-bg-top, #FAFBF7);
+  --ab-line: transparent;
+  --ab-rule-fill: transparent;
+  --ab-rule-weight: 2px;
+  --ab-rule-gap: 3px;
+  --ab-rule-block: calc(var(--ab-rule-weight) + var(--ab-rule-gap) + var(--ab-rule-weight));
+
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: var(--ab-bg);
+}
+
+html body .saibai-ab__rules {
+  display: none;
+}
+
+html body .saibai-ab {
+  --ab-bg: transparent;
+  --ab-text: #2A3A1A;
+  --ab-hover: var(--saibai-primary-hover, #7AAA08);
+  --ab-height: 36px;
+  --ab-pad-top: 8px;
+  --ab-pad-bottom: 8px;
+  --ab-fade: 0.6s;
+
+  padding: var(--ab-pad-top) 0 var(--ab-pad-bottom);
+  background: transparent;
+  border: 0;
+}
+
+html body .saibai-ab__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0;
+  height: var(--ab-height);
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+html body .saibai-ab__viewport {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: var(--ab-height);
+  overflow: hidden;
+  position: relative;
+}
+
+html body .saibai-ab__slides {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+html body .saibai-ab__slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--ab-fade) ease-in-out, visibility var(--ab-fade) ease-in-out;
+  pointer-events: none;
+}
+
+html body .saibai-ab__slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  z-index: 1;
+}
+
+html body .saibai-ab__msg {
+  margin: 0;
+  padding: 0 12px;
+  font-family: var(--font-body--family, 'Jost', sans-serif);
+  font-size: clamp(0.8125rem, 0.95vw, 0.875rem);
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  text-transform: none;
+  line-height: 1.35;
+  text-align: center;
+  color: var(--ab-text);
+  white-space: nowrap;
+}
+
+html body .saibai-ab__msg strong {
+  font-weight: 400;
+}
+
+html body .saibai-ab__msg a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+html body .saibai-ab__msg a:hover {
+  color: var(--ab-hover);
+}
+
+html body .saibai-ab button.saibai-ab__btn {
+  all: unset;
+  box-sizing: border-box;
+  flex: 0 0 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  min-height: 28px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  color: #4E6040;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+html body .saibai-ab button.saibai-ab__btn:hover {
+  color: var(--saibai-primary);
+  background: transparent;
+}
+
+html body .saibai-ab__svg-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  line-height: 0;
+}
+
+html body .saibai-ab__svg-wrap svg {
+  display: block;
+  width: 32px;
+  height: 32px;
+  min-width: 0;
+  min-height: 0;
+  max-width: 32px;
+}
+
+@media (max-width: 749px) {
+  html body .saibai-ab { --ab-height: 34px; }
+  html body .saibai-ab__inner { padding: 0 4px; }
+  html body .saibai-ab__msg {
+    font-size: 0.8125rem;
+    white-space: normal;
+    line-height: 1.35;
+    max-width: 72vw;
+  }
+}
+
+@media (min-width: 990px) {
+  html body .saibai-ab__inner { padding: 0 16px; }
+}
+
+html body .saibai-ab.is-paused .saibai-ab__btn--pause {
+  color: var(--saibai-primary);
+}
+
+html body .saibai-ab__btn--pause .saibai-ab__icon-play[hidden],
+html body .saibai-ab__btn--pause .saibai-ab__icon-pause[hidden] {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html body .saibai-ab { --ab-fade: 0.01ms; }
+  html body .saibai-ab__slide { transition: none; }
+}

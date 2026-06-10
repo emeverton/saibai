@@ -3,6 +3,8 @@
 
   @param {object} background_video - The video object to be used as the background.
   @param {string} background_video_position - The position of the video, e.g., 'center-center'.
+  @param {string} [section_id] - Section ID for scoped styles
+  @param {string} [block_id] - Block ID for scoped styles
   @param {string} [placeholder] - The placeholder of the background video
   @param {string} [ratio] - The ratio of the background video
 {%- enddoc -%}
@@ -15,6 +17,8 @@
   <video-background-component
     class="{{ video_classes }}"
     style="{% if ratio %}--ratio: {{ ratio }};{% endif %}"
+    {% if section_id != blank %}data-section-id="{{ section_id }}"{% endif %}
+    {% if block_id != blank %}data-block-id="{{ block_id }}"{% endif %}
   >
     {% liquid
       assign media_width_desktop = 100 | append: 'vw'

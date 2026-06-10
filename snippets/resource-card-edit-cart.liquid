@@ -1,7 +1,6 @@
 <div class="cart-edit" data-template-cart-edit data-count="1">
   {%- liquid
     assign current_variant = product.selected_or_first_available_variant
-    assign variantCount = product.variants | size
     assign custom_fields = product.metafields.custom.combined_products_listing
     assign show_combined_products_listing = false
     if custom_fields != blank and settings.enable_combined_products_listing
@@ -38,9 +37,11 @@
         style="--media-adapt-ratio: {{ image.aspect_ratio }};"
       >
         <img
-          srcset="{{ image | img_url: '270x' }}"
-          src="{{ image | img_url: '270x' }}"
+          srcset="{{ image | image_url: width: 270 }}"
+          src="{{ image | image_url: width: 270 }}"
           alt="{{ product.title | escape }}"
+          width="270"
+          height="{{ 270 | divided_by: image.aspect_ratio | round }}"
           sizes="270px"
           {% if settings.enable_lazyload %}
             loading="lazy"
@@ -284,18 +285,28 @@
                         -%}
                         <li class="item-custom{% if referenced_product.id == product.id %} current-item{% endif %} swatch-item">
                             <div class="item-custom--image">
-                                <{% if referenced_product.id == product.id %}span{% else %}a href ="{{shop.url | append: "/products/" | append: referenced_product.handle }}"{% endif %}
+                                {%- capture item_custom_style -%}
+                                  {%- if image_custom != blank -%}
+                                    background: url({{ image_custom | image_url: width: 533 }});
+                                  {%- else -%}
+                                    background: url({{ referenced_product.featured_image | image_url: width: 533 }});
+                                  {%- endif -%}
+                                  background-size: cover;
+                                {%- endcapture -%}
+                                {%- if referenced_product.id == product.id -%}
+                                  <span
                                     class="item-custom--inner"
-                                    style="
-                                        {%- if image_custom != blank -%}
-                                            background: url({{ image_custom | img_url: 'medium' }});
-                                        {%- else -%}
-                                            background: url({{ referenced_product.featured_image | img_url: 'medium' }});
-                                        {%- endif -%}
-                                        background-size: cover;"
-                                    title="{{referenced_product.title}}"
-                                >
-                                </{% if referenced_product.id == product.id %}span{% else %}a{% endif %}>
+                                    style="{{ item_custom_style }}"
+                                    title="{{ referenced_product.title }}"
+                                  ></span>
+                                {%- else -%}
+                                  <a
+                                    href="{{ shop.url | append: '/products/' | append: referenced_product.handle }}"
+                                    class="item-custom--inner"
+                                    style="{{ item_custom_style }}"
+                                    title="{{ referenced_product.title }}"
+                                  ></a>
+                                {%- endif -%}
                             </div>
                         </li>
                     {%- endfor -%}
@@ -394,12 +405,12 @@
             </div>
           </variant-edit-selects>
           {%- if settings.show_hot_stock -%}
-            {% assign productMaxStock = settings.hot_stock_limit | plus: 0 %}
-            <div class="product-edit-hotStock" data-edit-cart-hot-stock="{{ productMaxStock }}">
+            {% assign product_max_stock = settings.hot_stock_limit | plus: 0 %}
+            <div class="product-edit-hotStock" data-edit-cart-hot-stock="{{ product_max_stock }}">
               <span class="hotStock-text {{ type_preset }}">
                 {%- if current_variant.inventory_management -%}
                   {%- if current_variant.inventory_quantity > 0
-                    and current_variant.inventory_quantity <= productMaxStock
+                    and current_variant.inventory_quantity <= product_max_stock
                   -%}
                     {{ 'products.product.hot_stock' | t: inventory: current_variant.inventory_quantity }}
                   {%- endif -%}

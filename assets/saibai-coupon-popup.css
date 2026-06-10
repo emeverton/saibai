@@ -1,0 +1,276 @@
+/*
+ * Empório Saibai — Módulo cupom (isolado, minimalista)
+ * CLS-safe overlay — v2026-06-08
+ * Desenvolvido por Veltrus Growth & Technology | Shopify Partner ID 4969609
+ */
+
+html body .shopify-section.section-saibai-coupon {
+  margin: 0;
+  padding: 0;
+  height: 0;
+  min-height: 0;
+  overflow: visible;
+  border: 0;
+}
+
+html body .saibai-coupon {
+  --cp-bg: #FFFFFF;
+  --cp-accent: var(--saibai-dark, #2A3A1A);
+  --cp-text: var(--saibai-dark-muted, #4E6040);
+  --cp-hover: var(--saibai-primary-hover, #7AAA08);
+  --cp-line: rgb(42 58 26 / 0.16);
+
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 16px;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  contain: layout style;
+  will-change: opacity;
+}
+
+html body .saibai-coupon:not([hidden]) {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+html body .saibai-coupon[hidden] {
+  display: flex !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+html body .saibai-coupon__overlay {
+  all: unset;
+  box-sizing: border-box;
+  position: absolute;
+  inset: 0;
+  display: block;
+  background: rgb(42 58 26 / 0.42);
+  cursor: pointer;
+}
+
+html body .saibai-coupon__dialog {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 360px);
+  padding: 28px 24px 22px;
+  background: var(--cp-bg);
+  border: 1px solid var(--cp-line);
+  box-shadow: 0 12px 40px rgb(42 58 26 / 0.12);
+  font-family: var(--saibai-font-body, 'Jost', sans-serif);
+  text-align: center;
+  -webkit-font-smoothing: antialiased;
+}
+
+html body .saibai-coupon button.saibai-coupon__close {
+  all: unset;
+  box-sizing: border-box;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  color: var(--cp-accent);
+  opacity: 0.45;
+  transition: opacity 0.2s ease;
+}
+
+html body .saibai-coupon button.saibai-coupon__close:hover {
+  opacity: 1;
+}
+
+html body .saibai-coupon__close-icon {
+  position: relative;
+  display: block;
+  width: 12px;
+  height: 12px;
+}
+
+html body .saibai-coupon__close-icon::before,
+html body .saibai-coupon__close-icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+}
+
+html body .saibai-coupon__close-icon::before {
+  transform: rotate(45deg);
+}
+
+html body .saibai-coupon__close-icon::after {
+  transform: rotate(-45deg);
+}
+
+html body .saibai-coupon__eyebrow {
+  margin: 0 0 6px;
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cp-text);
+}
+
+html body .saibai-coupon__title {
+  margin: 0 0 8px;
+  font-family: var(--saibai-font-heading, 'Jost', sans-serif);
+  font-size: 1.375rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--cp-accent);
+}
+
+html body .saibai-coupon__text {
+  margin: 0 0 18px;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--cp-text);
+}
+
+html body .saibai-coupon__ticket {
+  display: flex;
+  gap: 0;
+  margin-bottom: 6px;
+  border: 1px dashed var(--cp-line);
+  background: var(--saibai-light, var(--saibai-bg, #F2F5EE));
+}
+
+html body .saibai-coupon__code {
+  all: unset;
+  box-sizing: border-box;
+  flex: 1;
+  min-width: 0;
+  height: 40px;
+  padding: 0 12px;
+  background: transparent;
+  color: var(--cp-accent);
+  font-family: var(--saibai-font-body, 'Jost', sans-serif);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-align: center;
+}
+
+html body .saibai-coupon button.saibai-coupon__copy {
+  all: unset;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 72px;
+  height: 40px;
+  padding: 0 14px;
+  border-left: 1px dashed var(--cp-line);
+  background: transparent;
+  color: var(--cp-accent);
+  font-family: var(--saibai-font-body, 'Jost', sans-serif);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+html body .saibai-coupon button.saibai-coupon__copy:hover {
+  background: var(--cp-accent);
+  color: #FFFFFF;
+}
+
+html body .saibai-coupon__status {
+  margin: 0 0 12px;
+  min-height: 1em;
+  font-size: 0.6875rem;
+  color: var(--cp-text);
+}
+
+html body .saibai-coupon button.saibai-coupon__cta {
+  all: unset;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 40px;
+  margin-bottom: 10px;
+  padding: 0 16px;
+  background: var(--cp-accent);
+  color: #FFFFFF;
+  font-family: var(--saibai-font-body, 'Jost', sans-serif);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+html body .saibai-coupon button.saibai-coupon__cta:hover {
+  background: var(--cp-hover);
+}
+
+html body .saibai-coupon button.saibai-coupon__dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: inline-block;
+  font-family: var(--saibai-font-body, 'Jost', sans-serif);
+  font-size: 0.6875rem;
+  font-weight: 400;
+  color: var(--cp-text);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+html body .saibai-coupon button.saibai-coupon__dismiss:hover {
+  color: var(--cp-accent);
+}
+
+html body.saibai-modal-scroll-lock {
+  overflow: hidden;
+  padding-right: var(--saibai-scrollbar-w, 0px);
+}
+
+html body.saibai-modal-scroll-lock #header-group {
+  padding-right: var(--saibai-scrollbar-w, 0px);
+}
+
+@media (max-width: 479px) {
+  html body .saibai-coupon__dialog {
+    padding: 24px 20px 20px;
+  }
+
+  html body .saibai-coupon__ticket {
+    flex-direction: column;
+  }
+
+  html body .saibai-coupon button.saibai-coupon__copy {
+    width: 100%;
+    min-width: 0;
+    border-left: 0;
+    border-top: 1px dashed var(--cp-line);
+  }
+}
+
+html body.saibai-theme.template-product .saibai-coupon,
+html body.saibai-theme.template-collection .saibai-coupon,
+html body.saibai-theme.template-search .saibai-coupon {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}

@@ -14,7 +14,6 @@
 
   if sec_stts.collection.all_products_count > max_items
     assign products_to_display = max_items
-    assign more_in_collection = true
   endif
 
   assign columns_mobile = sec_stts.columns_mobile
@@ -114,13 +113,6 @@
       assign heading_color = sec_stts.heading_color
       assign heading_margin_bottom = sec_stts.heading_margin_bottom
 
-      if heading_font_size contains 'heading-lg' or heading_font_size contains 'heading-xl'
-        assign heading_type = 'display'
-      elsif heading_font_size contains 'heading'
-        assign heading_type = 'heading'
-      else
-        assign heading_type = 'body'
-      endif
       if heading_type_preset == 'rte' or heading_type_preset == 'paragraph'
         assign is_heading_rte = true
       endif
@@ -136,13 +128,6 @@
       assign subheading_color = sec_stts.subheading_color
       assign subheading_margin_bottom = sec_stts.subheading_margin_bottom
 
-      if subheading_font_size contains 'heading-lg' or subheading_font_size contains 'heading-xl'
-        assign subheading_type = 'display'
-      elsif subheading_font_size contains 'heading'
-        assign subheading_type = 'heading'
-      else
-        assign subheading_type = 'body'
-      endif
       if subheading_type_preset == 'rte' or subheading_type_preset == 'paragraph'
         assign is_subheading_rte = true
       endif
@@ -158,13 +143,6 @@
       assign text_color = sec_stts.text_color
       assign text_margin_bottom = sec_stts.text_margin_bottom
 
-      if text_font_size contains 'heading-lg' or text_font_size contains 'heading-xl'
-        assign text_type = 'display'
-      elsif text_font_size contains 'heading'
-        assign text_type = 'heading'
-      else
-        assign text_type = 'body'
-      endif
       if text_type_preset == 'rte' or text_type_preset == 'paragraph'
         assign is_text_rte = true
       endif
@@ -176,8 +154,6 @@
       assign rows_gap_num = sec_stts.rows_gap
       assign columns_gap = columns_gap_num | append: 'px'
       assign rows_gap = rows_gap_num | append: 'px'
-
-      assign pagination_type = sec_stts.pagination_type
     -%}
 
     {% capture heading_block_classes %}

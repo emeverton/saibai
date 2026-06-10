@@ -1,0 +1,113 @@
+{%- comment -%}
+  Empório Saibai — Dobra 2: intro + toggle + grid (padrão Loro Piana)
+  CSS/JS: sections/saibai-home-products.liquid (v9 inline + asset)
+{%- endcomment -%}
+{%- liquid
+  assign hero_lead = section.settings.lead | default: 'A safra Saibai apresenta alcachofra fresca e conservas artesanais, da terra de Piedade direto para a sua mesa.'
+  assign tab_1_label = section.settings.tab_1_label | default: 'Fresca'
+  assign tab_2_label = section.settings.tab_2_label | default: 'Conservas'
+  assign default_tab = section.settings.default_tab | default: 'fresca'
+
+  if section.settings.collection_fresca != blank
+    assign collection_fresca = section.settings.collection_fresca
+  else
+    assign collection_fresca = collections['in-natura-1']
+  endif
+
+  if section.settings.collection_conservas != blank
+    assign collection_conservas = section.settings.collection_conservas
+  else
+    assign collection_conservas = collections['em-conserva']
+  endif
+-%}
+
+<section class="saibai-prod" data-saibai-prod aria-label="Produtos Saibai">
+  <div class="saibai-prod__intro">
+    {%- if hero_lead != blank -%}
+      <p class="saibai-prod__lead">{{ hero_lead }}</p>
+    {%- endif -%}
+    <div class="saibai-prod__switch" role="tablist" aria-label="Filtrar produtos por linha">
+      <button
+        type="button"
+        class="saibai-prod__switch-btn{% if default_tab == 'fresca' %} is-active{% endif %}"
+        role="tab"
+        aria-selected="{% if default_tab == 'fresca' %}true{% else %}false{% endif %}"
+        aria-controls="SaibaiProdPanel-fresca"
+        id="SaibaiProdTab-fresca"
+        data-saibai-prod-tab="fresca"
+      >
+        {{ tab_1_label }}
+      </button>
+      <button
+        type="button"
+        class="saibai-prod__switch-btn{% if default_tab == 'conservas' %} is-active{% endif %}"
+        role="tab"
+        aria-selected="{% if default_tab == 'conservas' %}true{% else %}false{% endif %}"
+        aria-controls="SaibaiProdPanel-conservas"
+        id="SaibaiProdTab-conservas"
+        data-saibai-prod-tab="conservas"
+      >
+        {{ tab_2_label }}
+      </button>
+    </div>
+  </div>
+
+  <div class="saibai-prod__panels">
+    {%- assign panels = 'fresca,conservas' | split: ',' -%}
+    {%- for panel_key in panels -%}
+      {%- if panel_key == 'fresca' -%}
+        {%- assign panel_collection = collection_fresca -%}
+      {%- else -%}
+        {%- assign panel_collection = collection_conservas -%}
+      {%- endif -%}
+      {%- assign is_active = false -%}
+      {%- if panel_key == default_tab -%}
+        {%- assign is_active = true -%}
+      {%- endif -%}
+
+      <div
+        class="saibai-prod__panel{% if is_active %} is-active{% endif %}"
+        id="SaibaiProdPanel-{{ panel_key }}"
+        role="tabpanel"
+        aria-labelledby="SaibaiProdTab-{{ panel_key }}"
+        data-saibai-prod-panel="{{ panel_key }}"
+        {% unless is_active %}hidden{% endunless %}
+      >
+        {%- liquid
+          assign panel_fill_collection = collection_conservas
+          if panel_key == 'conservas'
+            assign panel_fill_collection = collection_fresca
+          endif
+          assign panel_card_count = 0
+        -%}
+        {%- if panel_collection != blank and panel_collection.products_count > 0 -%}
+          <div class="saibai-prod__wrap">
+            <button type="button" class="saibai-prod__nav saibai-prod__nav--prev" aria-label="Produtos anteriores" hidden>
+              <span aria-hidden="true">‹</span>
+            </button>
+            <div class="saibai-prod__track" tabindex="0">
+              {%- for product in panel_collection.products limit: 4 -%}
+                {%- render 'saibai-prod-card', product: product -%}
+                {%- assign panel_card_count = panel_card_count | plus: 1 -%}
+              {%- endfor -%}
+              {%- if panel_card_count < 4 and panel_fill_collection != blank -%}
+                {%- for product in panel_fill_collection.products -%}
+                  {%- if panel_card_count >= 4 -%}
+                    {%- break -%}
+                  {%- endif -%}
+                  {%- render 'saibai-prod-card', product: product -%}
+                  {%- assign panel_card_count = panel_card_count | plus: 1 -%}
+                {%- endfor -%}
+              {%- endif -%}
+            </div>
+            <button type="button" class="saibai-prod__nav saibai-prod__nav--next" aria-label="Próximos produtos" hidden>
+              <span aria-hidden="true">›</span>
+            </button>
+          </div>
+        {%- else -%}
+          <p class="saibai-prod__empty">Em breve nesta linha.</p>
+        {%- endif -%}
+      </div>
+    {%- endfor -%}
+  </div>
+</section>

@@ -1,0 +1,33 @@
+/* Empório Saibai — Header core
+ * Veltrus Growth & Technology
+ */
+
+/* Ícones: tema força min-size em svg — reset isolado no módulo */
+html body .saibai-header .saibai-header__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--sh-icon);
+  height: var(--sh-icon);
+  line-height: 0;
+  flex-shrink: 0;
+  opacity: 0.92;
+}
+
+html body .saibai-header .saibai-header__icon svg {
+  display: block;
+  width: var(--sh-icon);
+  height: var(--sh-icon);
+  min-width: 0;
+  min-height: 0;
+  max-width: var(--sh-icon);
+  max-height: var(--sh-icon);
+  fill: currentColor;
+  stroke: none;
+}
+
+html body .saibai-header .saibai-header__icon--heart svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.15px;
+}

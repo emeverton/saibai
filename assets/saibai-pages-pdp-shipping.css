@@ -1,0 +1,293 @@
+/* Empório Saibai — PDP frete
+ * Veltrus Growth & Technology | Shopify Partner ID 4969609
+ * PROPRIEDADE INTELECTUAL PROTEGIDA
+ */
+
+/* Calculadora de frete PDP — acima do preço */
+body.saibai-theme.template-product .saibai-pdp-ship {
+  margin: 0 0 1.25rem;
+  padding: 0;
+  border-top: 0;
+}
+
+body.saibai-theme.template-product .saibai-pdp-ship__free {
+  margin-bottom: 1rem;
+  padding: 0.75rem 1rem;
+  background: rgb(138 190 10 / 0.08);
+  border: 1px solid rgb(138 190 10 / 0.24);
+  border-radius: 0.875rem;
+}
+
+body.saibai-theme.template-product .saibai-pdp-ship__free-text {
+  margin: 0 0 0.375rem;
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+  color: #2A3A1A;
+}
+
+body.saibai-theme.template-product .saibai-pdp-ship__free-text strong {
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+body.saibai-theme.template-product .saibai-pdp-ship__free-status {
+  margin: 0 0 0.375rem;
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
+  line-height: 1.45;
+  color: rgb(42 58 26 / 0.72);
+}
+
+body.saibai-theme.template-product .saibai-pdp-ship__free-status--ok {
+  color: var(--saibai-primary, #2A3A1A);
+}
+
+body.saibai-theme.template-product .saibai-pdp-ship__free-status strong {
+  font-weight: 500;
+  color: #2A3A1A;
+}
+
+body.saibai-theme.template-product .saibai-pdp-ship__free-note {
+  margin: 0;
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-size: 0.6875rem;
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+  color: rgb(42 58 26 / 0.55);
+}
+
+body.saibai-theme.template-product .saibai-pdp-ship__free-note a {
+  color: #8B5E4A;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+body.saibai-theme.template-product .saibai-pdp-ship__free-note a:hover {
+  color: #2A3A1A;
+}
+
+body.saibai-theme.template-product .saibai-pdp-ship__label {
+  margin: 0 0 0.75rem;
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-size: 0.6875rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgb(42 58 26 / 0.55);
+}
+
+body.saibai-theme.template-product .saibai-pdp-ship__form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+body.saibai-theme.template-product .saibai-pdp-ship__input {
+  flex: 1;
+  min-width: 0;
+  height: 2.75rem;
+  padding: 0 1rem;
+  border: 1px solid rgb(42 58 26 / 0.16);
+  border-radius: 999px;
+  background: #fff;
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-size: 0.875rem;
+  letter-spacing: 0.04em;
+  color: #2A3A1A;
+  caret-color: #2A3A1A;
+  accent-color: #2A3A1A;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+body.saibai-theme.template-product .saibai-pdp-ship__input:focus,
+body.saibai-theme.template-product .saibai-pdp-ship__input:focus-visible,
+body.saibai-theme.template-product .saibai-pdp-ship__input:active {
+  outline: none !important;
+  border-color: #2A3A1A !important;
+  background: #fff !important;
+  box-shadow: 0 0 0 2px rgb(42 58 26 / 0.2) !important;
+  color: #2A3A1A !important;
+}
+
+body.saibai-theme.template-product .saibai-pdp-ship__input:-webkit-autofill,
+body.saibai-theme.template-product .saibai-pdp-ship__input:-webkit-autofill:hover,
+body.saibai-theme.template-product .saibai-pdp-ship__input:-webkit-autofill:focus,
+body.saibai-theme.template-product .saibai-pdp-ship__input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px #fff inset !important;
+  box-shadow: 0 0 0 2px rgb(42 58 26 / 0.2) !important;
+  -webkit-text-fill-color: #2A3A1A !important;
+  border-color: #2A3A1A !important;
+  caret-color: #2A3A1A;
+  transition: background-color 99999s ease-out;
+}
+
+body.saibai-theme.template-product .saibai-pdp-ship__input::placeholder {
+  color: rgb(42 58 26 / 0.35);
+}
+
+body.saibai-theme.template-product .saibai-pdp-ship__btn {
+  flex-shrink: 0;
+  min-width: 6.5rem;
+  height: 2.75rem;
+  padding: 0 1.25rem;
+  border: 1px solid #2A3A1A !important;
+  border-radius: 999px !important;
+  background: #2A3A1A !important;
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  color: #fff !important;
+  cursor: pointer;
+  box-shadow: none !important;
+  transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+}
+
+body.saibai-theme.template-product .saibai-pdp-ship__btn:hover:not(:disabled) {
+  background: #384E28 !important;
+  border-color: #384E28 !important;
+  color: #fff !important;
+}
+
+body.saibai-theme.template-product .saibai-pdp-ship__btn:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+body.saibai-theme.template-product .saibai-pdp-ship__hint {
+  margin: 0.625rem 0 0;
+  font-size: 0.6875rem;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: rgb(42 58 26 / 0.45);
+}
+
+body.saibai-theme.template-product .saibai-pdp-ship__results {
+  margin-top: 0.875rem;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: #2A3A1A;
+}
+
+body.saibai-theme.template-product .saibai-pdp-ship__results--error p {
+  margin: 0;
+  color: #8B5E4A;
+}
+
+body.saibai-theme.template-product .saibai-pdp-ship__results--empty p {
+  margin: 0;
+  color: rgb(42 58 26 / 0.65);
+}
+
+body.saibai-theme.template-product .saibai-pdp-ship__results a {
+  color: #8B5E4A;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+body.saibai-theme.template-product .saibai-pdp-ship__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+body.saibai-theme.template-product .saibai-pdp-ship__rate {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgb(42 58 26 / 0.08);
+}
+
+body.saibai-theme.template-product .saibai-pdp-ship__rate:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+body.saibai-theme.template-product .saibai-pdp-ship__rate-name {
+  font-size: 0.8125rem;
+  letter-spacing: 0.02em;
+  color: rgb(42 58 26 / 0.78);
+}
+
+body.saibai-theme.template-product .saibai-pdp-ship__rate-price {
+  flex-shrink: 0;
+  font-size: 0.8125rem;
+  letter-spacing: 0.04em;
+  color: #2A3A1A;
+}
+
+body.saibai-theme.template-product .product-form__submit,
+body.saibai-theme.template-product .add-to-cart-button.button .product-form__submit,
+body.saibai-theme.template-product .add-to-cart-button.button button.product-form__submit,
+body.saibai-theme.template-product .shopify-payment-button__button--unbranded,
+body.saibai-theme.template-product .accelerated-checkout-block .shopify-payment-button__button--unbranded {
+  background: #2A3A1A !important;
+  border: 1px solid #2A3A1A !important;
+  color: #fff !important;
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-size: 0.8125rem !important;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  min-height: 48px !important;
+  height: 48px !important;
+  border-radius: 999px !important;
+  box-shadow: none !important;
+  padding-inline: 1.25rem !important;
+}
+
+body.saibai-theme.template-product .product-form__submit:hover:not(:disabled),
+body.saibai-theme.template-product .add-to-cart-button.button button.product-form__submit:hover:not(:disabled) {
+  background: var(--saibai-primary-hover, #384E28) !important;
+  border-color: var(--saibai-primary-hover, #384E28) !important;
+  color: #fff !important;
+}
+
+body.saibai-theme.template-product .product-form__submit:disabled,
+body.saibai-theme.template-product .product-form__submit[disabled],
+body.saibai-theme.template-product .product-form__submit.sold-out--button,
+body.saibai-theme.template-product .sticky-atc .sold-out--button {
+  background: #F2F5EE !important;
+  border: 1.5px solid #2A3A1A !important;
+  color: #2A3A1A !important;
+  cursor: not-allowed;
+  opacity: 0.72 !important;
+}
+
+body.saibai-theme.template-product .product-form__buttons:has(.product-form__submit[disabled]) .product-form__quantity,
+body.saibai-theme.template-product .product-form__buttons:has(.product-form__submit.sold-out--button) .product-form__quantity,
+body.saibai-theme.template-product .sticky-atc:has(.sold-out--button) .sticky-cart__quantity,
+body.saibai-theme.template-product .sticky-atc:has(.product-form__submit[disabled]) .product-form__quantity {
+  display: none !important;
+}
+
+body.saibai-theme.template-product .add-to-cart-button.button-secondary .product-form__submit,
+body.saibai-theme.template-product .add-to-cart-button.button-secondary button {
+  background: var(--saibai-primary, #2A3A1A) !important;
+  border: 1px solid var(--saibai-primary, #2A3A1A) !important;
+  color: #fff !important;
+}
+
+body.saibai-theme.template-product .shopify-payment-button__button--unbranded:hover:not([disabled]),
+body.saibai-theme.template-product .accelerated-checkout-block .shopify-payment-button__button--unbranded:hover:not([disabled]) {
+  background: #384E28 !important;
+  border-color: #384E28 !important;
+  color: #fff !important;
+}
+
+/* Evita flash de preço Pix antigo durante troca de variante */
+body.saibai-theme.template-product product-info.saibai-variant-syncing [data-saibai-pdp-pay],
+body.saibai-theme.template-product product-info.saibai-variant-syncing product-price {
+  opacity: 0.55;
+  transition: opacity 0.12s ease;
+}

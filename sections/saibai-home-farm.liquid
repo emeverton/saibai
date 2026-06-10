@@ -1,0 +1,94 @@
+{%- comment -%} v2 · split LP · markup único na section {%- endcomment -%}
+<!-- saibai-farm-v2 -->
+{%- liquid
+  assign farm_eyebrow = section.settings.eyebrow | default: 'Piedade, SP · Capital Nacional da Alcachofra'
+  assign farm_title = section.settings.title | default: 'Tudo começa com a terra'
+  assign farm_text = section.settings.text | default: 'Antes mesmo da Saibai existir, nossas famílias já cultivavam alcachofras há mais de 50 anos. Produção própria, safra controlada e tradição que conquistou chefs de São Paulo.'
+  assign farm_cta_label = section.settings.cta_label | default: 'Conhecer nossa história'
+  assign farm_cta_url = section.settings.cta_url | default: '/pages/historia'
+  assign farm_image = section.settings.image
+  assign farm_image_asset = section.settings.image_asset | default: 'saibai-farm-harvest.webp'
+-%}
+
+<section class="saibai-split saibai-split--lifestyle" aria-label="História Saibai">
+  <div class="saibai-split__media">
+    {%- if farm_image != blank -%}
+      {{
+        farm_image
+        | image_url: width: 1600
+        | image_tag:
+          loading: 'lazy',
+          widths: '600, 900, 1200, 1600',
+          sizes: '(min-width: 990px) 50vw, 100vw',
+          class: 'saibai-split__img saibai-split__img--cover',
+          alt: farm_image.alt | default: 'Plantação de alcachofras em Piedade, SP'
+      }}
+    {%- else -%}
+      <img
+        src="{{ farm_image_asset | asset_url }}"
+        alt="Plantação de alcachofras em Piedade, SP"
+        class="saibai-split__img saibai-split__img--cover"
+        loading="lazy"
+        width="1916"
+        height="821"
+      >
+    {%- endif -%}
+  </div>
+  <div class="saibai-split__content">
+    <p class="saibai-split__eyebrow">{{ farm_eyebrow }}</p>
+    <h2 class="saibai-split__title">{{ farm_title }}</h2>
+    <p class="saibai-split__text">{{ farm_text }}</p>
+    <a href="{{ farm_cta_url }}" class="saibai-split__link">{{ farm_cta_label }}</a>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Saibai Farm Story",
+  "class": "saibai-split-section",
+  "enabled_on": { "templates": ["index"] },
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Piedade, SP · Capital Nacional da Alcachofra"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "Tudo começa com a terra"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Texto",
+      "default": "Antes mesmo da Saibai existir, nossas famílias já cultivavam alcachofras há mais de 50 anos. Produção própria, safra controlada e tradição que conquistou chefs de São Paulo."
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Texto do link",
+      "default": "Conhecer nossa história"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Imagem lifestyle"
+    },
+    {
+      "type": "text",
+      "id": "image_asset",
+      "label": "Asset fallback (sem imagem)",
+      "default": "saibai-farm-harvest.webp"
+    }
+  ],
+  "presets": [{ "name": "Saibai Farm Story" }]
+}
+{% endschema %}

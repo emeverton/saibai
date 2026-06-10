@@ -12,6 +12,9 @@
   @param {string} [resource_direction] - The direction of the card. Can be 'column' or 'row'. Defaults to 'row'
   @param {string} [horizontal_alignment] - The alignment of the content. Can be 'flex-start', 'center', 'flex-end', 'space-between'. Defaults to 'flex-start'
   @param {string} [vertical_alignment] - The alignment of the content. Can be 'stretch', 'flex-start', 'center', 'flex-end'. Defaults to 'center'
+  @param {number} [index] - Animation order index in product grids
+  @param {boolean} [show_variant_swatches] - Show variant swatches on product cards
+  @param {object} [section] - Parent section for nested video renders
 {%- enddoc -%}
 
 {% liquid
@@ -121,7 +124,8 @@
                           loading: 'lazy',
                           alt: resource.media[1].alt,
                           class: 'resource-card__image resource-card__image--secondary',
-                          loading: 'lazy'
+                          loading: 'lazy',
+                          style: secondary_focal_point_style
                       }}
                     {%- when 'video', 'external_video' -%}
                       {%- render 'video',
@@ -217,25 +221,15 @@
         {% if resource_type == 'product' and show_variant_swatches %}
           {%- liquid
             assign product_swatch_option = settings.swatch | downcase
-            assign isColor = false
-            assign variant_img = ''
+            assign is_color = false
             for option in resource.options_with_values
               assign option_name = option.name | downcase
               if product_swatch_option contains option_name
-                assign isColor = true
+                assign is_color = true
                 assign index = forloop.index0
-                assign position = forloop.index | minus: 1
                 assign variant_selected = option.selected_value
-                if settings.show_quick_shop
-                  for variant in resource.variants limit: 1
-                    if variant.image != null
-                      assign variant_img = variant.image
-                    endif
-                  endfor
-                endif
                 break
               else
-                assign position = 0
                 assign variant_selected = null
               endif
             endfor
@@ -248,7 +242,7 @@
               assign alignment = 'start'
             endif
           -%}
-          {% if isColor %}
+          {% if is_color %}
             <div class="resource-card__variant">
               {%- render 'product-swatch',
                 product: resource,

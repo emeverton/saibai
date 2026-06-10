@@ -1,0 +1,58 @@
+/* Empório Saibai — Header mobile sticky
+ * Veltrus Growth & Technology
+ */
+
+/* ── Mobile ── */
+html body .saibai-header__mobile {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  min-height: var(--sh-mobile-h, 56px);
+  padding: 0 var(--sh-pad);
+  border-bottom: 0;
+  background: var(--sh-bg);
+}
+
+html body .saibai-header__desktop {
+  display: block;
+}
+
+/* LP: logo + nav no mesmo bloco — sem linha entre eles */
+html body .saibai-header__body {
+  position: relative;
+  z-index: 2;
+  min-height: 0;
+  background: var(--sh-bg);
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+}
+
+/* LP: cabeçalho inteiro some ao rolar ↓ e reaparece ao rolar ↑ */
+html body #header-group {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  width: 100%;
+  max-width: 100vw;
+  overflow: visible;
+  background: transparent;
+  transition: transform 0.35s cubic-bezier(0.42, 0, 0.58, 1);
+  will-change: transform;
+}
+
+html body #header-group.is-scroll-hidden {
+  transform: translateY(-100%);
+  pointer-events: none;
+}
+
+html body #header-group.is-scroll-reveal {
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html body #header-group {
+    transition: none;
+  }
+}

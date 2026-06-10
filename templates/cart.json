@@ -11,6 +11,7 @@
   "sections": {
     "breadcrumb_w3kGjz": {
       "type": "breadcrumb",
+      "disabled": true,
       "name": "Breadcrumb",
       "settings": {
         "separator": "caret",
@@ -38,7 +39,7 @@
           "type": "_cart-title",
           "static": true,
           "settings": {
-            "title": "<strong>MY CART</strong>",
+            "title": "Carrinho",
             "show_count": true,
             "type_preset": "h5",
             "alignment": "left",
@@ -124,7 +125,7 @@
                 "border": "none",
                 "border_width": 1,
                 "border_radius": 0,
-                "text": "<p>Secure Shopping Guarantee</p>",
+                "text": "<p>Compra segura garantida</p>",
                 "type_preset": "rte",
                 "font": "var(--font-body--family)",
                 "font_size": "1.6rem",
@@ -308,6 +309,7 @@
     },
     "section_7Yzqfd": {
       "type": "section",
+      "disabled": true,
       "blocks": {
         "divider_if3ARj": {
           "type": "_divider",
@@ -364,6 +366,7 @@
     },
     "featured_collection_ATEDND": {
       "type": "featured-collection",
+      "disabled": true,
       "blocks": {
         "section-header": {
           "type": "_section-header",

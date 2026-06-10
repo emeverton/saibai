@@ -1,0 +1,163 @@
+{%- comment -%}
+  Empório Saibai — Campos de endereço padrão BR (rua, número, bairro, CEP)
+  CSS: assets/saibai-address-br.css | JS: assets/saibai-address-br.js
+  Parâmetros: prefix (ID único), form (objeto do form Liquid)
+{%- endcomment -%}
+{%- liquid
+  assign field_prefix = prefix | default: 'New'
+  assign addr1 = form.address1 | default: ''
+  assign addr2 = form.address2 | default: ''
+  assign complement = form.company | default: ''
+  assign zip_val = form.zip | default: ''
+  assign city_val = form.city | default: ''
+  assign country_val = form.country | default: 'Brazil'
+  assign province_val = form.province | default: ''
+
+  if field_prefix == 'New'
+    assign country_id = 'AddressCountryNew'
+    assign province_id = 'AddressProvinceNew'
+    assign province_container_id = 'AddressProvinceContainerNew'
+  else
+    assign country_id = 'AddressCountry_' | append: field_prefix
+    assign province_id = 'AddressProvince_' | append: field_prefix
+    assign province_container_id = 'AddressProvinceContainer_' | append: field_prefix
+  endif
+-%}
+
+<div
+  class="saibai-addr-br"
+  data-saibai-addr-form
+  data-prefix="{{ field_prefix }}"
+  data-address1="{{ addr1 | escape }}"
+  data-address2="{{ addr2 | escape }}"
+  data-company="{{ complement | escape }}"
+>
+  <input type="hidden" name="address[address1]" data-saibai-field="address1" value="{{ addr1 | escape }}">
+  <input type="hidden" name="address[address2]" data-saibai-field="address2" value="{{ addr2 | escape }}">
+  <input type="hidden" name="address[company]" data-saibai-field="company" value="{{ complement | escape }}">
+
+  <div class="saibai-addr-br__row saibai-addr-br__row--cep">
+    <div class="field">
+      <input
+        type="text"
+        class="field__input saibai-addr-br__cep"
+        id="AddressZip{{ field_prefix }}"
+        name="address[zip]"
+        value="{{ zip_val }}"
+        inputmode="numeric"
+        maxlength="9"
+        autocapitalize="characters"
+        autocomplete="postal-code"
+        placeholder=""
+        data-saibai-input="zip"
+        required
+      >
+      <label class="field__label" for="AddressZip{{ field_prefix }}">{{ 'customer.addresses.zip' | t }}</label>
+    </div>
+  </div>
+
+  <div class="field">
+    <input
+      type="text"
+      class="field__input"
+      id="AddressStreet{{ field_prefix }}"
+      value=""
+      autocomplete="address-line1"
+      placeholder=""
+      data-saibai-input="street"
+      required
+    >
+    <label class="field__label" for="AddressStreet{{ field_prefix }}">{{ 'customer.addresses.street' | t }}</label>
+  </div>
+
+  <div class="saibai-addr-br__row saibai-addr-br__row--split">
+    <div class="field">
+      <input
+        type="text"
+        class="field__input"
+        id="AddressNumber{{ field_prefix }}"
+        value=""
+        inputmode="numeric"
+        autocomplete="off"
+        placeholder=""
+        data-saibai-input="number"
+        required
+      >
+      <label class="field__label" for="AddressNumber{{ field_prefix }}">{{ 'customer.addresses.number' | t }}</label>
+    </div>
+    <div class="field">
+      <input
+        type="text"
+        class="field__input"
+        id="AddressComplement{{ field_prefix }}"
+        value=""
+        autocomplete="address-line2"
+        placeholder=""
+        data-saibai-input="complement"
+      >
+      <label class="field__label" for="AddressComplement{{ field_prefix }}">{{ 'customer.addresses.complement' | t }}</label>
+    </div>
+  </div>
+
+  <div class="field">
+    <input
+      type="text"
+      class="field__input"
+      id="AddressNeighborhood{{ field_prefix }}"
+      value=""
+      autocomplete="off"
+      placeholder=""
+      data-saibai-input="neighborhood"
+      required
+    >
+    <label class="field__label" for="AddressNeighborhood{{ field_prefix }}">{{ 'customer.addresses.neighborhood' | t }}</label>
+  </div>
+
+  <div class="saibai-addr-br__row saibai-addr-br__row--split">
+    <div class="field">
+      <input
+        type="text"
+        class="field__input"
+        id="AddressCity{{ field_prefix }}"
+        name="address[city]"
+        value="{{ city_val }}"
+        autocomplete="address-level2"
+        placeholder=""
+        data-saibai-input="city"
+        required
+      >
+      <label class="field__label" for="AddressCity{{ field_prefix }}">{{ 'customer.addresses.city' | t }}</label>
+    </div>
+    <div id="{{ province_container_id }}" class="field saibai-addr-br__province">
+      <label class="field__label" for="{{ province_id }}">{{ 'customer.addresses.province' | t }}</label>
+      <div class="select">
+        <select
+          id="{{ province_id }}"
+          name="address[province]"
+          data-default="{{ province_val }}"
+          autocomplete="address-level1"
+          data-saibai-input="province"
+          required
+        ></select>
+        <span class="svg-wrapper">{{ 'icon-caret.svg' | inline_asset_content }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="saibai-addr-br__country">
+    <label class="visually-hidden" for="{{ country_id }}">{{ 'customer.addresses.country' | t }}</label>
+    <div class="select">
+      <select
+        id="{{ country_id }}"
+        name="address[country]"
+        {% if field_prefix != 'New' %}data-address-country-select data-form-id="{{ field_prefix }}"{% endif %}
+        data-default="{{ country_val }}"
+        autocomplete="country"
+        data-saibai-input="country"
+      >
+        {{ all_country_option_tags }}
+      </select>
+      <span class="svg-wrapper">{{ 'icon-caret.svg' | inline_asset_content }}</span>
+    </div>
+  </div>
+</div>

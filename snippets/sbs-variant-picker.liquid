@@ -3,11 +3,14 @@
 
   @param {object} product_resource - The product object.
   @param {object} [block] - The block object
+  @param {boolean} [show_customization_option] - Show customization option UI
+  @param {boolean} [require_item] - Require item selection in SBS flow
+  @param {string} [detail_variant_bg] - Background for variant detail
+  @param {number} [forloop_index] - Loop index for step UI
 {%- enddoc -%}
 
 {%- liquid
     assign bl_stts = block.settings
-    assign custom_fields = product.metafields.custom.combined_products_listing
 -%}
 
 {% unless product_resource.has_only_default_variant %}

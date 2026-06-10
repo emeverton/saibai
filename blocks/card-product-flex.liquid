@@ -65,6 +65,14 @@
       ></div>
     </template>
     {% content_for 'blocks' %}
+    {%- if card_product and card_product != empty -%}
+      <div class="saibai-card-footer">
+        <p class="saibai-card-ship">Frete grátis acima de R$ 280</p>
+        <div class="saibai-card-footer__actions">
+          <a href="{{ card_product.url }}" class="saibai-card-view-link">Ver produto</a>
+        </div>
+      </div>
+    {%- endif -%}
   </div>
 </div>
 

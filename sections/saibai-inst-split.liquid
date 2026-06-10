@@ -1,0 +1,24 @@
+<div class="saibai-inst">{% render 'saibai-inst-split', section: section %}</div>
+
+{% schema %}
+{
+  "name": "Saibai Inst — Split",
+  "class": "saibai-inst-section",
+  "enabled_on": { "templates": ["page"] },
+  "settings": [
+    { "type": "checkbox", "id": "reverse", "label": "Inverter layout", "default": false },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+    { "type": "text", "id": "title", "label": "Título", "default": "Título" },
+    { "type": "richtext", "id": "text", "label": "Texto" },
+    { "type": "image_picker", "id": "image", "label": "Imagem" },
+    {
+      "type": "text",
+      "id": "asset_fallback",
+      "label": "Asset fallback (ex: saibai-inst-planta.webp)",
+      "info": "Usado quando nenhuma imagem é selecionada no editor."
+    },
+    { "type": "text", "id": "image_alt", "label": "Alt da imagem" }
+  ],
+  "presets": [{ "name": "Saibai Inst Split" }]
+}
+{% endschema %}

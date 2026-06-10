@@ -1,0 +1,154 @@
+/* Empório Saibai — Endereço BR + páginas de conta (KV) */
+
+.saibai-addr-br {
+  margin-top: 0;
+}
+
+.saibai-addr-br__row {
+  display: grid;
+  gap: 16px;
+}
+
+.saibai-addr-br__row--split {
+  grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 749px) {
+  .saibai-addr-br__row--split {
+    grid-template-columns: 1fr;
+  }
+}
+
+.saibai-addr-br__country {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.saibai-addr-br__province .select {
+  width: 100%;
+}
+
+.saibai-addr-br__cep:focus {
+  border-color: var(--saibai-primary) !important;
+}
+
+/* ── Customer pages KV ── */
+html body .customer.saibai-customer {
+  font-family: 'Jost', sans-serif;
+}
+
+html body .customer.saibai-customer > h1,
+html body .customer.saibai-customer h2,
+html body .customer.saibai-customer h3 {
+  color: #2A3A1A;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+html body .customer.saibai-customer .button,
+html body .customer.saibai-customer button.button {
+  background: var(--saibai-primary) !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 4px !important;
+  font-weight: 600 !important;
+}
+
+html body .customer.saibai-customer .button:hover,
+html body .customer.saibai-customer button.button:hover {
+  background: var(--saibai-primary-hover) !important;
+}
+
+html body .customer.saibai-customer .button-secondary {
+  background: transparent !important;
+  color: #3D2B1F !important;
+  border: 1px solid #E2EDDA !important;
+  border-radius: 4px !important;
+}
+
+html body .customer.saibai-customer .field__input,
+html body .customer.saibai-customer input[type='text'],
+html body .customer.saibai-customer input[type='email'],
+html body .customer.saibai-customer input[type='password'],
+html body .customer.saibai-customer input[type='tel'],
+html body .customer.saibai-customer select {
+  border-color: #E2EDDA !important;
+  border-radius: 4px !important;
+  color: #2A3A1A !important;
+}
+
+html body .customer.saibai-customer .field__input:focus,
+html body .customer.saibai-customer input:focus,
+html body .customer.saibai-customer select:focus {
+  border-color: var(--saibai-primary) !important;
+  box-shadow: 0 0 0 1px var(--saibai-primary) !important;
+  outline: none !important;
+}
+
+html body .customer.saibai-customer label,
+html body .customer.saibai-customer .field__label {
+  color: #4E6040 !important;
+}
+
+html body .customer.saibai-customer a {
+  color: var(--saibai-primary);
+}
+
+html body .customer.saibai-customer a:hover {
+  color: var(--saibai-primary-hover);
+}
+
+html body .customer.saibai-customer .saibai-register-legal {
+  margin: 0 0 16px;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: #4E6040;
+}
+
+html body .customer.saibai-customer .saibai-register-legal a {
+  text-decoration: underline;
+}
+
+html body .customer.saibai-customer .saibai-register-marketing {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+html body .customer.saibai-customer .saibai-register-marketing input[type='checkbox'] {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  flex-shrink: 0;
+  accent-color: var(--saibai-primary);
+}
+
+html body .customer.saibai-customer .saibai-register-marketing label {
+  font-size: 0.875rem;
+  line-height: 1.45;
+  cursor: pointer;
+}
+
+/* Account drawer (header) */
+html body #Drawer-Account .drawer__heading {
+  color: #2A3A1A;
+  font-family: 'Jost', sans-serif;
+  font-weight: 500;
+}
+
+html body #Drawer-Account.customer.saibai-customer .drawer__list .link,
+html body #Drawer-Account .customer.saibai-customer .drawer__list .link {
+  color: #2A3A1A;
+}
+
+html body #Drawer-Account .customer.saibai-customer .drawer__list .link:hover {
+  color: var(--saibai-primary);
+}

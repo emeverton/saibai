@@ -1,0 +1,56 @@
+/* Empório Saibai — Cart
+ * Veltrus Growth & Technology | Shopify Partner ID 4969609
+ * PROPRIEDADE INTELECTUAL PROTEGIDA
+ */
+
+/* ── Cart ── */
+body.saibai-theme.template-cart .cart__items,
+body.saibai-theme.template-cart .cart__footer {
+  background: transparent;
+}
+
+body.saibai-theme.template-cart .cart-item__name {
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: #2A3A1A;
+}
+
+body.saibai-theme.template-cart .cart__checkout-button,
+body.saibai-theme.template-cart button[name="checkout"] {
+  background: var(--saibai-primary, #2A3A1A) !important;
+  border-color: var(--saibai-primary, #2A3A1A) !important;
+}
+
+body.saibai-theme.template-cart .cart__checkout-button:hover,
+body.saibai-theme.template-cart button[name="checkout"]:hover {
+  background: var(--saibai-primary-hover, #384E28) !important;
+  border-color: var(--saibai-primary-hover, #384E28) !important;
+}
+
+body.saibai-theme.template-cart .cart__empty-text {
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+body.saibai-theme.template-cart .cart-countdown {
+  display: none !important;
+}
+
+body.saibai-theme.template-cart .image-with-content {
+  display: none !important;
+}
+
+body.saibai-theme.template-cart .breadcrumb,
+body.saibai-theme.template-cart [class*="breadcrumb"],
+body.saibai-theme.template-cart .featured-collection,
+body.saibai-theme.template-cart [id*="featured_collection"] {
+  display: none !important;
+}
+
+body.saibai-theme.template-cart .cart-title .title--primary {
+  color: #2A3A1A;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}

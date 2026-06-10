@@ -1,0 +1,23 @@
+{%- comment -%}
+  Veltrus — aviso de reposição (edit cart popup)
+  Classes legacy mantidas para edit-cart.js
+{%- endcomment -%}
+<div class="notifyMe">
+  <p class="notifyMe-text">Avise-me quando este produto voltar ao estoque.</p>
+  {%- form 'contact', id: id_form -%}
+    <input type="hidden" name="contact[tags]" value="back-in-stock">
+    <textarea class="hidden" name="contact[body]" rows="1">{{ product.title }} — {{ request.origin }}{{ product.url }}</textarea>
+    <textarea class="halo-notify-product-variant hidden" name="contact[variant]" rows="1">{{ current_variant.title }}</textarea>
+    <label class="visually-hidden" for="{{ id_form }}-email">{{ 'saibai.back_in_stock.email_placeholder' | t }}</label>
+    <input
+      id="{{ id_form }}-email"
+      type="email"
+      name="contact[email]"
+      placeholder="{{ 'saibai.back_in_stock.email_placeholder' | t }}"
+      autocomplete="email"
+      required
+      class="w-full"
+    >
+    <button type="submit" class="button">Avise-me</button>
+  {%- endform -%}
+</div>

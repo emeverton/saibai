@@ -128,6 +128,7 @@
       "previous_post": "Previous post",
       "read_more": "Read more",
       "read_more_title": "Read more: {{ title }}",
+      "recent_articles": "Recent articles",
       "share": "Share this article"
     },
     "comment_form": {
@@ -464,6 +465,7 @@
       "one": "{{ count }} result found for “{{ terms }}”",
       "other": "{{ count }} results found for “{{ terms }}”"
     },
+    "rating": "Rating of this product is {{ rating }} out of 5",
     "reviews": "reviews",
     "s": "s",
     "sec": "sec",
@@ -568,6 +570,16 @@
       "view_addresses": "View addresses"
     },
     "account_fallback": "Account",
+    "account_drawer": {
+      "aria_label": "Account menu",
+      "close": "Close account menu",
+      "guest": "Guest",
+      "greeting": "Hi, {{ name }}",
+      "login_heading": "Sign in",
+      "portal_intro": "Manage orders, addresses, and preferences in your Saibai account.",
+      "portal_login": "Sign in",
+      "portal_register": "Create account"
+    },
     "activate_account": {
       "cancel": "Decline invitation",
       "password": "Password",
@@ -581,6 +593,10 @@
       "add_new": "Add a new address",
       "address1": "Address 1",
       "address2": "Address 2",
+      "street": "Street address",
+      "number": "Number",
+      "complement": "Apartment, suite, etc.",
+      "neighborhood": "Neighborhood",
       "address_book": "Customer address book",
       "cancel": "Cancel",
       "city": "City",
@@ -661,11 +677,13 @@
       "title": "Reset your password"
     },
     "register": {
+      "accepts_marketing": "Email me with news and offers",
       "create_an_account": "Create an account",
       "email": "Email",
       "first_name": "First name",
       "last_name": "Last name",
       "password": "Password",
+      "privacy_html": "By creating an account, you agree to our <a href=\"{{ privacy_url }}\">Privacy Policy</a>.",
       "text": "Please register below to create an account",
       "title": "Create account"
     },
@@ -694,6 +712,11 @@
       "shop_link": "Visit online store",
       "subtext": "Your gift card",
       "title": "Here's your {{ value }} gift card balance for {{ shop }}!"
+    }
+  },
+  "general": {
+    "search": {
+      "title": "Search results"
     }
   },
   "placeholders": {
@@ -858,5 +881,10 @@
     "sale_label": "Sale",
     "new_label": "New",
     "hot_label": "Hot"
+  },
+  "saibai": {
+    "back_in_stock": {
+      "email_placeholder": "Your email"
+    }
   }
 }

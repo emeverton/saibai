@@ -1,0 +1,58 @@
+<script src="{{ 'saibai-hero.js' | asset_url }}" defer="defer"></script>
+
+{% render 'saibai-home-hero', section: section %}
+
+{% schema %}
+{
+  "name": "Saibai Hero",
+  "class": "saibai-hero-section",
+  "enabled_on": {
+    "templates": ["index"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título do box",
+      "default": "Safra 2026"
+    },
+    {
+      "type": "text",
+      "id": "link_1_label",
+      "label": "Link 1 texto",
+      "default": "Conservas"
+    },
+    {
+      "type": "url",
+      "id": "link_1_url",
+      "label": "Link 1 URL"
+    },
+    {
+      "type": "text",
+      "id": "link_2_label",
+      "label": "Link 2 texto",
+      "default": "Fresca"
+    },
+    {
+      "type": "url",
+      "id": "link_2_url",
+      "label": "Link 2 URL"
+    },
+    {
+      "type": "select",
+      "id": "default_tab",
+      "label": "Aba inicial (toggle na dobra de produtos)",
+      "default": "fresca",
+      "options": [
+        { "value": "fresca", "label": "Fresca" },
+        { "value": "conservas", "label": "Conservas" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Saibai Hero"
+    }
+  ]
+}
+{% endschema %}

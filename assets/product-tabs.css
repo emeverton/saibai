@@ -246,3 +246,12 @@
 .tab-content.border-full side-drawer-opener {
   border: 1px solid var(--accordion-border-color);
 }
+
+/* Saibai PDP — ocultar Avaliações até existir review Judge.me */
+body.saibai-theme.template-product .saibai-pdp-tabs__tab[data-saibai-tab="avaliacoes"] {
+  display: none !important;
+}
+
+body.saibai-theme.template-product:has(.saibai-pdp-reviews-widget .jdgm-rev) .saibai-pdp-tabs__tab[data-saibai-tab="avaliacoes"] {
+  display: block !important;
+}

@@ -177,7 +177,6 @@ style="
                       </div>
                     </div>
                   {% when 'html' %}
-                    {%- assign page_title = title | default: block.settings.page.title -%}
                     {% liquid
                       assign custom_content_type = block.settings.custom_content_type
                       if custom_content_type == 'all'

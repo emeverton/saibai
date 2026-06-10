@@ -2,8 +2,9 @@
   Renders the predictive search empty state
 
   @param {number} shadow_opacity - shadow opacity for the empty state container shadow
-  @param {string} products_test_id - a playwright test id, used to differentiate empty state from 'real' search results
+  @param {string} [products_test_id] - playwright test id for empty state
   @param {boolean} [load_empty_state] - Load the empty state or not
+  @param {string} [resource_direction] - layout direction for product cards in empty state
 
   @example
   {% render 'predictive-search-empty-state', shadow_opacity: 0.1, products_test_id: 'empty-state' %}
@@ -11,6 +12,7 @@
 
 {% comment %} {%- render 'loading-spinner', class: 'predictive-search__loading-state no-js-hidden' -%} {% endcomment %}
 
+{% unless load_empty_state == false %}
 <div
   id="predictive-search-results"
   class="predictive-search-dropdown"
@@ -22,7 +24,7 @@
     {% liquid
       assign collection = settings.empty_state_collection | default: collections.all
       assign default_title = 'content.search_results_resource_products' | t
-      assign title = settings.empty_state_collection.title | default: default_title
+      assign title = collection.title | default: default_title
     %}
     {%- if settings.quick_keywords != blank -%}
       <div class="predictive-search__result-group">
@@ -108,3 +110,4 @@
 
   </div>
 </div>
+{% endunless %}

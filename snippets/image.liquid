@@ -15,6 +15,7 @@
   @param {string} [alt] - custom image alt
   @param {boolean} [preload] - custom image preload
   @param {boolean} [is_lcp] - first/LCP image: eager + high priority
+  @param {string} [animation_type] - entrance animation type
 
   @example
   {% render 'image', image: product.featured_image, class: 'product-image', is_lcp: true %}
@@ -45,9 +46,17 @@
 
     assign widths_default = '300, 450, 600, 750, 800, 900, 1050, 1200, 1500, 1800, 2000'
     assign image_widths = widths | default: widths_default
+
+    assign image_class = class | default: ''
+    if animation_type != blank
+      assign image_class = image_class | append: ' image--' | append: animation_type
+    endif
   -%}
 
   {% assign style_value = style | default: '' %}
+  {% if height != blank %}
+    {% assign style_value = style_value | append: 'height:' | append: height | append: 'px;' %}
+  {% endif %}
 
   {% if unset_image_tag %}
     {% assign style_value = style_value | append: 'object-position: inherit;' %}
@@ -59,13 +68,14 @@
     | image_tag:
       widths: image_widths,
       loading: image_loading,
-      class: class,
+      class: image_class,
       sizes: image_sizes,
       fetchpriority: image_fetch_priority,
       style: style_value,
       alt: image_alt,
       preload: preload,
-      width: image_render_width
+      width: image_render_width,
+      height: height
   }}
 {% elsif text_fallback %}
   {{ text_fallback }}

@@ -1,0 +1,181 @@
+{%- comment -%}
+  Empório Saibai — Contato institucional (canais + formulário Shopify)
+{%- endcomment -%}
+{%- liquid
+  assign form_uid = section.id | default: 'SaibaiContact'
+  assign wa_url = section.settings.whatsapp_url | default: 'https://chat.whatsapp.com/LmGiN0C8QT04AQ4VB9PDdO'
+  assign wa_label = section.settings.whatsapp_label | default: 'Grupo VIP no WhatsApp'
+  assign email = section.settings.email | default: 'contato@saibai.com.br'
+  assign addr1 = section.settings.address_line1 | default: 'Estrada dos Lavradores, 7 — Poço'
+  assign addr2 = section.settings.address_line2 | default: 'Piedade, SP — CEP 18170-000'
+  assign map_q = section.settings.map_query | default: 'Estrada dos Lavradores 7 Piedade SP'
+  assign map_enc = map_q | url_encode
+  assign map_src = 'https://maps.google.com/maps?q=' | append: map_enc | append: '&z=14&output=embed'
+-%}
+
+<section class="saibai-inst-contact" aria-labelledby="saibai-contact-title">
+  <div class="saibai-inst-contact__inner">
+    <header class="saibai-inst-contact__header">
+      <h2 class="saibai-inst-contact__title" id="saibai-contact-title">
+        {{- section.settings.channels_title | default: 'Fale com a Saibai' -}}
+      </h2>
+      {%- if section.settings.channels_lead != blank -%}
+        <p class="saibai-inst-contact__lead">{{ section.settings.channels_lead }}</p>
+      {%- endif -%}
+    </header>
+
+    <div class="saibai-inst-contact__grid">
+      <aside class="saibai-inst-contact__channels" aria-label="Canais de atendimento">
+        <ul class="saibai-inst-contact__list">
+          {%- if wa_url != blank -%}
+            <li class="saibai-inst-contact__item">
+              <span class="saibai-inst-contact__label">WhatsApp</span>
+              <a
+                class="saibai-inst-contact__link saibai-inst-contact__link--wa"
+                href="{{ wa_url }}"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {{- wa_label -}}
+              </a>
+              <p class="saibai-inst-contact__hint">Avisos de safra, ofertas e suporte rápido.</p>
+            </li>
+          {%- endif -%}
+
+          <li class="saibai-inst-contact__item">
+            <span class="saibai-inst-contact__label">E-mail</span>
+            <a class="saibai-inst-contact__link" href="mailto:{{ email }}">{{ email }}</a>
+            <p class="saibai-inst-contact__hint">Pedidos, trocas e parcerias comerciais.</p>
+          </li>
+
+          {%- if section.settings.phone != blank -%}
+            <li class="saibai-inst-contact__item">
+              <span class="saibai-inst-contact__label">Telefone</span>
+              <a class="saibai-inst-contact__link" href="tel:{{ section.settings.phone | replace: ' ', '' | replace: '(', '' | replace: ')', '' | replace: '-', '' }}">
+                {{- section.settings.phone -}}
+              </a>
+            </li>
+          {%- endif -%}
+
+          <li class="saibai-inst-contact__item">
+            <span class="saibai-inst-contact__label">Endereço</span>
+            <p class="saibai-inst-contact__text">
+              {{ addr1 }}<br>
+              {{ addr2 }}<br>
+              Brasil — Capital Nacional da Alcachofra
+            </p>
+          </li>
+
+          <li class="saibai-inst-contact__item">
+            <span class="saibai-inst-contact__label">Horário</span>
+            <p class="saibai-inst-contact__text">
+              {{- section.settings.hours | default: 'Segunda a sexta, 8h às 18h. Resposta por e-mail em até 24h úteis.' -}}
+            </p>
+          </li>
+        </ul>
+
+        <div class="saibai-inst-contact__map">
+          <iframe
+            title="Localização Empório Saibai em Piedade, SP"
+            src="{{ map_src }}"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </aside>
+
+      <div class="saibai-inst-contact__form-wrap">
+        <h3 class="saibai-inst-contact__form-title">
+          {{- section.settings.form_title | default: 'Envie uma mensagem' -}}
+        </h3>
+        <p class="saibai-inst-contact__form-lead">
+          {{- section.settings.form_lead | default: 'Preencha o formulário e nossa equipe retorna em breve.' -}}
+        </p>
+
+        {%- form 'contact', id: form_uid, class: 'saibai-inst-contact__form' -%}
+          {%- if form.posted_successfully? -%}
+            <div class="saibai-inst-contact__alert saibai-inst-contact__alert--success" tabindex="-1" autofocus>
+              <p>{{ 'content.form.post_success' | t }}</p>
+            </div>
+          {%- endif -%}
+
+          {%- if form.errors -%}
+            <div class="saibai-inst-contact__alert saibai-inst-contact__alert--error" tabindex="-1" autofocus>
+              <p>{{ 'content.form.error_heading' | t }}</p>
+              <ul>
+                {%- for field in form.errors -%}
+                  <li>{{ form.errors.messages[field] }}</li>
+                {%- endfor -%}
+              </ul>
+            </div>
+          {%- endif -%}
+
+          {%- unless form.posted_successfully? -%}
+            <div class="saibai-inst-contact__field">
+              <label class="saibai-inst-contact__field-label" for="{{ form_uid }}-name">Nome</label>
+              <input
+                type="text"
+                id="{{ form_uid }}-name"
+                class="saibai-inst-contact__input"
+                name="contact[name]"
+                autocomplete="name"
+                value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+                placeholder="Seu nome"
+                required
+              >
+            </div>
+
+            <div class="saibai-inst-contact__field">
+              <label class="saibai-inst-contact__field-label" for="{{ form_uid }}-email">
+                E-mail <span aria-hidden="true">*</span>
+              </label>
+              <input
+                type="email"
+                id="{{ form_uid }}-email"
+                class="saibai-inst-contact__input"
+                name="contact[email]"
+                autocomplete="email"
+                spellcheck="false"
+                autocapitalize="off"
+                value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                placeholder="seu@email.com"
+                aria-required="true"
+                required
+              >
+            </div>
+
+            <div class="saibai-inst-contact__field">
+              <label class="saibai-inst-contact__field-label" for="{{ form_uid }}-phone">Telefone</label>
+              <input
+                type="tel"
+                id="{{ form_uid }}-phone"
+                class="saibai-inst-contact__input"
+                name="contact[phone]"
+                autocomplete="tel"
+                value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+                placeholder="(00) 00000-0000"
+              >
+            </div>
+
+            <div class="saibai-inst-contact__field">
+              <label class="saibai-inst-contact__field-label" for="{{ form_uid }}-body">Mensagem</label>
+              <textarea
+                id="{{ form_uid }}-body"
+                class="saibai-inst-contact__input saibai-inst-contact__textarea"
+                name="contact[body]"
+                rows="6"
+                placeholder="Como podemos ajudar?"
+                required
+              >{{ form.body }}</textarea>
+            </div>
+
+            <button type="submit" class="saibai-inst-contact__submit">
+              {{- section.settings.button_label | default: 'Enviar mensagem' -}}
+            </button>
+          {%- endunless -%}
+        {%- endform -%}
+      </div>
+    </div>
+  </div>
+</section>

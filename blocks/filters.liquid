@@ -3,7 +3,8 @@
 
   @param {object} results - The search results object
   @param {number} results_size - The number of products in the search results
-  @param {object} [filters] - The filters object
+  @param {object} [paginate] - Pagination object passed to nested blocks
+  @param {number} [limit] - Product limit passed to nested blocks
 {%- enddoc -%}
 
 {%- liquid
@@ -179,6 +180,16 @@
       id="FacetSortForm"
       style="--pt: {{ padding_block_start }}px; --pb: {{ padding_block_end }}px;"
     >
+      {%- if template.name == 'search' -%}
+        <div class="saibai-plp-toolbar">
+          <h1 class="saibai-plp-toolbar__title">{{ 'general.search.title' | t }}</h1>
+          {%- if results_size > 0 -%}
+            <span class="saibai-plp-toolbar__count">
+              {{- 'content.results_with_count' | t: terms: results.terms, count: results_size -}}
+            </span>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
       <div class="sorting-wrapper flex items-center gap-lg">
         {%- if enable_grid_view -%}
           {% render 'switcher-grid',

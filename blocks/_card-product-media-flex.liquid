@@ -1,5 +1,4 @@
 {%- liquid
-  assign section_id = section.id
   assign bl_stts = block.settings
   assign card_product = bl_stts.product
   assign media_aspect_ratio = bl_stts.image_ratio
@@ -89,6 +88,13 @@
           </div>
         {%- endif -%}
       </div>
+      {%- if section.type == 'product-recommendations' -%}
+        {%- unless card_product.available == false -%}
+          <div class="saibai-plp-card-cta" aria-hidden="true">
+            <span class="saibai-plp-card-cta__label">Ver produto</span>
+          </div>
+        {%- endunless -%}
+      {%- endif -%}
       <div class="card--block-blocks">
         {% content_for 'blocks' %}
       </div>

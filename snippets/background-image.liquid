@@ -3,6 +3,8 @@
 
   @param {object} background_image - The background image
   @param {string} background_image_position - The background image position
+  @param {string} [section_id] - Section ID for scoped styles
+  @param {string} [block_id] - Block ID for scoped styles
   @param {number} [height] - The height of the background image
   @param {string} [image_behavior] - The image behavior
   @param {string} [ratio] - The ratio of the background image
@@ -28,6 +30,8 @@
 <{{ element }}
   class="background-image-container{% if background_image_position == 'fit' %} background-image-fit{% endif %}{% if image_behavior != 'none' %} animate--{{ image_behavior }}{% endif %}"
   style="{% if ratio %}--ratio: {{ ratio }};{% endif %}"
+  {% if section_id != blank %}data-section-id="{{ section_id }}"{% endif %}
+  {% if block_id != blank %}data-block-id="{{ block_id }}"{% endif %}
   data-speed="0.6"
   data-axis="y"
   data-range="25%"

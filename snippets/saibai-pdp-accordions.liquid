@@ -1,0 +1,169 @@
+{%- comment -%}
+  Empório Saibai — Abas PDP (dobra inferior)
+  Veltrus Growth & Technology | Shopify Partner ID 4969609
+{%- endcomment -%}
+{%- liquid
+  assign acc_product = product | default: closest.product
+  assign care_content = '<p>Mantenha refrigerado entre 2°C e 6°C. Consumir preferencialmente em até 5 dias após o recebimento. Para congelados, conservar a −18°C.</p>'
+  assign ship_summary = '<p class="saibai-pdp-tabs__lede">Entregamos em todo o Brasil com embalagem adequada para cada tipo de produto.</p><ul class="saibai-pdp-tabs__list"><li><strong>Processamento:</strong> até 2 dias úteis após a confirmação do pagamento.</li><li><strong>Prazo:</strong> varia por região e transportadora — calculado no checkout pelo seu CEP.</li><li><strong>Frete grátis:</strong> pedidos acima de R$ 280 (consulte regiões elegíveis no carrinho).</li><li><strong>Alcachofras frescas:</strong> embalagem térmica; refrigerar imediatamente e consumir em até 5 dias.</li><li><strong>Rastreamento:</strong> código enviado por e-mail após o despacho.</li></ul><p class="saibai-pdp-tabs__more"><a href="/pages/politica-de-entrega">Ver política completa de entrega</a></p>'
+  assign return_summary = '<p class="saibai-pdp-tabs__lede">Trocas e devoluções seguem o Código de Defesa do Consumidor e as condições abaixo.</p><ul class="saibai-pdp-tabs__list"><li><strong>Arrependimento:</strong> até 7 dias corridos após o recebimento, com produto lacrado e em condições de revenda (não perecíveis).</li><li><strong>Produtos frescos:</strong> em caso de dano ou problema no transporte, contato em até 24 horas com fotos do produto e da embalagem.</li><li><strong>Como solicitar:</strong> e-mail para <a href="mailto:contato@saibai.com.br">contato@saibai.com.br</a> com número do pedido, motivo e fotos.</li><li><strong>Reembolso:</strong> após aprovação, no mesmo meio de pagamento em até 10 dias úteis.</li></ul><p class="saibai-pdp-tabs__more"><a href="/pages/politica-de-troca">Ver política completa de troca e devolução</a></p>'
+
+  assign details_html = acc_product.description
+  if acc_product.metafields.custom.destaques.value == blank and acc_product.metafields.custom.highlights.value == blank and acc_product.description contains '<li'
+    assign ul_parts = acc_product.description | split: '</ul>'
+    if ul_parts.size > 1
+      assign details_html = ul_parts[1]
+      for ul_tail in ul_parts offset: 2
+        assign details_html = details_html | append: '</ul>' | append: ul_tail
+      endfor
+    endif
+  endif
+
+  assign details_plain = details_html | strip_html | strip
+  assign details_long = false
+  if details_plain.size > 380
+    assign details_long = true
+  endif
+-%}
+{%- if acc_product != blank -%}
+  <div class="block-product-tabs saibai-pdp-tabs w-full" data-saibai-pdp-tabs>
+    <div class="saibai-pdp-tabs__nav" role="tablist" aria-label="Informações do produto">
+      <button
+        type="button"
+        role="tab"
+        id="saibai-tab-detalhes"
+        class="saibai-pdp-tabs__tab is-active"
+        aria-selected="true"
+        aria-controls="saibai-panel-detalhes"
+        data-saibai-tab="detalhes"
+      >
+        Detalhes do produto
+      </button>
+      <button
+        type="button"
+        role="tab"
+        id="saibai-tab-conservacao"
+        class="saibai-pdp-tabs__tab"
+        aria-selected="false"
+        aria-controls="saibai-panel-conservacao"
+        data-saibai-tab="conservacao"
+        tabindex="-1"
+      >
+        Conservação
+      </button>
+      <button
+        type="button"
+        role="tab"
+        id="saibai-tab-troca"
+        class="saibai-pdp-tabs__tab"
+        aria-selected="false"
+        aria-controls="saibai-panel-troca"
+        data-saibai-tab="troca"
+        tabindex="-1"
+      >
+        Troca e devolução
+      </button>
+      <button
+        type="button"
+        role="tab"
+        id="saibai-tab-entrega"
+        class="saibai-pdp-tabs__tab"
+        aria-selected="false"
+        aria-controls="saibai-panel-entrega"
+        data-saibai-tab="entrega"
+        tabindex="-1"
+      >
+        Informações de entrega
+      </button>
+      <button
+        type="button"
+        role="tab"
+        id="saibai-tab-avaliacoes"
+        class="saibai-pdp-tabs__tab"
+        aria-selected="false"
+        aria-controls="saibai-panel-avaliacoes"
+        data-saibai-tab="avaliacoes"
+        tabindex="-1"
+        hidden
+      >
+        Avaliações
+      </button>
+    </div>
+
+    <div class="saibai-pdp-tabs__panels">
+      <div
+        role="tabpanel"
+        id="saibai-panel-detalhes"
+        class="saibai-pdp-tabs__panel is-active"
+        aria-labelledby="saibai-tab-detalhes"
+        data-saibai-panel="detalhes"
+      >
+        {%- if details_long -%}
+          <div class="saibai-pdp-tabs__summary saibai-pdp-tabs__summary--details">
+            <p>{{ details_plain | truncate: 380 }}</p>
+          </div>
+          <details class="saibai-pdp-details-expand">
+            <summary class="saibai-pdp-details-expand__summary">Ver descrição completa</summary>
+            <div class="rte saibai-pdp-details-expand__body">
+              {{ details_html }}
+            </div>
+          </details>
+        {%- else -%}
+          <div class="rte">
+            {{ details_html }}
+          </div>
+        {%- endif -%}
+      </div>
+
+      <div
+        role="tabpanel"
+        id="saibai-panel-conservacao"
+        class="saibai-pdp-tabs__panel"
+        aria-labelledby="saibai-tab-conservacao"
+        data-saibai-panel="conservacao"
+        hidden
+      >
+        <div class="rte">
+          {{ care_content }}
+        </div>
+      </div>
+
+      <div
+        role="tabpanel"
+        id="saibai-panel-troca"
+        class="saibai-pdp-tabs__panel"
+        aria-labelledby="saibai-tab-troca"
+        data-saibai-panel="troca"
+        hidden
+      >
+        <div class="rte saibai-pdp-tabs__summary">
+          {{ return_summary }}
+        </div>
+      </div>
+
+      <div
+        role="tabpanel"
+        id="saibai-panel-entrega"
+        class="saibai-pdp-tabs__panel"
+        aria-labelledby="saibai-tab-entrega"
+        data-saibai-panel="entrega"
+        hidden
+      >
+        <div class="rte saibai-pdp-tabs__summary">
+          {{ ship_summary }}
+        </div>
+      </div>
+
+      <div
+        role="tabpanel"
+        id="saibai-panel-avaliacoes"
+        class="saibai-pdp-tabs__panel"
+        aria-labelledby="saibai-tab-avaliacoes"
+        data-saibai-panel="avaliacoes"
+        hidden
+      >
+        {% render 'saibai-pdp-reviews-widget', product: acc_product %}
+      </div>
+    </div>
+  </div>
+{%- endif -%}

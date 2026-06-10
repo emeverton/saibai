@@ -1,0 +1,19 @@
+{%- comment -%}
+  Rótulo de menu Saibai — badge "Em breve" para safra fresca pausada.
+  Uso: {% render 'saibai-menu-label', title: link.title %}
+{%- endcomment -%}
+{%- liquid
+  assign label = title | default: ''
+  assign is_fresca_soon = false
+  if label contains 'Alcachofras Frescas'
+    assign is_fresca_soon = true
+  endif
+-%}
+{%- if is_fresca_soon and show_badge != false -%}
+  <span class="saibai-menu-label">
+    <span class="saibai-menu-label__text">Alcachofras Frescas</span>
+    <span class="saibai-nav-badge">Em breve</span>
+  </span>
+{%- else -%}
+  {{- label -}}
+{%- endif -%}

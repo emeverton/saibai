@@ -591,6 +591,23 @@
       "default": "fit-content"
     },
     {
+      "type": "select",
+      "id": "unit_mobile",
+      "label": "t:settings.unit",
+      "visible_if": "{{ block.settings.show_more_product_width_mobile == 'custom' }}",
+      "options": [
+        {
+          "value": "pixel",
+          "label": "t:options.pixel"
+        },
+        {
+          "value": "percent",
+          "label": "t:options.percent"
+        }
+      ],
+      "default": "percent"
+    },
+    {
       "type": "range",
       "id": "custom_width_mobile",
       "label": "t:settings.custom_width",

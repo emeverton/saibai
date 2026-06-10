@@ -1,0 +1,30 @@
+{%- comment -%}
+  Empório Saibai — Módulo LGPD (isolado)
+  Markup: snippets/saibai-consent-popup.liquid
+  CSS:    snippets/saibai-consent-popup-css.liquid
+  JS:     assets/saibai-consent-popup.js
+{%- endcomment -%}
+{%- unless request.design_mode -%}
+  {%- render 'saibai-consent-popup-css' -%}
+  {%- if template.name == 'index' -%}
+    <script type="text/saibai-defer" data-src="{{ 'saibai-consent-popup.js' | asset_url }}"></script>
+  {%- else -%}
+    <script src="{{ 'saibai-consent-popup.js' | asset_url }}" defer="defer"></script>
+  {%- endif -%}
+  {% render 'saibai-tracking-config' %}
+  {% render 'saibai-consent-popup' %}
+{%- endunless -%}
+
+{% schema %}
+{
+  "name": "Saibai LGPD",
+  "class": "section-saibai-consent",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Popup de cookies Saibai. Editar textos em snippets/saibai-consent-popup.liquid"
+    }
+  ]
+}
+{% endschema %}

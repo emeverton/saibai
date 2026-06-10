@@ -3,8 +3,9 @@
 {%- endcapture -%}
 
 <div
-  class="collection-header spacing-style"
+  class="collection-header spacing-style saibai-plp-header-fallback"
   style="  {% render 'spacing-style', settings: block.settings %}"
+  {% unless request.design_mode %}hidden{% endunless %}
 >
   {{ children }}
 </div>

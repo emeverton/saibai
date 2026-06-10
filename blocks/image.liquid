@@ -5,7 +5,7 @@
     when 'landscape'
       assign ratio = '16 / 9'
     when 'portrait'
-      assign ratio = '4 / 5'
+      assign ratio = '558 / 780'
     when 'adapt'
       assign ratio = block.settings.image.aspect_ratio
   endcase
@@ -19,7 +19,6 @@
   assign image_height_2x = image_height | times: 2
   assign image_width = block.settings.image.width
   assign image_width_2x = image_width | times: 2
-  assign image_aspect_ratio = block.settings.image.aspect_ratio
   assign image_position = block.settings.image_position
 %}
 

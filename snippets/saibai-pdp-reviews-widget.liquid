@@ -1,0 +1,27 @@
+{%- comment -%}
+  Empório Saibai — Widget de avaliações PDP (Judge.me + fallback)
+  Veltrus Growth & Technology | Shopify Partner ID 4969609
+{%- endcomment -%}
+{%- liquid
+  assign review_product = product | default: closest.product
+-%}
+{%- if review_product != blank -%}
+  <div id="saibai-pdp-avaliacoes" class="saibai-pdp-reviews-widget" data-saibai-pdp-reviews-widget data-saibai-reviews-widget>
+    <div class="saibai-pdp-reviews-widget__head">
+      {% render 'saibai-product-rating', product: review_product, class: 'saibai-pdp-reviews-widget__rating' %}
+    </div>
+
+    <div class="saibai-pdp-reviews-widget__empty" data-saibai-reviews-empty>
+      <p class="saibai-pdp-reviews-widget__empty-title">Ainda não há avaliações</p>
+      <p class="saibai-pdp-reviews-widget__empty-text">Seja o primeiro a compartilhar sua experiência com este produto Saibai.</p>
+    </div>
+
+    <div class="saibai-pdp-reviews-widget__app">
+      <div
+        class="jdgm-widget jdgm-review-widget"
+        data-id="{{ review_product.id }}"
+        data-product-id="{{ review_product.id }}"
+      ></div>
+    </div>
+  </div>
+{%- endif -%}

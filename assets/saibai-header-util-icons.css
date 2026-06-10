@@ -1,0 +1,82 @@
+/* Empório Saibai — Header icons
+ * Veltrus Growth & Technology
+ */
+
+/* ── Utilidades LP: ícones finos ── */
+html body .saibai-header__utilities {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  width: var(--sh-side-w);
+  height: var(--sh-util-h);
+  min-height: var(--sh-util-h);
+}
+
+html body .saibai-header a.saibai-header__icon-btn,
+html body .saibai-header button.saibai-header__icon-btn {
+  all: unset;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: var(--sh-icon);
+  height: var(--sh-icon);
+  min-width: var(--sh-icon);
+  min-height: var(--sh-icon);
+  color: var(--sh-text);
+  opacity: 0.82;
+  cursor: pointer;
+  text-decoration: none;
+  transition: opacity 0.25s ease;
+}
+
+html body .saibai-header a.saibai-header__icon-btn:hover,
+html body .saibai-header button.saibai-header__icon-btn:hover {
+  color: var(--sh-text);
+  opacity: 0.55;
+}
+
+html body .saibai-header .saibai-header__search-trigger .saibai-header__icon,
+html body .saibai-header .saibai-header__search-trigger .saibai-header__icon svg {
+  width: var(--sh-icon);
+  height: var(--sh-icon);
+  min-width: var(--sh-icon);
+  min-height: var(--sh-icon);
+  max-width: var(--sh-icon);
+  max-height: var(--sh-icon);
+}
+
+html body .saibai-header .saibai-header__icon--cart {
+  position: relative;
+  overflow: visible;
+}
+
+html body .saibai-header a.saibai-header__icon-btn--cart,
+html body .saibai-header button.saibai-header__icon-btn--cart {
+  overflow: visible;
+}
+
+html body .saibai-header__cart-count {
+  position: absolute;
+  top: -0.3125rem;
+  right: -0.4375rem;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0.875rem;
+  height: 0.875rem;
+  padding: 0 0.1rem;
+  border-radius: 999px;
+  background: var(--sh-accent);
+  color: #fff;
+  font-size: 0.5625rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0;
+  text-align: center;
+  pointer-events: none;
+  box-sizing: border-box;
+}

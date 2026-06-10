@@ -1,0 +1,217 @@
+/* Empório Saibai — Layout
+ * Veltrus Growth & Technology | Shopify Partner ID 4969609
+ * PROPRIEDADE INTELECTUAL PROTEGIDA
+ */
+
+/* ── Regra 7 — Controles slideshow ── */
+body.saibai-theme .saibai-slideshow-toggle,
+body.saibai-theme .slideshow__autoplay,
+body.saibai-theme .slider-buttons .slider-button {
+  opacity: 1;
+  visibility: visible;
+}
+
+body.saibai-theme .saibai-slideshow-toggle,
+body.saibai-theme .slideshow__autoplay button {
+  background: rgb(42 58 26 / 0.65);
+  color: var(--saibai-white);
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  transition: var(--saibai-transition);
+}
+
+body.saibai-theme .saibai-slideshow-toggle:hover,
+body.saibai-theme .slideshow__autoplay button:hover {
+  background: rgb(42 58 26 / 0.85);
+}
+
+body.saibai-theme .swiper-pagination-bullet-active,
+body.saibai-theme .pagination__item--current {
+  background: var(--saibai-primary) !important;
+  border-color: var(--saibai-primary) !important;
+}
+
+/* ── Regra 8 — Banner cover ── */
+body.saibai-theme .slideshow .media img,
+body.saibai-theme .banner__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ── Header + hero sem gap ── */
+body.saibai-theme.template-index .shopify-section.saibai-header-section {
+  margin-bottom: 0 !important;
+  border-bottom: 0 !important;
+}
+
+body.saibai-theme.template-index .content-for-layout > .shopify-section:first-child,
+body.saibai-theme.template-index #MainContent > .shopify-section:first-child {
+  margin-top: 0;
+}
+
+body.saibai-theme.template-index .content-for-layout > .shopify-section:first-child .spacing {
+  --p-spacing-t: 0px;
+  padding-top: 0;
+}
+
+body.saibai-theme .saibai-hero {
+  margin-top: 0;
+}
+
+/* body overflow-hidden não corta barra fixa */
+body.saibai-theme.overflow-hidden {
+  overflow-x: clip;
+  overflow-y: hidden;
+}
+
+body.saibai-theme.overflow-hidden #header-group,
+body.saibai-theme #header-group {
+  overflow: visible;
+}
+
+body.saibai-theme .shopify-section.section-announcement-bar {
+  overflow: visible;
+  padding: 0;
+  margin: 0;
+}
+
+/* ── Footer — Veltrus discreto ── */
+body.saibai-theme .saibai-credit {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.25rem 0.35rem;
+  font-size: 0.75rem;
+  color: rgb(42 58 26 / 0.45);
+  letter-spacing: 0.03em;
+}
+
+body.saibai-theme .saibai-credit__label {
+  color: rgb(42 58 26 / 0.4);
+}
+
+body.saibai-theme .saibai-credit__sep {
+  color: rgb(42 58 26 / 0.35);
+}
+
+body.saibai-theme .saibai-credit a,
+body.saibai-theme .saibai-credit__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: rgb(42 58 26 / 0.5);
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: var(--saibai-transition);
+}
+
+body.saibai-theme .saibai-credit a:hover,
+body.saibai-theme .saibai-credit__link:hover {
+  color: var(--saibai-primary);
+  text-decoration: underline;
+}
+
+body.saibai-theme .saibai-credit__badge-link {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgb(42 58 26 / 0.5);
+  text-decoration: none;
+  transition: var(--saibai-transition);
+}
+
+body.saibai-theme .saibai-credit__badge-link:hover {
+  color: var(--saibai-primary);
+  text-decoration: underline;
+}
+
+/* ── Contraste + overflow ── */
+body.saibai-theme .color-scheme-1,
+body.saibai-theme .color-scheme-2 {
+  --color-foreground: var(--saibai-dark);
+}
+
+body.saibai-theme #header-group,
+body.saibai-theme .section-announcement-bar {
+  overflow: visible;
+}
+
+/* Sticky + scroll reveal: saibai-header-base-mobile.css */
+
+/* Ultra-wide: contenção elegante */
+@media (min-width: 1920px) {
+  body.saibai-theme .page-width {
+    max-width: 1440px;
+    margin-inline: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.saibai-theme * {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Cupom no drawer do carrinho */
+.saibai-cart-coupon-hint {
+  margin-top: 1rem;
+  padding: 14px;
+  border: 1px solid #E2EDDA;
+  background: var(--saibai-bg, #F2F5EE);
+  text-align: left;
+}
+
+.saibai-cart-coupon-hint__label {
+  margin: 0 0 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--saibai-primary);
+}
+
+.saibai-cart-coupon-hint__row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.saibai-cart-coupon-hint__code {
+  flex: 1;
+  min-width: 120px;
+  padding: 8px 10px;
+  border: 1px dashed #C5DBA8;
+  background: #fff;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #2A3A1A;
+}
+
+.saibai-cart-coupon-hint__apply {
+  min-height: 40px !important;
+  padding: 0 14px !important;
+  background: var(--saibai-primary) !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 4px !important;
+  font-weight: 600 !important;
+}
+
+.saibai-cart-coupon-hint__apply:hover {
+  background: var(--saibai-primary-hover) !important;
+}
+
+.saibai-cart-coupon-hint__note {
+  margin: 8px 0 0;
+  font-size: 0.8125rem;
+  color: #4E6040;
+}

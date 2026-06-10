@@ -12,9 +12,7 @@
 
 {%- liquid
   assign f_media = card_product.featured_media
-  assign f_media_width = f_media.width
   assign media = card_product.media
-  assign media_width = media.width
 
   assign f_media_alt = f_media.alt | default: card_product.title | append: ' ' | append: f_media_alt | strip
   assign media_alt = media.alt | default: card_product.title | append: ' ' | append: media_alt | strip
@@ -76,7 +74,12 @@
       {%- endcase -%}
     {%- endif -%}
   </div>
-  <a href="{{ href_product_url }}" class="full-unstyled-link link-wrap z-2" aria-labelledby="MediaStandardCardNoMediaLink-{{ section_id }}-{{ card_product.id }}" id="MediaStandardCardNoMediaLink-{{ section_id }}-{{ card_product.id }}">
+  <a
+    href="{{ href_product_url }}"
+    class="full-unstyled-link link-wrap z-2"
+    id="MediaStandardCardNoMediaLink-{{ section_id }}-{{ card_product.id }}"
+    aria-label="{% render 'saibai-card-link-aria', card_product: card_product %}"
+  >
     <span class="visually-hidden">{{ card_product.title | escape }}</span>
   </a>
 </card-media>

@@ -30,7 +30,8 @@
     <div class="product-form__subtotal-text">
       <span>{{ 'content.product_subtotal' | t }}:</span>
       <strong data-subtotal-price>
-        {{ selected_variant.price | times: quantity_default | money }}
+        {%- assign subtotal_cents = selected_variant.price | times: quantity_default -%}
+        {% render 'saibai-money-br', amount: subtotal_cents %}
       </strong>
     </div>
   </div>

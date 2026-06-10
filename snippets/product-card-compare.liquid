@@ -1,16 +1,27 @@
+{%- doc -%}
+  Compare table row for a single product.
+
+  @param {object} product_card_product - Product to render in the compare table
+  @param {number} [serial] - Row index for product badges
+  @param {string} [media_aspect_ratio] - Image aspect ratio mode
+  @param {string} [portrait_aspect_ratio] - Portrait ratio override (legacy ajax template)
+  @param {boolean} [show_secondary_image] - Show hover secondary image
+  @param {boolean} [lazy_load] - Lazy load product images
+  @param {boolean} [loading] - Legacy alias for lazy_load from ajax template
+  @param {string} [sizes] - Image sizes attribute
+{%- enddoc -%}
+
 {%- liquid
   assign current_variant = product_card_product.selected_or_first_available_variant
-  assign variantCount = product_card_product.variants | size
+  assign variant_count = product_card_product.variants | size
+  if media_aspect_ratio == blank and portrait_aspect_ratio != blank
+    assign media_aspect_ratio = 'portrait'
+  endif
   assign product_swatch_option = settings.swatch | downcase
-  assign isColor = false
   assign variant_img = ''
-  assign media_size = settings.product_block_image_ratio
   for option in product_card_product.options_with_values
     assign option_name = option.name | downcase
     if product_swatch_option contains option_name
-      assign isColor = true
-      assign index = forloop.index0
-      assign position = forloop.index | minus: 1
       assign variant_selected = option.selected_value
       for variant in product_card_product.variants limit: 1
         if variant.image != null
@@ -19,7 +30,6 @@
       endfor
       break
     else
-      assign position = 0
       assign variant_selected = nil
     endif
   endfor
@@ -28,7 +38,7 @@
     assign new_badge = false
     assign new_badge_type = settings.new_badge_type
     if new_badge_type == 'auto'
-      assign date_start = card_product.created_at | date: '%s'
+      assign date_start = product_card_product.created_at | date: '%s'
       assign date_now = 'now' | date: '%s'
       assign date_minus = date_now | minus: date_start
       assign date_difference = date_minus | divided_by: 86400
@@ -37,7 +47,7 @@
         assign new_badge = true
       endif
     else
-      for tag in card_product.tags
+      for tag in product_card_product.tags
         assign tag_handle = tag | handle
         if tag_handle == 'new'
           assign new_badge = true
@@ -48,7 +58,7 @@
 
   if settings.show_custom_badge
     assign custom_badge = false
-    assign custom_badge_text = card_product.metafields.custom.custom_badge
+    assign custom_badge_text = product_card_product.metafields.custom.custom_badge
 
     if custom_badge_text
       assign custom_badge = true
@@ -157,7 +167,12 @@
       assign desc = product_card_product.description
       assign word_number = 30
     -%}
-    {% if product_card_product.metafields.c_f.short_description %}
+    {% if product_card_product.metafields.custom.short_description != blank %}
+      {% liquid
+        assign desc = product_card_product.metafields.custom.short_description | strip_html
+        assign word_number = 100000
+      -%}
+    {% elsif product_card_product.metafields.c_f.short_description %}
       {%- liquid
         assign desc = product_card_product.metafields.c_f.short_description | strip_html
         assign word_number = 100000
@@ -192,7 +207,7 @@
     {{ product_card_product.type | escape }}
   </td>
   <td class="{{ class_table_item }}">
-    {%- if variantCount > 1 and product_card_product.variants[0].title != 'Default Title' -%}
+    {%- if variant_count > 1 and product_card_product.variants[0].title != 'Default Title' -%}
       {%- for option in product_card_product.options_with_values -%}
         <div class="compareTable-option">
           <div class="compareTable-optionLabel font-bold capitalize v-a-top">

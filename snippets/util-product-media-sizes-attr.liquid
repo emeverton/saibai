@@ -17,13 +17,13 @@
 {%- enddoc -%}
 
 {%- liquid
-  assign block_settings = block.settings
   # Constants
   assign page_margin = '40px'
+  assign columns_gap_setting = block.settings.columns_gap | default: section.settings.columns_gap | default: 0
   # Section gap divided by 2 (used for single column layouts)
-  assign gap_half = section.settings.columns_gap | default: 0 | divided_by: 2 | append: 'px'
+  assign gap_half = columns_gap_setting | divided_by: 2 | append: 'px'
   # Section gap divided by 4 (used for two column layouts where each column gets half of the half gap)
-  assign gap_quarter = section.settings.columns_gap | default: 0 | divided_by: 4 | append: 'px'
+  assign gap_quarter = columns_gap_setting | divided_by: 4 | append: 'px'
   # Image gap divided by 2 (space between images in grid)
 
   assign is_single_column = is_single_column | default: false

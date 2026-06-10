@@ -1,0 +1,90 @@
+{%- comment -%} Markup do módulo LGPD — assets carregados em sections/saibai-consent-popup.liquid {%- endcomment -%}
+<div
+  class="saibai-consent"
+  id="SaibaiConsent"
+  data-saibai-consent
+  hidden
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="SaibaiConsentTitle"
+  aria-hidden="true"
+>
+  <div class="saibai-consent__overlay" aria-hidden="true"></div>
+  <div class="saibai-consent__dialog">
+    <div class="saibai-consent__logo">
+      {% render 'saibai-logo', width: 168, class: 'saibai-consent__logo-img' %}
+    </div>
+
+    <div class="saibai-consent__view" data-saibai-consent-main>
+      <h2 class="saibai-consent__title" id="SaibaiConsentTitle">Valorizamos sua privacidade</h2>
+
+      <div class="saibai-consent__body">
+        <p>
+          Utilizamos cookies essenciais para o funcionamento da loja.
+          Com sua autorização, o Google Analytics e o Meta Pixel nos ajudam a medir visitas e campanhas.
+          Você pode aceitar, recusar cookies opcionais ou ajustar suas preferências a qualquer momento.
+        </p>
+        <p class="saibai-consent__more">
+          <a href="/pages/politica-de-privacidade">Mais informações</a>
+        </p>
+      </div>
+
+      <div class="saibai-consent__actions">
+        <button type="button" class="saibai-consent__btn saibai-consent__btn--solid" data-saibai-consent-prefs-open>
+          Preferências
+        </button>
+        <button type="button" class="saibai-consent__btn saibai-consent__btn--solid" data-saibai-consent-reject>
+          Recusar cookies
+        </button>
+        <button type="button" class="saibai-consent__btn saibai-consent__btn--solid" data-saibai-consent-accept>
+          Aceitar todos
+        </button>
+      </div>
+    </div>
+
+    <div class="saibai-consent__view" data-saibai-consent-prefs hidden>
+      <h2 class="saibai-consent__title">Preferências de cookies</h2>
+
+      <ul class="saibai-consent__prefs list-unstyled">
+        <li class="saibai-consent__pref">
+          <div class="saibai-consent__pref-copy">
+            <strong>Essenciais</strong>
+            <span>Necessários para o funcionamento da loja (carrinho, checkout, segurança).</span>
+          </div>
+          <span class="saibai-consent__pref-badge">Sempre ativos</span>
+        </li>
+        <li class="saibai-consent__pref">
+          <div class="saibai-consent__pref-copy">
+            <strong>Análise</strong>
+            <span>Google Analytics (canal Google e YouTube), páginas visitadas e desempenho da loja.</span>
+          </div>
+          <label class="saibai-consent__toggle">
+            <input type="checkbox" data-saibai-consent-analytics>
+            <span class="saibai-consent__toggle-ui" aria-hidden="true"></span>
+            <span class="visually-hidden">Cookies de análise</span>
+          </label>
+        </li>
+        <li class="saibai-consent__pref">
+          <div class="saibai-consent__pref-copy">
+            <strong>Marketing</strong>
+            <span>Meta Pixel (canal Facebook e Instagram), anúncios e remarketing, somente com consentimento.</span>
+          </div>
+          <label class="saibai-consent__toggle">
+            <input type="checkbox" data-saibai-consent-marketing>
+            <span class="saibai-consent__toggle-ui" aria-hidden="true"></span>
+            <span class="visually-hidden">Cookies de marketing</span>
+          </label>
+        </li>
+      </ul>
+
+      <div class="saibai-consent__actions saibai-consent__actions--prefs">
+        <button type="button" class="saibai-consent__btn saibai-consent__btn--ghost" data-saibai-consent-prefs-back>
+          Voltar
+        </button>
+        <button type="button" class="saibai-consent__btn saibai-consent__btn--solid" data-saibai-consent-save>
+          Salvar preferências
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

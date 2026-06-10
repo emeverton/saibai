@@ -1,0 +1,165 @@
+{%- comment -%}
+  Empório Saibai — Painel mega menu (um por item com filhos)
+  CSS/JS: assets/saibai-header.*
+{%- endcomment -%}
+{%- liquid
+  assign panel_id = 'SaibaiMega-' | append: link.handle
+  assign default_img = 'saibai-inst-harvest.webp'
+  assign default_title = link.title
+  assign default_url = link.url
+  assign default_cta = 'Explorar'
+
+  if link.title contains 'Sobre'
+    assign default_img = 'saibai-farm-harvest.webp'
+    assign default_cta = 'Conhecer a fazenda'
+  elsif link.title contains 'Produto'
+    assign default_img = 'saibai-inst-conserva.webp'
+    assign default_cta = 'Ver coleção'
+  endif
+-%}
+<div
+  class="saibai-mega__panel"
+  id="{{ panel_id }}"
+  data-saibai-mega-panel
+  data-panel-handle="{{ link.handle }}"
+  role="dialog"
+  aria-modal="true"
+  aria-label="{{ link.title }}"
+  hidden
+>
+  <button type="button" class="saibai-mega__close" data-saibai-mega-close aria-label="Fechar menu">
+    <span aria-hidden="true">{{- 'icon-close.svg' | inline_asset_content -}}</span>
+  </button>
+
+  <div class="saibai-mega__grid">
+    <div class="saibai-mega__sidebar">
+      <p class="saibai-mega__sidebar-label">{{ link.title }}</p>
+      <ul class="saibai-mega__sidebar-list" role="list">
+        {%- for childlink in link.links -%}
+          {%- liquid
+            assign fresca_soon = false
+            if childlink.title contains 'Alcachofras Frescas'
+              assign fresca_soon = true
+            endif
+
+            assign item_img = default_img
+            assign item_cta = default_cta
+            assign item_title = childlink.title
+            assign item_url = childlink.url
+            assign child_key = childlink.title | downcase
+
+            if child_key contains 'conserva'
+              assign item_img = 'saibai-inst-conserva.webp'
+              assign item_cta = 'Ver conservas'
+            elsif child_key contains 'flor'
+              assign item_img = 'saibai-inst-flores.webp'
+              assign item_cta = 'Ver flores'
+            elsif child_key contains 'fruta'
+              assign item_img = 'saibai-inst-variedades.webp'
+              assign item_cta = 'Ver frutas'
+            elsif child_key contains 'fresca'
+              assign item_img = 'saibai-feature-fresca.webp'
+              assign item_cta = 'Safra 2026'
+            elsif child_key contains 'chaveiro'
+              assign item_img = 'saibai-inst-planta.webp'
+              assign item_cta = 'Ver acessórios'
+            elsif child_key contains 'história' or child_key contains 'historia'
+              assign item_img = 'saibai-inst-campo.webp'
+              assign item_cta = 'Nossa história'
+            elsif child_key contains 'fazenda'
+              assign item_img = 'saibai-farm-harvest.webp'
+              assign item_cta = 'A fazenda'
+            elsif child_key contains 'conquista'
+              assign item_img = 'saibai-inst-harvest.webp'
+              assign item_cta = 'Conquistas'
+            endif
+          -%}
+          <li class="saibai-mega__sidebar-item">
+            {%- if fresca_soon -%}
+              <span
+                class="saibai-mega__sidebar-link is-soon"
+                data-saibai-mega-item
+                data-image="{{ item_img | asset_url }}"
+                data-title="{{ item_title | escape }}"
+                data-cta="{{ item_cta | escape }}"
+                data-url="{{ item_url }}"
+                aria-disabled="true"
+              >
+                <span class="saibai-mega__sidebar-text">{% render 'saibai-menu-label', title: childlink.title %}</span>
+                <span class="saibai-mega__chevron" aria-hidden="true"></span>
+              </span>
+            {%- else -%}
+              <a
+                href="{{ childlink.url }}"
+                class="saibai-mega__sidebar-link{% if childlink.active %} is-active{% endif %}{% if forloop.first %} is-current{% endif %}"
+                data-saibai-mega-item
+                data-image="{{ item_img | asset_url }}"
+                data-title="{{ item_title | escape }}"
+                data-cta="{{ item_cta | escape }}"
+                data-url="{{ childlink.url }}"
+                {% if childlink.current %}aria-current="page"{% endif %}
+              >
+                <span class="saibai-mega__sidebar-text">{{ childlink.title }}</span>
+                <span class="saibai-mega__chevron" aria-hidden="true"></span>
+              </a>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+
+    <div class="saibai-mega__center">
+      <ul class="saibai-mega__center-list" role="list">
+        {%- for childlink in link.links -%}
+          {%- liquid
+            assign view_all = false
+            assign fresca_soon = false
+            if childlink.title contains 'Ver todos'
+              assign view_all = true
+            endif
+            if childlink.title contains 'Alcachofras Frescas'
+              assign fresca_soon = true
+            endif
+          -%}
+          <li class="saibai-mega__center-item{% if view_all %} saibai-mega__center-item--view-all{% endif %}">
+            {%- if fresca_soon -%}
+              <span class="saibai-mega__center-link is-soon" aria-disabled="true">
+                {% render 'saibai-menu-label', title: childlink.title %}
+              </span>
+            {%- else -%}
+              <a
+                href="{{ childlink.url }}"
+                class="saibai-mega__center-link{% if view_all %} is-view-all{% endif %}{% if childlink.active %} is-active{% endif %}"
+                {% if childlink.current %}aria-current="page"{% endif %}
+              >
+                {{ childlink.title }}
+              </a>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+
+    <div class="saibai-mega__feature">
+      <a
+        href="{{ default_url }}"
+        class="saibai-mega__feature-link"
+        data-saibai-mega-feature-link
+      >
+        <img
+          src="{{ default_img | asset_url }}"
+          alt="{{ default_title | escape }}"
+          class="saibai-mega__feature-img"
+          data-saibai-mega-feature-img
+          width="400"
+          height="600"
+          loading="lazy"
+        >
+        <div class="saibai-mega__feature-info">
+          <p class="saibai-mega__feature-title" data-saibai-mega-feature-title>{{ default_title }}</p>
+          <span class="saibai-mega__feature-cta" data-saibai-mega-feature-cta>{{ default_cta }}</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,228 @@
+/* Empório Saibai — Footer bar
+ * Veltrus Growth & Technology
+ */
+
+/* ── Bottom bar (cream KV) ── */
+html body .saibai-ft__bar {
+  background: var(--ft-cream);
+  color: var(--ft-dark);
+  border-top: 0;
+}
+
+html body .saibai-ft__shell--bar {
+  padding-block: clamp(1.5rem, 3vw, 2rem) clamp(1.25rem, 3vw, 1.75rem);
+}
+
+html body .saibai-ft__shell--bar::before {
+  content: '';
+  display: block;
+  width: 100%;
+  border-top: 1px solid var(--ft-rule);
+  margin-bottom: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+
+html body .saibai-ft__bar-inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+html body .saibai-ft__locale {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-self: start;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: var(--ft-dark);
+}
+
+html body .saibai-ft__locale-icon {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
+
+html body .saibai-ft__logo-link {
+  display: inline-flex;
+  justify-content: center;
+  line-height: 0;
+  transition: opacity 0.2s ease;
+}
+
+html body .saibai-ft__logo-link:hover {
+  opacity: 0.8;
+}
+
+html body .saibai-ft__logo {
+  width: clamp(7rem, 12vw, 10rem);
+  height: auto;
+}
+
+html body .saibai-ft__social {
+  display: flex;
+  justify-content: flex-end;
+  justify-self: end;
+  flex-wrap: wrap;
+  gap: 1rem 1.25rem;
+}
+
+html body .saibai-ft__social a {
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: var(--ft-dark);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+html body .saibai-ft__social a:hover {
+  color: var(--ft-terra);
+  opacity: 1;
+}
+
+html body .saibai-ft__meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.875rem;
+  width: 100%;
+  margin-top: clamp(1.25rem, 2.5vw, 1.75rem);
+  padding: 0;
+  text-align: center;
+}
+
+html body .saibai-ft__copy {
+  margin: 0;
+  max-width: 52rem;
+  font-size: 0.6875rem;
+  line-height: 1.6;
+  letter-spacing: 0.03em;
+  color: var(--ft-text-muted);
+}
+
+html body .saibai-ft__copy a {
+  color: inherit;
+  text-decoration: none;
+}
+
+html body .saibai-ft__copy a:hover {
+  text-decoration: underline;
+}
+
+html body .saibai-ft__payments {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+html body .saibai-ft__payment-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1.5rem;
+}
+
+html body .saibai-ft__payment-icon {
+  height: 1.25rem;
+  width: auto;
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
+
+html body .saibai-ft__payment-icon svg {
+  height: 100%;
+  width: auto;
+  display: block;
+}
+
+html body .saibai-ft__payments--fallback .saibai-payment-icons {
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+html body .saibai-ft__payments--fallback .saibai-payment-icons__item svg {
+  height: 1.25rem;
+  width: auto;
+  opacity: 1;
+  visibility: visible;
+}
+
+html body .saibai-ft__credit .saibai-credit {
+  font-size: 0.6875rem;
+  color: rgb(42 58 26 / 0.5);
+}
+
+html body .saibai-ft__credit .saibai-credit__link {
+  color: inherit;
+}
+
+html body .saibai-ft__credit .saibai-credit__link:hover {
+  color: var(--ft-terra);
+}
+
+html body .saibai-ft__credit .saibai-credit__badge-link {
+  color: rgb(42 58 26 / 0.45);
+}
+
+html body .saibai-ft__credit .saibai-credit__badge-link:hover {
+  color: var(--ft-terra);
+}
+
+/* Hide legacy Veltrus footer when Saibai footer is active */
+html body .shopify-section.section-footer {
+  display: none !important;
+}
+
+html body .shopify-section-group-footer-group .footer-bottom {
+  display: none !important;
+}
+
+@media (max-width: 1199px) {
+  html body .saibai-ft__cols {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 989px) {
+  html body .saibai-ft__inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  html body .saibai-ft__cols {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  html body .saibai-ft__bar-inner {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+
+  html body .saibai-ft__social {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 549px) {
+  html body .saibai-ft__cols {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html body .saibai-ft__submit,
+  html body .saibai-ft__list a,
+  html body .saibai-ft__logo-link,
+  html body .saibai-ft__social a {
+    transition: none;
+  }
+}

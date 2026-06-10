@@ -5,6 +5,7 @@
   @param {object} paginate - Pagination object
   @param {object} products - Array of product objects
   @param {string} [title] - Header of the collection or search results
+  @param {string} [data-view] - Grid view data attribute value
   @param {string} children - List or grid of product cards
 {%- enddoc -%}
 
@@ -124,7 +125,7 @@
         data-infinite-scroll="true"
         id="product-grid"
         data-id="{{ section.id }}"
-        data-view="{{ columns_desktop }}"
+        data-view="{{ data-view | default: columns_desktop }}"
       >
         {{ children }}
       </ul>

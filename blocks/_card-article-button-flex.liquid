@@ -16,7 +16,7 @@
   {%- endif -%}
   {%- if block.settings.icon != 'none' -%}
     {% liquid
-      assign icon_block_class = 'icon-block__media icon-block_' | append: block_settings.icon | append: ' icon-block-' | append: block.id
+      assign icon_block_class = 'icon-block__media icon-block_' | append: block.settings.icon | append: ' icon-block-' | append: block.id
     %}
     <div class="svg-wrapper" style="--icon-size: {{ block.settings.icon_width | append: 'px' }}; --ml: 8px;">
       <svg

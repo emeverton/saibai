@@ -1,0 +1,50 @@
+/* Empório Saibai — Cards grid responsive
+ * Veltrus Growth & Technology | Shopify Partner ID 4969609
+ * PROPRIEDADE INTELECTUAL PROTEGIDA
+ */
+
+/* Mobile: 1,5 card peek */
+@media (max-width: 767px) {
+  body.saibai-theme .collection .product-grid.product-grid--grid,
+  body.saibai-theme .search-results .product-grid.product-grid--grid,
+  body.saibai-theme .product-grid:not(.swiper-wrapper) {
+    display: flex !important;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 12px;
+    padding-inline: 16px 24px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  body.saibai-theme .collection .product-grid__item,
+  body.saibai-theme .search-results .product-grid__item,
+  body.saibai-theme .product-grid:not(.swiper-wrapper) .grid__item {
+    flex: 0 0 calc(100vw / 1.5 - 20px);
+    max-width: 280px;
+    scroll-snap-align: start;
+    min-width: 0;
+  }
+}
+
+/* Tablet: 2 colunas | Desktop: 4 colunas */
+@media (min-width: 768px) and (max-width: 1279px) {
+  body.saibai-theme .collection .product-grid.product-grid--grid,
+  body.saibai-theme .search-results .product-grid.product-grid--grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    overflow: visible;
+  }
+}
+
+@media (min-width: 1280px) {
+  body.saibai-theme .collection .product-grid.product-grid--grid,
+  body.saibai-theme .search-results .product-grid.product-grid--grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    overflow: visible;
+  }
+}

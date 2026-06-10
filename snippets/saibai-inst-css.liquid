@@ -1,0 +1,24 @@
+{%- comment -%} Empório Saibai — institucional modular (substitui saibai-inst.css) {%- endcomment -%}
+{%- capture inst_list -%}saibai-inst-base.css,saibai-inst-hero.css{%- endcapture -%}
+{%- if request.page_type == 'page' -%}
+  {%- case page.handle -%}
+    {%- when 'historia' -%}
+      {%- capture inst_list -%}{{ inst_list }},saibai-inst-mvv.css,saibai-inst-values.css,saibai-inst-timeline.css,saibai-inst-split.css,saibai-inst-hub.css{%- endcapture -%}
+    {%- when 'sobre' -%}
+      {%- capture inst_list -%}{{ inst_list }},saibai-inst-stats.css,saibai-inst-split.css,saibai-inst-hub.css{%- endcapture -%}
+    {%- when 'fazenda', 'conquistas' -%}
+      {%- capture inst_list -%}{{ inst_list }},saibai-inst-stats.css,saibai-inst-cases.css,saibai-inst-split.css,saibai-inst-hub.css{%- endcapture -%}
+    {%- when 'contato', 'contact' -%}
+      {%- capture inst_list -%}{{ inst_list }},saibai-inst-contact.css,saibai-inst-hub.css{%- endcapture -%}
+  {%- endcase -%}
+{%- elsif request.page_type == 'blog' -%}
+  {%- capture inst_list -%}{{ inst_list }},saibai-inst-blog.css,saibai-inst-hub.css{%- endcapture -%}
+{%- elsif request.page_type == 'article' -%}
+  {%- capture inst_list -%}{{ inst_list }},saibai-inst-article.css,saibai-inst-hub.css{%- endcapture -%}
+{%- elsif template.name == 'collection' -%}
+  {%- comment -%} PLP hero usa só base + hero (section saibai-plp-hero) {%- endcomment -%}
+{%- endif -%}
+{%- assign inst_files = inst_list | split: ',' -%}
+{%- for file in inst_files -%}
+  {{ file | asset_url | stylesheet_tag }}
+{%- endfor -%}

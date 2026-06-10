@@ -12,7 +12,7 @@
     href="{{ href_product_url }}"
     id="StandardCardNoMediaLink-{{ section_id }}-{{ card_product.id }}"
     class="full-unstyled-link card-title-change"
-    aria-labelledby="StandardCardNoMediaLink-{{ section_id }}-{{ card_product.id }} NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
+    aria-label="{% render 'saibai-card-link-aria', card_product: card_product %}"
   >
     {% render 'text',
       fallback_text: card_product.title,

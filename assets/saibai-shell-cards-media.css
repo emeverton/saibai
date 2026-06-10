@@ -1,0 +1,103 @@
+/* Empório Saibai — Cards media
+ * Veltrus Growth & Technology
+ */
+
+/* Empório Saibai — Cards base
+ * Veltrus Growth & Technology | Shopify Partner ID 4969609
+ * PROPRIEDADE INTELECTUAL PROTEGIDA
+ */
+
+/* ── Regra 6 — Cards produto C-level (ref LG · Saibai KV) ── */
+body.saibai-theme .product-card-wrapper.card-wrapper,
+body.saibai-theme .saibai-product-card.card-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #fff;
+  border: 1px solid rgb(42 58 26 / 0.08);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 2px 14px rgb(42 58 26 / 0.04);
+  transition: border-color 0.22s ease, box-shadow 0.22s ease;
+}
+
+@media (hover: hover) {
+  body.saibai-theme .product-card-wrapper.card-wrapper:hover,
+  body.saibai-theme .saibai-product-card.card-wrapper:hover {
+    border-color: rgb(138 190 10 / 0.22);
+    box-shadow: 0 14px 36px rgb(42 58 26 / 0.08);
+  }
+}
+
+body.saibai-theme .product-card-wrapper > .card,
+body.saibai-theme .saibai-product-card > .card {
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 1 auto;
+  height: 100%;
+  min-height: 100%;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  gap: 0 !important;
+}
+
+/* Imagem — flush top · quadrado · cover */
+body.saibai-theme .product-card-wrapper .card--block-media,
+body.saibai-theme .saibai-product-card .card__inner {
+  flex: 0 0 auto;
+  width: 100%;
+  margin: 0;
+  border-radius: 0;
+  overflow: hidden;
+  background: var(--saibai-bg, #F2F5EE);
+}
+
+body.saibai-theme .product-card-wrapper .card--block-media .ratio,
+body.saibai-theme .saibai-product-card .card__inner.ratio {
+  display: block;
+  aspect-ratio: var(--saibai-tile-aspect, 558 / 780);
+  width: 100%;
+  height: auto;
+}
+
+body.saibai-theme .product-card-wrapper .card--block-media .ratio::before,
+body.saibai-theme .saibai-product-card .card__inner.ratio::before {
+  display: none !important;
+  content: none !important;
+  padding: 0 !important;
+}
+
+body.saibai-theme .product-card-wrapper .card__media,
+body.saibai-theme .product-card-wrapper card-media.card__media,
+body.saibai-theme .saibai-product-card .card__inner .card__media,
+body.saibai-theme .saibai-product-card .card .media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto;
+  overflow: hidden;
+  background: var(--saibai-bg, #F2F5EE);
+}
+
+body.saibai-theme .product-card-wrapper .card__media .media,
+body.saibai-theme .product-card-wrapper .card__media img,
+body.saibai-theme .saibai-product-card .card__media img,
+body.saibai-theme .saibai-product-card .media img {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: auto !important;
+  height: auto !important;
+  max-width: var(--saibai-tile-img-max-w, 78%) !important;
+  max-height: var(--saibai-tile-img-max-h, 82%) !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+  background: transparent !important;
+}

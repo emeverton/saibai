@@ -1,0 +1,52 @@
+{%- comment -%} Card LP — tile 5:7 + info com lift no hover {%- endcomment -%}
+<article class="saibai-prod__card">
+  <div class="saibai-prod__tile">
+    <a href="{{ product.url }}" class="saibai-prod__media">
+      <span class="saibai-prod__media-inner">
+        {%- if product.featured_media -%}
+          {%- assign product_img_alt = product.featured_media.alt | default: product.title | escape -%}
+          {%- assign hover_media = product.media[1] | default: nil -%}
+          {{
+            product.featured_media
+            | image_url: width: 780
+            | image_tag:
+              loading: 'lazy',
+              widths: '340, 480, 600, 780',
+              sizes: '(min-width: 990px) 340px, (min-width: 550px) 42vw, 72vw',
+              class: 'saibai-prod__img saibai-prod__img--main',
+              alt: product_img_alt
+          }}
+          {%- if hover_media != blank and hover_media.id != product.featured_media.id -%}
+            {%- assign hover_alt = hover_media.alt | default: product.title | escape -%}
+            {{
+              hover_media
+              | image_url: width: 780
+              | image_tag:
+                loading: 'lazy',
+                widths: '340, 480, 600, 780',
+                sizes: '(min-width: 990px) 340px, (min-width: 550px) 42vw, 72vw',
+                class: 'saibai-prod__img saibai-prod__img--hover',
+                alt: hover_alt
+            }}
+          {%- endif -%}
+        {%- else -%}
+          {{ 'product-apparel-2' | placeholder_svg_tag: 'saibai-prod__placeholder' }}
+        {%- endif -%}
+      </span>
+    </a>
+    <div class="saibai-prod__info">
+      <h3 class="saibai-prod__name">
+        <a href="{{ product.url }}">{{ product.title | escape }}</a>
+      </h3>
+      {%- if product.type != blank -%}
+        <p class="saibai-prod__meta">{{ product.type }}</p>
+      {%- endif -%}
+      <p class="saibai-prod__price">
+        {%- if product.compare_at_price > product.price -%}
+          <span class="saibai-prod__compare">{{ product.compare_at_price | money }}</span>
+        {%- endif -%}
+        <span class="saibai-prod__amount">{{ product.price | money }}</span>
+      </p>
+    </div>
+  </div>
+</article>

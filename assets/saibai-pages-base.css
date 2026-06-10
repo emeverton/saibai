@@ -1,0 +1,68 @@
+/* Empório Saibai — Base
+ * Veltrus Growth & Technology | Shopify Partner ID 4969609
+ * PROPRIEDADE INTELECTUAL PROTEGIDA
+ */
+
+/* ── Base por template ── */
+body.saibai-theme {
+  background: var(--saibai-bg, var(--saibai-bg, #F2F5EE));
+  color: #2A3A1A;
+}
+
+body.saibai-theme.template-collection .collection-wrapper,
+body.saibai-theme.template-search .template-search,
+body.saibai-theme.template-product .product,
+body.saibai-theme.template-cart .cart,
+body.saibai-theme.template-page .page-width,
+body.saibai-theme.template-article .article-template,
+body.saibai-theme.template-blog .blog,
+body.saibai-theme.template-404 .template-404,
+body.saibai-theme.template-customers-login .customer,
+body.saibai-theme.template-customers-register .customer,
+body.saibai-theme.template-customers-account .customer,
+body.saibai-theme.template-customers-order .customer,
+body.saibai-theme.template-list-collections .collection-list {
+  background: var(--saibai-bg, var(--saibai-bg, #F2F5EE));
+  color: #2A3A1A;
+}
+
+body.saibai-theme.template-product .product__title,
+body.saibai-theme.template-collection h1:not(.saibai-inst-hero__title),
+body.saibai-theme.template-page h1:not(.saibai-inst-hero__title),
+body.saibai-theme.template-article h1:not(.saibai-inst-hero__title),
+body.saibai-theme.template-blog h1:not(.saibai-inst-hero__title),
+body.saibai-theme.template-page .saibai-inst-hero__title,
+body.saibai-theme.template-article .saibai-inst-hero__title,
+body.saibai-theme.template-blog .saibai-inst-hero__title,
+body.saibai-theme.template-collection .saibai-inst-hero__title {
+  color: #2A3A1A;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+body.saibai-theme.template-cart .cart__empty-text,
+body.saibai-theme.template-404 .title {
+  color: #2A3A1A;
+}
+
+body.saibai-theme .password-main,
+body.saibai-theme.template-password .password-content {
+  background: var(--saibai-bg, var(--saibai-bg, #F2F5EE));
+  color: #2A3A1A;
+}
+
+body.saibai-theme .password-main .field__input {
+  border-color: rgb(42 58 26 / 0.2);
+  background: #fff;
+}
+
+body.saibai-theme .password-main .button {
+  background: #2A3A1A;
+  border-color: #2A3A1A;
+}
+
+body.saibai-theme .password-main .button:hover {
+  background: #384E28;
+  border-color: #384E28;
+}

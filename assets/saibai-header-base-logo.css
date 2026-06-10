@@ -1,0 +1,55 @@
+/* Empório Saibai — Header logo
+ * Veltrus Growth & Technology
+ */
+
+
+
+/* ── Logo row LP ── */
+html body .saibai-header__logo-row {
+  display: flex;
+  justify-content: center;
+  padding: var(--sh-logo-pad-top) var(--sh-pad) var(--sh-logo-pad-bottom);
+}
+
+html body .saibai-header__logo-link {
+  display: inline-flex;
+  line-height: 0;
+  text-decoration: none;
+}
+
+html body .saibai-header__logo:not(.saibai-logo--wordmark-mono),
+html body .saibai-header .saibai-logo:not(.saibai-logo--wordmark-mono) {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: min(var(--sh-logo-size, var(--sh-logo-cap)), var(--sh-logo-cap));
+  max-height: var(--sh-logo-h, 52px);
+  object-fit: contain;
+}
+
+/* LP: wordmark horizontal — recorte sem tagline */
+html body .saibai-header .saibai-logo--wordmark {
+  width: min(var(--sh-logo-size, 200px), var(--sh-logo-cap));
+  height: auto;
+  max-width: min(var(--sh-logo-size, 200px), var(--sh-logo-cap));
+  max-height: var(--sh-wordmark-h, 43px);
+  object-fit: contain;
+  object-position: center;
+}
+
+/* LP: logo oficial — 1024×341 · largura via --sh-logo-size (sem cap de altura herdado) */
+html body .saibai-header .saibai-logo--wordmark-mono {
+  display: block;
+  width: clamp(144px, 17vw, var(--sh-logo-size, var(--sh-logo-cap)));
+  height: auto;
+  max-width: clamp(144px, 17vw, var(--sh-logo-size, var(--sh-logo-cap)));
+  max-height: none;
+  aspect-ratio: var(--sh-wordmark-mono-ratio, 1024 / 341);
+  object-fit: contain;
+  opacity: 0.96;
+  transition: opacity 0.25s ease;
+}
+
+html body .saibai-header__logo-link:hover .saibai-logo--wordmark-mono {
+  opacity: 0.62;
+}

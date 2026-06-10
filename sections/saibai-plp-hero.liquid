@@ -1,0 +1,23 @@
+{%- comment -%}
+  Empório Saibai — Hero PLP (padrão institucional)
+  CSS: saibai-conditional-assets (base + hero)
+{%- endcomment -%}
+<script src="{{ 'saibai-inst-hero.js' | asset_url }}" defer="defer"></script>
+
+{% render 'saibai-plp-collection-hero', collection: collection, results_size: collection.products_count %}
+
+{% schema %}
+{
+  "name": "Saibai PLP Hero",
+  "class": "saibai-plp-hero-section saibai-inst-section",
+  "enabled_on": {
+    "templates": ["collection"]
+  },
+  "settings": [],
+  "presets": [
+    {
+      "name": "Saibai PLP Hero"
+    }
+  ]
+}
+{% endschema %}

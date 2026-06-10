@@ -1,0 +1,12 @@
+{{ 'saibai-marquee.css' | asset_url | stylesheet_tag }}
+{% render 'saibai-marquee' %}
+
+{% schema %}
+{
+  "name": "Saibai Marquee",
+  "class": "saibai-marquee-section",
+  "enabled_on": { "templates": ["index"] },
+  "settings": [],
+  "presets": [{ "name": "Saibai Marquee" }]
+}
+{% endschema %}

@@ -1,0 +1,53 @@
+/* Empório Saibai — Header search
+ * Veltrus Growth & Technology
+ */
+
+/* ── Busca LP: discreta ── */
+html body .saibai-header__search-details > summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+html body .saibai-header__search-details > summary::-webkit-details-marker {
+  display: none;
+}
+
+html body .saibai-header .saibai-header__search-trigger {
+  all: unset;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.45rem;
+  width: var(--sh-side-w);
+  height: var(--sh-search-h);
+  min-height: var(--sh-search-h);
+  margin-top: 0.45rem;
+  color: var(--sh-text);
+  font-family: inherit;
+  font-size: var(--sh-util);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  opacity: 0.82;
+  cursor: pointer;
+  transition: opacity 0.25s ease;
+}
+
+html body .saibai-header .saibai-header__search-trigger:hover {
+  color: var(--sh-text);
+  opacity: 0.5;
+}
+
+html body .saibai-header__search-label {
+  line-height: 1;
+}
+
+html body .saibai-header__search-details:not([open]) .search-modal {
+  display: none;
+}
+
+html body .saibai-header__search-details .search-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+}

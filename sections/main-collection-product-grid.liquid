@@ -9,15 +9,6 @@
   endif
 
   assign limit = paginate_by
-
-  assign columns_tablet = 2
-  assign columns_mobile = section.settings.columns_mobile
-  assign horizontal_class = false
-  if section.settings.columns_desktop == 1
-    assign columns_tablet = 1
-    assign columns_mobile = 1
-    assign horizontal_class = true
-  endif
 -%}
 
 <div

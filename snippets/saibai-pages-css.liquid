@@ -1,0 +1,36 @@
+{%- comment -%} Empório Saibai — pages modular por template (substitui saibai-pages.css) {%- endcomment -%}
+{%- capture page_list -%}saibai-pages-base.css{%- endcapture -%}
+{%- case template.name -%}
+  {%- when 'collection' -%}
+    {%- capture page_list -%}{{ page_list }},saibai-pages-collection-grid.css,saibai-pages-collection-hero.css,saibai-pages-collection-cards.css{%- endcapture -%}
+  {%- when 'product' -%}
+    {%- capture page_list -%}{{ page_list }},saibai-pages-pdp-core.css,saibai-pages-pdp-price.css,saibai-pages-pdp-variants.css,saibai-pages-pdp-shipping.css,saibai-pages-pdp-gallery.css,saibai-pages-pdp-grid.css,saibai-pages-pdp-tabs.css,saibai-pages-pdp-sticky.css,saibai-pages-pdp-recs.css{%- endcapture -%}
+  {%- when 'cart' -%}
+    {%- capture page_list -%}{{ page_list }},saibai-pages-cart.css{%- endcapture -%}
+  {%- when 'search' -%}
+    {%- capture page_list -%}{{ page_list }},saibai-pages-search.css{%- endcapture -%}
+  {%- when 'blog', 'article' -%}
+    {%- capture page_list -%}{{ page_list }},saibai-pages-blog.css{%- endcapture -%}
+  {%- when 'page' -%}
+    {%- capture page_list -%}{{ page_list }},saibai-pages-static.css{%- endcapture -%}
+  {%- when 'list-collections' -%}
+    {%- capture page_list -%}{{ page_list }},saibai-pages-list.css{%- endcapture -%}
+{%- endcase -%}
+{%- if template.directory == 'customers' -%}
+  {%- capture page_list -%}{{ page_list }},saibai-pages-customer.css{%- endcapture -%}
+{%- endif -%}
+{%- assign page_files = page_list | split: ',' -%}
+{%- for file in page_files -%}
+  {%- if async -%}
+    <link rel="stylesheet" href="{{ file | asset_url }}" media="print" onload="this.media='all'">
+  {%- else -%}
+    {{ file | asset_url | stylesheet_tag }}
+  {%- endif -%}
+{%- endfor -%}
+{%- if async -%}
+  <noscript>
+    {%- for file in page_files -%}
+      {{ file | asset_url | stylesheet_tag }}
+    {%- endfor -%}
+  </noscript>
+{%- endif -%}

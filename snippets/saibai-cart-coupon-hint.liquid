@@ -1,0 +1,14 @@
+{%- comment -%}
+  Empório Saibai — Dica cupom no drawer do carrinho
+{%- endcomment -%}
+{%- assign saibai_cart_coupon = '5%NOVOCLIENTE' -%}
+<div class="saibai-cart-coupon-hint" data-saibai-cart-coupon-hint data-code="{{ saibai_cart_coupon }}">
+  <p class="saibai-cart-coupon-hint__label">Primeira compra?</p>
+  <div class="saibai-cart-coupon-hint__row">
+    <code class="saibai-cart-coupon-hint__code">{{ saibai_cart_coupon }}</code>
+    <button type="button" class="saibai-cart-coupon-hint__apply button button--secondary" data-saibai-cart-coupon-apply>
+      Aplicar cupom
+    </button>
+  </div>
+  <p class="saibai-cart-coupon-hint__note">5% de desconto na primeira compra.</p>
+</div>

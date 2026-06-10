@@ -35,6 +35,7 @@ class CustomerAddresses {
   }
 
   _setupCountries() {
+    if (document.querySelector('[data-saibai-addr-form]')) return;
     if (Shopify && Shopify.CountryProvinceSelector) {
       // eslint-disable-next-line no-new
       new Shopify.CountryProvinceSelector('AddressCountryNew', 'AddressProvinceNew', {

@@ -5,6 +5,8 @@
   data-drawer-direction="right"
   data-section-id="{{ section.id }}"
 >
+  {%- assign saibai_shipping_policy_url = '/pages/politica-de-entrega' -%}
+  {%- capture saibai_account_login_url -%}{%- render 'saibai-customer-account-url', context: 'login' -%}{%- endcapture -%}
   <div id="CartDrawer-Overlay" class="drawer__overlay fixed inset-0 cursor-pointer"></div>
   <div
     id="CartDrawer"
@@ -38,14 +40,14 @@
         <div class="cart-drawer__warnings flex flex-column flex-1 justify-center center{% if section.settings.cart_drawer_collection != blank %} cart-drawer__warnings--has-collection{% endif %}">
           <div class="cart-drawer__empty-content">
             <h4 class="cart__empty-text">{{ 'content.empty' | t }}</h4>
-            <a href="{{ routes.all_products_collection_url }}" class="button">
+            <a href="{{ routes.collections_url }}/todos" class="button">
               {{ 'content.continue_shopping' | t }}
             </a>
 
             {%- if shop.customer_accounts_enabled and customer == null -%}
               <p class="cart__login-title h4">{{ 'content.login.title' | t }}</p>
               <p class="cart__login-paragraph">
-                {{ 'content.login.paragraph_html' | t: link: routes.account_login_url }}
+                {{ 'content.login.paragraph_html' | t: link: saibai_account_login_url }}
               </p>
             {%- endif -%}
           </div>
@@ -337,6 +339,7 @@
                         </div>
                         <div class="modal-content">
                           {% render 'cart-discounts', section: section, hidden_label: true %}
+                          {% render 'saibai-cart-coupon-hint' %}
                         </div>
                       </div>
                     </modal-component>
@@ -374,7 +377,7 @@
                   {%- else -%}
                     {{
                       'content.duties_and_taxes_included_shipping_at_checkout_with_policy_html'
-                      | t: link: shop.shipping_policy.url
+                      | t: link: saibai_shipping_policy_url
                     }}
                   {%- endif -%}
                 {%- elsif cart.duties_included == false and cart.taxes_included -%}
@@ -383,7 +386,7 @@
                   {%- else -%}
                     {{
                       'content.taxes_included_shipping_at_checkout_with_policy_html'
-                      | t: link: shop.shipping_policy.url
+                      | t: link: saibai_shipping_policy_url
                     }}
                   {%- endif -%}
                 {%- elsif cart.duties_included and cart.taxes_included == false -%}
@@ -392,7 +395,7 @@
                   {%- else -%}
                     {{
                       'content.duties_included_taxes_at_checkout_shipping_at_checkout_with_policy_html'
-                      | t: link: shop.shipping_policy.url
+                      | t: link: saibai_shipping_policy_url
                     }}
                   {%- endif -%}
                 {%- elsif cart.duties_included == false and cart.taxes_included == false -%}
@@ -401,7 +404,7 @@
                   {%- else -%}
                     {{
                       'content.taxes_at_checkout_shipping_at_checkout_with_policy_html'
-                      | t: link: shop.shipping_policy.url
+                      | t: link: saibai_shipping_policy_url
                     }}
                   {%- endif -%}
                 {%- endif -%}

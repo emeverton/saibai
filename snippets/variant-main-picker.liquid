@@ -3,6 +3,7 @@
 
   @param {object} product_resource - The product object.
   @param {object} [block] - The block object
+  @param {string} [context] - Render context (e.g. sticky bar)
 {%- enddoc -%}
 
 {%- liquid
@@ -54,18 +55,28 @@
             -%}
             <li class="item-custom{% if referenced_product.id == product.id %} active{% endif %} swatch-item relative">
               <div class="item-custom--image">
-                <{% if referenced_product.id == product.id %}span{% else %}a href ="{{shop.url | append: "/products/" | append: referenced_product.handle }}"{% endif %}
-                  class="item-custom--inner swatch"
-                  style="
-                    {%- if image_custom != blank -%}
-                      background: url({{ image_custom | img_url: 'medium' }});
-                    {%- else -%}
-                      background: url({{ referenced_product.featured_image | img_url: 'medium' }});
-                    {%- endif -%}
-                    background-size: cover;"
-                  title="{{referenced_product.title}}"
-                >
-                </{% if referenced_product.id == product.id %}span{% else %}a{% endif %}>
+                {%- capture item_custom_style -%}
+                  {%- if image_custom != blank -%}
+                    background: url({{ image_custom | image_url: width: 533 }});
+                  {%- else -%}
+                    background: url({{ referenced_product.featured_image | image_url: width: 533 }});
+                  {%- endif -%}
+                  background-size: cover;
+                {%- endcapture -%}
+                {%- if referenced_product.id == product.id -%}
+                  <span
+                    class="item-custom--inner swatch"
+                    style="{{ item_custom_style }}"
+                    title="{{ referenced_product.title }}"
+                  ></span>
+                {%- else -%}
+                  <a
+                    href="{{ shop.url | append: '/products/' | append: referenced_product.handle }}"
+                    class="item-custom--inner swatch"
+                    style="{{ item_custom_style }}"
+                    title="{{ referenced_product.title }}"
+                  ></a>
+                {%- endif -%}
               </div>
             </li>
           {%- endfor -%}

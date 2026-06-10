@@ -975,7 +975,7 @@ function initProductSubtotal(subtotalNode) {
 
     const formattedSubtotal = formatMoney(selectedVariant.price * quantity);
     if (!formattedSubtotal) return;
-    subtotalPriceEl.textContent = formattedSubtotal;
+    subtotalPriceEl.textContent = String(formattedSubtotal).replace(/r\$/g, 'R$');
   };
 
   updateSubtotal();

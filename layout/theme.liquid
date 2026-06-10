@@ -2,7 +2,7 @@
   Empório Saibai — Tema Oficial
   Desenvolvido por Veltrus Growth & Technology
   Shopify Partner ID: 4969609
-  Versão: 1.0.0 | 2025
+  Versão: 1.2.4 | 2026-06-09
   PROPRIEDADE INTELECTUAL PROTEGIDA
   Reprodução proibida sem autorização
 {%- endcomment -%}
@@ -22,20 +22,57 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
-    <link
-      rel="preload"
-      as="image"
-      href="{{ 'LOGO_SAIBAI_RUCULA_2022_f61dca0b-ac73-4665-a141-c6ecf6689198.png' | file_url }}"
-      fetchpriority="high"
-    >
+    {%- if template.name == 'index' -%}
+      {% comment %}theme-check-disable AssetPreload{% endcomment %}
+      <link
+        rel="preload"
+        as="image"
+        href="{{ 'saibai-hero-fresca-480.webp' | asset_url }}"
+        media="(max-width: 549px)"
+        type="image/webp"
+        fetchpriority="high"
+      >
+      <link
+        rel="preload"
+        as="image"
+        href="{{ 'saibai-hero-fresca-800.webp' | asset_url }}"
+        media="(min-width: 550px) and (max-width: 989px)"
+        type="image/webp"
+        fetchpriority="high"
+      >
+      <link
+        rel="preload"
+        as="image"
+        href="{{ 'saibai-hero-fresca-1920.webp' | asset_url }}"
+        media="(min-width: 990px)"
+        type="image/webp"
+        fetchpriority="high"
+      >
+      {% comment %}theme-check-enable AssetPreload{% endcomment %}
+    {%- else -%}
+      {% comment %}theme-check-disable AssetPreload{% endcomment %}
+      <link
+        rel="preload"
+        as="image"
+        href="{{ 'LOGO_SAIBAI_RUCULA_2022_f61dca0b-ac73-4665-a141-c6ecf6689198.png' | file_url }}"
+        fetchpriority="high"
+      >
+      {% comment %}theme-check-enable AssetPreload{% endcomment %}
+    {%- endif -%}
     <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
 
     {% render 'critical-css' %}
 
     <meta name="theme-color" content="">
+    {%- if request.path == '/collections/all' -%}
+      {%- assign saibai_canonical_url = shop.url | append: '/collections/todos' -%}
+      <meta http-equiv="refresh" content="0;url=/collections/todos">
+    {%- else -%}
+      {%- assign saibai_canonical_url = canonical_url -%}
+    {%- endif -%}
     <link
       rel="canonical"
-      href="{{ canonical_url }}"
+      href="{{ saibai_canonical_url }}"
       canonical-url="{{ shop.url }}/"
     >
     <meta name="robots" content="index, follow">
@@ -68,29 +105,43 @@
 
     {% render 'seo-meta' %}
     {% render 'schema-organization' %}
-    {% render 'tracking-meta-pixel' %}
-    {% render 'tracking-ga4' %}
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        analytics_storage: 'denied',
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        functionality_storage: 'granted',
+        security_storage: 'granted',
+        wait_for_update: 500
+      });
+    </script>
 
     {% render 'global-style' %}
 
     {% render 'global-css', direction: direction %}
+    {%- if template.name == 'index' -%}
+      <script src="{{ 'saibai-products.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
     {%- render 'global-script' -%}
 
     {{ content_for_header }}
-
-    
   </head>
 
   <body
     class="
-      template-{{ request.page_type | replace: 'customers/', '' }}{% if settings.enable_preloading_screen %} has--preload-screen{% endif %}
+      saibai-theme template-{{ request.page_type | replace: 'customers/', '' }}{% if settings.enable_preloading_screen %} has--preload-screen{% endif %}
       {% if settings.animations_hover_elements != 'none' %} card-hover--{{ settings.animations_hover_elements }}{% endif %}
       {% if settings.animation_hover_buttons %} button-hover--effect{% endif %}
     "
   >
     {% render 'skip-to-content-link', href: '#MainContent', text: 'accessibility.skip_to_text' %}
 
-    {% render 'preload-screen' %}
+    {%- if settings.enable_preloading_screen -%}
+      {% render 'preload-screen' %}
+    {%- endif -%}
 
     <div id="header-group">
       {% sections 'header-group' %}
@@ -99,7 +150,6 @@
     {%- liquid
       sections 'popup-group'
       sections 'general-group'
-      sections 'toolbar-mobile'
     -%}
 
     <main
@@ -119,7 +169,15 @@
     </ul>
 
     {%- if settings.predictive_search_enabled -%}
-      <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
+      {%- if template.name == 'index' -%}
+        <script>window.__saibaiSearchLazy={src:{{ 'predictive-search.js' | asset_url | json }},loadOnPointer:true};</script>
+        <script src="{{ 'saibai-search-lazy.js' | asset_url }}" defer="defer"></script>
+      {%- else -%}
+        <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
+      {%- endif -%}
+    {%- elsif template.name == 'index' -%}
+      <script>window.__saibaiSearchLazy={src:{{ 'search-form.js' | asset_url | json }},loadOnPointer:false};</script>
+      <script src="{{ 'saibai-search-lazy.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
 
     {% render 'halo-popup' %}
@@ -127,5 +185,11 @@
     {% render 'halo-global' %}
 
     {% render 'saibai-whatsapp-float' %}
+    {% section 'saibai-consent-popup' %}
+    {% section 'saibai-coupon-popup' %}
+
+    {%- if template.name == 'index' -%}
+      <script src="{{ 'saibai-index-defer.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
   </body>
 </html>

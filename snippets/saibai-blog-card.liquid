@@ -1,0 +1,42 @@
+{%- comment -%} Card editorial — listagem blog Saibai {%- endcomment -%}
+<article class="saibai-blog-card">
+  <a href="{{ article.url }}" class="saibai-blog-card__link">
+    <div class="saibai-blog-card__media">
+      {%- if article.image != blank -%}
+        {{
+          article.image
+          | image_url: width: 900, format: 'webp'
+          | image_tag:
+            class: 'saibai-blog-card__img',
+            loading: 'lazy',
+            widths: '400, 600, 900',
+            sizes: '(min-width: 990px) 33vw, 100vw',
+            alt: article.image.alt | default: article.title
+        }}
+      {%- else -%}
+        <img
+          src="{{ 'saibai-inst-conserva.webp' | asset_url }}"
+          alt="{{ article.title | escape }}"
+          class="saibai-blog-card__img"
+          loading="lazy"
+          width="854"
+          height="640"
+        >
+      {%- endif -%}
+    </div>
+    <div class="saibai-blog-card__body">
+      {%- if article.published_at != blank -%}
+        <time class="saibai-blog-card__date" datetime="{{ article.published_at | date: '%Y-%m-%d' }}">
+          {{- article.published_at | date: '%d/%m/%Y' -}}
+        </time>
+      {%- endif -%}
+      <h2 class="saibai-blog-card__title">{{ article.title }}</h2>
+      {%- if article.excerpt != blank -%}
+        <p class="saibai-blog-card__excerpt">{{ article.excerpt | strip_html | strip | truncate: 140 }}</p>
+      {%- elsif article.content != blank -%}
+        <p class="saibai-blog-card__excerpt">{{ article.content | strip_html | strip | truncate: 140 }}</p>
+      {%- endif -%}
+      <span class="saibai-blog-card__cta">Ler receita</span>
+    </div>
+  </a>
+</article>

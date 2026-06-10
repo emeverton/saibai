@@ -1,0 +1,89 @@
+{%- comment -%}
+  Empório Saibai — Calculadora de frete PDP (CEP · Brasil)
+  Veltrus Growth & Technology | Shopify Partner ID 4969609
+{%- endcomment -%}
+{%- liquid
+  assign ship_product = product | default: closest.product
+  assign ship_variant = ship_product.selected_or_first_available_variant
+
+  assign shipping_policy_plain = shop.shipping_policy.body | strip_html | replace: '&nbsp;', ' '
+  assign free_ship_line = ''
+  assign free_ship_threshold_cents = 0
+
+  if settings.calculator_free_shipping_message_price != blank
+    assign free_ship_threshold_cents = settings.calculator_free_shipping_message_price | times: 100
+  endif
+
+  if shipping_policy_plain != blank
+    assign policy_chunks = shipping_policy_plain | split: '.'
+    for chunk in policy_chunks
+      assign chunk_lower = chunk | downcase | strip
+      if chunk_lower contains 'frete grátis' or chunk_lower contains 'frete gratis'
+        assign free_ship_line = chunk | strip
+        break
+      endif
+    endfor
+  endif
+
+  if free_ship_threshold_cents == 0
+    if shipping_policy_plain contains '280'
+      assign free_ship_threshold_cents = 28000
+    elsif free_ship_line != blank and free_ship_line contains '280'
+      assign free_ship_threshold_cents = 28000
+    endif
+  endif
+
+  assign free_ship_remaining_cents = 0
+  if free_ship_threshold_cents > 0 and ship_variant != blank
+    assign free_ship_remaining_cents = free_ship_threshold_cents | minus: ship_variant.price
+  endif
+-%}
+{%- if ship_product != blank and ship_variant != blank -%}
+  <div
+    class="saibai-pdp-ship"
+    data-saibai-pdp-ship
+    data-variant-id="{{ ship_variant.id }}"
+    data-free-ship-threshold="{{ free_ship_threshold_cents }}"
+    aria-label="Calcular frete"
+  >
+    {%- if free_ship_threshold_cents > 0 -%}
+      <div class="saibai-pdp-ship__free">
+        <p class="saibai-pdp-ship__free-text">
+          Frete grátis para pedidos acima de <strong>{% render 'saibai-money-br', amount: free_ship_threshold_cents %}</strong>.
+        </p>
+        <p class="saibai-pdp-ship__free-status saibai-pdp-ship__free-status--ok"{% unless free_ship_remaining_cents <= 0 %} hidden{% endunless %}>
+          Este valor já alcança o frete grátis<span aria-hidden="true">*</span>.
+        </p>
+        <p class="saibai-pdp-ship__free-status saibai-pdp-ship__free-status--pending"{% if free_ship_remaining_cents <= 0 %} hidden{% endif %}>
+          Faltam <strong data-saibai-pdp-ship-remaining>{% render 'saibai-money-br', amount: free_ship_remaining_cents %}</strong> para frete grátis neste pedido.
+        </p>
+        <p class="saibai-pdp-ship__free-note">
+          <a href="/pages/politica-de-entrega">Consulte regiões elegíveis</a><span aria-hidden="true">*</span>
+        </p>
+      </div>
+    {%- endif -%}
+
+    <p class="saibai-pdp-ship__label">Calcular frete</p>
+    <form class="saibai-pdp-ship__form" data-saibai-pdp-ship-form novalidate>
+      <label class="visually-hidden" for="SaibaiPdpShipCep">CEP</label>
+      <input
+        id="SaibaiPdpShipCep"
+        class="saibai-pdp-ship__input"
+        type="text"
+        name="cep"
+        inputmode="numeric"
+        autocomplete="postal-code"
+        placeholder="00000-000"
+        maxlength="9"
+        required
+        data-saibai-pdp-ship-cep
+      >
+      <button type="submit" class="saibai-pdp-ship__btn" data-saibai-pdp-ship-submit>
+        Calcular
+      </button>
+    </form>
+    <p class="saibai-pdp-ship__hint">Estimativa para este produto. Frete refrigerado conforme região.</p>
+    <div class="saibai-pdp-ship__results" data-saibai-pdp-ship-results hidden role="status" aria-live="polite"></div>
+  </div>
+  <script src="{{ 'saibai-pdp-shipping.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}

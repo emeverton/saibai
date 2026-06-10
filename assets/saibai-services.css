@@ -1,0 +1,296 @@
+/*
+ * Empório Saibai — Editorial icons (padrão Loro Piana cm-icons)
+ * container px-0 · caption · wrapper 558px · imagem 558×780
+ * Veltrus Growth & Technology | Shopify Partner ID 4969609
+ */
+
+html body .shopify-section.saibai-services-section {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  background: var(--saibai-bg, #F2F5EE);
+  isolation: isolate;
+}
+
+html body .saibai-svc {
+  --svc-white: var(--saibai-bg, #F2F5EE);
+  --svc-dark: #2A3A1A;
+  --svc-muted: #4E6040;
+  --svc-terra: #8B5E4A;
+  --svc-max: var(--saibai-lp-max, 86rem);
+  --svc-media: 34.875rem;
+
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: var(--saibai-lp-pad-y, clamp(4.5rem, 9vw, 7rem)) 0;
+  background: var(--svc-white);
+  color: var(--svc-dark);
+  font-family: var(--font-body--family, 'Jost', sans-serif);
+}
+
+html body .saibai-svc__inner {
+  width: 100%;
+  max-width: var(--svc-max);
+  margin-inline: auto;
+  padding-inline: var(--saibai-lp-pad-x, clamp(1.5rem, 5vw, 3.5rem));
+}
+
+html body .saibai-svc__caption {
+  max-width: 42rem;
+  margin: 0 auto clamp(2.75rem, 5vw, 3.5rem);
+  padding: 0;
+  text-align: center;
+}
+
+html body .saibai-svc__eyebrow {
+  margin: 0 0 1rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--svc-muted);
+}
+
+html body .saibai-svc__title {
+  margin: 0 0 1.125rem;
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-size: var(--saibai-lp-section-title, clamp(1.375rem, 1.8vw, 1.5rem));
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+  color: var(--svc-dark);
+}
+
+html body .saibai-svc__text {
+  margin: 0;
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-size: clamp(0.9375rem, 1.2vw, 1rem);
+  font-weight: 400;
+  line-height: 1.65;
+  letter-spacing: 0.01em;
+  color: var(--svc-muted);
+}
+
+html body .saibai-svc__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: var(--svc-media);
+  margin-inline: auto;
+}
+
+html body .saibai-svc__media-link {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+}
+
+html body .saibai-svc__media {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow: hidden;
+  background: var(--svc-white);
+}
+
+html body .saibai-svc__img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 558 / 780;
+  object-fit: cover;
+  object-position: center center;
+}
+
+html body .saibai-svc__media-label {
+  display: block;
+  padding: 1.125rem 1.25rem 1.25rem;
+  background: var(--svc-white);
+  text-align: center;
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-size: clamp(0.9375rem, 1.2vw, 1rem);
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+  color: var(--svc-dark);
+}
+
+html body .saibai-svc__cta {
+  display: inline-block;
+  margin-top: 1.75rem;
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-size: clamp(0.875rem, 1.05vw, 0.9375rem);
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: 0.06em;
+  color: var(--svc-terra);
+  text-decoration: underline;
+  text-underline-offset: 0.28em;
+  text-decoration-thickness: 1px;
+  transition: color 0.2s ease;
+}
+
+html body .saibai-svc__cta:hover {
+  color: var(--saibai-primary);
+}
+
+@media (max-width: 989px) {
+  html body .saibai-svc {
+    padding-block: clamp(3.5rem, 8vw, 4.5rem);
+  }
+
+  html body .saibai-svc__wrapper {
+    max-width: min(88vw, var(--svc-media));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html body .saibai-svc__cta {
+    transition: none;
+  }
+}
+
+/* ── At your service (cm-our-services LP) ── */
+
+html body .shopify-section.saibai-at-service-section {
+  margin: 0;
+  padding: 0 var(--saibai-lp-pad-x, clamp(1rem, 2.5vw, 2rem)) var(--saibai-lp-gap-y, clamp(2.5rem, 5vw, 4.5rem));
+  overflow: visible;
+  background: var(--saibai-bg, #F2F5EE);
+}
+
+html body .saibai-asvc {
+  --asvc-wool: var(--saibai-bg, #F2F5EE);
+  --asvc-dark: #2A3A1A;
+  --asvc-muted: #4E6040;
+  --asvc-terra: #8B5E4A;
+  --asvc-border: rgb(42 58 26 / 0.12);
+  --asvc-max: var(--saibai-lp-shell-max, min(86rem, 1376px));
+
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--asvc-max);
+  margin-inline: auto;
+  padding: var(--saibai-lp-pad-y, clamp(4.5rem, 9vw, 7rem)) var(--saibai-lp-pad-x, clamp(1rem, 2.5vw, 2rem));
+  background: var(--asvc-wool);
+  border-block: 0;
+  color: var(--asvc-dark);
+  font-family: var(--font-body--family, 'Jost', sans-serif);
+}
+
+html body .saibai-asvc__inner {
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+}
+
+html body .saibai-asvc__title {
+  margin: 0 0 clamp(2.5rem, 4vw, 3.5rem);
+  text-align: center;
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-size: clamp(1.375rem, 2vw, 1.75rem);
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+  color: var(--asvc-dark);
+}
+
+html body .saibai-asvc__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+}
+
+html body .saibai-asvc__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 clamp(1.5rem, 3vw, 2.75rem) 0.5rem;
+  text-align: center;
+  border-inline-end: 0;
+}
+
+html body .saibai-asvc__item:last-child {
+  border-inline-end: none;
+}
+
+html body .saibai-asvc__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5rem;
+  height: 5rem;
+  margin-bottom: 1.25rem;
+  color: var(--asvc-terra);
+}
+
+html body .saibai-asvc__icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+html body .saibai-asvc__label {
+  margin: 0 0 1.125rem;
+  max-width: 16rem;
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-size: clamp(1rem, 1.4vw, 1.125rem);
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+  color: var(--asvc-dark);
+}
+
+html body .saibai-asvc__link {
+  display: inline-block;
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-size: clamp(0.875rem, 1.05vw, 0.9375rem);
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: 0.06em;
+  color: var(--asvc-terra);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+html body .saibai-asvc__link:hover {
+  color: var(--saibai-primary);
+}
+
+@media (max-width: 989px) {
+  html body .saibai-asvc {
+    padding-block: clamp(3rem, 7vw, 4.5rem);
+  }
+
+  html body .saibai-asvc__grid {
+    grid-template-columns: 1fr;
+  }
+
+  html body .saibai-asvc__item {
+    padding: 0 0 2rem;
+    border-inline-end: none;
+    border-bottom: 0;
+  }
+
+  html body .saibai-asvc__item:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html body .saibai-asvc__link {
+    transition: none;
+  }
+}
+
+@media (min-width: 1920px) {
+  html body .saibai-svc__inner,
+  html body .saibai-asvc__inner {
+    max-width: 1440px;
+    margin-inline: auto;
+  }
+}

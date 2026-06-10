@@ -18,8 +18,8 @@
           "settings": {
             "text": "<p>{{ closest.page.title }}<\/p>",
             "typing_text": false,
-            "primary_text": "Welcome to our store!",
-            "secondary_text": "Exclusive offers just for you.",
+            "primary_text": "Empório Saibai",
+            "secondary_text": "Produtos da safra, direto do produtor.",
             "third_text": "Ver produtos da safra Saibai",
             "highlight_text": false,
             "highlight_text_content": "",
@@ -82,8 +82,8 @@
           "settings": {
             "text": "<p>{{ closest.page.content }}<\/p>",
             "typing_text": false,
-            "primary_text": "Welcome to our store!",
-            "secondary_text": "Exclusive offers just for you.",
+            "primary_text": "Empório Saibai",
+            "secondary_text": "Produtos da safra, direto do produtor.",
             "third_text": "Ver produtos da safra Saibai",
             "highlight_text": false,
             "highlight_text_content": "",

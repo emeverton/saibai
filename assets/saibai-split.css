@@ -1,0 +1,171 @@
+/*
+ * Empório Saibai — Split editorial (Loro Piana 50/50)
+ * Farm · conservas · safra — alternância imagem/texto · pad LP único
+{%- comment -%} v4 · split LP · produto contain + lifestyle cover {%- endcomment -%}
+ * Veltrus Growth & Technology | Shopify Partner ID 4969609
+ */
+
+html body .shopify-section.saibai-split-section {
+  margin: 0;
+  padding: 0;
+}
+
+html body .saibai-split {
+  --sp-bg: var(--saibai-bg, #F2F5EE);
+  --sp-wool: var(--saibai-bg, #F2F5EE);
+  --sp-white: var(--saibai-bg, #F2F5EE);
+  --sp-dark: #2A3A1A;
+  --sp-muted: #4E6040;
+  --sp-terra: #8B5E4A;
+  --sp-max: var(--saibai-lp-max, 86rem);
+  --sp-pad-x: var(--saibai-lp-pad-x, clamp(1.5rem, 5vw, 3.5rem));
+  --sp-pad-y: clamp(3rem, 5vw, 4.5rem);
+  --sp-pad-inner: clamp(1.25rem, 2.5vw, 2rem);
+
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--sp-max);
+  margin-inline: auto;
+  padding-inline: var(--sp-pad-x);
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  background: var(--sp-bg);
+  color: var(--sp-dark);
+}
+
+/* LP: 2ª dobra — texto esquerda · imagem direita */
+html body .saibai-split--flip {
+  flex-direction: row-reverse;
+}
+
+html body .saibai-split__media {
+  position: relative;
+  flex: 1 1 50%;
+  min-height: clamp(22rem, 36vw, 32.5rem);
+  overflow: hidden;
+  background-color: var(--sp-bg) !important;
+}
+
+/* Lifestyle — farm story (cover full bleed) */
+html body .saibai-split--lifestyle .saibai-split__media {
+  background-color: var(--sp-bg) !important;
+}
+
+html body .saibai-split__img--cover,
+html body .saibai-split--lifestyle .saibai-split__img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  transform: none;
+  object-fit: cover;
+  object-position: center center;
+}
+
+html body .saibai-split__content {
+  flex: 1 1 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--sp-pad-y) var(--sp-pad-inner);
+  background: var(--sp-bg);
+}
+
+html body .saibai-split--conservas .saibai-split__content {
+  background: var(--sp-bg);
+}
+
+/* Conservas — cover lateral crop · produtos centralizados · altura = split farm */
+html body .saibai-split--conservas .saibai-split__media {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--sp-bg) !important;
+  background-image: none !important;
+}
+
+html body .saibai-split--conservas .saibai-split__img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  transform: none;
+  object-fit: cover;
+  object-position: center center;
+}
+
+html body .saibai-split__eyebrow {
+  margin: 0 0 1rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--sp-muted);
+}
+
+html body .saibai-split__title {
+  margin: 0 0 1.25rem;
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-size: var(--saibai-lp-section-title, clamp(1.375rem, 1.8vw, 1.5rem));
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+}
+
+html body .saibai-split__text {
+  margin: 0 0 1.75rem;
+  max-width: 48ch;
+  font-size: clamp(0.875rem, 1.05vw, 0.9375rem);
+  line-height: 1.7;
+  color: var(--sp-muted);
+}
+
+html body .saibai-split__link {
+  display: inline-block;
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-size: clamp(0.875rem, 1.05vw, 0.9375rem);
+  letter-spacing: 0.06em;
+  color: var(--sp-terra);
+  text-decoration: none;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+html body .saibai-split__link:hover {
+  color: var(--saibai-primary-hover);
+  opacity: 1;
+}
+
+/* Par LP: splits colados, sem respiro entre dobras */
+html body .shopify-section.saibai-split-section + .shopify-section.saibai-split-section .saibai-split {
+  border-top: 0;
+}
+
+@media (max-width: 989px) {
+  html body .saibai-split,
+  html body .saibai-split--flip {
+    flex-direction: column;
+  }
+
+  html body .saibai-split__media {
+    order: 1;
+    min-height: clamp(16rem, 52vw, 20rem);
+    flex: none;
+    width: 100%;
+  }
+
+  html body .saibai-split__content {
+    order: 2;
+    padding: clamp(2.5rem, 7vw, 3rem) var(--sp-pad-inner);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html body .saibai-split__link {
+    transition: none;
+  }
+}

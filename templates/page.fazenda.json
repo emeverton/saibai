@@ -1,0 +1,57 @@
+{
+  "sections": {
+    "hero": {
+      "type": "saibai-inst-hero",
+      "settings": {
+        "eyebrow": "Produção própria · Safra controlada",
+        "title": "A fazenda",
+        "lead": "Do plantio à colheita em Piedade, SP. Conheça como produzimos alcachofras frescas com controle total de qualidade — sem atravessadores.",
+        "asset_fallback": "saibai-inst-planta.webp"
+      }
+    },
+    "plantio": {
+      "type": "saibai-inst-split",
+      "settings": {
+        "reverse": false,
+        "eyebrow": "Campo",
+        "title": "Tudo começa com a terra",
+        "text": "<p>Nossas lavouras ficam em Piedade, coração da produção nacional de alcachofras. O solo e o clima da região — combinados com mais de 50 anos de experiência das famílias produtoras — criam condições ideais para um produto de textura aveludada e sabor marcante.</p><p>Cada ciclo de plantio é acompanhado de perto: escolha de variedades, manejo da safra e colheita no ponto exato de maturação.</p>",
+        "asset_fallback": "saibai-inst-planta.webp",
+        "image_alt": "Alcachofra ainda no pé"
+      }
+    },
+    "colheita": {
+      "type": "saibai-inst-split",
+      "settings": {
+        "reverse": true,
+        "eyebrow": "Colheita",
+        "title": "Selecionadas no ponto certo",
+        "text": "<p>Colhemos cada alcachofra manualmente, no momento ideal de maturação. A seleção rigorosa garante que apenas os exemplares com textura, tamanho e aparência adequados sigam para embalagem e distribuição.</p><p>É esse cuidado no campo que faz a diferença na cozinha — menos descarte, mais rendimento, sabor consistente.</p>",
+        "asset_fallback": "saibai-inst-harvest.webp",
+        "image_alt": "Colheita de alcachofras Saibai"
+      }
+    },
+    "logistica": {
+      "type": "saibai-inst-split",
+      "settings": {
+        "reverse": false,
+        "eyebrow": "Entrega",
+        "title": "Logística refrigerada",
+        "text": "<p>Após a colheita, as alcachofras passam por embalagem especial e cadeia refrigerada que preserva frescor, textura e sabor do campo até a sua mesa ou cozinha profissional.</p><p>Retirada disponível em Piedade, SP — Estrada dos Lavradores, 7. Entregamos para São Paulo e região com agendamento via WhatsApp e e-commerce.</p>",
+        "asset_fallback": "saibai-inst-campo.webp",
+        "image_alt": "Alcachofras frescas embaladas"
+      }
+    },
+    "nav": {
+      "type": "saibai-inst-nav",
+      "settings": {}
+    }
+  },
+  "order": [
+    "hero",
+    "plantio",
+    "colheita",
+    "logistica",
+    "nav"
+  ]
+}
