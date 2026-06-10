@@ -83,8 +83,17 @@ body.saibai-theme .saibai-product-card .card .media {
   background: var(--saibai-bg, #F2F5EE);
 }
 
-body.saibai-theme .product-card-wrapper .card__media .media,
+body.saibai-theme .product-card-wrapper .card__media .media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: transparent;
+}
+
 body.saibai-theme .product-card-wrapper .card__media img,
+body.saibai-theme .product-card-wrapper .card__media .media img,
 body.saibai-theme .saibai-product-card .card__media img,
 body.saibai-theme .saibai-product-card .media img {
   position: absolute !important;
@@ -100,4 +109,45 @@ body.saibai-theme .saibai-product-card .media img {
   padding: 0 !important;
   box-sizing: border-box !important;
   background: transparent !important;
+}
+
+/* Combine com / recomendações — cards não esticam com swiper height:100% */
+body.saibai-theme :is(product-recommendations, .product-recommendations) .product-card-wrapper.card-wrapper {
+  display: block;
+  height: auto;
+  min-height: 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  overflow: visible;
+}
+
+body.saibai-theme :is(product-recommendations, .product-recommendations) .product-card-wrapper > .card {
+  flex: none !important;
+  height: auto !important;
+  min-height: 0 !important;
+}
+
+/* PLP / busca — tile LP (shell-cards não aplica card branco + height:100%) */
+body.saibai-theme:is(.template-collection, .template-search) .product-card-wrapper.card-wrapper {
+  display: block;
+  height: auto;
+  min-height: 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  overflow: visible;
+}
+
+body.saibai-theme:is(.template-collection, .template-search) .product-card-wrapper > .card {
+  flex: none !important;
+  height: auto !important;
+  min-height: 0 !important;
+}
+
+/* Swiper vendor usa height:100% nos slides — neutralizar no carrossel de recs */
+html body.saibai-theme.template-product product-recommendations .collection-carousel-swiper-component .swiper-slide,
+html body.saibai-theme.template-product .product-recommendations .collection-carousel-swiper-component .swiper-slide {
+  height: auto !important;
+  align-self: flex-start !important;
 }

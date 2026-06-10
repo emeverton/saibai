@@ -38,8 +38,12 @@
         {%- for childlink in link.links -%}
           {%- liquid
             assign fresca_soon = false
+            assign view_all = false
             if childlink.title contains 'Alcachofras Frescas'
               assign fresca_soon = true
+            endif
+            if childlink.title contains 'Ver todos'
+              assign view_all = true
             endif
 
             assign item_img = default_img
@@ -74,7 +78,7 @@
               assign item_cta = 'Conquistas'
             endif
           -%}
-          <li class="saibai-mega__sidebar-item">
+          <li class="saibai-mega__sidebar-item{% if view_all %} saibai-mega__sidebar-item--view-all{% endif %}">
             {%- if fresca_soon -%}
               <span
                 class="saibai-mega__sidebar-link is-soon"
@@ -91,48 +95,20 @@
             {%- else -%}
               <a
                 href="{{ childlink.url }}"
-                class="saibai-mega__sidebar-link{% if childlink.active %} is-active{% endif %}{% if forloop.first %} is-current{% endif %}"
+                class="saibai-mega__sidebar-link{% if view_all %} is-view-all{% endif %}{% if childlink.active %} is-active{% endif %}"
+                {% unless view_all %}
                 data-saibai-mega-item
                 data-image="{{ item_img | asset_url }}"
                 data-title="{{ item_title | escape }}"
                 data-cta="{{ item_cta | escape }}"
                 data-url="{{ childlink.url }}"
+                {% endunless %}
                 {% if childlink.current %}aria-current="page"{% endif %}
               >
                 <span class="saibai-mega__sidebar-text">{{ childlink.title }}</span>
-                <span class="saibai-mega__chevron" aria-hidden="true"></span>
-              </a>
-            {%- endif -%}
-          </li>
-        {%- endfor -%}
-      </ul>
-    </div>
-
-    <div class="saibai-mega__center">
-      <ul class="saibai-mega__center-list" role="list">
-        {%- for childlink in link.links -%}
-          {%- liquid
-            assign view_all = false
-            assign fresca_soon = false
-            if childlink.title contains 'Ver todos'
-              assign view_all = true
-            endif
-            if childlink.title contains 'Alcachofras Frescas'
-              assign fresca_soon = true
-            endif
-          -%}
-          <li class="saibai-mega__center-item{% if view_all %} saibai-mega__center-item--view-all{% endif %}">
-            {%- if fresca_soon -%}
-              <span class="saibai-mega__center-link is-soon" aria-disabled="true">
-                {% render 'saibai-menu-label', title: childlink.title %}
-              </span>
-            {%- else -%}
-              <a
-                href="{{ childlink.url }}"
-                class="saibai-mega__center-link{% if view_all %} is-view-all{% endif %}{% if childlink.active %} is-active{% endif %}"
-                {% if childlink.current %}aria-current="page"{% endif %}
-              >
-                {{ childlink.title }}
+                {%- unless view_all -%}
+                  <span class="saibai-mega__chevron" aria-hidden="true"></span>
+                {%- endunless -%}
               </a>
             {%- endif -%}
           </li>

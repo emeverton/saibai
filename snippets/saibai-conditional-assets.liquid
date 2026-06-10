@@ -13,7 +13,7 @@
 {%- endif -%}
 
 {%- if request.page_type == 'page' -%}
-  {%- assign saibai_inst_handles = 'historia,sobre,fazenda,conquistas,contato,contact' | split: ',' -%}
+  {%- assign saibai_inst_handles = 'historia,sobre,fazenda,conquistas,contato,contact,politica-de-entrega,politica-de-troca,politica-de-privacidade' | split: ',' -%}
   {%- if saibai_inst_handles contains page.handle -%}
     {%- render 'saibai-inst-css' -%}
   {%- endif -%}

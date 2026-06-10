@@ -1,36 +1,22 @@
 {
   "sections": {
-    "main": {
-      "type": "main-page",
-      "blocks": {
-        "heading": {
-          "type": "text",
-          "settings": {
-            "text": "<h1>Política de Troca e Devolução</h1>",
-            "type_preset": "h1",
-            "padding-block-end": 16
-          },
-          "blocks": {}
-        },
-        "content": {
-          "type": "text",
-          "settings": {
-            "text": "<p><strong>Direito de arrependimento</strong></p><p>Conforme o CDC, devolução em até <strong>7 dias corridos</strong> após o recebimento, com produto lacrado e em condições de revenda (não perecíveis).</p><p><strong>Produtos frescos</strong></p><p>Danificado, fora do padrão ou problema no transporte: contato em até <strong>24 horas</strong> com fotos do produto e da embalagem.</p><p><strong>Como solicitar</strong></p><p>E-mail para <a href=\"mailto:contato@saibai.com.br\">contato@saibai.com.br</a> com número do pedido, motivo e fotos. Retorno em até 2 dias úteis.</p><p><strong>Trocas</strong></p><p>Produtos elegíveis: reenvio após recebimento e conferência do item devolvido.</p><p><strong>Reembolso</strong></p><p>Após aprovação, mesmo meio de pagamento em até <strong>10 dias úteis</strong>.</p><p><strong>Exceções</strong></p><p>Produtos consumidos, violados ou armazenados incorretamente após entrega.</p>",
-            "type_preset": "rte"
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": ["heading", "content"],
+    "hero": {
+      "type": "saibai-inst-hero",
       "settings": {
-        "content_direction": "column",
-        "content_direction_mobile": "column",
-        "section_width": "page-width",
-        "color_scheme": "scheme-2",
-        "padding-block-start": 36,
-        "padding-block-end": 36
+        "eyebrow": "Empório Saibai · Piedade, SP",
+        "title": "Troca e Devolução",
+        "lead": "Seu direito, nosso compromisso — processo claro para conservas, desidratados e alcachofras frescas.",
+        "asset_fallback": "saibai-asvc-troca.jpg"
       }
+    },
+    "policy": {
+      "type": "saibai-policy-troca",
+      "settings": {}
+    },
+    "nav": {
+      "type": "saibai-inst-nav",
+      "settings": {}
     }
   },
-  "order": ["main"]
+  "order": ["hero", "policy", "nav"]
 }

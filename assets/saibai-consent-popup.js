@@ -106,11 +106,17 @@
         {
           analytics: !!consent.analytics,
           marketing: !!consent.marketing,
-          preferences: true
+          preferences: false,
+          sale_of_data: false
         },
         callback || function () {}
       );
     });
+  }
+
+  function denyDefaultTracking(callback) {
+    registerShopifyConsent({ analytics: false, marketing: false }, callback);
+    updateGtagConsent({ analytics: false, marketing: false });
   }
 
   function updateGtagConsent(consent) {
@@ -122,7 +128,10 @@
       analytics_storage: consent.analytics ? 'granted' : 'denied',
       ad_storage: consent.marketing ? 'granted' : 'denied',
       ad_user_data: consent.marketing ? 'granted' : 'denied',
-      ad_personalization: consent.marketing ? 'granted' : 'denied'
+      ad_personalization: consent.marketing ? 'granted' : 'denied',
+      personalization_storage: consent.marketing ? 'granted' : 'denied',
+      functionality_storage: 'granted',
+      security_storage: 'granted'
     });
   }
 
@@ -228,6 +237,15 @@
       lockBodyScroll();
       var focusTarget = focusSelector ? root.querySelector(focusSelector) : null;
       if (focusTarget) focusTarget.focus();
+      if (!root.dataset.saibaiConsentTrapBound) {
+        root.dataset.saibaiConsentTrapBound = 'true';
+        root.addEventListener('keydown', function (event) {
+          if (event.key === 'Escape' && !root.hasAttribute('hidden')) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+        });
+      }
       return;
     }
     root.setAttribute('hidden', 'hidden');
@@ -319,23 +337,19 @@
       return;
     }
 
+    denyDefaultTracking();
+
     var bannerOpened = false;
     function showBannerOnce() {
       if (bannerOpened) return;
       bannerOpened = true;
       showView(root, 'main');
-      setOpen(root, true, '[data-saibai-consent-accept]');
+      setOpen(root, true, '[data-saibai-consent-prefs-open]');
     }
 
     function scheduleBanner() {
       function run() {
-        whenShopifyPrivacyReady(function (privacy) {
-          if (privacy && typeof privacy.shouldShowBanner === 'function' && !privacy.shouldShowBanner()) {
-            resolveConsent(root, { analytics: false, marketing: false });
-            return;
-          }
-          showBannerOnce();
-        });
+        showBannerOnce();
       }
 
       function afterLoad() {

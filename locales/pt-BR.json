@@ -50,7 +50,7 @@
     "rating": "A avaliação deste produto é {{ rating }} de 5",
     "refresh_page": "Escolher uma opção resulta em recarregar a página inteira.",
     "remove_item": "Remover {{ title}}",
-    "reset_search": "Restaurar busca",
+    "reset_search": "Redefinir busca",
     "scroll_to": "Rolar até {{ title }}",
     "search_results_count": "{{ count }} resultados encontrados para \"{{ query }}\"",
     "search_results_no_results": "Nenhum resultado encontrado para \"{{ query }}\"",
@@ -83,20 +83,20 @@
     "enter_password": "Digite a senha",
     "enter_using_password": "Entrar usando senha",
     "log_in": "Entrar",
-    "log_in_html": "Tem uma conta? <a href=\"{{ link }}\">Entrar</a> para uma finalização de compra mais rápida.",
+    "log_in_html": "Tem uma conta? <a href=\"{{ link }}\">Entrar</a> para finalizar a compra mais rápido.",
     "log_out": "Sair",
     "more": "Mais",
     "open": "Abrir",
     "open_image_in_full_screen": "Abrir imagem em tela cheia",
     "remove": "Remover",
     "remove_discount": "Remover desconto {{ code }}",
-    "reset": "Restaurar",
+    "reset": "Redefinir",
     "save": "Salvar",
     "see_items": {
       "one": "Ver {{ count }} item",
       "other": "Ver {{ count }} itens"
     },
-    "show_all_options": "Mostrar todas opções",
+    "show_all_options": "Mostrar todas as opções",
     "show_filters": "Filtrar",
     "show_less": "Mostrar menos",
     "show_more": "Mostrar mais",
@@ -121,17 +121,17 @@
         "other": "{{ count }} comentários"
       },
       "featured": "Destaque",
-      "next_post": "Próxima publicação",
+      "next_post": "Próximo artigo",
       "on": "Em",
-      "previous_post": "Publicação anterior",
+      "previous_post": "Artigo anterior",
       "read_more": "Leia mais",
       "read_more_title": "Leia mais: {{ title }}",
-      "recent_articles": "Artigos Recentes",
+      "recent_articles": "Artigos recentes",
       "share": "Compartilhar este artigo"
     },
     "comment_form": {
       "email": "E-mail",
-      "error": "Falha ao postar o comentário, por favor corrija o seguinte:",
+      "error": "Não foi possível publicar o comentário. Corrija o seguinte:",
       "heading": "Deixe um comentário",
       "message": "Comentário",
       "moderated": "Observação: comentários precisam ser aprovados antes de serem publicados.",
@@ -139,7 +139,7 @@
       "post": "Postar comentário",
       "post_error": "O e-mail é obrigatório para postar o comentário.",
       "success": "Seu comentário foi postado com sucesso! Obrigado!",
-      "success_moderated": "Seu comentário foi postado com sucesso. Vamos publicá-lo em breve, pois nosso blog é moderado."
+      "success_moderated": "Seu comentário foi enviado com sucesso. Ele será publicado em breve, pois nosso blog é moderado."
     }
   },
   "content": {
@@ -166,7 +166,7 @@
       "cart": "Carrinho",
       "collections": "Coleções",
       "home": "Início",
-      "home_link_title": "Ir para página inicial",
+      "home_link_title": "Ir para a página inicial",
       "product": "Produto",
       "search": "Busca",
       "separator": "/",
@@ -177,7 +177,7 @@
       "button": "Calcular frete",
       "error": "Um ou mais erros ocorreram ao recuperar as opções de frete:",
       "multiple_results": "Há múltiplas opções de frete para seu endereço:",
-      "not_found": "Desculpe, não enviamos para seu endereço.",
+      "not_found": "Desculpe, não enviamos para o seu endereço.",
       "one_result": "Há uma opção de frete para seu endereço:",
       "shipping": "Calcular frete",
       "title": "Obter estimativa de frete:"
@@ -284,8 +284,8 @@
     "free_shipping_2": "A definir",
     "free_shipping_message": "Frete grátis para todos os pedidos acima de",
     "free_shipping_message_1": "Você tem frete grátis!",
-    "free_shipping_message_2": "Apenas",
-    "free_shipping_message_3": "longe de",
+    "free_shipping_message_2": "Faltam apenas",
+    "free_shipping_message_3": "para o",
     "free_shipping_message_4": "frete grátis",
     "go_to": "Ir para {{ name }}",
     "grid": {
@@ -324,7 +324,7 @@
       "one": "{{ quantity }} item adicionado",
       "other": "{{ quantity }} itens adicionados"
     },
-    "items_per_page": "{{ limit }} Itens por página",
+    "items_per_page": "{{ limit }} itens por página",
     "items_per_page_label": "Itens por página",
     "items_removed": {
       "one": "{{ quantity }} item removido",
@@ -338,7 +338,7 @@
     "loading": "Carregando...",
     "localization_region_and_language": "Região e idioma",
     "login": {
-      "paragraph_html": "<a href=\"{{ link }}\" class=\"link link--underline\">Entrar</a> para finalizar compra mais rápido.",
+      "paragraph_html": "<a href=\"{{ link }}\" class=\"link link--underline\">Entrar</a> para finalizar a compra mais rápido.",
       "title": "Tem uma conta?"
     },
     "max_error": "Este item tem um máximo de {{ max }}",
@@ -357,11 +357,11 @@
     "no_more": "Não há mais produtos",
     "no_more_collection": "Não há mais produtos nesta coleção",
     "no_pages_found": "Nenhuma página encontrada",
-    "no_product_added": "Nenhum produto adicionado à sua lista de desejos",
+    "no_product_added": "Nenhum produto na sua lista de desejos",
     "no_products_found": "Nenhum produto encontrado.",
     "no_results": "Nenhum resultado encontrado para “{{ terms }}”. Verifique a ortografia ou tente outra palavra.",
     "no_results_found": "Nenhum resultado encontrado",
-    "note": "Comentários adicionais",
+    "note": "Instruções adicionais",
     "note_placeholder": "Instruções especiais para o vendedor...",
     "page": "Página",
     "page_placeholder_content": "Selecione uma página para exibir seu conteúdo.",
@@ -398,10 +398,10 @@
     "popular_countries_regions": "Países/regiões populares",
     "powered_by": "Esta loja será impulsionada por",
     "price": "Preço",
-    "price_compare_at": "Comparar com o preço",
+    "price_compare_at": "Preço comparado",
     "price_filter_html": "O maior preço é {{ price }}",
     "price_from": "A partir de {{ price }}",
-    "price_regular": "Preço normal",
+    "price_regular": "Preço regular",
     "price_sale": "Preço em promoção",
     "previous_announcement": "Anúncio anterior",
     "previous_slideshow": "Slide anterior",
@@ -478,7 +478,7 @@
     "search_results_no_results_check_spelling": "Nenhum resultado encontrado para \"{{ terms }}\". Verifique a ortografia ou tente outra palavra.",
     "search_results_quick_keywords": "Buscas em alta",
     "search_results_quick_links": "Categorias populares",
-    "search_results_resource_articles": "Posts do blog",
+    "search_results_resource_articles": "Artigos do blog",
     "search_results_resource_collections": "Coleções",
     "search_results_resource_pages": "Páginas",
     "search_results_resource_products": "Produtos",
@@ -497,7 +497,7 @@
       "success_message": "Link copiado para a área de transferência"
     },
     "share_wishlist_via_email": "Compartilhar minha lista de desejos via e-mail",
-    "shipping_discount_error": "Descontos de frete são exibidos na finalização após adicionar endereço",
+    "shipping_discount_error": "Os descontos de frete são calculados na finalização após informar o endereço",
     "shipping_policy": "Frete calculado na finalização.",
     "shipping_policy_html": "<a href=\"{{ link }}\">Frete</a> calculado na finalização.",
     "show_more": "Mostrar mais",
@@ -510,7 +510,7 @@
       "previous_slide": "Slide anterior"
     },
     "social": {
-      "email": "Email",
+      "email": "E-mail",
       "facebook": "Facebook",
       "instagram": "Instagram",
       "pinterest": "Pinterest",
@@ -546,15 +546,15 @@
     "update": "Atualizar",
     "update_country": "Atualizar país/região",
     "update_language": "Atualizar idioma",
-    "use_fewer_filters_html": "Tente usar menos filtros ou <a class=\"{{ class }}\" href=\"{{ link }}\">limpe todos os filtros</a>.",
+    "use_fewer_filters_html": "Tente usar menos filtros ou <a class=\"{{ class }}\" href=\"{{ link }}\">limpar todos os filtros</a>.",
     "variant": "Variante",
     "variant_total": "Total da variante",
     "view_all": "Ver tudo",
-    "view_all_label": "Ver todos produtos da coleção {{ collection_name }}",
+    "view_all_label": "Ver todos os produtos da coleção {{ collection_name }}",
     "view_as": "Ver como",
     "view_cart": "Ver carrinho",
     "view_more_details": "Ver mais detalhes",
-    "wishlist": "Listas de desejos",
+    "wishlist": "Lista de desejos",
     "wishlist_items": "Lista de desejos com {{ count }} itens",
     "wrong_password": "Senha incorreta",
     "your_cart": "Seu carrinho",
@@ -589,13 +589,13 @@
     "addresses": {
       "add": "Adicionar endereço",
       "add_new": "Adicionar novo endereço",
-      "address1": "Endereço",
-      "address2": "Complemento / Bairro",
-      "street": "Rua / Logradouro",
+      "address1": "Logradouro",
+      "address2": "Bairro",
+      "street": "Logradouro",
       "number": "Número",
       "complement": "Complemento",
       "neighborhood": "Bairro",
-      "address_book": "Livro de endereços",
+      "address_book": "Endereços salvos",
       "cancel": "Cancelar",
       "city": "Cidade",
       "company": "Empresa",
@@ -626,7 +626,7 @@
       "guest_title": "Continuar como convidado",
       "password": "Senha",
       "sign_in": "Entrar",
-      "submit": "Criar uma conta",
+      "submit": "Enviar link de redefinição",
       "title": "Entrar"
     },
     "order": {
@@ -641,7 +641,7 @@
       "price": "Preço",
       "product": "Produto",
       "quantity": "Quantidade",
-      "reorder": "Recomendar novamente",
+      "reorder": "Comprar novamente",
       "reorder_error": "Não foi possível adicionar este pedido ao carrinho",
       "reorder_loading": "Adicionando ao carrinho...",
       "reorder_success": "Pedido adicionado ao carrinho",
@@ -661,7 +661,7 @@
     },
     "orders": {
       "date": "Data",
-      "fulfillment_status": "Status da entrega",
+      "fulfillment_status": "Status de entrega",
       "none": "Você ainda não fez nenhum pedido.",
       "order_number": "Pedido",
       "order_number_link": "Pedido número {{ number }}",
@@ -694,9 +694,9 @@
     }
   },
   "gift_cards": {
-    "title": "Cartões presente",
-    "collapsed": "Formulário do presente colapsado",
-    "expanded": "Formulário do presente expandido",
+    "title": "Cartões-presente",
+    "collapsed": "Formulário do destinatário do vale-presente recolhido",
+    "expanded": "Formulário do destinatário do vale-presente expandido",
     "issued": {
       "add_to_apple_wallet": "Adicionar ao Apple Wallet",
       "copy_code": "Copiar código do vale-presente",
@@ -704,12 +704,12 @@
       "expiration_date": "Expira em {{ expires_on }}",
       "expired": "Expirado",
       "gift_card_code": "Código do vale-presente",
-      "how_to_use_gift_card": "Use o código online ou QR code em loja física",
+      "how_to_use_gift_card": "Use o código online ou o QR code na loja física",
       "print": "Imprimir",
-      "qr_image_alt": "Código QR — escanear para resgatar o vale-presente",
-      "shop_link": "Visitar loja online",
+      "qr_image_alt": "Código QR — escaneie para resgatar o vale-presente",
+      "shop_link": "Visitar a loja online",
       "subtext": "Seu vale-presente",
-      "title": "Aqui está o saldo de R$ {{ value }} do vale-presente para {{ shop }}!"
+      "title": "Aqui está o saldo de {{ value }} do vale-presente para {{ shop }}!"
     }
   },
   "general": {
@@ -720,9 +720,9 @@
   "placeholders": {
     "blog_post_author": "Autor",
     "blog_post_date": "Data",
-    "blog_post_description": "Um excerto do conteúdo do seu blog",
-    "blog_post_title": "Título",
-    "blog_posts": "Postagens do blog",
+    "blog_post_description": "Um resumo do conteúdo deste artigo",
+    "blog_post_title": "Título do artigo",
+    "blog_posts": "Artigos do blog",
     "collection_description": "Descrição da coleção",
     "collection_title": "Título da coleção",
     "password": "Senha",
@@ -735,10 +735,10 @@
       "clear": "Limpar",
       "clear_all": "Limpar tudo",
       "clear_filter": "Remover filtro",
-      "filter_and_operator_subtitle": "Combinar todos",
+      "filter_and_operator_subtitle": "Atender a todos os filtros",
       "filter_and_sort": "Filtrar e ordenar",
       "filter_button": "Filtrar",
-      "filter_by_label": "Refinado por:",
+      "filter_by_label": "Filtrado por:",
       "filter_selected_accessibility": "{{ type }} ({{ count }} filtros selecionados)",
       "filters_selected": {
         "one": "{{ count }} selecionado",
@@ -754,7 +754,7 @@
         "one": "{{ count }} produto",
         "other": "{{ count }} produtos"
       },
-      "reset": "Restaurar",
+      "reset": "Redefinir",
       "show_less": "Mostrar menos",
       "show_more": "Mostrar mais",
       "sort_button": "Ordenar",
@@ -780,7 +780,7 @@
       "compare": "Comparar",
       "custom": "Personalizado",
       "description": "Descrição",
-      "duties_and_taxes_included": "Taxas e impostos incluídos.",
+      "duties_and_taxes_included": "Impostos e taxas incluídos.",
       "duties_included": "Taxas incluídas.",
       "hot_stock": "Corra! Só restam {{ inventory }}",
       "info": {
@@ -793,7 +793,7 @@
       "inventory_in_stock": "Em estoque",
       "inventory_in_stock_show_count": "{{ quantity }} em estoque",
       "inventory_low_stock": "Baixo estoque",
-      "inventory_low_stock_show_count": "Baixo estoque: apenas {{ quantity }} restante",
+      "inventory_low_stock_show_count": "Baixo estoque: restam apenas {{ quantity }}",
       "inventory_out_of_stock": "Fora de estoque",
       "inventory_out_of_stock_continue_selling": "Em estoque",
       "many_in_stock": "Muitos em estoque",
@@ -815,7 +815,7 @@
         "check_other_stores": "Verificar disponibilidade em outras lojas",
         "pick_up_available": "Retirada disponível",
         "pick_up_available_at_html": "Retirada disponível em <span class=\"color-foreground\">{{ location_name }}</span>",
-        "pick_up_unavailable_at_html": "Retirada indisponível em <span class=\"color-foreground\">{{ location_name }}</span>",
+        "pick_up_unavailable_at_html": "Retirada indisponível no momento em <span class=\"color-foreground\">{{ location_name }}</span>",
         "refresh": "Atualizar",
         "unavailable": "Não foi possível carregar a disponibilidade de retirada",
         "view_store_info": "Ver informações da loja"
@@ -862,7 +862,7 @@
       "value_unavailable": "{{ option_value }} - Indisponível",
       "variant_sold_out_or_unavailable": "Variação esgotada ou indisponível",
       "vendor": "Vendedor",
-      "video_exit_message": "{{ title }} abre vídeo em tela cheia na mesma janela.",
+      "video_exit_message": "{{ title }} abre o vídeo em tela cheia na mesma janela.",
       "view_full_details": "Ver detalhes completos",
       "volume_pricing": {
         "minimum": "{{ quantity }}+",
@@ -872,7 +872,7 @@
         "title": "Preço por volume"
       },
       "xr_button": "Ver no seu espaço",
-      "xr_button_label": "Ver no seu espaço, carrega item em realidade aumentada"
+      "xr_button_label": "Ver no seu espaço, carrega o item em realidade aumentada"
     }
   },
   "navigation": {
@@ -916,7 +916,7 @@
         "contact_us_html": "Entre em contato para mais informações",
         "autocomplete_title": "Sugestões",
         "autocomplete_single_item": "1 item disponível",
-        "autocomplete_multi_item": "{{number}} items disponíveis",
+        "autocomplete_multi_item": "{{number}} itens disponíveis",
         "autocomplete_selection": "{{number}} de {{total}}",
         "autocomplete_close": "Fechar sugestões",
         "forwarding_indicator": {
@@ -940,16 +940,16 @@
             "merchandise_not_applicable": "Não é possível comprar a variante do produto.",
             "bundle_products_not_supported_for_b2b": "Não é possível adicionar itens agrupados a pedidos B2B neste local.",
             "gift_card_quantity_mismatch": "Para especificar códigos de cartão-presente, é necessário que a quantidade de itens de linha e o número de códigos de cartão-presente sejam iguais.",
-            "gift_card_not_supported": "Não é possível usar cartões-presente neste finalização da compra.",
-            "gift_card_not_unique": "O cartão-presente com código {{code}} ocorre mais de uma vez neste finalização da compra. Vale lembrar que os códigos são formatados antes da comparação.",
+            "gift_card_not_supported": "Não é possível usar cartões-presente nesta finalização da compra.",
+            "gift_card_not_unique": "O cartão-presente com código {{code}} ocorre mais de uma vez nesta finalização da compra. Vale lembrar que os códigos são formatados antes da comparação.",
             "gift_card_used": "O código do cartão-presente {{code}} já está atribuído a um cartão-presente. Vale lembrar que os códigos são formatados antes da comparação.",
             "gift_card_invalid": "O código {{code}} do cartão-presente é inválido.",
             "gift_card_code_changed": "O código {{proposed_code}} do cartão-presente foi alterado para {{formatted_code}} a fim de cumprir as regras de formatação.",
-            "gift_card_with_attributes_not_supported": "Cartões-presente com atributos personalizados não são aceitos neste finalização da compra.",
-            "gift_card_with_components_not_supported": "Cartões-presente com componentes não são aceitos neste finalização da compra.",
+            "gift_card_with_attributes_not_supported": "Cartões-presente com atributos personalizados não são aceitos nesta finalização da compra.",
+            "gift_card_with_components_not_supported": "Cartões-presente com componentes não são aceitos nesta finalização da compra.",
             "selling_plan_mismatch": "A assinatura foi atualizada.",
             "selling_plan_not_supported": "Não é possível fazer assinaturas.",
-            "selling_plan_not_supported_b2b": "Não é possível fazer assinaturas no finalização da compra B2B.",
+            "selling_plan_not_supported_b2b": "Não é possível fazer assinaturas na finalização da compra B2B.",
             "price_mismatch": "O preço proposto antes para essa mercadoria era inválido e foi atualizado.",
             "inventory_not_found": "Nenhum estoque encontrado para essa mercadoria.",
             "product_not_published": "O produto não está publicado.",
@@ -961,7 +961,7 @@
             "bundle_requires_components": "Não há componentes nesta mercadoria agrupada.",
             "title_too_long": "O título da mercadoria é muito longo.",
             "title_empty": "O título da mercadoria está vazio.",
-            "mixed_currencies": "O finalização da compra tem itens de linha com diferentes moedas.",
+            "mixed_currencies": "A finalização da compra tem itens de linha com diferentes moedas.",
             "product_not_published_in_buyer_location": "O produto está indisponível no local atual do comprador.",
             "combined_listing_parent_not_purchasable": "Produtos principais de listagens combinadas não podem ser comprados diretamente."
           },
@@ -973,10 +973,10 @@
             "email_required": "É necessário ter um e-mail quando a mercadoria é comprada por meio de uma assinatura.",
             "email_domain_is_invalid": "Não é possível resolver este domínio especificado.",
             "missing_contact_method": "Não foi encontrada uma forma de contato válida.",
-            "checkout_completion_target_is_missing": "Falta o objetivo de conclusão do finalização da compra.",
+            "checkout_completion_target_is_missing": "Falta o objetivo de conclusão da finalização da compra.",
             "invalid_customer_profile": "Um perfil do cliente inválido foi fornecido.",
-            "customer_profile_access_restricted": "O finalização da compra não tem permissão para acessar o perfil do cliente.",
-            "checkout_completion_target_is_invalid_proc": "Objetivo de conclusão do finalização da compra inválido.",
+            "customer_profile_access_restricted": "A finalização da compra não tem permissão para acessar o perfil do cliente.",
+            "checkout_completion_target_is_invalid_proc": "Objetivo de conclusão da finalização da compra inválido.",
             "company_location_required": "O cliente precisa escolher o local da empresa para continuar.",
             "lost_access_to_company": "O cliente perdeu o acesso a qualquer empresa.",
             "company_purchase_permission_required": "O cliente não tem permissão para fazer pedidos em nome da empresa.",
@@ -1055,7 +1055,7 @@
             "store_credit_not_enabled": "O crédito na loja não está ativado.",
             "store_credit_account_not_found": "A conta em crédito na loja não foi encontrada.",
             "store_credit_account_mismatch": "A conta em crédito na loja não é a mesma da identidade do comprador.",
-            "store_credit_mismatched_currency": "A moeda da conta em crédito na loja não é a mesma do finalização da compra.",
+            "store_credit_mismatched_currency": "A moeda da conta em crédito na loja não é a mesma da finalização da compra.",
             "store_credit_insufficient_funds": "Não há fundos suficientes na conta em crédito na loja.",
             "store_credit_buying_gift_card": "Não é possível usar crédito na loja para comprar um cartão-presente.",
             "gift_cards_not_allowed_for_b2b": "Cartões-presente não são permitidos em lojas B2B.",
@@ -1087,21 +1087,21 @@
             "only_one_inventory_behavior_allowed": "No momento, apenas um comportamento de estoque é permitido por finalização da compra."
           },
           "optional_duties": {
-            "optional_duties_not_permitted": "Não é permitido recusar tributos de importação nesse finalização da compra."
+            "optional_duties_not_permitted": "Não é permitido recusar tributos de importação nessa finalização da compra."
           },
           "attribution": {
-            "retail_attribution_not_allowed": "Não é permitido usar atribuição de varejo nesse finalização da compra.",
-            "retail_attribution_required": "É necessário usar a atribuição de varejo nesse finalização da compra."
+            "retail_attribution_not_allowed": "Não é permitido usar atribuição de varejo nessa finalização da compra.",
+            "retail_attribution_required": "É necessário usar a atribuição de varejo nessa finalização da compra."
           },
           "captcha": {
-            "metadata_missing": "É necessário resolver o CAPTCHA nesse finalização da compra.",
+            "metadata_missing": "É necessário resolver o CAPTCHA nessa finalização da compra.",
             "metadata_mismatch": "O provedor e o tipo de CAPTCHA fornecidos não coincidem com os valores esperados.",
-            "token_missing": "É necessário fornecer um token de CAPTCHA para concluir o finalização da compra.",
+            "token_missing": "É necessário fornecer um token de CAPTCHA para concluir a finalização da compra.",
             "job_enqueue_failed": "Falha ao enfileirar o trabalho de validação do CAPTCHA.",
             "job_already_queued": "A validação desse token de CAPTCHA já foi enfileirada.",
-            "token_expired": "O token de CAPTCHA fornecido expirou. Resolva um novo para continuar com o finalização da compra.",
-            "token_invalid": "O token de CAPTCHA fornecido era inválido. Resolva um novo para continuar com o finalização da compra.",
-            "token_not_valid_for_session": "O token de CAPTCHA fornecido não pode ser usado nesse finalização da compra."
+            "token_expired": "O token de CAPTCHA fornecido expirou. Resolva um novo para continuar com a finalização da compra.",
+            "token_invalid": "O token de CAPTCHA fornecido era inválido. Resolva um novo para continuar com a finalização da compra.",
+            "token_not_valid_for_session": "O token de CAPTCHA fornecido não pode ser usado nessa finalização da compra."
           },
           "fx_reconciliation_override": {
             "shop_currency_mismatch": "O valor recebido precisa estar na moeda da loja."
@@ -1120,7 +1120,7 @@
         "submit_for_review_button_label": "Enviar para revisão",
         "submit_for_review_notice_label": "O pagamento só é realizado após a revisão do pedido",
         "continue_to_payment_plans_button_label": "Seguir para os planos de pagamento",
-        "back_button_label": "Devolução",
+        "back_button_label": "Voltar",
         "choose_delivery_strategy": "Escolher uma forma de entrega",
         "autocomplete_zero_item": "Não há itens disponíveis",
         "autocomplete_powered_by_google": "Com tecnologia do {{brandName}}",
@@ -2024,7 +2024,7 @@
         "billing_address_not_supported_for_payment_method_error": "Esta forma de pagamento não está disponível para seu endereço e moeda de faturamento. Tente outra forma de pagamento.",
         "change_currency_section_description": "Selecione uma opção de moeda",
         "no_real_orders_dev_store": "Esta loja não pode aceitar pedidos nem pagamentos reais.",
-        "subscription_agreement_label_html": "Entendo que estou concordando com uma assinatura. Ela será renovada com o preço e a frequência listados até que termine ou\n seja <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{subscription_policy}\" href=\"%{policy_href}\">cancelada</a>.",
+        "subscription_agreement_label_html": "Entendo que estou concordando com uma assinatura. Ela será renovada com o preço e a frequência listados até que termine ou seja <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{subscription_policy}\" href=\"%{policy_href}\">cancelada</a>.",
         "waiting_on_payment_methods": "Buscando formas de pagamento disponíveis...",
         "apple_pay_payment_error": "Não foi possível concluir o pagamento. Tente de novo ou use outra forma de pagamento.",
         "subscription_card_update_agreement_label": "Alterar a forma de pagamento atualiza a assinatura e os futuros pagamentos recorrentes.",
@@ -2053,7 +2053,7 @@
         "credit_card_vaulting_sign_in_banner_button_label": "Fazer login",
         "expiry_long": "(Expira em %{month}/%{year})",
         "expiry_short": "(Expira em %{month}/%{year})",
-        "ftd_vault_credit_card_label": "Salvar este cartão de crédito na minha conta para agilizar o finalização da compra",
+        "ftd_vault_credit_card_label": "Salvar este cartão de crédito na minha conta para agilizar a finalização da compra",
         "delete_customer_mandate_modal_title": "Quer mesmo remover este cartão de pagamento?",
         "delete_customer_mandate_modal_body": "Você precisará adicioná-lo novamente para fazer pagamentos.",
         "delete_customer_mandate_modal_confirm": "Remover cartão",
@@ -2062,7 +2062,7 @@
           "error_authorizing": "Erro ao autorizar o pagamento"
         },
         "klarna_label": "Klarna",
-        "mor_disclaimer_html": "Se clicar abaixo e concluir o pedido, você concorda em comprar seus itens da Global-e como empresa responsável por processar o pagamento\ndesta transação, conforme os <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{mor_terms}\" href=\"%{terms_href}\">Termos e condições</a> e a <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{privacy_policy}\" href=\"%{policy_href}\">Política de privacidade</a> da Global-e, prestadora de serviços que\nprocessa produtos da %{shop_name} no exterior.",
+        "mor_disclaimer_html": "Se clicar abaixo e concluir o pedido, você concorda em comprar seus itens da Global-e como empresa responsável por processar o pagamento desta transação, conforme os <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{mor_terms}\" href=\"%{terms_href}\">Termos e condições</a> e a <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{privacy_policy}\" href=\"%{policy_href}\">Política de privacidade</a> da Global-e, prestadora de serviços que processa produtos da %{shop_name} no exterior.",
         "purchase_options_card_update_agreement_label_html": "Ao atualizar a forma de pagamento, você autoriza pagamentos para compras recorrentes ou diferidas de acordo com a <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{cancellation_policy}\" href=\"%{policy_href}\">política de cancelamento</a> da loja.",
         "multibanco_label": "Multibanco",
         "receiver_payment_experience_hint": "Depois de realizar o pedido, você receberá as informações para o pagamento, que deve ser feito no Multibanco ou online em até %{due_days} dias.",
@@ -2081,9 +2081,9 @@
         "update_payment_method": "Atualizar forma de pagamento",
         "paypal_modal": {
           "order_contains_subscriptions": "Assinatura",
-          "order_contains_fixed_selling_plans": "O total pode não incluir tributos, frete, cobranças diferidas e alguns descontos. Continue para o finalização da compra e confira o valor a ser pago hoje."
+          "order_contains_fixed_selling_plans": "O total pode não incluir tributos, frete, cobranças diferidas e alguns descontos. Continue para a finalização da compra e confira o valor a ser pago hoje."
         },
-        "purchase_options_agreement_label_html": "Entendo que um ou mais itens no carrinho referem-se a uma compra recorrente, adiada ou assinatura. Ao continuar, concordo com a\n<a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{subscription_policy}\" href=\"%{policy_href}\">política de cancelamento</a>\ne autorizo a cobrança na forma de pagamento conforme os preços, a frequência e as datas listados nesta página, até que o\npedido seja processado ou eu cancele, se permitido.",
+        "purchase_options_agreement_label_html": "Entendo que um ou mais itens no carrinho referem-se a uma compra recorrente, adiada ou assinatura. Ao continuar, concordo com a <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{subscription_policy}\" href=\"%{policy_href}\">política de cancelamento</a> e autorizo a cobrança na forma de pagamento conforme os preços, a frequência e as datas listados nesta página, até que o pedido seja processado ou eu cancele, se permitido.",
         "payment_method_saved": "Forma de pagamento salva",
         "card_vaulted_company_location": "Cartão salvo para o local",
         "order_covered_by_store_credit_notice": "O crédito na loja cobre o valor do pedido.",
@@ -2109,7 +2109,7 @@
         "billing_address_invalid_phone_no_card": "Atualize o número de telefone no endereço de faturamento para continuar.",
         "preview_not_available": {
           "title": "Pré-visualização não disponível",
-          "content": "Não se preocupe, este finalização da compra expresso funciona para seus clientes.",
+          "content": "Não se preocupe, esta finalização da compra expresso funciona para seus clientes.",
           "button": "OK"
         },
         "card_fields": {
@@ -2124,8 +2124,8 @@
           }
         },
         "simulated_checkout": "Prévia em breve",
-        "vaulting_agreement_label": "Salvar minhas informações de pagamento com a %{company} para agilizar o finalização da compra.",
-        "business_customer_vaulting_payment_label": "Salve esta forma de pagamento no finalização da compra e autorize a %{company} a fazer cobranças em futuras compras neste local. Todos os contatos atribuídos a esse local podem usar a forma de pagamento.",
+        "vaulting_agreement_label": "Salvar minhas informações de pagamento com a %{company} para agilizar a finalização da compra.",
+        "business_customer_vaulting_payment_label": "Salve esta forma de pagamento na finalização da compra e autorize a %{company} a fazer cobranças em futuras compras neste local. Todos os contatos atribuídos a esse local podem usar a forma de pagamento.",
         "purchase_options_and_vaulting_agreement_label": "Pelo menos um item no carrinho é de compra diferida ou assinatura. Ao continuar, você concorda que a forma de pagamento será cobrada automaticamente de acordo com o preço e a frequência indicados nesta página até o término ou o cancelamento. Todos os cancelamentos estão sujeitos à %{cancellation_policy_label}.",
         "purchase_options_cancellation_policy_label": "política de cancelamento",
         "use_different_credit_card_label": "Usar outro cartão",
@@ -2307,7 +2307,7 @@
         "separate_payments_label": "Seus itens são de mais de uma loja. O valor será cobrado em %{separate_payments_link}.",
         "separate_payments_text": "pagamentos separados",
         "payments": "Pagamentos",
-        "business_customer_with_bank_account_vaulting_payment_label": "Salve esta forma de pagamento no finalização da compra e autorize a %{company} a debitar da sua conta em futuras compras que você aprovar neste local, até cancelar. Todos os contatos atribuídos a esse local podem usar a forma de pagamento.",
+        "business_customer_with_bank_account_vaulting_payment_label": "Salve esta forma de pagamento na finalização da compra e autorize a %{company} a debitar da sua conta em futuras compras que você aprovar neste local, até cancelar. Todos os contatos atribuídos a esse local podem usar a forma de pagamento.",
         "new_bank_account_disclaimer": "Ao concluir o pedido, você autoriza a loja %{shop_name} a debitar da conta abaixo por ACH valor indicado na data indicada.",
         "bank_account_disclaimer": "O processamento de pagamentos por ACH pode levar até quatro dias úteis.",
         "bank_account_vaulted_company_location": "Conta bancária salva para este local",
@@ -2394,7 +2394,7 @@
         "gift_card_depleted": "Este cartão-presente não tem recursos",
         "gift_card_currency_mismatch": "Somente cartões-presente em %{checkout_currency} podem ser utilizados com este pedido.",
         "payment_gateway_needs_paid_plan_error": "Esta forma de pagamento não está disponível na loja agora",
-        "payment_gateway_incompatible_with_multi_currency": "Para concluir esse finalização da compra em sua moeda local, você precisa pagar com cartão de crédito.",
+        "payment_gateway_incompatible_with_multi_currency": "Para concluir essa finalização da compra em sua moeda local, você precisa pagar com cartão de crédito.",
         "physical_gift_card_invalid_quantity": "Os itens físicos da linha de cartão-presente precisam ter uma quantidade que corresponda ao número de códigos de cartão-presente.",
         "physical_gift_card_duplicate_code": "O item de linha de cartão-presente físico contém código duplicado.",
         "physical_gift_card_invalid_code": "O código do cartão-presente– físico é inválido.",
@@ -2488,7 +2488,7 @@
         "three_d_secure_failed_duplicate": "Falha na autenticação com 3D Secure do cartão de crédito porque já existe outra em andamento.",
         "insufficient_funds": "O pagamento foi recusado devido a recursos insuficientes. Tente de novo ou use uma forma de pagamento diferente.",
         "payment_processing_no_retry": "Não é possível processar o pagamento por motivos técnicos. Tente outra forma de pagamento.",
-        "checkout_amount_changed": "Não foi possível processar o pagamento porque o valor do finalização da compra foi alterado. Verifique o pedido e tente de novo.",
+        "checkout_amount_changed": "Não foi possível processar o pagamento porque o valor da finalização da compra foi alterado. Verifique o pedido e tente de novo.",
         "deferred_payment_not_allowed": "Não são permitidos lembretes de pagamento futuro. Verifique o pedido e tente de novo.",
         "deferred_payment_required": "Este pedido exige um lembrete de pagamento futuro. Verifique o pedido e tente de novo.",
         "deferred_amount_changed": "Não foi possível processar o pagamento porque o valor do lembrete de pagamento futuro foi alterado. Verifique o pedido e tente de novo.",
@@ -2525,7 +2525,7 @@
         "three_d_secure_failed_payment_method": "Não foi possível verificar seu cartão. Tente de novo ou adicione outro cartão.",
         "name_mismatch": "Verifique as informações do cartão. O nome no seu cartão não corresponde ao endereço de faturamento.",
         "payment_method_not_applicable": "A forma de pagamento não é aplicável. Use uma forma de pagamento diferente.",
-        "shop_pay_wallet_not_available": "O Shop Pay não está disponível para este finalização da compra.",
+        "shop_pay_wallet_not_available": "O Shop Pay não está disponível para esta finalização da compra.",
         "market_manager_blocks_wallet_payments": "A forma de pagamento não é aceita no seu país.",
         "paypal_over_capture": "O total do pedido foi atualizado. Pague com {{walletName}} para concluir o pedido.",
         "test_mode_enabled_only_test_cards": "Modo de teste ativado. É possível adicionar apenas cartões de crédito de teste.",
@@ -3257,17 +3257,17 @@
         "unavailable_label": "Indisponível"
       },
       "change_cart_localization": {
-        "verify_shipping_address": "Seu país/região foi atualizado. Insira o endereço de entrega para continuar o finalização da compra."
+        "verify_shipping_address": "Seu país/região foi atualizado. Insira o endereço de entrega para continuar a finalização da compra."
       },
       "throttle": {
-        "line_to_check_out": "Você está na fila do finalização da compra",
+        "line_to_check_out": "Você está na fila da finalização da compra",
         "cart_summary_heading": "Seu carrinho",
         "merchandise": {
           "sold_out": "Esgotado",
           "available": "Disponível"
         },
         "inventory": {
-          "partial_inventory_banner": "Alguns itens em seu carrinho estão esgotados e não estarão disponíveis para compra no finalização da compra.",
+          "partial_inventory_banner": "Alguns itens em seu carrinho estão esgotados e não estarão disponíveis para compra na finalização da compra.",
           "sold_out": {
             "heading": "Seu carrinho está esgotado",
             "storefront_body": "Volte para a loja para continuar comprando",
@@ -3287,7 +3287,7 @@
         "last_checked": "(Última verificação: {{time}})",
         "footer": {
           "heading": "Não atualize a página. Esse processo é automático.",
-          "body": "Os itens no carrinho só são reservados depois que você concluir o finalização da compra."
+          "body": "Os itens no carrinho só são reservados depois que você concluir a finalização da compra."
         },
         "too_many_attempts": {
           "message": "Número excessivo de tentativas",
@@ -3315,7 +3315,7 @@
       "no_address_location": {
         "title": "Local sem endereço",
         "header": "Você não tem um endereço de entrega para esse local",
-        "message": "Fale conosco para adicionar um endereço e concluir o finalização da compra.",
+        "message": "Fale conosco para adicionar um endereço e concluir a finalização da compra.",
         "email_us_button_label": "Enviar e-mail",
         "alt_header": "Falta o endereço de entrega"
       },
@@ -3386,7 +3386,7 @@
       },
       "error_page": {
         "terminal": {
-          "title": "Houve um problema no finalização da compra",
+          "title": "Houve um problema na finalização da compra",
           "message": "Atualize a página ou tente de novo em alguns minutos",
           "action": {
             "cta": "Atualizar a página"
@@ -3395,13 +3395,13 @@
         },
         "embed_errors": {
           "storefront_password_required": "Esta loja é protegida por senha",
-          "customer_account_required": "É necessário ter uma conta de cliente para concluir o finalização da compra",
+          "customer_account_required": "É necessário ter uma conta de cliente para concluir a finalização da compra",
           "cart_completed": "Este finalização da compra já foi concluído",
           "invalid_cart": "O carrinho não é mais válido",
-          "not_authorized": "Falha na autenticação do finalização da compra. Verificar suas credenciais do app",
-          "killswitch_enabled": "O finalização da compra está indisponível temporariamente",
-          "policy_violation": "Não foi possível concluir o finalização da compra devido a restrições de configuração da política",
-          "unrecoverable_failure": "Não foi possível carregar o finalização da compra. Tentar novamente"
+          "not_authorized": "Falha na autenticação da finalização da compra. Verificar suas credenciais do app",
+          "killswitch_enabled": "A finalização da compra está indisponível temporariamente",
+          "policy_violation": "Não foi possível concluir a finalização da compra devido a restrições de configuração da política",
+          "unrecoverable_failure": "Não foi possível carregar a finalização da compra. Tentar novamente"
         }
       },
       "notice_banner": {
@@ -3644,7 +3644,7 @@
           "detour": {
             "stock_problems": "Alguns itens não estão mais disponíveis. Feche o {{walletName}} e tente de novo.",
             "price_change": "Alguns preços de itens mudaram. Feche o {{walletName}} para revisar seu pedido e tente de novo.",
-            "queue": "Você foi adicionado à fila para fazer o finalização da compra. Feche o {{walletName}} para continuar.",
+            "queue": "Você foi adicionado à fila para fazer a finalização da compra. Feche o {{walletName}} para continuar.",
             "currency_change": "Você não pode usar um endereço diferente com {{walletName}}. Use o endereço original ou tente uma forma de pagamento diferente."
           },
           "unsupported": {
@@ -3705,10 +3705,10 @@
           "subscription_review_required": "Seu pedido inclui uma assinatura. Revise os termos abaixo antes de concluir o pedido."
         },
         "redirection_notice": "Vamos redirecionar você a {{walletName}} para concluir a compra",
-        "return_to_checkout": "Voltar ao finalização da compra",
+        "return_to_checkout": "Voltar à finalização da compra",
         "scrim": {
           "continue_purchase_in_window": "Continue a comprar na janela do {{walletName}}",
-          "and_return_to_checkout": "e voltar ao finalização da compra",
+          "and_return_to_checkout": "e voltar à finalização da compra",
           "cancel": "Cancelar"
         },
         "place_order": "Fazer pedido",
@@ -3748,9 +3748,9 @@
           "not_available": "Este cartão-presente não está mais disponível",
           "invalid": "Insira um cartão-presente válido",
           "currency_mismatch": "Só são aceitos cartões-presente em %{shop_currency}",
-          "generic": "Não foi possível incluir o cartão-presente no finalização da compra",
+          "generic": "Não foi possível incluir o cartão-presente na finalização da compra",
           "throttle_limit_exceeded": "Você excedeu o número máximo de tentativas. Tente de novo mais tarde.",
-          "no_longer_available": "Este cartão-presente não pode mais ser usado com este finalização da compra"
+          "no_longer_available": "Este cartão-presente não pode mais ser usado com esta finalização da compra"
         }
       },
       "vaulted": {
@@ -3877,7 +3877,7 @@
           "currency_mismatch": "Não é possível adicionar este item ao carrinho porque a loja dele usa uma moeda diferente.",
           "max_remote_shops_exceeded": "Não é possível adicionar este produto porque seu carrinho já atingiu o limite máximo de outras lojas.",
           "currency_mismatch_removal": "Um item foi removido do seu carrinho porque pertence a uma loja que usa uma moeda diferente.",
-          "only_remote_merchandise_lines": "O finalização da compra contém apenas mercadorias remotas. É necessário um redirecionamento para a loja remota para concluir o finalização da compra."
+          "only_remote_merchandise_lines": "A finalização da compra contém apenas mercadorias remotas. É necessário um redirecionamento para a loja remota para concluir a finalização da compra."
         }
       },
       "remote_merchandise_only": {
@@ -3996,7 +3996,7 @@
       },
       "required_extensions": {
         "errors": {
-          "interaction_required": "É necessária uma interação de extensão para concluir o finalização da compra."
+          "interaction_required": "É necessária uma interação de extensão para concluir a finalização da compra."
         }
       },
       "embed": {
@@ -4152,7 +4152,7 @@
         "variant_not_found": "Impossível encontrar variante",
         "variant_requires_selling_plan": "Variante só pode ser comprada com um plano de vendas.",
         "shipping_address_not_required": "Este carrinho não exige frete",
-        "shipping_address_invalid": "Houve um problema ao calcular suas taxas de frete. Continue com o finalização da compra para escolher uma taxa de frete antes de concluir seu pedido.",
+        "shipping_address_invalid": "Houve um problema ao calcular suas taxas de frete. Continue com a finalização da compra para escolher uma taxa de frete antes de concluir seu pedido.",
         "selling_plan_not_applicable": "Não foi possível aplicar o plano de venda à variante",
         "selling_plan_not_available_for_company_locations": "Apenas compras únicas podem ser feitas para pedidos entre empresas",
         "digital_product_not_available_for_company_locations": "Este item não pode ser adicionado a um pedido B2B.",

@@ -37,26 +37,16 @@
 
 @media (min-width: 1025px) and (max-width: 1180px) {
   html body .saibai-mega__grid {
-    grid-template-columns: minmax(200px, 240px) minmax(0, 1fr) minmax(220px, 260px);
+    grid-template-columns: minmax(15rem, 18rem) minmax(0, 1fr);
+    padding-inline: clamp(1.75rem, 3vw, 2.5rem);
   }
 
-  html body .saibai-mega__center {
-    padding-inline: 1.5rem;
+  html body .saibai-mega__sidebar {
+    padding-right: clamp(1.75rem, 2.5vw, 2.25rem);
   }
 
-  html body .saibai-mega__center-list {
-    grid-template-columns: 1fr;
-  }
-
-  html body .saibai-mega__center-list::after {
-    display: none;
-  }
-
-  html body .saibai-mega__center-item,
-  html body .saibai-mega__center-item:nth-child(odd),
-  html body .saibai-mega__center-item:nth-child(even) {
-    padding-left: 0;
-    padding-right: 0;
+  html body .saibai-mega__feature {
+    padding-left: clamp(1.75rem, 2.5vw, 2.25rem);
   }
 }
 

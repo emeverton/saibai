@@ -264,19 +264,34 @@ body.saibai-theme.template-product .product-form__quantity quantity-input .quant
 
 body.saibai-theme.template-product .add-to-cart-button-container,
 body.saibai-theme.template-product .accelerated-checkout-block {
-  flex: 1 1 calc(50% - 0.3125rem);
+  flex: 1 1 100%;
+  width: 100%;
   min-width: 0;
+  display: block;
 }
 
 body.saibai-theme.template-product .add-to-cart-button-inner,
 body.saibai-theme.template-product .accelerated-checkout-block .add-to-cart-button-inner {
   width: 100%;
+  flex-direction: column;
+  align-items: stretch;
 }
 
+body.saibai-theme.template-product .add-to-cart-button-inner .add-to-cart-button-container,
+body.saibai-theme.template-product .add-to-cart-button-inner:has(.wishlist-button) .add-to-cart-button-container,
+body.saibai-theme.template-product .add-to-cart-button-inner:has(.share-button) .add-to-cart-button-container,
+body.saibai-theme.template-product .add-to-cart-button-inner:has(.wishlist-button):has(.share-button) .add-to-cart-button-container {
+  width: 100% !important;
+  max-width: 100%;
+}
+
+body.saibai-theme.template-product .add-to-cart-button-container .add-to-cart-button,
 body.saibai-theme.template-product .add-to-cart-button-container .button,
+body.saibai-theme.template-product .add-to-cart-button-container .product-form__submit,
 body.saibai-theme.template-product .accelerated-checkout-block .shopify-payment-button,
 body.saibai-theme.template-product .accelerated-checkout-block .shopify-payment-button__button {
   width: 100% !important;
+  max-width: 100%;
 }
 
 body.saibai-theme.template-product .product__pickup-availabilities {

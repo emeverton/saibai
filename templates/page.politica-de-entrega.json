@@ -1,36 +1,22 @@
 {
   "sections": {
-    "main": {
-      "type": "main-page",
-      "blocks": {
-        "heading": {
-          "type": "text",
-          "settings": {
-            "text": "<h1>Política de Entrega</h1>",
-            "type_preset": "h1",
-            "padding-block-end": 16
-          },
-          "blocks": {}
-        },
-        "content": {
-          "type": "text",
-          "settings": {
-            "text": "<p><strong>Prazos de envio</strong></p><p>Os pedidos são processados em até <strong>2 dias úteis</strong> após a confirmação do pagamento. O prazo de entrega varia conforme a região e a transportadora selecionada no checkout.</p><p><strong>Frete grátis</strong></p><p>Frete grátis para pedidos acima de <strong>R$ 280,00</strong> (consulte regiões elegíveis no carrinho).</p><p><strong>Transportadoras</strong></p><p>Loggi, Frenet e parceiros logísticos — valor e prazo calculados no checkout por CEP e peso.</p><p><strong>Alcachofras frescas</strong></p><p>Embalagem térmica especial. Consumir em até <strong>5 dias</strong>, refrigerando imediatamente.</p><p><strong>Conservas</strong></p><p>Enviadas em embalagem adequada. Armazene conforme o rótulo.</p><p><strong>Rastreamento</strong></p><p>Código de rastreamento por e-mail após despacho.</p><p><strong>Áreas de entrega</strong></p><p>Todo o território nacional com cobertura da transportadora. Sem cobertura, contato antes do cancelamento.</p><p>Dúvidas: <a href=\"mailto:contato@saibai.com.br\">contato@saibai.com.br</a></p>",
-            "type_preset": "rte"
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": ["heading", "content"],
+    "hero": {
+      "type": "saibai-inst-hero",
       "settings": {
-        "content_direction": "column",
-        "content_direction_mobile": "column",
-        "section_width": "page-width",
-        "color_scheme": "scheme-2",
-        "padding-block-start": 36,
-        "padding-block-end": 36
+        "eyebrow": "Empório Saibai · Piedade, SP",
+        "title": "Política de Entrega",
+        "lead": "Transparência do processamento ao rastreamento — para você receber frescos e conservas com segurança.",
+        "asset_fallback": "saibai-asvc-entrega.jpg"
       }
+    },
+    "policy": {
+      "type": "saibai-policy-entrega",
+      "settings": {}
+    },
+    "nav": {
+      "type": "saibai-inst-nav",
+      "settings": {}
     }
   },
-  "order": ["main"]
+  "order": ["hero", "policy", "nav"]
 }

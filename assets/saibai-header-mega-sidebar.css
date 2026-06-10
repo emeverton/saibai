@@ -1,92 +1,21 @@
-/* Empório Saibai — Mega sidebar
+/* Empório Saibai — Mega feature (LP · 2 colunas)
  * Veltrus Growth & Technology
  */
-
-html body .saibai-mega__center {
-  padding: 0 clamp(2.25rem, 3.5vw, 3rem);
-  border-right: 1px solid var(--sh-mega-line);
-}
-
-html body .saibai-mega__center-list {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0;
-  max-width: 36rem;
-  position: relative;
-}
-
-html body .saibai-mega__center-list::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  border-right: 1px solid var(--sh-mega-line);
-  transform: translateX(-50%);
-  pointer-events: none;
-}
-
-html body .saibai-mega__center-item {
-  padding: 0 1.25rem;
-}
-
-html body .saibai-mega__center-item:nth-child(odd) {
-  padding-right: 1.5rem;
-}
-
-html body .saibai-mega__center-item:nth-child(even) {
-  padding-left: 1.5rem;
-}
-
-html body .saibai-mega__center-link,
-html body .saibai-mega__center-link.is-soon {
-  display: block;
-  padding: 0.5625rem 0;
-  color: var(--sh-text);
-  font-size: 0.875rem;
-  font-weight: 400;
-  letter-spacing: 0.05em;
-  line-height: 1.5;
-  text-decoration: none;
-  transition: opacity 0.25s ease, color 0.25s ease;
-}
-
-html body .saibai-mega__center-link:hover,
-html body .saibai-mega__center-link.is-active {
-  color: var(--sh-muted);
-}
-
-html body .saibai-mega__center-item--view-all {
-  grid-column: 1 / -1;
-  margin-top: 0.75rem;
-  padding-top: 1rem;
-  padding-left: 0;
-  padding-right: 0;
-  border-top: 1px solid var(--sh-mega-line);
-}
-
-html body .saibai-mega__center-link.is-view-all {
-  color: var(--sh-text);
-  font-weight: 400;
-  font-size: 0.875rem;
-  letter-spacing: 0.08em;
-  opacity: 0.68;
-}
 
 html body .saibai-mega__feature {
   display: flex;
   align-items: stretch;
-  justify-content: flex-end;
+  justify-content: stretch;
   height: 100%;
   min-height: 0;
-  padding-left: clamp(2rem, 3vw, 2.75rem);
+  padding-left: clamp(2.5rem, 4vw, 3.5rem);
 }
 
 html body .saibai-mega__feature-link {
   position: relative;
   display: block;
   width: 100%;
-  max-width: min(17.5rem, 28vw);
+  max-width: none;
   height: 100%;
   min-height: 0;
   color: inherit;
@@ -96,7 +25,17 @@ html body .saibai-mega__feature-link {
 }
 
 html body .saibai-mega__feature-link:hover {
-  opacity: 0.92;
+  opacity: 0.96;
+}
+
+html body .saibai-mega__feature-link::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  z-index: 1;
+  height: 42%;
+  background: linear-gradient(180deg, rgb(250 251 247 / 0) 0%, rgb(250 251 247 / 0.92) 100%);
+  pointer-events: none;
 }
 
 html body .saibai-mega__feature-img {
@@ -105,7 +44,7 @@ html body .saibai-mega__feature-img {
   height: 100%;
   min-height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: center center;
   background: var(--sh-mega-bg, var(--saibai-bg-top, #FAFBF7));
   transition: opacity calc(var(--sh-mega-duration) * 0.7) var(--sh-mega-ease);
 }
@@ -119,30 +58,35 @@ html body .saibai-mega__feature-info {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 1;
+  z-index: 2;
   margin: 0;
-  padding: 1.125rem 1.25rem 1.15rem;
-  background: var(--saibai-white, #FFFFFF);
-  text-align: center;
+  padding: clamp(1.25rem, 2vw, 1.75rem) clamp(1.5rem, 2.5vw, 2rem);
+  background: transparent;
+  text-align: left;
   box-shadow: none;
 }
 
 html body .saibai-mega__feature-title {
-  margin: 0 0 0.4rem;
+  margin: 0 0 0.5rem;
+  max-width: 22ch;
   font-family: var(--font-heading--family, 'Jost', sans-serif);
-  font-size: 1rem;
+  font-size: clamp(1.125rem, 1.6vw, 1.5rem);
   font-weight: 400;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   line-height: 1.35;
   color: var(--sh-text);
 }
 
 html body .saibai-mega__feature-cta {
-  display: block;
+  display: inline-block;
   font-size: 0.6875rem;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--sh-muted);
+  color: rgb(42 58 26 / 0.58);
+}
+
+html body .saibai-mega__feature-link:hover .saibai-mega__feature-cta {
+  color: var(--sh-text);
 }
 
 html body .saibai-header.is-mega-open .saibai-header__menu-trigger.is-active,
@@ -168,8 +112,7 @@ html body .saibai-header.is-mega-open .saibai-header__nav-row {
 }
 
 html body .saibai-header .saibai-header__submenu-link.is-soon,
-html body .saibai-header .saibai-header__drawer-sublink.is-soon,
-html body .saibai-mega__center-link.is-soon {
+html body .saibai-header .saibai-header__drawer-sublink.is-soon {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;

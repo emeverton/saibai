@@ -23,6 +23,42 @@ if (!customElements.get("product-recommendations")){
       this.observer.observe(this);
     }
 
+    refreshSwiperHeight() {
+      var swiperComponents = this.querySelectorAll("swiper-component");
+      swiperComponents.forEach(function (component) {
+        var swiperEl = component.querySelector(".swiper");
+        var swiperInstance =
+          component.initSwiper || (swiperEl && swiperEl.swiper ? swiperEl.swiper : null);
+
+        if (swiperInstance && typeof swiperInstance.updateAutoHeight === "function") {
+          swiperInstance.updateAutoHeight(0);
+        } else if (swiperInstance && typeof swiperInstance.update === "function") {
+          swiperInstance.update();
+        }
+      });
+    }
+
+    scheduleSwiperHeightRefresh() {
+      var self = this;
+      var delays = [0, 120, 400, 900, 1800, 3200];
+
+      delays.forEach(function (delay) {
+        window.setTimeout(function () {
+          self.refreshSwiperHeight();
+        }, delay);
+      });
+    }
+
+    markLoaded(html) {
+      if (
+        html.querySelector(".grid__item") ||
+        html.querySelector(".swiper-slide") ||
+        html.querySelector(".product-card-wrapper")
+      ) {
+        this.classList.add("product-recommendations--loaded");
+      }
+    }
+
     loadRecommendations(productId) {
       fetch(
         `${this.dataset.url}&product_id=${productId}&section_id=${this.dataset.sectionId}`
@@ -39,17 +75,28 @@ if (!customElements.get("product-recommendations")){
 
           if (this.classList.contains("complementary-products")) {
             this.remove();
+            return;
           }
 
-          if (html.querySelector(".grid__item")) {
-            this.classList.add("product-recommendations--loaded");
-          }
+          this.markLoaded(html);
+          this.scheduleSwiperHeightRefresh();
+
+          this.querySelectorAll(".product-card-wrapper img").forEach((img) => {
+            if (img.complete) return;
+            img.addEventListener(
+              "load",
+              () => {
+                this.scheduleSwiperHeightRefresh();
+              },
+              { once: true }
+            );
+          });
         })
         .catch((e) => {
           console.error(e);
         });
     }
   }
-  
+
   customElements.define("product-recommendations", ProductRecommendations);
 }

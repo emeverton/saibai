@@ -10,6 +10,8 @@
       {%- capture inst_list -%}{{ inst_list }},saibai-inst-stats.css,saibai-inst-cases.css,saibai-inst-split.css,saibai-inst-hub.css{%- endcapture -%}
     {%- when 'contato', 'contact' -%}
       {%- capture inst_list -%}{{ inst_list }},saibai-inst-contact.css,saibai-inst-hub.css{%- endcapture -%}
+    {%- when 'politica-de-entrega', 'politica-de-troca', 'politica-de-privacidade' -%}
+      {%- capture inst_list -%}{{ inst_list }},saibai-inst-hub.css{%- endcapture -%}
   {%- endcase -%}
 {%- elsif request.page_type == 'blog' -%}
   {%- capture inst_list -%}{{ inst_list }},saibai-inst-blog.css,saibai-inst-hub.css{%- endcapture -%}

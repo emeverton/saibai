@@ -21,6 +21,7 @@
     if (!box || !frame || !stage) return;
 
     var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var initialHeroTop = null;
     var boxW = box.offsetWidth || BOX_W;
     var boxH = box.offsetHeight || BOX_H;
 
@@ -51,8 +52,6 @@
     }
 
     function updateHeroScroll() {
-      measureLayout();
-
       var endTop = cached.mediaH;
       var startTop = cached.mediaH - boxH;
 
@@ -69,9 +68,14 @@
         return;
       }
 
+      if (initialHeroTop === null) {
+        initialHeroTop = rect.top;
+      }
+
       var progress = 0;
       if (cached.scrollRange > 0) {
-        progress = Math.min(Math.max((0 - rect.top) / cached.scrollRange, 0), 1);
+        var scrolled = initialHeroTop - rect.top;
+        progress = Math.min(Math.max(scrolled / cached.scrollRange, 0), 1);
       }
 
       var top = startTop + progress * boxH;
@@ -105,6 +109,7 @@
     }
 
     function onResize() {
+      initialHeroTop = null;
       boxW = box.offsetWidth || BOX_W;
       boxH = box.offsetHeight || BOX_H;
       box.style.width = boxW + 'px';

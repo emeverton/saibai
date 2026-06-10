@@ -37,18 +37,21 @@
             <span class="svg-wrapper"> {{- 'icon-close.svg' | inline_asset_content -}} </span>
           </button>
         </div>
-        <div class="cart-drawer__warnings flex flex-column flex-1 justify-center center{% if section.settings.cart_drawer_collection != blank %} cart-drawer__warnings--has-collection{% endif %}">
-          <div class="cart-drawer__empty-content">
-            <h4 class="cart__empty-text">{{ 'content.empty' | t }}</h4>
-            <a href="{{ routes.collections_url }}/todos" class="button">
+        <div class="cart-drawer__warnings saibai-cart-drawer__warnings flex flex-column flex-1 justify-center center{% if section.settings.cart_drawer_collection != blank %} cart-drawer__warnings--has-collection{% endif %}">
+          <div class="cart-drawer__empty-content saibai-cart-drawer__empty">
+            <p class="saibai-cart-drawer__eyebrow">{{ 'content.your_cart' | t }}</p>
+            <h2 class="cart__empty-text saibai-cart-drawer__title">{{ 'content.your_cart_is_empty' | t }}</h2>
+            <a href="{{ routes.collections_url }}/todos" class="button saibai-cart-drawer__cta">
               {{ 'content.continue_shopping' | t }}
             </a>
 
             {%- if shop.customer_accounts_enabled and customer == null -%}
-              <p class="cart__login-title h4">{{ 'content.login.title' | t }}</p>
-              <p class="cart__login-paragraph">
-                {{ 'content.login.paragraph_html' | t: link: saibai_account_login_url }}
-              </p>
+              <div class="saibai-cart-drawer__login">
+                <p class="cart__login-title">{{ 'content.login.title' | t }}</p>
+                <p class="cart__login-paragraph">
+                  {{ 'content.login.paragraph_html' | t: link: saibai_account_login_url }}
+                </p>
+              </div>
             {%- endif -%}
           </div>
         </div>
@@ -59,9 +62,9 @@
         {%- endif -%}
       </div>
 
-      <div class="drawer__inner-filled{% if cart == empty %} hidden{% endif %}" data-cart-drawer-filled>
-        <div class="drawer__header flex justify-between items-center relative" style="--p: 1.5rem 0 0 0;">
-          <h2 class="drawer__heading break m-0 h5">{{ 'content.your_cart' | t }}</h2>
+      <div class="drawer__inner-filled saibai-cart-drawer__filled{% if cart == empty %} hidden{% endif %}" data-cart-drawer-filled>
+        <div class="drawer__header saibai-cart-drawer__header flex justify-between items-center relative" style="--p: 1.5rem 0 0 0;">
+          <h2 class="drawer__heading saibai-cart-drawer__heading break m-0 h5">{{ 'content.your_cart' | t }}</h2>
           <button
             class="drawer__close block t-button bor-none rounded-full cursor-pointer"
             type="button"
@@ -72,8 +75,12 @@
           </button>
         </div>
 
-        <div class="wrapper-cart-count" data-cart-text style="--p: 0 0 1.5rem 0;">
-          {{ cart.item_count }} {{ cart.item_count | pluralize: 'item', 'items' }}
+        <div class="wrapper-cart-count saibai-cart-drawer__count" data-cart-text style="--p: 0 0 1.5rem 0;">
+          {%- if cart.item_count == 1 -%}
+            1 item
+          {%- else -%}
+            {{ cart.item_count }} itens
+          {%- endif -%}
         </div>
       </div>
 

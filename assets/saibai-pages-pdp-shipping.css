@@ -241,10 +241,25 @@ body.saibai-theme.template-product .accelerated-checkout-block .shopify-payment-
   letter-spacing: 0.08em;
   text-transform: uppercase;
   min-height: 3rem !important;
-  height: 3rem !important;
+  height: auto !important;
   border-radius: 0 !important;
   box-shadow: none !important;
   padding-inline: 1rem !important;
+  overflow: hidden !important;
+  position: relative;
+  width: 100% !important;
+  max-width: 100%;
+}
+
+/* Sem wipe/rotate do button-hover--effect — só troca de cor no :hover */
+body.saibai-theme.template-product .product-form__buttons .product-form__submit::after,
+body.saibai-theme.template-product .product-form__buttons .shopify-payment-button__button--unbranded::after {
+  display: none !important;
+  content: none !important;
+}
+
+body.saibai-theme.template-product .product-form__buttons .add-to-cart-text {
+  white-space: nowrap;
 }
 
 body.saibai-theme.template-product .product-form__submit:hover:not(:disabled),

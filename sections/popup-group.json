@@ -31,8 +31,8 @@
         }
       },
       "settings": {
-        "cart_drawer_collection": "todos",
-        "color_scheme": "scheme-1"
+        "cart_drawer_collection": "",
+        "color_scheme": "scheme-2"
       }
     }
   },

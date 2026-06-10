@@ -32,7 +32,7 @@
     --sh-logo-cap-mb: 10rem;
     --sh-icon: 1.125rem;
     --sh-touch: 2.75rem;
-    --sh-mega-h: clamp(24rem, 44vh, 28rem);
+    --sh-mega-h: clamp(30rem, 58vh, 40rem);
     --sh-mega-overlap: 0;
     /* LP: gaveta um tom acima do header (mais claro/neutro) */
     --sh-mega-bg: var(--saibai-bg-top, #FAFBF7);

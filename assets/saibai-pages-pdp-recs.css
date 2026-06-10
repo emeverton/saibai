@@ -1,19 +1,37 @@
 /* Empório Saibai — PDP recomendações
+ * Padrão home C-level (LP tile · info overlay · hover box)
  * Veltrus Growth & Technology | Shopify Partner ID 4969609
- * PROPRIEDADE INTELECTUAL PROTEGIDA
  */
 
-/* Combine com — mesmo padrão PLP/home (Loro · sem caixa · cover · hover CTA) */
+body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) {
+  --pd-recs-cream: var(--saibai-bg, #F2F5EE);
+  --pd-recs-dark: #2A3A1A;
+  --pd-recs-muted: #4E6040;
+  --pd-recs-terra: #8B5E4A;
+  --pd-recs-aspect: 334 / 468;
+  --pd-recs-info-slot: 5.25rem;
+  --pd-recs-info-box-h: 6.25rem;
+  --pd-recs-lift-dur: 1.15s;
+  --pd-recs-lift-ease: cubic-bezier(0.33, 0, 0.2, 1);
+  --pd-recs-tile-bg: var(--pd-recs-cream);
+  --pd-recs-info-box-bg: #FFFFFF;
+}
+
 body.saibai-theme .saibai-card-footer {
   display: none !important;
 }
 
+/* ── Tile shell (igual home saibai-prod__tile) ── */
 body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper.card-wrapper {
+  position: relative;
+  display: block !important;
+  height: auto !important;
+  min-height: 0 !important;
+  overflow: visible !important;
   background: transparent !important;
   border: 0 !important;
   border-radius: 0 !important;
   box-shadow: none !important;
-  overflow: visible !important;
 }
 
 @media (hover: hover) {
@@ -24,75 +42,145 @@ body.saibai-theme.template-product :is(product-recommendations, .product-recomme
 }
 
 body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper > .card {
-  display: flex !important;
-  flex-direction: column !important;
+  position: relative !important;
+  display: block !important;
+  flex: none !important;
+  height: auto !important;
+  min-height: 0 !important;
+  padding: 0 0 var(--pd-recs-info-slot) !important;
+  margin: 0 !important;
+  gap: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  overflow: visible !important;
 }
 
+/* ── Mídia tile ── */
 body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper .card--block-media {
-  position: relative;
+  position: relative !important;
+  display: block !important;
+  flex: none !important;
+  width: 100%;
+  aspect-ratio: var(--pd-recs-aspect);
   overflow: hidden;
-  background: var(--saibai-bg, #F2F5EE) !important;
+  background: var(--pd-recs-tile-bg) !important;
   border-radius: 0 !important;
-  transition: transform 0.75s cubic-bezier(0.33, 0, 0.15, 1);
+  transition: transform var(--pd-recs-lift-dur) var(--pd-recs-lift-ease);
 }
 
 body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper .card--block-media .ratio {
-  aspect-ratio: 558 / 780 !important;
-  width: 100%;
-  height: auto;
-  position: relative;
+  position: absolute !important;
+  inset: 0 !important;
+  display: block !important;
+  aspect-ratio: auto !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+}
+
+body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper .card--block-media .ratio::before {
+  display: none !important;
+  content: none !important;
+  padding: 0 !important;
 }
 
 body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper .card__media,
 body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper card-media.card__media {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--saibai-bg, #F2F5EE) !important;
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: var(--pd-recs-tile-bg) !important;
+  overflow: hidden;
+  isolation: isolate;
 }
 
 body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper .card__media .media {
-  background: var(--saibai-bg, #F2F5EE) !important;
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: var(--pd-recs-tile-bg) !important;
+  overflow: hidden;
 }
 
 body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper .card__media img,
 body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper .card__media .media img {
+  position: absolute !important;
+  inset: 0 !important;
+  top: 0 !important;
+  left: 0 !important;
+  transform: none !important;
   width: 100% !important;
   height: 100% !important;
   max-width: none !important;
+  max-height: none !important;
   object-fit: cover !important;
   object-position: center center !important;
   padding: 0 !important;
   margin: 0 !important;
   box-sizing: border-box !important;
   background: transparent !important;
-  filter: saturate(0.9) contrast(1.03);
+  mix-blend-mode: multiply;
+  filter: none;
+  transition: transform var(--pd-recs-lift-dur) var(--pd-recs-lift-ease);
+}
+
+body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper .media.media--hover-effect > img + img,
+body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper .media.media--hover-effect > img ~ img,
+body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper .media.media--hover-effect > .deferred-media {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
 }
 
 body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper .card--block-media::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  pointer-events: none;
-  background: linear-gradient(
-    180deg,
-    rgb(242 245 238 / 0) 55%,
-    rgb(242 245 238 / 0.12) 100%
-  );
+  display: none !important;
 }
 
-body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper .card-product-information,
-body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper .card--block-group {
-  padding: 1rem 0.25rem 0 !important;
-  text-align: center !important;
-  transition: transform 0.75s cubic-bezier(0.33, 0, 0.15, 1);
+body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper .card--block-button,
+body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper .saibai-card-footer,
+body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper .saibai-card-ship,
+body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper .saibai-card-view-link,
+body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper .saibai-plp-card-cta,
+body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper .card-product-information:has(.card--block-button),
+body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper .card-product-information:has(.card--block-variant):not(:has(.card--block-title)) {
+  display: none !important;
 }
 
-body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper .card-product-information.layout-panel-flex--row {
-  align-items: center !important;
+/* ── Info overlay (igual home saibai-prod__info) ── */
+body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper .card-product-information:has(.card--block-title),
+body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper .card--block-group:has(.card--block-title) {
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  top: auto !important;
+  bottom: 0 !important;
+  z-index: 2;
+  flex: none !important;
+  display: flex !important;
   flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  height: auto !important;
+  max-height: none !important;
+  min-height: var(--pd-recs-info-slot) !important;
+  margin: 0 !important;
+  padding: 0.875rem 0.5rem 0 !important;
+  text-align: center !important;
+  background: transparent;
+  transition:
+    bottom var(--pd-recs-lift-dur) var(--pd-recs-lift-ease),
+    min-height var(--pd-recs-lift-dur) var(--pd-recs-lift-ease),
+    padding var(--pd-recs-lift-dur) var(--pd-recs-lift-ease),
+    background var(--pd-recs-lift-dur) var(--pd-recs-lift-ease),
+    box-shadow var(--pd-recs-lift-dur) var(--pd-recs-lift-ease);
+}
+
+body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper .card-product-information:has(.card--block-title).layout-panel-flex--row {
+  flex-direction: column !important;
+  align-items: center !important;
 }
 
 body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper [class*="card-product-title"],
@@ -104,24 +192,43 @@ body.saibai-theme.template-product :is(product-recommendations, .product-recomme
 body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper .card--block-title .text-block,
 body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper .card--block-title .custom-font-size,
 body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper .card--block-title .custom-font-size > * {
-  font-size: 0.875rem !important;
+  margin: 0 0 0.35rem !important;
+  font-family: var(--font-heading--family, 'Jost', sans-serif) !important;
+  font-size: clamp(0.8125rem, 0.95vw, 0.9375rem) !important;
   font-weight: 400 !important;
-  letter-spacing: 0.02em !important;
-  line-height: 1.35 !important;
+  letter-spacing: 0.045em !important;
+  line-height: 1.45 !important;
   text-align: center !important;
-  color: #2A3A1A !important;
+  color: var(--pd-recs-dark) !important;
   min-height: 0 !important;
 }
 
 body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper .price {
-  justify-content: center;
-  margin: 0.35rem 0 0 !important;
+  justify-content: center !important;
+  margin: 0 !important;
+  min-height: 1.2em;
+  font-family: var(--font-body--family, 'Jost', sans-serif) !important;
+  font-size: 0.6875rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.08em !important;
+  line-height: 1.35 !important;
+  text-transform: uppercase;
+  color: var(--pd-recs-muted) !important;
+  opacity: 0;
+  visibility: hidden;
+  max-height: 0;
+  overflow: hidden;
+  transition:
+    opacity var(--pd-recs-lift-dur) var(--pd-recs-lift-ease),
+    visibility var(--pd-recs-lift-dur) var(--pd-recs-lift-ease),
+    max-height var(--pd-recs-lift-dur) var(--pd-recs-lift-ease),
+    margin var(--pd-recs-lift-dur) var(--pd-recs-lift-ease);
 }
 
 body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper .price__container,
 body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper .price__sale,
 body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper .price__regular {
-  justify-content: center;
+  justify-content: center !important;
 }
 
 body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper .card--block.card-information.custom-font-size,
@@ -130,10 +237,10 @@ body.saibai-theme.template-product :is(product-recommendations, .product-recomme
 body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper .price-item--regular,
 body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper .price__sale .price-item:not(s),
 body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper .price__regular .price-item {
-  font-size: 0.75rem !important;
+  font-size: 0.6875rem !important;
   font-weight: 400 !important;
-  letter-spacing: 0.04em !important;
-  color: #2A3A1A !important;
+  letter-spacing: 0.08em !important;
+  color: var(--pd-recs-dark) !important;
 }
 
 body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper .price .price__regular .price-item--regular {
@@ -142,20 +249,16 @@ body.saibai-theme.template-product :is(product-recommendations, .product-recomme
 
 body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper .price__sale s,
 body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper .price__regular s {
-  font-size: 0.75rem !important;
+  margin-inline-end: 0.35rem;
+  font-size: 0.6875rem !important;
   font-weight: 400 !important;
-  color: rgb(42 58 26 / 0.45) !important;
+  text-decoration: line-through;
+  color: var(--pd-recs-muted) !important;
+  opacity: 0.55;
 }
 
 body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper .price-item--percent,
 body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper .price__sale > span:first-of-type {
-  display: none !important;
-}
-
-body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper .card--block-button,
-body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper .saibai-card-footer,
-body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper .saibai-card-ship,
-body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper .saibai-card-view-link {
   display: none !important;
 }
 
@@ -171,6 +274,8 @@ body.saibai-theme.template-product :is(product-recommendations, .product-recomme
 }
 
 body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .card--block-media .sold-out-badge {
+  top: 0.75rem !important;
+  left: 0.75rem !important;
   background: transparent !important;
   color: rgb(42 58 26 / 0.42) !important;
   font-size: 0.5625rem !important;
@@ -179,49 +284,71 @@ body.saibai-theme.template-product :is(product-recommendations, .product-recomme
   text-transform: uppercase;
 }
 
-body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .saibai-plp-card-cta {
-  position: absolute;
-  inset: auto 0 0;
-  z-index: 4;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  padding: 0 0 1.125rem;
-  opacity: 0;
-  transform: translateY(0.35rem);
-  transition: opacity 0.35s ease, transform 0.35s ease;
-  pointer-events: none;
-}
-
-body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .saibai-plp-card-cta__label {
-  font-family: var(--font-heading--family, 'Jost', sans-serif);
-  font-size: 0.6875rem;
-  font-weight: 400;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #2A3A1A;
-  border-bottom: 1px solid rgb(42 58 26 / 0.35);
-  padding-bottom: 2px;
-  line-height: 1.2;
-}
-
+/* ── Hover LP (box branco sobe · preço aparece) ── */
 @media (hover: hover) {
-  body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper:hover .card--block-media {
-    transform: translateY(-1.25rem);
+  body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper:hover .card--block-media img,
+  body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper:hover .card--block-media .media img {
+    transform: scale(1.006) !important;
   }
 
-  body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper:hover .card-product-information,
-  body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper:hover .card--block-group {
-    transform: translateY(-3.75rem);
+  body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper:hover .card-product-information:has(.card--block-title),
+  body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper:hover .card--block-group:has(.card--block-title) {
+    bottom: var(--pd-recs-info-slot) !important;
+    min-height: var(--pd-recs-info-box-h) !important;
+    padding: 1rem 0.875rem 0.875rem !important;
+    background: var(--pd-recs-info-box-bg) !important;
+    box-shadow: 0 -6px 28px rgb(42 58 26 / 0.05);
   }
 
-  body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper:hover .saibai-plp-card-cta {
+  body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper:hover .price {
     opacity: 1;
-    transform: translateY(0);
+    visibility: visible;
+    max-height: 2rem;
+    margin-top: 0.5rem !important;
   }
 }
 
+@media (hover: none) {
+  body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper .price {
+    opacity: 1;
+    visibility: visible;
+    max-height: none;
+    margin-top: 0.5rem !important;
+  }
+}
+
+/* ── Swiper carrossel ── */
 body.saibai-theme.template-product product-recommendations .collection-carousel-swiper-component,
 body.saibai-theme.template-product .product-recommendations .collection-carousel-swiper-component {
   --card-grid-per-row-desktop: 4;
+}
+
+body.saibai-theme.template-product product-recommendations .collection-carousel-swiper-component.swiper-autoheight,
+body.saibai-theme.template-product .product-recommendations .collection-carousel-swiper-component.swiper-autoheight,
+body.saibai-theme.template-product product-recommendations .collection-carousel-swiper-component .swiper,
+body.saibai-theme.template-product .product-recommendations .collection-carousel-swiper-component .swiper,
+body.saibai-theme.template-product product-recommendations .collection-carousel-swiper-component .swiper-wrapper,
+body.saibai-theme.template-product .product-recommendations .collection-carousel-swiper-component .swiper-wrapper,
+body.saibai-theme.template-product product-recommendations .collection-carousel-swiper-component .swiper-slide,
+body.saibai-theme.template-product .product-recommendations .collection-carousel-swiper-component .swiper-slide {
+  height: auto !important;
+}
+
+body.saibai-theme.template-product product-recommendations .collection-carousel-swiper-component .swiper-wrapper,
+body.saibai-theme.template-product .product-recommendations .collection-carousel-swiper-component .swiper-wrapper {
+  align-items: flex-start !important;
+}
+
+body.saibai-theme.template-product product-recommendations .section-resource-list__content .swiper,
+body.saibai-theme.template-product .product-recommendations .section-resource-list__content .swiper {
+  overflow: visible;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper .card-product-information,
+  body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper .card--block-group,
+  body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper .price,
+  body.saibai-theme.template-product :is(product-recommendations, .product-recommendations) .product-card-wrapper .card__media img {
+    transition: none;
+  }
 }
