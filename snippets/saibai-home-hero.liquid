@@ -55,10 +55,10 @@
         <h2 class="saibai-hero__title">{{ hero_title }}</h2>
         <div class="saibai-hero__links">
           {%- if link_1_label != blank -%}
-            <a href="{{ link_1_url }}" class="saibai-hero__link">{{ link_1_label }}</a>
+            <a href="{{ link_1_url }}" class="saibai-hero__link" data-saibai-prod-jump="conservas">{{ link_1_label }}</a>
           {%- endif -%}
           {%- if link_2_label != blank -%}
-            <a href="{{ link_2_url }}" class="saibai-hero__link">{{ link_2_label }}</a>
+            <a href="{{ link_2_url }}" class="saibai-hero__link" data-saibai-prod-jump="fresca">{{ link_2_label }}</a>
           {%- endif -%}
         </div>
       </div>

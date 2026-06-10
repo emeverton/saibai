@@ -2,6 +2,56 @@
  * Veltrus Growth & Technology
  */
 
+/* ── KV header LP (desktop) — restaurado após split modular ── */
+@media (min-width: 1025px) {
+  html body .saibai-header {
+    --sh-bg: var(--saibai-bg-header, #F2F5EE);
+    --sh-text: var(--saibai-dark);
+    --sh-muted: rgb(42 58 26 / 0.55);
+    --sh-highlight: var(--saibai-primary);
+    --sh-accent: var(--saibai-primary);
+    --sh-line: rgb(42 58 26 / 0.12);
+    --sh-mega-line: rgb(42 58 26 / 0.09);
+    --sh-rule-edge: var(--saibai-dark, #2A3A1A);
+    --sh-rule-fill: var(--saibai-bg-contrast, #E8EFE2);
+    --sh-transition: opacity 0.25s ease;
+    --sh-pad: var(--saibai-lp-pad-x);
+    --sh-shell-max: var(--saibai-lp-shell-max);
+    --sh-nav-max: 42rem;
+    --sh-side-w: 9rem;
+    --sh-search-h: 2.625rem;
+    --sh-util-h: 2.25rem;
+    --sh-nav-h: var(--sh-nav-strip-h);
+    --sh-nav-strip-h: 2.75rem;
+    --sh-nav: 0.9375rem;
+    --sh-util: 0.9375rem;
+    --sh-menu-pad-x: 0.875rem;
+    --sh-logo-pad-top: 1.125rem;
+    --sh-logo-pad-bottom: 0.125rem;
+    --sh-logo-cap: 17.5rem;
+    --sh-logo-cap-mb: 10rem;
+    --sh-icon: 1.125rem;
+    --sh-touch: 2.75rem;
+    --sh-mega-h: clamp(24rem, 44vh, 28rem);
+    --sh-mega-overlap: 0;
+    /* LP: gaveta um tom acima do header (mais claro/neutro) */
+    --sh-mega-bg: var(--saibai-bg-top, #FAFBF7);
+    --sh-mega-duration: 1.3s;
+    --sh-mega-ease: cubic-bezier(0.16, 1, 0.3, 1);
+    --sh-mega-content-delay: 0.42s;
+    --sh-mega-delay: 0s;
+    --sh-mega-delay-close: 0s;
+    --sh-wordmark-mono-ratio: 1024 / 341;
+
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    color: var(--sh-text);
+    background: transparent;
+    font-family: var(--saibai-font-body);
+  }
+}
+
 /* Ícones: tema força min-size em svg — reset isolado no módulo */
 html body .saibai-header .saibai-header__icon {
   display: inline-flex;
@@ -24,6 +74,12 @@ html body .saibai-header .saibai-header__icon svg {
   max-height: var(--sh-icon);
   fill: currentColor;
   stroke: none;
+}
+
+html body .saibai-header .saibai-header__icon svg[width],
+html body .saibai-header .saibai-header__icon svg[height] {
+  width: var(--sh-icon);
+  height: var(--sh-icon);
 }
 
 html body .saibai-header .saibai-header__icon--heart svg {

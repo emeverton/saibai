@@ -1,7 +1,7 @@
 /*
  * Empório Saibai — Split editorial (Loro Piana 50/50)
  * Farm · conservas · safra — alternância imagem/texto · pad LP único
-{%- comment -%} v4 · split LP · produto contain + lifestyle cover {%- endcomment -%}
+ * v5 · split LP · conservas cover full bleed + lifestyle cover
  * Veltrus Growth & Technology | Shopify Partner ID 4969609
  */
 
@@ -21,6 +21,7 @@ html body .saibai-split {
   --sp-pad-x: var(--saibai-lp-pad-x, clamp(1.5rem, 5vw, 3.5rem));
   --sp-pad-y: clamp(3rem, 5vw, 4.5rem);
   --sp-pad-inner: clamp(1.25rem, 2.5vw, 2rem);
+  --sp-tile-bg: #EEEDE8;
 
   box-sizing: border-box;
   width: 100%;
@@ -79,15 +80,17 @@ html body .saibai-split--conservas .saibai-split__content {
   background: var(--sp-bg);
 }
 
-/* Conservas — cover lateral crop · produtos centralizados · altura = split farm */
+/* Conservas — cover full bleed · foco nos potes (sem faixa vazia) */
 html body .saibai-split--conservas .saibai-split__media {
-  position: relative;
+  display: block;
   overflow: hidden;
+  padding: 0;
   background-color: var(--sp-bg) !important;
   background-image: none !important;
 }
 
-html body .saibai-split--conservas .saibai-split__img {
+html body .saibai-split--conservas .saibai-split__img,
+html body .saibai-split--conservas .saibai-split__img--cover {
   position: absolute;
   inset: 0;
   display: block;
@@ -95,7 +98,8 @@ html body .saibai-split--conservas .saibai-split__img {
   height: 100%;
   max-width: none;
   max-height: none;
-  transform: none;
+  margin: 0;
+  padding: 0;
   object-fit: cover;
   object-position: center center;
 }

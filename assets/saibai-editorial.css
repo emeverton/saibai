@@ -1,13 +1,13 @@
 /*
  * Empório Saibai — Editorial carousel (padrão Loro Piana)
- * Tile 5:7 · cover · hover lift só na mídia · grid 4 colunas
- * saibai-ed-v1
+ * 3 colunas · tile 427×598 · cover lifestyle · hover lift na mídia
+ * saibai-ed-v2
  */
 
 html body .shopify-section.saibai-editorial-section {
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  overflow: visible;
 }
 
 html body .saibai-ed {
@@ -17,15 +17,16 @@ html body .saibai-ed {
   --ed-terra: #8B5E4A;
   --ed-max: var(--saibai-lp-max, 90rem);
   --ed-pad: var(--saibai-lp-pad-x, clamp(1rem, 2.5vw, 2.5rem));
-  --ed-gap: var(--saibai-lp-card-gap, clamp(1.25rem, 1.6vw, 1.75rem));
-  --ed-lift-media: 1.25rem;
-  --ed-lift-dur: 0.75s;
-  --ed-lift-ease: cubic-bezier(0.33, 0, 0.15, 1);
+  --ed-gap: clamp(1rem, 2vw, 2rem);
+  --ed-aspect: 427 / 598;
+  --ed-lift-media: 1.5rem;
+  --ed-lift-dur: 0.95s;
+  --ed-lift-ease: cubic-bezier(0.33, 0, 0.2, 1);
 
   box-sizing: border-box;
   width: 100%;
   max-width: 100%;
-  padding: var(--saibai-lp-pad-y, clamp(4.5rem, 9vw, 7rem)) var(--ed-pad) var(--saibai-lp-pad-y, clamp(4.5rem, 9vw, 7rem));
+  padding: clamp(3rem, 6vw, 5rem) var(--ed-pad) clamp(3.5rem, 7vw, 6rem);
   background: var(--ed-white);
   color: var(--ed-dark);
   font-family: var(--font-body--family, 'Jost', sans-serif);
@@ -33,11 +34,12 @@ html body .saibai-ed {
 
 html body .saibai-ed__row {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--ed-gap);
   width: 100%;
   max-width: var(--ed-max);
   margin-inline: auto;
+  padding-top: var(--ed-lift-media);
 }
 
 html body .saibai-ed__card {
@@ -54,19 +56,20 @@ html body .saibai-ed__media {
   position: relative;
   display: block;
   width: 100%;
-  aspect-ratio: 558 / 780;
+  aspect-ratio: var(--ed-aspect);
   overflow: hidden;
-  background: var(--ed-white) !important;
+  background: rgb(255 255 255 / 0.55) !important;
   margin: 0;
   text-decoration: none;
-  transform: translateY(0);
+  box-shadow: inset 0 0 0 1px rgb(42 58 26 / 0.04);
+  transform: translate3d(0, 0, 0);
   transition: transform var(--ed-lift-dur) var(--ed-lift-ease);
 }
 
 html body .saibai-ed__media-inner {
   position: absolute;
   inset: 0;
-  background: var(--ed-white) !important;
+  background: transparent !important;
 }
 
 html body .saibai-ed__img {
@@ -75,57 +78,79 @@ html body .saibai-ed__img {
   height: 100%;
   object-fit: cover;
   object-position: center center;
+  transition: transform var(--ed-lift-dur) var(--ed-lift-ease);
+}
+
+html body .saibai-ed__card--product .saibai-ed__img {
+  object-fit: cover;
+  object-position: center center;
 }
 
 html body .saibai-ed__info {
   position: relative;
   z-index: 2;
-  margin-top: 1.125rem;
-  padding: 0 0.25rem;
+  margin-top: 1.375rem;
+  padding: 0 0.35rem;
   text-align: center;
   background: transparent !important;
 }
 
 html body .saibai-ed__label {
-  margin: 0 0 0.625rem;
+  margin: 0 0 0.75rem;
   font-size: 0.6875rem;
   font-weight: 400;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   line-height: 1.4;
   text-transform: uppercase;
   color: var(--ed-muted);
 }
 
 html body .saibai-ed__name {
-  margin: 0 0 0.75rem;
+  margin: 0 0 0.875rem;
   font-family: var(--font-heading--family, 'Jost', sans-serif);
-  font-size: clamp(1rem, 1.35vw, 1.125rem);
+  font-size: clamp(1.0625rem, 1.45vw, 1.25rem);
   font-weight: 400;
-  line-height: 1.3;
+  line-height: 1.32;
   letter-spacing: 0.02em;
 }
 
 html body .saibai-ed__name a {
   color: var(--ed-dark);
   text-decoration: none;
+  transition: opacity 0.25s ease;
 }
 
 html body .saibai-ed__cta {
   display: inline-block;
   font-family: var(--font-heading--family, 'Jost', sans-serif);
-  font-size: clamp(0.875rem, 1.05vw, 0.9375rem);
+  font-size: clamp(0.875rem, 1vw, 0.9375rem);
   font-weight: 400;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
+  line-height: 1.45;
   color: var(--ed-terra);
+}
+
+html body .saibai-ed__cta::before {
+  content: '—\00a0';
+  opacity: 0.9;
+}
+
+html body .saibai-ed__cta::after {
+  content: '\00a0—';
+  opacity: 0.9;
 }
 
 @media (hover: hover) {
   html body .saibai-ed__card:hover .saibai-ed__media {
-    transform: translateY(calc(-1 * var(--ed-lift-media)));
+    transform: translate3d(0, calc(-1 * var(--ed-lift-media)), 0);
+  }
+
+  html body .saibai-ed__card:hover .saibai-ed__img {
+    transform: scale(1.008);
   }
 
   html body .saibai-ed__name a:hover {
-    opacity: 0.65;
+    opacity: 0.62;
   }
 }
 
@@ -135,21 +160,42 @@ html body .saibai-ed__cta {
   }
 
   html body .saibai-ed__row {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.875rem;
   }
 }
 
-@media (max-width: 549px) {
+@media (max-width: 749px) {
   html body .saibai-ed__row {
-    grid-template-columns: 1fr;
-    max-width: 22.5rem;
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 1rem;
+    padding-inline: 0.25rem;
+  }
+
+  html body .saibai-ed__row::-webkit-scrollbar {
+    display: none;
+  }
+
+  html body .saibai-ed__card {
+    flex: 0 0 min(78vw, 22.5rem);
+    scroll-snap-align: start;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html body .saibai-ed__media,
+  html body .saibai-ed__img,
   html body .saibai-ed__name a {
     transition: none;
+  }
+
+  html body .saibai-ed__card:hover .saibai-ed__media,
+  html body .saibai-ed__card:hover .saibai-ed__img {
+    transform: none;
   }
 }

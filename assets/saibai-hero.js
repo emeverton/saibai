@@ -8,8 +8,8 @@
   var ZONE = '[data-saibai-hero-zone]';
   var FRAME = '[data-saibai-hero-frame]';
 
-  var BOX_W = 214;
-  var BOX_H = 179;
+  var BOX_W = 250;
+  var BOX_H = 180;
 
   function initHeroScroll(root) {
     var box = root.querySelector(BOX);
@@ -21,23 +21,25 @@
     if (!box || !frame || !stage) return;
 
     var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var boxW = box.offsetWidth || BOX_W;
+    var boxH = box.offsetHeight || BOX_H;
 
     var cached = {
-      mediaH: BOX_H,
-      zoneH: BOX_H,
-      stageH: BOX_H * 2,
+      mediaH: boxH,
+      zoneH: boxH,
+      stageH: boxH * 2,
       scrollRange: 1
     };
     var last = { top: -1, scale: -1, locked: null };
     var ticking = false;
 
-    box.style.width = BOX_W + 'px';
-    box.style.height = BOX_H + 'px';
+    box.style.width = boxW + 'px';
+    box.style.height = boxH + 'px';
     box.style.bottom = 'auto';
 
     function measureLayout() {
       cached.mediaH = frame.offsetHeight;
-      cached.zoneH = zone ? zone.offsetHeight : BOX_H;
+      cached.zoneH = zone ? zone.offsetHeight : boxH;
       cached.stageH = stage.offsetHeight;
       cached.scrollRange = cached.stageH > 0 ? cached.stageH * 0.48 : 1;
     }
@@ -52,7 +54,7 @@
       measureLayout();
 
       var endTop = cached.mediaH;
-      var startTop = cached.mediaH - BOX_H;
+      var startTop = cached.mediaH - boxH;
 
       if (reducedMotion) {
         applyBoxTop(endTop, true);
@@ -72,7 +74,7 @@
         progress = Math.min(Math.max((0 - rect.top) / cached.scrollRange, 0), 1);
       }
 
-      var top = startTop + progress * BOX_H;
+      var top = startTop + progress * boxH;
       var scale = 1 + progress * 0.04;
       var isLocked = progress >= 0.98;
 
@@ -103,6 +105,10 @@
     }
 
     function onResize() {
+      boxW = box.offsetWidth || BOX_W;
+      boxH = box.offsetHeight || BOX_H;
+      box.style.width = boxW + 'px';
+      box.style.height = boxH + 'px';
       last.top = -1;
       last.scale = -1;
       last.locked = null;

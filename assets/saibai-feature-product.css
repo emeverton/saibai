@@ -1,92 +1,7 @@
-/* Empório Saibai — Feature product
+/* Empório Saibai — Feature carousel UI (dots + CTA)
+ * Cards: saibai-prod-card.liquid + saibai-prod-home-cards.css
  * Veltrus Growth & Technology
  */
-
-html body .saibai-feat__product-link {
-  display: block;
-  width: 100%;
-  text-decoration: none;
-}
-
-html body .saibai-feat__product-media {
-  position: relative;
-  display: block;
-  width: min(57.5%, 25.75rem);
-  max-width: 100%;
-  margin-inline: auto;
-  aspect-ratio: 558 / 780;
-  overflow: hidden;
-  background: var(--ft-wool) !important;
-}
-
-html body .saibai-feat__product-media-inner {
-  position: absolute;
-  inset: 0;
-  background: var(--ft-wool) !important;
-}
-
-html body .saibai-feat__product-img,
-html body .saibai-feat__product-placeholder {
-  position: absolute;
-  inset: 0;
-  display: block;
-  width: 100% !important;
-  height: 100% !important;
-  max-width: none !important;
-  max-height: none !important;
-  object-fit: cover !important;
-  object-position: center center;
-  padding: 0;
-  box-sizing: border-box;
-  background: transparent !important;
-}
-
-html body .saibai-feat__product-copy {
-  margin-top: 1rem;
-  padding-inline: 0.5rem;
-}
-
-html body .shopify-section.saibai-feature-section .saibai-feat__product-name {
-  margin: 0 0 0.35rem;
-  font-family: var(--font-heading--family, 'Jost', sans-serif);
-  font-size: 0.875rem !important;
-  font-weight: 400 !important;
-  line-height: 1.35;
-  letter-spacing: 0.02em;
-  text-transform: none !important;
-}
-
-html body .shopify-section.saibai-feature-section .saibai-feat__product-name a {
-  display: inline-block;
-  max-width: 16rem;
-  color: var(--ft-dark);
-  text-decoration: none;
-}
-
-html body .shopify-section.saibai-feature-section .saibai-feat__product-meta {
-  margin: 0;
-  font-size: 0.75rem;
-  line-height: 1.4;
-  letter-spacing: 0.04em;
-  color: var(--ft-terra);
-}
-
-html body .shopify-section.saibai-feature-section .saibai-feat__product-price {
-  margin: 0.5rem 0 0;
-  font-size: 0.75rem;
-  letter-spacing: 0.04em;
-  color: var(--ft-muted);
-}
-
-html body .shopify-section.saibai-feature-section .saibai-feat__compare {
-  margin-inline-end: 0.35rem;
-  text-decoration: line-through;
-  opacity: 0.55;
-}
-
-html body .shopify-section.saibai-feature-section .saibai-feat__amount {
-  color: var(--ft-dark);
-}
 
 html body .saibai-feat__dots {
   display: flex;
@@ -167,10 +82,6 @@ html body .saibai-feat__empty {
 
   html body .saibai-feat__panel-inner {
     padding-block: 2.5rem;
-  }
-
-  html body .saibai-feat__product-media {
-    width: min(72%, 18rem);
   }
 }
 

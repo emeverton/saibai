@@ -1,17 +1,24 @@
 {%- comment -%} Empório Saibai — shell modular (substitui saibai-shell.css) {%- endcomment -%}
-{%- capture shell_list -%}saibai-shell-kv.css,saibai-shell-cards-media.css,saibai-shell-cards-body.css,saibai-shell-cards-grid.css,saibai-shell-layout.css,saibai-shell-cta.css{%- if saibai_skip_veltrus_base -%},saibai-shell-legacy.css{%- endif -%}{%- endcapture -%}
-{%- assign shell_files = shell_list | split: ',' -%}
-{%- for file in shell_files -%}
+{%- liquid
+  assign shell_core = 'saibai-shell-kv.css,saibai-shell-cards-media.css,saibai-shell-cards-body.css,saibai-shell-cards-grid.css,saibai-shell-layout.css,saibai-shell-cta.css' | split: ','
+-%}
+{%- for file in shell_core -%}
   {%- if async -%}
     <link rel="stylesheet" href="{{ file | asset_url }}" media="print" onload="this.media='all'">
   {%- else -%}
     {{ file | asset_url | stylesheet_tag }}
   {%- endif -%}
 {%- endfor -%}
+{%- if skip_veltrus_base -%}
+  {{ 'saibai-shell-legacy.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
 {%- if async -%}
   <noscript>
-    {%- for file in shell_files -%}
+    {%- for file in shell_core -%}
       {{ file | asset_url | stylesheet_tag }}
     {%- endfor -%}
+    {%- if skip_veltrus_base -%}
+      {{ 'saibai-shell-legacy.css' | asset_url | stylesheet_tag }}
+    {%- endif -%}
   </noscript>
 {%- endif -%}

@@ -122,17 +122,17 @@
           {% render 'saibai-header-utilities' %}
         </div>
       </div>
+
+      <div class="saibai-mega-layer" data-saibai-mega-layer hidden>
+        <div class="saibai-mega-layer__backdrop" data-saibai-mega-close tabindex="-1" aria-hidden="true"></div>
+        {%- for link in nav.links -%}
+          {%- if link.links != blank -%}
+            {% render 'saibai-header-mega-panel', link: link, section: section %}
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
       </div>
     </div>
-  </div>
-
-  <div class="saibai-mega-layer" data-saibai-mega-layer hidden>
-    <div class="saibai-mega-layer__backdrop" data-saibai-mega-close tabindex="-1" aria-hidden="true"></div>
-    {%- for link in nav.links -%}
-      {%- if link.links != blank -%}
-        {% render 'saibai-header-mega-panel', link: link, section: section %}
-      {%- endif -%}
-    {%- endfor -%}
   </div>
 
   {% render 'saibai-header-drawer', nav: nav %}

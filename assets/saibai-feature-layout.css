@@ -98,10 +98,29 @@ html body .saibai-feat__set {
   width: 100%;
 }
 
-html body .saibai-feat__carousel {
+html body .shopify-section.saibai-feature-section .saibai-feat__carousel {
+  --pd-cream: var(--saibai-bg, #F2F5EE);
+  --pd-dark: #2A3A1A;
+  --pd-muted: #4E6040;
+  --pd-terra: #8B5E4A;
+  --pd-info-slot: 5.25rem;
+  --pd-info-box-h: 6.25rem;
+  --pd-lift-dur: 1.15s;
+  --pd-lift-ease: cubic-bezier(0.33, 0, 0.2, 1);
+  --pd-fade-dur: 1.05s;
+  --pd-aspect: 334 / 468;
+  --pd-tile-max: 24rem;
+  --pd-tile-bg: var(--pd-cream);
+  --pd-info-box-bg: #FFFFFF;
   position: relative;
   width: 100%;
-  max-width: 28rem;
+  max-width: var(--pd-tile-max);
+  margin-inline: auto;
+}
+
+html body .shopify-section.saibai-feature-section .saibai-feat__slide .saibai-prod__card {
+  width: 100%;
+  margin-inline: auto;
 }
 
 html body .saibai-feat__radio {

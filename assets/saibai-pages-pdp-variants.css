@@ -52,13 +52,13 @@ body.saibai-theme.template-product .variant-option--pill input[type='radio'] + l
   display: inline-flex !important;
   align-items: center;
   justify-content: center;
-  min-height: 2.5rem !important;
-  min-width: 4.5rem !important;
+  min-height: 2.25rem !important;
+  min-width: 3.5rem !important;
   margin: 0 0.5rem 0.5rem 0 !important;
-  padding: 0.5rem 1.125rem !important;
-  border: 1px solid rgb(42 58 26 / 0.18) !important;
-  border-radius: 999px !important;
-  background: #fff !important;
+  padding: 0.375rem 0.875rem !important;
+  border: 1px solid rgb(42 58 26 / 0.14) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
   font-family: var(--font-heading--family, 'Jost', sans-serif);
   font-size: 0.8125rem !important;
   font-weight: 400;
@@ -86,11 +86,11 @@ html body.saibai-theme.template-product .variant-option--pill input[type='radio'
 html body.saibai-theme.template-product .variant-option--pill input[type='radio'][checked] + label,
 html body.saibai-theme.template-product .variant-option--pill input[type='radio'].checked + label,
 html body.saibai-theme.template-product .variant-option--pill input[type='radio'] + label.checked {
-  border: 1.5px solid #2A3A1A !important;
-  background: #2A3A1A !important;
-  color: #fff !important;
-  font-weight: 600 !important;
-  box-shadow: 0 2px 10px rgb(42 58 26 / 0.18) !important;
+  border: 1px solid #2A3A1A !important;
+  background: transparent !important;
+  color: #2A3A1A !important;
+  font-weight: 400 !important;
+  box-shadow: none !important;
 }
 
 html body.saibai-theme.template-product .variant-option--buttons input[type='radio']:hover:not(:disabled):not(.disabled) + label:not(.checked),
@@ -103,9 +103,9 @@ html body.saibai-theme.template-product .variant-option--pill input[type='radio'
 html body.saibai-theme.template-product .variant-option--pill input[type='radio'] + label.checked:hover,
 html body.saibai-theme.template-product .variant-option--buttons input[type='radio']:checked + label:hover,
 html body.saibai-theme.template-product .variant-option--buttons input[type='radio'] + label.checked:hover {
-  background: #384E28 !important;
-  border-color: #384E28 !important;
-  color: #fff !important;
+  background: transparent !important;
+  border-color: #2A3A1A !important;
+  color: #2A3A1A !important;
 }
 
 body.saibai-theme.template-product .variant-picker input:focus-visible + label,
@@ -128,9 +128,9 @@ body.saibai-theme.template-product buy-buttons {
 }
 
 body.saibai-theme.template-product .product-form {
-  margin-top: 0.25rem;
-  padding-top: 1rem;
-  border-top: 1px solid rgb(138 190 10 / 0.14);
+  margin-top: 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgb(42 58 26 / 0.08);
 }
 
 body.saibai-theme.template-product .product-form__buttons,
@@ -184,9 +184,9 @@ body.saibai-theme.template-product .product-form__quantity quantity-input.quanti
   height: 2.75rem;
   margin: 0;
   padding: 0;
-  border: 1px solid rgb(138 190 10 / 0.35);
-  border-radius: 999px;
-  background: #fff !important;
+  border: 1px solid rgb(42 58 26 / 0.14);
+  border-radius: 0;
+  background: transparent !important;
   overflow: hidden;
   flex: 0 0 auto;
 }
@@ -222,20 +222,20 @@ body.saibai-theme.template-product .product-form__quantity quantity-input .quant
   padding: 0;
   border: 0;
   border-radius: 0;
-  background: var(--saibai-primary, #2A3A1A) !important;
-  color: #fff !important;
+  background: transparent !important;
+  color: #2A3A1A !important;
   flex-shrink: 0;
 }
 
 body.saibai-theme.template-product .product-form__quantity quantity-input .quantity__button:hover:not(:disabled) {
-  background: var(--saibai-primary-hover, #384E28) !important;
-  color: #fff !important;
+  background: rgb(42 58 26 / 0.04) !important;
+  color: #2A3A1A !important;
 }
 
 body.saibai-theme.template-product .product-form__quantity quantity-input .quantity__button .svg-wrapper {
   width: 0.875rem;
   height: 0.875rem;
-  color: #fff !important;
+  color: #2A3A1A !important;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -257,7 +257,7 @@ body.saibai-theme.template-product .product-form__quantity quantity-input .quant
 body.saibai-theme.template-product .product-form__quantity quantity-input .quantity__button .svg-wrapper svg,
 body.saibai-theme.template-product .product-form__quantity quantity-input .quantity__button .svg-wrapper svg.icon,
 body.saibai-theme.template-product .product-form__quantity quantity-input .quantity__button .svg-wrapper svg path {
-  color: #fff !important;
+  color: #2A3A1A !important;
   fill: currentColor;
   stroke: currentColor;
 }

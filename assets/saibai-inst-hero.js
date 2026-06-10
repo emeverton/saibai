@@ -34,10 +34,15 @@
 
     function measureLayout() {
       cached.mediaH = frame.offsetHeight;
-      cached.zoneH = zone ? zone.offsetHeight : ZONE_H;
-      cached.boxH = box.offsetHeight;
+      cached.boxH = box.offsetHeight || ZONE_H;
+      cached.zoneH = cached.boxH;
       cached.stageH = stage.offsetHeight;
       cached.scrollRange = cached.stageH > 0 ? cached.stageH * 0.48 : 1;
+
+      if (zone) {
+        zone.style.height = cached.boxH + 'px';
+      }
+      root.style.setProperty('--inst-hero-zone-h', cached.boxH + 'px');
     }
 
     function applyBoxTop(top, isLocked) {
@@ -70,7 +75,7 @@
         progress = Math.min(Math.max((0 - rect.top) / cached.scrollRange, 0), 1);
       }
 
-      var top = startTop + progress * cached.zoneH;
+      var top = startTop + progress * cached.boxH;
       var scale = 1 + progress * 0.04;
       var isLocked = progress >= 0.98;
 

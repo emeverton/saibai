@@ -59,7 +59,7 @@
 
 {%- comment -%} Saibai KV — após base Veltrus/components {%- endcomment -%}
 {{ 'saibai-tokens.css' | asset_url | stylesheet_tag }}
-{%- render 'saibai-shell-css', async: saibai_async_pages_css -%}
+{%- render 'saibai-shell-css', async: saibai_async_pages_css, skip_veltrus_base: saibai_skip_veltrus_base -%}
 {%- render 'saibai-pages-css', async: saibai_async_pages_css -%}
 {%- render 'saibai-conditional-assets' -%}
 

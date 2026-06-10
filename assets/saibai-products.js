@@ -97,6 +97,24 @@
     }
 
     activateTab(section, defaultTab);
+    bindHeroJump(section);
+  }
+
+  function bindHeroJump(section) {
+    var jumps = document.querySelectorAll('[data-saibai-prod-jump]');
+    var j;
+
+    for (j = 0; j < jumps.length; j++) {
+      (function (link) {
+        link.addEventListener('click', function (e) {
+          var key = link.getAttribute('data-saibai-prod-jump');
+          if (!key || !section) return;
+          e.preventDefault();
+          activateTab(section, key);
+          section.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+      })(jumps[j]);
+    }
   }
 
   function boot() {

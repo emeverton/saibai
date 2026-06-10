@@ -8,9 +8,11 @@
 @media (min-width: 1025px) and (max-width: 1439px) {
   html body .saibai-header {
     --sh-pad: clamp(1rem, 2vw, 1.75rem);
-    --sh-nav-h: 120px;
-    --sh-nav-strip-h: 60px;
-    --sh-logo-pad-top: 16px;
+    --sh-side-w: 5.5rem;
+    --sh-nav-strip-h: 2.75rem;
+    --sh-nav-h: var(--sh-nav-strip-h);
+    --sh-logo-pad-top: 1rem;
+    --sh-logo-pad-bottom: 0.125rem;
   }
 }
 
@@ -20,12 +22,13 @@
     --sh-side-w: 82px;
     --sh-search-h: 38px;
     --sh-util-h: 31px;
-    --sh-nav-h: 110px;
-    --sh-nav-strip-h: 55px;
+    --sh-nav-strip-h: 2.75rem;
+    --sh-nav-h: var(--sh-nav-strip-h);
     --sh-nav: 0.9rem;
     --sh-util: 0.9rem;
     --sh-menu-pad-x: 10px;
     --sh-logo-pad-top: 14px;
+    --sh-logo-pad-bottom: 0.125rem;
   }
 }
 
@@ -36,3 +39,4 @@
     --sh-nav: 0.8625rem;
     --sh-util: 0.8625rem;
   }
+}

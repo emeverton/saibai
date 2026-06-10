@@ -2,18 +2,22 @@
  * Veltrus Growth & Technology
  */
 
-/* ── Nav row LP — compacta ── */
+/* ── Nav row LP — mesma cor do header (logo); mega open → ver saibai-header-mega-sidebar.css ── */
 html body .saibai-header__nav-row {
+  position: relative;
+  z-index: 2;
   height: var(--sh-nav-h);
   min-height: var(--sh-nav-h);
   padding: 0;
   border-bottom: 0;
+  background: var(--sh-bg, var(--saibai-bg-header, #F2F5EE));
+  overflow: visible;
 }
 
 html body .saibai-header__shell {
   display: grid;
   grid-template-columns: var(--sh-side-w) minmax(0, 1fr) var(--sh-side-w);
-  align-items: center;
+  align-items: end;
   gap: 0;
   height: var(--sh-nav-h);
   min-height: var(--sh-nav-h);

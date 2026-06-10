@@ -113,22 +113,50 @@ body.saibai-theme.template-collection .collection-header .text-block h2 {
 }
 
 body.saibai-theme.template-collection .collection-wrapper:has(.facets--vertical) {
-  display: block !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  width: 100%;
+  max-width: var(--saibai-lp-max, 90rem);
+  margin-inline: auto;
+  padding-inline: var(--saibai-lp-pad-x, clamp(1rem, 2.5vw, 2.5rem));
+  box-sizing: border-box;
+}
+
+body.saibai-theme.template-collection .collection-wrapper .facets-block-wrapper {
+  display: none !important;
+}
+
+body.saibai-theme.template-collection .collection-wrapper .facets-vertical-sort {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+}
+
+body.saibai-theme.template-collection .collection-wrapper .main-collection-grid {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
 }
 
 body.saibai-theme.template-collection .product-grid-container,
 body.saibai-theme.template-collection .collection-wrapper .facets-vertical-sort ~ .product-grid-container {
   width: 100% !important;
-  max-width: var(--saibai-lp-max, 86rem);
-  margin-inline: auto;
-  padding-inline: var(--saibai-lp-pad-x, clamp(1.5rem, 5vw, 3.5rem));
+  max-width: none;
+  margin-inline: 0;
+  padding-inline: 0;
   grid-column: 1 / -1 !important;
 }
 
 body.saibai-theme.template-collection .facets-vertical-sort {
-  max-width: var(--saibai-lp-max, 86rem);
-  margin-inline: auto;
-  padding-inline: var(--saibai-lp-pad-x, clamp(1.5rem, 5vw, 3.5rem));
+  max-width: none;
+  margin-inline: 0;
+  padding-inline: 0;
   border: 0;
 }
 
@@ -166,10 +194,9 @@ body.saibai-theme.template-collection .products-per-page {
   display: none !important;
 }
 
-body.saibai-theme.template-collection .facets-vertical-sort {
-  max-width: var(--saibai-lp-max, 86rem);
-  margin: 0 auto;
-  padding: clamp(1.25rem, 2.5vw, 1.75rem) var(--saibai-lp-pad-x, clamp(1.5rem, 5vw, 3.5rem)) 1rem;
+body.saibai-theme.template-collection .collection-wrapper > .facets-vertical-sort {
+  margin: 0;
+  padding: clamp(1rem, 2vw, 1.35rem) 0 1rem;
   border: 0;
   border-bottom: 1px solid rgb(42 58 26 / 0.08);
   background: transparent;

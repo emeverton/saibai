@@ -24,8 +24,8 @@
             "title": "Alcachofra Fresca",
             "cta": "Comprar",
             "url": "/collections/in-natura-1",
-            "image_asset": "saibai-ed-fresca.webp",
-            "image_alt": "Alcachofra fresca Saibai"
+            "image_asset": "saibai-feature-fresca.webp",
+            "image_alt": "Alcachofra fresca colhida em Piedade, SP"
           }
         },
         "ed_2": {
@@ -37,35 +37,23 @@
             "cta": "Descobrir",
             "url": "/collections/em-conserva",
             "image_asset": "saibai-ed-conserva.webp",
-            "image_alt": "Conservas artesanais Saibai"
+            "image_alt": "Conserva artesanal Saibai — coração de alcachofra"
           }
         },
         "ed_3": {
           "type": "collection",
           "settings": {
-            "style": "product",
+            "style": "lifestyle",
             "label": "Gourmet",
             "title": "Flores Desidratadas",
             "cta": "Descobrir",
             "url": "/collections/flores-desidratadas",
-            "image_asset": "saibai-ed-flores.webp",
-            "image_alt": "Flores desidratadas Saibai"
-          }
-        },
-        "ed_4": {
-          "type": "collection",
-          "settings": {
-            "style": "product",
-            "label": "Natural",
-            "title": "Frutas Desidratadas",
-            "cta": "Descobrir",
-            "url": "/collections/frutas-desidratadas",
-            "image_asset": "saibai-ed-frutas.webp",
-            "image_alt": "Frutas desidratadas Saibai"
+            "image_asset": "saibai-banner-flores-hero.webp",
+            "image_alt": "Flores desidratadas Saibai em composição gourmet"
           }
         }
       },
-      "block_order": ["ed_1", "ed_2", "ed_3", "ed_4"],
+      "block_order": ["ed_1", "ed_2", "ed_3"],
       "settings": {}
     },
     "marquee_saibai": {
@@ -173,6 +161,7 @@
           "type": "service",
           "settings": {
             "icon": "shipping",
+            "image_asset": "saibai-asvc-entrega.jpg",
             "label": "Entrega refrigerada",
             "link_label": "Como entregamos",
             "link_url": "/pages/politica-de-entrega"
@@ -182,6 +171,7 @@
           "type": "service",
           "settings": {
             "icon": "returns",
+            "image_asset": "saibai-asvc-troca.jpg",
             "label": "Troca facilitada",
             "link_label": "Política de troca",
             "link_url": "/pages/politica-de-troca"
@@ -191,6 +181,7 @@
           "type": "service",
           "settings": {
             "icon": "whatsapp",
+            "image_asset": "saibai-asvc-whatsapp.jpg",
             "label": "Grupo VIP WhatsApp",
             "link_label": "Entrar no grupo",
             "link_url": "https://chat.whatsapp.com/LmGiN0C8QT04AQ4VB9PDdO"

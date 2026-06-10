@@ -15,12 +15,11 @@ html body #header-group .shopify-section.section-announcement-bar {
   border: 0;
 }
 
-/* LP: barra dupla — top mais clara · header = logo bg · sem linhas */
+/* LP: barra fixa = cor mega menu · faxinhas duplas separam do header (logo) */
 html body .saibai-ab-frame {
-  --ab-bg: var(--saibai-bg-top, #FAFBF7);
-  --ab-line: transparent;
-  --ab-rule-fill: transparent;
-  --ab-rule-weight: 2px;
+  --ab-bg: var(--sh-rule-fill, var(--saibai-bg-contrast, #E8EFE2));
+  --ab-line: rgb(42 58 26 / 0.16);
+  --ab-rule-weight: 1.5px;
   --ab-rule-gap: 3px;
   --ab-rule-block: calc(var(--ab-rule-weight) + var(--ab-rule-gap) + var(--ab-rule-weight));
 

@@ -7,10 +7,18 @@ html body .saibai-header__utilities {
   display: inline-flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 0.5rem;
+  gap: 0.625rem;
   width: var(--sh-side-w);
   height: var(--sh-util-h);
   min-height: var(--sh-util-h);
+}
+
+html body .saibai-header .saibai-header__utilities side-drawer-opener {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  line-height: 0;
 }
 
 html body .saibai-header a.saibai-header__icon-btn,
@@ -21,6 +29,7 @@ html body .saibai-header button.saibai-header__icon-btn {
   align-items: center;
   justify-content: center;
   position: relative;
+  flex-shrink: 0;
   width: var(--sh-icon);
   height: var(--sh-icon);
   min-width: var(--sh-icon);

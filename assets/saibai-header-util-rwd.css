@@ -37,7 +37,7 @@
 
 @media (min-width: 1025px) and (max-width: 1180px) {
   html body .saibai-mega__grid {
-    grid-template-columns: minmax(200px, 240px) minmax(0, 1fr) 220px;
+    grid-template-columns: minmax(200px, 240px) minmax(0, 1fr) minmax(220px, 260px);
   }
 
   html body .saibai-mega__center {
@@ -46,6 +46,17 @@
 
   html body .saibai-mega__center-list {
     grid-template-columns: 1fr;
+  }
+
+  html body .saibai-mega__center-list::after {
+    display: none;
+  }
+
+  html body .saibai-mega__center-item,
+  html body .saibai-mega__center-item:nth-child(odd),
+  html body .saibai-mega__center-item:nth-child(even) {
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 

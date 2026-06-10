@@ -12,33 +12,31 @@
     <div class="saibai-asvc__grid">
       {%- for block in section.blocks -%}
         <article class="saibai-asvc__item" {{ block.shopify_attributes }}>
+          {%- liquid
+            assign asvc_asset = block.settings.image_asset
+            if asvc_asset == blank
+              case block.settings.icon
+                when 'shipping'
+                  assign asvc_asset = 'saibai-asvc-entrega.jpg'
+                when 'returns'
+                  assign asvc_asset = 'saibai-asvc-troca.jpg'
+                when 'whatsapp'
+                  assign asvc_asset = 'saibai-asvc-whatsapp.jpg'
+              endcase
+            endif
+          -%}
           <div class="saibai-asvc__icon" aria-hidden="true">
-            {%- case block.settings.icon -%}
-              {%- when 'shipping' -%}
-                <svg viewBox="0 0 64 64" focusable="false" role="presentation">
-                  <path d="M8 42h36V18H8v24Z" fill="none" stroke="currentColor" stroke-width="1.5"/>
-                  <path d="M44 26h10l6 8v8H44V26Z" fill="none" stroke="currentColor" stroke-width="1.5"/>
-                  <circle cx="18" cy="44" r="4" fill="none" stroke="currentColor" stroke-width="1.5"/>
-                  <circle cx="50" cy="44" r="4" fill="none" stroke="currentColor" stroke-width="1.5"/>
-                </svg>
-              {%- when 'returns' -%}
-                <svg viewBox="0 0 64 64" focusable="false" role="presentation">
-                  <path d="M14 18h36v28H14V18Z" fill="none" stroke="currentColor" stroke-width="1.5"/>
-                  <path d="M22 26h20M22 34h14" fill="none" stroke="currentColor" stroke-width="1.5"/>
-                  <path d="M38 38l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.5"/>
-                </svg>
-              {%- when 'whatsapp' -%}
-                <svg viewBox="0 0 64 64" focusable="false" role="presentation">
-                  <path d="M18 14h28v36H18V14Z" fill="none" stroke="currentColor" stroke-width="1.5"/>
-                  <path d="M26 22h12M26 30h12M26 38h8" fill="none" stroke="currentColor" stroke-width="1.5"/>
-                  <path d="M42 42l8 8" fill="none" stroke="currentColor" stroke-width="1.5"/>
-                </svg>
-              {%- else -%}
-                <svg viewBox="0 0 64 64" focusable="false" role="presentation">
-                  <circle cx="32" cy="32" r="18" fill="none" stroke="currentColor" stroke-width="1.5"/>
-                  <path d="M32 22v10l6 6" fill="none" stroke="currentColor" stroke-width="1.5"/>
-                </svg>
-            {%- endcase -%}
+            {%- if asvc_asset != blank -%}
+              <img
+                src="{{ asvc_asset | asset_url }}"
+                alt=""
+                class="saibai-asvc__illus"
+                loading="lazy"
+                width="280"
+                height="280"
+                decoding="async"
+              >
+            {%- endif -%}
           </div>
 
           {%- if block.settings.label != blank -%}
@@ -83,7 +81,7 @@
         {
           "type": "select",
           "id": "icon",
-          "label": "Ícone",
+          "label": "Ícone (fallback)",
           "default": "shipping",
           "options": [
             { "value": "shipping", "label": "Entrega" },
@@ -91,6 +89,12 @@
             { "value": "whatsapp", "label": "Atendimento" },
             { "value": "calendar", "label": "Agenda" }
           ]
+        },
+        {
+          "type": "text",
+          "id": "image_asset",
+          "label": "Ilustração (assets/)",
+          "info": "Ex.: saibai-asvc-entrega.jpg"
         },
         {
           "type": "text",
@@ -120,6 +124,7 @@
           "type": "service",
           "settings": {
             "icon": "shipping",
+            "image_asset": "saibai-asvc-entrega.jpg",
             "label": "Entrega refrigerada",
             "link_label": "Como entregamos",
             "link_url": "/pages/politica-de-entrega"
@@ -129,6 +134,7 @@
           "type": "service",
           "settings": {
             "icon": "returns",
+            "image_asset": "saibai-asvc-troca.jpg",
             "label": "Troca facilitada",
             "link_label": "Política de troca",
             "link_url": "/pages/politica-de-troca"
@@ -138,6 +144,7 @@
           "type": "service",
           "settings": {
             "icon": "whatsapp",
+            "image_asset": "saibai-asvc-whatsapp.jpg",
             "label": "Grupo VIP WhatsApp",
             "link_label": "Entrar no grupo",
             "link_url": "https://chat.whatsapp.com/LmGiN0C8QT04AQ4VB9PDdO"

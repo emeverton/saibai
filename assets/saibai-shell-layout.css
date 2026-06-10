@@ -43,6 +43,12 @@ body.saibai-theme .banner__media img {
 }
 
 /* ── Header + hero sem gap ── */
+body.saibai-theme.template-index #MainContent > .shopify-section.saibai-hero-section:first-child,
+body.saibai-theme.template-index .content-for-layout > .shopify-section.saibai-hero-section:first-child {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
 body.saibai-theme.template-index .shopify-section.saibai-header-section {
   margin-bottom: 0 !important;
   border-bottom: 0 !important;

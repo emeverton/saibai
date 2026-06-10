@@ -18,12 +18,16 @@ html body .saibai-header__desktop {
   display: block;
 }
 
-/* LP: logo + nav no mesmo bloco — sem linha entre eles */
+html body .saibai-header {
+  position: relative;
+  overflow: visible;
+}
+
 html body .saibai-header__body {
   position: relative;
   z-index: 2;
   min-height: 0;
-  background: var(--sh-bg);
+  background: transparent;
   border-bottom: 0 !important;
   box-shadow: none !important;
 }

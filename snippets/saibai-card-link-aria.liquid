@@ -24,7 +24,8 @@
         endif
       else
         for tag in cp.tags
-          if tag | handle == 'new'
+          assign tag_handle = tag | handle
+          if tag_handle == 'new'
             assign is_new = true
             break
           endif

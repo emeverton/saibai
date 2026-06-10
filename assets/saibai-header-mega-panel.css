@@ -1,21 +1,21 @@
 /*
  * Empório Saibai — Header mega menu (gaveta LP)
  * Submódulo 2/3 · padrão Loro Piana | Veltrus · Shopify Partner 4969609
- * saibai-mega-v11
+ * saibai-mega-v16 · gaveta LP · tom contrastante · tipografia imponente
  */
 
-/* ── Mega menu LP ── */
+/* ── Mega menu LP — gaveta presa ao header ── */
 html body .saibai-mega-layer[hidden] {
   display: none;
 }
 
 html body .saibai-mega-layer:not([hidden]) {
   display: block;
-  position: fixed;
+  position: absolute;
+  top: 100%;
   left: 0;
   right: 0;
-  top: calc(var(--sh-mega-top, 172px) - var(--sh-mega-overlap, 2px));
-  z-index: 39;
+  z-index: 35;
   height: var(--sh-mega-h);
   overflow: hidden;
   pointer-events: none;
@@ -25,13 +25,12 @@ html body .saibai-mega-layer:not([hidden]) {
 
 html body .saibai-mega-layer.is-open {
   pointer-events: auto;
-  background: transparent;
 }
 
 html body .saibai-mega-layer__backdrop {
   position: fixed;
   inset: 0;
-  top: calc(var(--sh-mega-top, 172px) - var(--sh-mega-overlap, 2px));
+  z-index: -1;
   background: transparent;
   cursor: default;
 }
@@ -40,35 +39,24 @@ html body .saibai-mega__panel {
   position: absolute;
   inset: 0;
   height: var(--sh-mega-h);
-  background: var(--sh-mega-bg, #E8EFE2);
-  border-top: 0;
+  background: var(--sh-mega-bg, var(--saibai-bg-top, #FAFBF7));
+  border-top: 1px solid var(--sh-mega-line);
   visibility: hidden;
-  transform: translate3d(0, -100%, 0);
+  clip-path: inset(0 0 100% 0);
   backface-visibility: hidden;
-  will-change: transform;
+  will-change: clip-path;
   z-index: 1;
+  box-shadow: none;
   transition:
-    transform var(--sh-mega-duration) var(--sh-mega-ease) var(--sh-mega-delay-close),
+    clip-path var(--sh-mega-duration) var(--sh-mega-ease) var(--sh-mega-delay-close),
     visibility 0s linear calc(var(--sh-mega-duration) + var(--sh-mega-delay-close));
-}
-
-html body .saibai-mega__panel::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: var(--sh-mega-overlap, 2px);
-  background: var(--sh-mega-bg, #E8EFE2);
-  transform: translate3d(0, -100%, 0);
-  pointer-events: none;
 }
 
 html body .saibai-mega__panel:not([hidden]).is-active {
   visibility: visible;
-  transform: translate3d(0, 0, 0);
+  clip-path: inset(0 0 0 0);
   transition:
-    transform var(--sh-mega-duration) var(--sh-mega-ease) var(--sh-mega-delay),
+    clip-path var(--sh-mega-duration) var(--sh-mega-ease) var(--sh-mega-delay),
     visibility 0s linear 0s;
 }
 
@@ -76,7 +64,7 @@ html body .saibai-mega__close {
   position: absolute;
   top: 1rem;
   right: clamp(1rem, 3vw, 2.5rem);
-  z-index: 2;
+  z-index: 3;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -102,24 +90,39 @@ html body .saibai-mega__close svg {
 }
 
 html body .saibai-mega__grid {
+  position: relative;
+  z-index: 1;
   display: grid;
-  grid-template-columns: minmax(220px, 280px) minmax(0, 1fr) 266px;
+  grid-template-columns: minmax(248px, 300px) minmax(0, 1fr) minmax(248px, 292px);
   gap: 0;
+  align-items: stretch;
   height: 100%;
   max-width: var(--saibai-lp-shell-max, min(90rem, 1440px));
   margin: 0 auto;
-  padding: 2rem clamp(1.25rem, 4vw, 3rem) 2.5rem;
+  padding: clamp(2.5rem, 3.5vw, 3.25rem) clamp(2rem, 4.5vw, 3.5rem) clamp(2.75rem, 4vw, 3.5rem);
+  opacity: 0;
+  transform: translate3d(0, 4px, 0);
+  transition:
+    opacity calc(var(--sh-mega-duration) * 0.55) var(--sh-mega-ease) var(--sh-mega-content-delay),
+    transform calc(var(--sh-mega-duration) * 0.55) var(--sh-mega-ease) var(--sh-mega-content-delay);
+}
+
+html body .saibai-mega__panel.is-active .saibai-mega__grid {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
 }
 
 html body .saibai-mega__sidebar {
-  padding-right: 1.5rem;
-  border-right: 0;
+  padding-right: clamp(2rem, 3vw, 2.75rem);
+  margin-right: 0;
+  border-right: 1px solid var(--sh-mega-line);
 }
 
 html body .saibai-mega__sidebar-label {
-  margin: 0 0 1.25rem;
+  margin: 0 0 clamp(1.75rem, 2.5vw, 2.25rem);
   font-size: 0.6875rem;
-  letter-spacing: 0.12em;
+  font-weight: 400;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--sh-muted);
 }
@@ -131,21 +134,29 @@ html body .saibai-mega__center-list {
   list-style: none;
 }
 
+html body .saibai-mega__sidebar-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
 html body .saibai-mega__sidebar-link,
 html body .saibai-mega__sidebar-link.is-soon {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.75rem;
+  gap: 1rem;
   width: 100%;
-  padding: 0.65rem 0;
+  padding: 0.6875rem 0;
   color: var(--sh-text);
   font-size: 0.9375rem;
-  letter-spacing: 0.02em;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  line-height: 1.45;
   text-decoration: none;
   background: transparent;
   border: 0;
-  transition: opacity 0.25s ease, color 0.25s ease;
+  transition: opacity 0.35s ease, color 0.35s ease;
 }
 
 html body .saibai-mega__sidebar-link:hover,
@@ -161,11 +172,16 @@ html body .saibai-mega__sidebar-link.is-soon {
 
 html body .saibai-mega__chevron {
   flex-shrink: 0;
-  width: 0.4rem;
-  height: 0.4rem;
+  width: 0.35rem;
+  height: 0.35rem;
   border-top: 1px solid currentColor;
   border-right: 1px solid currentColor;
   transform: rotate(45deg);
-  opacity: 0.45;
+  opacity: 0.35;
 }
 
+@media (max-width: 1024px) {
+  html body .saibai-mega-layer:not([hidden]) {
+    display: none !important;
+  }
+}

@@ -21,17 +21,33 @@ body.saibai-theme.template-collection .saibai-plp-hero-wrap .saibai-inst {
 }
 
 body.saibai-theme.template-collection .saibai-plp-hero-inst .saibai-inst-hero__stage {
-  max-width: none;
-  padding-inline: 0;
+  max-width: var(--inst-max, var(--saibai-lp-max, 90rem));
+  padding-inline: var(--inst-pad-x, var(--saibai-lp-pad-x, clamp(1rem, 2.5vw, 2.5rem)));
   width: 100%;
+  box-sizing: border-box;
 }
 
 body.saibai-theme.template-collection .saibai-plp-hero-inst .saibai-inst-hero__frame,
 body.saibai-theme.template-collection .saibai-plp-hero-inst .saibai-inst-hero__zone {
-  width: 100vw;
-  max-width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
+  width: 100%;
+  max-width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* Box desce até a borda mídia/faixa — mesmo comportamento da home */
+body.saibai-theme.template-collection .saibai-plp-hero-inst.saibai-inst-hero {
+  --inst-hero-aspect: var(--saibai-lp-hero-aspect, 1440 / 688);
+}
+
+body.saibai-theme.template-collection .saibai-plp-hero-inst .saibai-inst-hero__zone {
+  height: var(--inst-hero-zone-h, 179px);
+  min-height: 0;
+  flex-shrink: 0;
+}
+
+body.saibai-theme.template-collection .saibai-plp-hero-inst .saibai-inst-hero__box {
+  will-change: top;
 }
 
 body.saibai-theme.template-collection .saibai-plp-hero-inst .saibai-inst-hero__media,

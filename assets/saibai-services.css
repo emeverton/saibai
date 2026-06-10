@@ -167,7 +167,9 @@ html body .saibai-asvc {
   --asvc-dark: #2A3A1A;
   --asvc-muted: #4E6040;
   --asvc-terra: #8B5E4A;
-  --asvc-border: rgb(42 58 26 / 0.12);
+  --asvc-border: rgb(42 58 26 / 0.14);
+  --asvc-divider: rgb(42 58 26 / 0.14);
+  --asvc-icon: clamp(11rem, 17vw, 13.75rem);
   --asvc-max: var(--saibai-lp-shell-max, min(86rem, 1376px));
 
   box-sizing: border-box;
@@ -188,7 +190,7 @@ html body .saibai-asvc__inner {
 }
 
 html body .saibai-asvc__title {
-  margin: 0 0 clamp(2.5rem, 4vw, 3.5rem);
+  margin: 0 0 clamp(2rem, 3.5vw, 2.75rem);
   text-align: center;
   font-family: var(--font-heading--family, 'Jost', sans-serif);
   font-size: clamp(1.375rem, 2vw, 1.75rem);
@@ -202,15 +204,17 @@ html body .saibai-asvc__grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0;
+  align-items: stretch;
 }
 
 html body .saibai-asvc__item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 clamp(1.5rem, 3vw, 2.75rem) 0.5rem;
+  justify-content: flex-start;
+  padding: 0 clamp(0.75rem, 1.75vw, 1.5rem);
   text-align: center;
-  border-inline-end: 0;
+  border-inline-end: 1px solid var(--asvc-divider);
 }
 
 html body .saibai-asvc__item:last-child {
@@ -221,10 +225,13 @@ html body .saibai-asvc__icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 5rem;
-  height: 5rem;
-  margin-bottom: 1.25rem;
+  flex-shrink: 0;
+  width: var(--asvc-icon);
+  height: var(--asvc-icon);
+  margin: 0 auto 0.75rem;
   color: var(--asvc-terra);
+  background: var(--asvc-wool);
+  isolation: isolate;
 }
 
 html body .saibai-asvc__icon svg {
@@ -233,9 +240,21 @@ html body .saibai-asvc__icon svg {
   height: 100%;
 }
 
+html body .saibai-asvc__illus {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center center;
+  background: var(--asvc-wool);
+  mix-blend-mode: normal;
+}
+
 html body .saibai-asvc__label {
-  margin: 0 0 1.125rem;
-  max-width: 16rem;
+  margin: 0 0 0.625rem;
+  max-width: 14rem;
   font-family: var(--font-heading--family, 'Jost', sans-serif);
   font-size: clamp(1rem, 1.4vw, 1.125rem);
   font-weight: 400;
@@ -250,10 +269,20 @@ html body .saibai-asvc__link {
   font-size: clamp(0.875rem, 1.05vw, 0.9375rem);
   font-weight: 400;
   line-height: 1.35;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
   color: var(--asvc-terra);
   text-decoration: none;
   transition: color 0.2s ease;
+}
+
+html body .saibai-asvc__link::before {
+  content: '—\00a0';
+  opacity: 0.9;
+}
+
+html body .saibai-asvc__link::after {
+  content: '\00a0—';
+  opacity: 0.9;
 }
 
 html body .saibai-asvc__link:hover {
@@ -270,14 +299,18 @@ html body .saibai-asvc__link:hover {
   }
 
   html body .saibai-asvc__item {
-    padding: 0 0 2rem;
+    padding: 0 0 1.75rem;
     border-inline-end: none;
-    border-bottom: 0;
+    border-bottom: 1px solid var(--asvc-divider);
   }
 
   html body .saibai-asvc__item:last-child {
     padding-bottom: 0;
     border-bottom: none;
+  }
+
+  html body .saibai-asvc {
+    --asvc-icon: clamp(10rem, 42vw, 12.5rem);
   }
 }
 

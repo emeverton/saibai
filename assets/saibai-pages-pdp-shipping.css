@@ -5,27 +5,28 @@
 
 /* Calculadora de frete PDP — acima do preço */
 body.saibai-theme.template-product .saibai-pdp-ship {
-  margin: 0 0 1.25rem;
-  padding: 0;
+  margin: 0 0 1.5rem;
+  padding: 0 0 1.5rem;
   border-top: 0;
+  border-bottom: 1px solid rgb(42 58 26 / 0.08);
 }
 
 body.saibai-theme.template-product .saibai-pdp-ship__free {
   margin-bottom: 1rem;
-  padding: 0.75rem 1rem;
-  background: rgb(138 190 10 / 0.08);
-  border: 1px solid rgb(138 190 10 / 0.24);
-  border-radius: 0.875rem;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
 }
 
 body.saibai-theme.template-product .saibai-pdp-ship__free-text {
   margin: 0 0 0.375rem;
-  font-family: var(--font-heading--family, 'Jost', sans-serif);
-  font-size: 0.8125rem;
+  font-family: var(--font-body--family, 'Jost', sans-serif);
+  font-size: 0.75rem;
   font-weight: 400;
-  letter-spacing: 0.02em;
-  line-height: 1.5;
-  color: #2A3A1A;
+  letter-spacing: 0.03em;
+  line-height: 1.55;
+  color: rgb(42 58 26 / 0.68);
 }
 
 body.saibai-theme.template-product .saibai-pdp-ship__free-text strong {
@@ -71,13 +72,13 @@ body.saibai-theme.template-product .saibai-pdp-ship__free-note a:hover {
 }
 
 body.saibai-theme.template-product .saibai-pdp-ship__label {
-  margin: 0 0 0.75rem;
-  font-family: var(--font-heading--family, 'Jost', sans-serif);
-  font-size: 0.6875rem;
+  margin: 0 0 0.625rem;
+  font-family: var(--font-body--family, 'Jost', sans-serif);
+  font-size: 0.75rem;
   font-weight: 400;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgb(42 58 26 / 0.55);
+  letter-spacing: 0.04em;
+  text-transform: none;
+  color: rgb(42 58 26 / 0.62);
 }
 
 body.saibai-theme.template-product .saibai-pdp-ship__form {
@@ -92,10 +93,10 @@ body.saibai-theme.template-product .saibai-pdp-ship__input {
   flex: 1;
   min-width: 0;
   height: 2.75rem;
-  padding: 0 1rem;
-  border: 1px solid rgb(42 58 26 / 0.16);
-  border-radius: 999px;
-  background: #fff;
+  padding: 0 0.875rem;
+  border: 1px solid rgb(42 58 26 / 0.14);
+  border-radius: 0;
+  background: transparent;
   font-family: var(--font-heading--family, 'Jost', sans-serif);
   font-size: 0.875rem;
   letter-spacing: 0.04em;
@@ -136,25 +137,25 @@ body.saibai-theme.template-product .saibai-pdp-ship__btn {
   flex-shrink: 0;
   min-width: 6.5rem;
   height: 2.75rem;
-  padding: 0 1.25rem;
-  border: 1px solid #2A3A1A !important;
-  border-radius: 999px !important;
-  background: #2A3A1A !important;
-  font-family: var(--font-heading--family, 'Jost', sans-serif);
-  font-size: 0.8125rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: none;
-  color: #fff !important;
+  padding: 0 1rem;
+  border: 1px solid rgb(42 58 26 / 0.22) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  font-family: var(--font-body--family, 'Jost', sans-serif);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #2A3A1A !important;
   cursor: pointer;
   box-shadow: none !important;
   transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
 }
 
 body.saibai-theme.template-product .saibai-pdp-ship__btn:hover:not(:disabled) {
-  background: #384E28 !important;
-  border-color: #384E28 !important;
-  color: #fff !important;
+  background: rgb(42 58 26 / 0.04) !important;
+  border-color: rgb(42 58 26 / 0.35) !important;
+  color: #2A3A1A !important;
 }
 
 body.saibai-theme.template-product .saibai-pdp-ship__btn:disabled {
@@ -234,16 +235,16 @@ body.saibai-theme.template-product .accelerated-checkout-block .shopify-payment-
   background: #2A3A1A !important;
   border: 1px solid #2A3A1A !important;
   color: #fff !important;
-  font-family: var(--font-heading--family, 'Jost', sans-serif);
-  font-size: 0.8125rem !important;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: none;
-  min-height: 48px !important;
-  height: 48px !important;
-  border-radius: 999px !important;
+  font-family: var(--font-body--family, 'Jost', sans-serif);
+  font-size: 0.75rem !important;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  min-height: 3rem !important;
+  height: 3rem !important;
+  border-radius: 0 !important;
   box-shadow: none !important;
-  padding-inline: 1.25rem !important;
+  padding-inline: 1rem !important;
 }
 
 body.saibai-theme.template-product .product-form__submit:hover:not(:disabled),
@@ -257,11 +258,11 @@ body.saibai-theme.template-product .product-form__submit:disabled,
 body.saibai-theme.template-product .product-form__submit[disabled],
 body.saibai-theme.template-product .product-form__submit.sold-out--button,
 body.saibai-theme.template-product .sticky-atc .sold-out--button {
-  background: #F2F5EE !important;
-  border: 1.5px solid #2A3A1A !important;
-  color: #2A3A1A !important;
+  background: transparent !important;
+  border: 1px solid rgb(42 58 26 / 0.22) !important;
+  color: rgb(42 58 26 / 0.55) !important;
   cursor: not-allowed;
-  opacity: 0.72 !important;
+  opacity: 1 !important;
 }
 
 body.saibai-theme.template-product .product-form__buttons:has(.product-form__submit[disabled]) .product-form__quantity,

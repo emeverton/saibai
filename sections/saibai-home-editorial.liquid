@@ -1,5 +1,5 @@
-{%- comment -%} v3 · editorial LP · markup único na section {%- endcomment -%}
-<!-- saibai-ed-v3 -->
+{%- comment -%} v4 · editorial LP · 3 cards lifestyle · saibai-ed-v2 {%- endcomment -%}
+<!-- saibai-ed-v4 -->
 <section class="saibai-ed" aria-label="Coleções Saibai">
   <div class="saibai-ed__row">
     {%- for block in section.blocks -%}
@@ -25,9 +25,9 @@
                   | image_tag:
                     loading: 'lazy',
                     widths: '400, 558, 780, 1024',
-                    sizes: '(min-width: 990px) 22vw, 78vw',
-                    class: 'saibai-ed__img',
-                    alt: card_image.alt | default: card_alt
+                    sizes: '(min-width: 990px) calc((min(90rem, 100vw - 4rem) - 2 * 2rem) / 3), 78vw',
+                  class: 'saibai-ed__img',
+                  alt: card_image.alt | default: card_alt
                 }}
               {%- elsif card_asset != blank -%}
                 <img
@@ -35,8 +35,8 @@
                   alt="{{ card_alt | escape }}"
                   class="saibai-ed__img"
                   loading="lazy"
-                  width="1024"
-                  height="1024"
+                  width="854"
+                  height="1196"
                 >
               {%- endif -%}
             </span>
@@ -65,7 +65,7 @@
   "name": "Saibai Editorial",
   "class": "saibai-editorial-section",
   "enabled_on": { "templates": ["index"] },
-  "max_blocks": 4,
+  "max_blocks": 3,
   "blocks": [
     {
       "type": "collection",
@@ -135,8 +135,8 @@
             "title": "Alcachofra Fresca",
             "cta": "Comprar",
             "url": "/collections/in-natura-1",
-            "image_asset": "saibai-ed-fresca.webp",
-            "image_alt": "Alcachofra fresca Saibai"
+            "image_asset": "saibai-feature-fresca.webp",
+            "image_alt": "Alcachofra fresca colhida em Piedade, SP"
           }
         },
         {
@@ -148,31 +148,19 @@
             "cta": "Descobrir",
             "url": "/collections/em-conserva",
             "image_asset": "saibai-ed-conserva.webp",
-            "image_alt": "Conservas artesanais Saibai"
+            "image_alt": "Conserva artesanal Saibai — coração de alcachofra"
           }
         },
         {
           "type": "collection",
           "settings": {
-            "style": "product",
+            "style": "lifestyle",
             "label": "Gourmet",
             "title": "Flores Desidratadas",
             "cta": "Descobrir",
             "url": "/collections/flores-desidratadas",
-            "image_asset": "saibai-ed-flores.webp",
-            "image_alt": "Flores desidratadas Saibai"
-          }
-        },
-        {
-          "type": "collection",
-          "settings": {
-            "style": "product",
-            "label": "Natural",
-            "title": "Frutas Desidratadas",
-            "cta": "Descobrir",
-            "url": "/collections/frutas-desidratadas",
-            "image_asset": "saibai-ed-frutas.webp",
-            "image_alt": "Frutas desidratadas Saibai"
+            "image_asset": "saibai-banner-flores-hero.webp",
+            "image_alt": "Flores desidratadas Saibai em composição gourmet"
           }
         }
       ]

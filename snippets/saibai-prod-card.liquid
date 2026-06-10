@@ -8,11 +8,11 @@
           {%- assign hover_media = product.media[1] | default: nil -%}
           {{
             product.featured_media
-            | image_url: width: 780
+            | image_url: width: 960
             | image_tag:
               loading: 'lazy',
-              widths: '340, 480, 600, 780',
-              sizes: '(min-width: 990px) 340px, (min-width: 550px) 42vw, 72vw',
+              widths: '480, 600, 780, 960',
+              sizes: '(min-width: 990px) calc((min(90rem, 100vw - 4rem) - 3 * 1.625rem) / 4), (min-width: 550px) 46vw, 72vw',
               class: 'saibai-prod__img saibai-prod__img--main',
               alt: product_img_alt
           }}
@@ -20,11 +20,11 @@
             {%- assign hover_alt = hover_media.alt | default: product.title | escape -%}
             {{
               hover_media
-              | image_url: width: 780
+              | image_url: width: 960
               | image_tag:
                 loading: 'lazy',
-                widths: '340, 480, 600, 780',
-                sizes: '(min-width: 990px) 340px, (min-width: 550px) 42vw, 72vw',
+                widths: '480, 600, 780, 960',
+                sizes: '(min-width: 990px) calc((min(90rem, 100vw - 4rem) - 3 * 1.625rem) / 4), (min-width: 550px) 46vw, 72vw',
                 class: 'saibai-prod__img saibai-prod__img--hover',
                 alt: hover_alt
             }}
@@ -36,7 +36,26 @@
     </a>
     <div class="saibai-prod__info">
       <h3 class="saibai-prod__name">
-        <a href="{{ product.url }}">{{ product.title | escape }}</a>
+        <a href="{{ product.url }}" class="saibai-prod__name-link">
+          {%- liquid
+            assign card_title = product.title
+            assign card_title_lower = card_title | downcase
+            assign show_frescas_sub = false
+            if card_title_lower contains 'caixa'
+              assign show_frescas_sub = true
+              assign caixa_parts = card_title | split: ' Caixa'
+            endif
+          -%}
+          {%- if show_frescas_sub -%}
+            <span class="saibai-prod__name-line">{{ caixa_parts[0] | escape }} Caixa</span>
+            <span class="saibai-prod__name-sub">frescas</span>
+            {%- if caixa_parts.size > 1 and caixa_parts[1] != blank -%}
+              <span class="saibai-prod__name-extra">{{ caixa_parts[1] | strip | escape }}</span>
+            {%- endif -%}
+          {%- else -%}
+            <span class="saibai-prod__name-line">{{ card_title | escape }}</span>
+          {%- endif -%}
+        </a>
       </h3>
       {%- if product.type != blank -%}
         <p class="saibai-prod__meta">{{ product.type }}</p>

@@ -1,5 +1,5 @@
-{%- comment -%} v3 · product-set LP · CSS via saibai-conditional-assets {%- endcomment -%}
-<!-- saibai-feat-v3 -->
+{%- comment -%} v4 · product-set LP · card = saibai-prod-card {%- endcomment -%}
+<!-- saibai-feat-v4 -->
 
 {%- liquid
   assign feat_title = section.settings.title | default: 'Na mesa'
@@ -51,11 +51,11 @@
           {%- else -%}
             <img
               src="{{ feat_hero_asset | asset_url }}"
-              alt="Alcachofras frescas Saibai"
+              alt="Plantação de alcachofras em Piedade, SP — Safra Saibai"
               class="saibai-feat__hero-img"
               loading="lazy"
-              width="1200"
-              height="900"
+              width="2560"
+              height="1705"
             >
           {%- endif -%}
         </span>
@@ -93,43 +93,9 @@
                   {%- if feat_product == blank -%}{%- continue -%}{%- endif -%}
                   {%- assign feat_slide_index = feat_slide_index | plus: 1 -%}
                   {%- if feat_slide_index > feat_slide_limit -%}{%- break -%}{%- endif -%}
-                  <article class="saibai-feat__slide" aria-hidden="{% if feat_slide_index == 1 %}false{% else %}true{% endif %}">
-                    <a href="{{ feat_product.url }}" class="saibai-feat__product-link">
-                      <span class="saibai-feat__product-media">
-                        <span class="saibai-feat__product-media-inner">
-                          {%- if feat_product.featured_media -%}
-                            {%- assign product_alt = feat_product.featured_media.alt | default: feat_product.title | escape -%}
-                            {{
-                              feat_product.featured_media
-                              | image_url: width: 900
-                              | image_tag:
-                                loading: 'lazy',
-                                widths: '300, 450, 600, 900',
-                                sizes: '(min-width: 990px) 26vw, 72vw',
-                                class: 'saibai-feat__product-img',
-                                alt: product_alt
-                            }}
-                          {%- else -%}
-                            {{ 'product-apparel-2' | placeholder_svg_tag: 'saibai-feat__product-placeholder' }}
-                          {%- endif -%}
-                        </span>
-                      </span>
-                    </a>
-                    <div class="saibai-feat__product-copy">
-                      <h3 class="saibai-feat__product-name">
-                        <a href="{{ feat_product.url }}">{{ feat_product.title | escape }}</a>
-                      </h3>
-                      {%- if feat_product.type != blank -%}
-                        <p class="saibai-feat__product-meta">{{ feat_product.type }}</p>
-                      {%- endif -%}
-                      <p class="saibai-feat__product-price">
-                        {%- if feat_product.compare_at_price > feat_product.price -%}
-                          <span class="saibai-feat__compare">{{ feat_product.compare_at_price | money }}</span>
-                        {%- endif -%}
-                        <span class="saibai-feat__amount">{{ feat_product.price | money }}</span>
-                      </p>
-                    </div>
-                  </article>
+                  <div class="saibai-feat__slide" aria-hidden="{% if feat_slide_index == 1 %}false{% else %}true{% endif %}">
+                    {% render 'saibai-prod-card', product: feat_product %}
+                  </div>
                 {%- endfor -%}
               </div>
 

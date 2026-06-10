@@ -4,11 +4,30 @@
 
 
 
-/* ── Logo row LP ── */
+/* ── Logo row LP — header claro + faxinhas duplas abaixo da barra fixa ── */
 html body .saibai-header__logo-row {
+  position: relative;
   display: flex;
   justify-content: center;
-  padding: var(--sh-logo-pad-top) var(--sh-pad) var(--sh-logo-pad-bottom);
+  padding:
+    calc(var(--sh-logo-pad-top) + 1.5px + 3px + 1.5px)
+    var(--sh-pad)
+    var(--sh-logo-pad-bottom);
+  background: var(--sh-bg, var(--saibai-bg-header, #F2F5EE));
+}
+
+html body .saibai-header__logo-row::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: calc(1.5px + 3px + 1.5px);
+  pointer-events: none;
+  background:
+    linear-gradient(var(--sh-rule-edge, #2A3A1A), var(--sh-rule-edge, #2A3A1A)) 0 0 / 100% 1.5px no-repeat,
+    linear-gradient(var(--sh-rule-fill, #E8EFE2), var(--sh-rule-fill, #E8EFE2)) 0 1.5px / 100% 3px no-repeat,
+    linear-gradient(var(--sh-rule-edge, #2A3A1A), var(--sh-rule-edge, #2A3A1A)) 0 4.5px / 100% 1.5px no-repeat;
 }
 
 html body .saibai-header__logo-link {

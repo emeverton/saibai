@@ -11,7 +11,7 @@
   var MEGA_CLOSE = '[data-saibai-mega-close]';
   var MEGA_ITEM = '[data-saibai-mega-item]';
   var MEGA_OPEN_DELAY = 0;
-  var MEGA_CLOSE_FALLBACK = 1280;
+  var MEGA_CLOSE_FALLBACK = 1500;
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function initHeader(root) {
@@ -35,13 +35,6 @@
     var megaCloseTimer = null;
     var megaOpenTimer = null;
     var pendingTrigger = null;
-
-    function setMegaTop() {
-      var headerGroup = document.getElementById('header-group');
-      if (!headerGroup) return;
-      var bottom = headerGroup.getBoundingClientRect().bottom;
-      root.style.setProperty('--sh-mega-top', Math.round(bottom) + 'px');
-    }
 
     function resetTriggers() {
       for (var t = 0; t < megaTriggers.length; t++) {
@@ -166,7 +159,8 @@
       panel.classList.remove('is-active');
 
       function onPanelTransitionEnd(e) {
-        if (!e || e.target !== panel || e.propertyName !== 'transform') return;
+        if (!e || e.target !== panel) return;
+        if (e.propertyName !== 'clip-path') return;
         panel.removeEventListener('transitionend', onPanelTransitionEnd);
         finishCloseMega();
       }
@@ -200,7 +194,6 @@
       if (!panel) return;
 
       cancelOpenMega();
-      setMegaTop();
       closeDrawer();
 
       if (megaClosing) {
@@ -292,8 +285,6 @@
       if (openBtn) openBtn.setAttribute('aria-expanded', 'false');
     }
 
-    setMegaTop();
-
     for (var m = 0; m < megaPanels.length; m++) {
       initPanelItems(megaPanels[m]);
     }
@@ -331,12 +322,6 @@
       if (e.key === 'Escape') {
         closeMega();
         closeDrawer();
-      }
-    });
-
-    window.addEventListener('resize', function () {
-      if (megaLayer && !megaLayer.hidden) {
-        setMegaTop();
       }
     });
 
