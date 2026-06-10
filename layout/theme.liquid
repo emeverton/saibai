@@ -63,18 +63,19 @@
 
     {% render 'critical-css' %}
 
-    <meta name="theme-color" content="">
-    {%- if request.path == '/collections/all' -%}
-      {%- assign saibai_canonical_url = shop.url | append: '/collections/todos' -%}
-      <meta http-equiv="refresh" content="0;url=/collections/todos">
-    {%- else -%}
-      {%- assign saibai_canonical_url = canonical_url -%}
-    {%- endif -%}
+    <meta name="theme-color" content="#2A3A1A">
+    {%- capture saibai_canonical_url -%}{% render 'saibai-canonical-url' %}{%- endcapture -%}
     <link
       rel="canonical"
-      href="{{ saibai_canonical_url }}"
+      href="{{ saibai_canonical_url | strip }}"
       canonical-url="{{ shop.url }}/"
     >
+    {%- if request.path == '/collections/all' -%}
+      <script>
+        if (location.pathname === '/collections/all') location.replace('/collections/todos');
+      </script>
+      <noscript><meta http-equiv="refresh" content="0;url=/collections/todos"></noscript>
+    {%- endif -%}
     <meta name="robots" content="index, follow">
 
     {%- if settings.favicon != blank -%}
@@ -101,7 +102,8 @@
       {%- unless page_title contains shop.name %} | {{ shop.name }}{% endunless -%}
     </title>
 
-    <meta name="description" content="{{ page_description | default: shop.description | escape }}">
+    {%- capture saibai_meta_description -%}{% render 'saibai-meta-description' %}{%- endcapture -%}
+    <meta name="description" content="{{ saibai_meta_description | strip | escape }}">
 
     {% render 'seo-meta' %}
     {% render 'schema-organization' %}

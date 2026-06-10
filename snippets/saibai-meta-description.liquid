@@ -1,0 +1,34 @@
+{%- comment -%}
+  Meta description Saibai — fallback SEO quando page_description está vazio.
+{%- endcomment -%}
+{%- liquid
+  assign saibai_desc = page_description | strip
+  assign saibai_fallback = 'O Empório Saibai — produtora de alcachofras frescas e conservas artesanais em Piedade, SP. Entrega para todo o Brasil.'
+-%}
+{%- if saibai_desc != blank -%}
+  {{- saibai_desc -}}
+{%- elsif template.name == 'index' -%}
+  {{- saibai_fallback -}}
+{%- elsif template.name == 'collection' and collection -%}
+  {%- assign saibai_desc = collection.description | strip_html | strip | truncate: 155 -%}
+  {%- if saibai_desc != blank -%}
+    {{- saibai_desc -}}
+  {%- else -%}
+    Compre {{ collection.title }} no Empório Saibai. Produção própria em Piedade, SP. Frete para todo o Brasil.
+  {%- endif -%}
+{%- elsif template.name == 'product' and product -%}
+  {%- assign saibai_desc = product.description | strip_html | strip | truncate: 155 -%}
+  {%- if saibai_desc != blank -%}
+    {{- saibai_desc -}}
+  {%- else -%}
+    {{ product.title }} — Empório Saibai. Alcachofras e conservas artesanais com entrega para todo o Brasil.
+  {%- endif -%}
+{%- elsif template.name == 'blog' and blog -%}
+  Receitas e novidades com alcachofra do Empório Saibai — {{ blog.title }}.
+{%- elsif template.name == 'article' and article -%}
+  {%- assign saibai_desc = article.excerpt | default: article.content | strip_html | strip | truncate: 155 -%}
+  {{- saibai_desc -}}
+{%- else -%}
+  {%- assign saibai_desc = shop.description | strip | default: saibai_fallback -%}
+  {{- saibai_desc | replace: 'A Empório', 'O Empório' | replace: 'A Emporio', 'O Empório' -}}
+{%- endif -%}

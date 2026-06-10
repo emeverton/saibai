@@ -5612,9 +5612,20 @@ function initPurchaseConditions(scope = document) {
   });
 }
 
-document.addEventListener('DOMContentLoaded', () => initPurchaseConditions());
+function bootPurchaseConditions() {
+  initPurchaseConditions();
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', bootPurchaseConditions);
+} else {
+  bootPurchaseConditions();
+}
+
+document.addEventListener('saibai:core-ready', bootPurchaseConditions);
+
 if (typeof subscribe === 'function') {
-  subscribe(PUB_SUB_EVENTS.cartUpdate, () => initPurchaseConditions());
+  subscribe(PUB_SUB_EVENTS.cartUpdate, bootPurchaseConditions);
 }
 
 class EmailSignup extends HTMLElement {
