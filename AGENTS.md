@@ -31,8 +31,20 @@ tooling is the **Shopify CLI** (`shopify`), which also provides Theme Check.
   For headless/cloud runs use a **Theme Access app password** (or Admin API token):
   - `shopify theme dev --store <store> --password <token>`
   - or env vars: `SHOPIFY_FLAG_STORE=<store>` and `SHOPIFY_CLI_THEME_TOKEN=<token>`
-- Target store: `emporiosaibai.myshopify.com` (admin store handle: `byinbz-0k`).
-  If the storefront is password-protected, also pass `--store-password <pw>`.
+- **Use the `.myshopify.com` domain `byinbz-0k.myshopify.com` for `--store`.** The
+  admin slug `emporiosaibai` (from `admin.shopify.com/store/emporiosaibai`) is **not**
+  the API domain and returns `401 Invalid API key or access token`. The Theme Access
+  token must belong to that store, and must be plain ASCII (`shptka_…`); a token with
+  hidden/Unicode chars fails with "Bearer … is not a legal HTTP header value".
+- **License gate caveat (`assets/saibai-license.js`):** inner pages are replaced with
+  a "Tema licenciado" notice unless the host is allowlisted (`byinbz-0k.myshopify.com`,
+  `emporio(r)saibai.*`) OR the URL contains `?preview_theme_id=<id>` OR Theme Editor
+  design mode. On the local `127.0.0.1:9292` proxy, product/inner pages therefore show
+  the gate. For full browser testing (incl. add-to-cart/checkout), use the **public
+  preview URL** that `theme dev` prints, e.g.
+  `https://byinbz-0k.myshopify.com/<path>?preview_theme_id=<id>` (host is allowlisted
+  and it's the real storefront). Storefront `/cart/*.js` AJAX also tends to `401`
+  through the local Theme-Access proxy but works on the public preview URL.
 
 ### Smoke test / QA
 - Manual QA checklist: `docs/SMOKE_TEST_v1.2.4.md`. Deploy/ops notes:
