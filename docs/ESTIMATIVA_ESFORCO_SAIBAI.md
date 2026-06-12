@@ -96,4 +96,97 @@ Estimativa baseada no escopo entregue no repositório:
 
 ---
 
+## Valor estimado de mercado (Brasil · 2026)
+
+Referências de mercado para escopo equivalente (tema premium refatorado + performance + LGPD + tracking + QA + documentação):
+
+| Fonte / perfil | Faixa típica | Observação |
+|----------------|-------------|------------|
+| Freelancer pleno (BR) | R$ 80–160/h | Projetos fechados costumam descontar escopo [4] |
+| Agência Shopify entrada | R$ 9.000–25.000 | Tema custom + integrações BR básicas [3] |
+| PME média (implementação) | R$ 18.000–45.000 | Tema + tracking + SEO + LGPD [1] |
+| PME consolidada / premium | R$ 35.000–80.000 | Tracking server-side + QA + evolução [1] |
+| Projeto robusto custom | 8–12 semanas | Tema fortemente personalizado + migração [2] |
+
+**Escopo Saibai entregue** situa-se entre **agência premium** e **PME consolidada** — acima de “só trocar logo no tema”, abaixo de headless/Hydrogen.
+
+---
+
+## Tabela 5 — Valor por hora × esforço (custo de mercado)
+
+| Perfil | R$/hora | × 400 h (manual) | × 150 h (stack Veltrus)* |
+|--------|--------:|-----------------:|-------------------------:|
+| Freelancer pleno | 80–120 | R$ 32.000–48.000 | R$ 12.000–18.000 |
+| Agência pleno/sênior | 150–200 | R$ 60.000–80.000 | R$ 22.500–30.000 |
+| **Agência premium Shopify** | **180–250** | **R$ 72.000–100.000** | **R$ 27.000–37.500** |
+| Especialista sênior / consultoria | 220–280 | R$ 88.000–112.000 | R$ 33.000–42.000 |
+
+\* Horas internas com automação — **não** significa que o valor comercial ao cliente deva cair na mesma proporção; o mercado precifica **resultado e escopo**, não só horas da agência.
+
+---
+
+## Tabela 6 — Valor de projeto fechado (recomendado para proposta)
+
+| Cenário | O que o mercado cobraria | Valor estimado |
+|---------|--------------------------|---------------:|
+| **Básico** | Tema premium adaptado, sem LGPD/tracking profundo | R$ 15.000–28.000 |
+| **Intermediário** | Tema custom + mobile + SEO + páginas institucionais | R$ 28.000–45.000 |
+| **Saibai (entregue)** | Camada custom completa + LGPD + tracking + performance + QA + docs + go-live | **R$ 55.000–85.000** |
+| **Premium+** | Acima + e-mail transacional + campanhas + fotografia + ERP | R$ 85.000–120.000+ |
+
+### Referência única (uso comercial Veltrus)
+
+| Métrica | Valor |
+|---------|------:|
+| **Valor de mercado justo (projeto fechado)** | **R$ 68.000–82.000** |
+| Faixa conservadora | R$ 55.000–68.000 |
+| Faixa agressiva (posicionamento premium) | R$ 82.000–95.000 |
+| Equivalente USD (câmbio ~R$ 5,50) | **US$ 12.000–15.000** |
+
+---
+
+## Tabela 7 — O que compõe o valor (vs tema “barato”)
+
+| Item entregue | Valor de mercado isolado* |
+|---------------|-------------------------:|
+| Tema premium Ella + licença base | R$ 2.000–4.000 |
+| Camada visual Saibai (~197 arquivos custom) | R$ 25.000–40.000 |
+| Home + PDP + cart + footer premium | R$ 12.000–18.000 |
+| LGPD / Consent Mode v2 | R$ 4.000–8.000 |
+| Arquitetura tracking (anti-dup + proxy + CAPI ready) | R$ 6.000–12.000 |
+| Performance (CSS modular, LCP, Theme Check 0) | R$ 5.000–10.000 |
+| Institucionais + legal/footer | R$ 4.000–8.000 |
+| QA mobile + smoke test + auditoria | R$ 4.000–8.000 |
+| Pacote documentação (guias + relatórios) | R$ 3.000–6.000 |
+| **Soma referência** | **R$ 65.000–114.000** |
+
+\* Soma não é preço final — itens se sobrepõem; serve para justificar **R$ 68k–82k** como faixa coerente.
+
+---
+
+## Tabela 8 — Valor percebido vs custo interno (parceiro + automação)
+
+| Métrica | Manual | Com stack Veltrus |
+|---------|-------:|------------------:|
+| Horas equivalentes | ~400 h | ~120–150 h |
+| Custo interno (R$ 150/h ref.) | R$ 60.000 | R$ 18.000–22.500 |
+| **Valor de venda mercado** | **R$ 68.000–82.000** | **R$ 68.000–82.000** |
+| Margem bruta estimada | Baixa (~15–35%) | **Alta (~65–75%)** |
+
+O diferencial comercial: **mesmo valor ao cliente**, com **menor custo interno** via Partner + automação — sem precificar como “tema barato”.
+
+---
+
+## Texto para task — valor (copiar e colar)
+
+> **Valor de mercado Saibai (escopo entregue):** **R$ 68.000–82.000** (projeto fechado · agência premium Shopify BR · 2026). Referência hora: ~400 h × R$ 180–200/h. Com stack Veltrus (Partner + automação), custo interno cai ~65–70%, mas **valor comercial se mantém** pelo escopo (LGPD, tracking, performance, QA, docs). Equivalente internacional: ~**US$ 12k–15k**.
+
+---
+
+## Aviso
+
+Valores são **estimativas de mercado** para planejamento comercial — não constituem proposta vinculante. Orçamento final depende de contrato, escopo adicional, suporte pós-go-live e condições de pagamento.
+
+---
+
 *Veltrus Growth & Technology — Shopify Partner ID 4969609*
