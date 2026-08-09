@@ -1,0 +1,59 @@
+name: Deploy Saibai mobile fixes to draft
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/deploy-saibai-mobile-draft.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: saibai-mobile-draft-187189297470
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Push two responsive files to Shopify draft
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      SHOPIFY_FLAG_STORE: byinbz-0k.myshopify.com
+      SHOPIFY_FLAG_FORCE: "1"
+      SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+
+      - name: Validate Theme Access credential
+        shell: bash
+        run: |
+          if [ -z "$SHOPIFY_CLI_THEME_TOKEN" ]; then
+            echo "Missing repository secret SHOPIFY_CLI_THEME_TOKEN."
+            exit 1
+          fi
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Install Shopify CLI
+        run: npm install --global @shopify/cli@latest
+
+      - name: Push mobile fixes to unpublished theme
+        shell: bash
+        run: |
+          shopify theme push \
+            --store "$SHOPIFY_FLAG_STORE" \
+            --password "$SHOPIFY_CLI_THEME_TOKEN" \
+            --theme 187189297470 \
+            --nodelete \
+            --json \
+            --only assets/saibai-mobile-pages.css \
+            --only snippets/global-css.liquid
