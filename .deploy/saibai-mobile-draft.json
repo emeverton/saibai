@@ -1,7 +1,8 @@
 {
   "status": "failure",
-  "deployed_at": "2026-08-09T21:57:21Z",
-  "source_commit": "449df080ac84ad827b1dbae1f1f96da10141ee58",
+  "reason": "missing_shopify_theme_token",
+  "deployed_at": "2026-08-09T21:59:45Z",
+  "source_commit": "9b1b93ca3127ea50d7741e1859252554a3477819",
   "store": "byinbz-0k.myshopify.com",
   "theme_id": "187189297470",
   "files": [
