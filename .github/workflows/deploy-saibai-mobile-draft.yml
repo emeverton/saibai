@@ -9,7 +9,7 @@ on:
       - .github/workflows/deploy-saibai-mobile-draft.yml
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: saibai-mobile-draft-187189297470
@@ -19,7 +19,7 @@ jobs:
   deploy:
     name: Push two responsive files to Shopify draft
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 12
     env:
       SHOPIFY_FLAG_STORE: byinbz-0k.myshopify.com
       SHOPIFY_FLAG_FORCE: "1"
@@ -29,26 +29,32 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Validate Theme Access credential
+        id: credential
         shell: bash
         run: |
           if [ -z "$SHOPIFY_CLI_THEME_TOKEN" ]; then
             echo "Missing repository secret SHOPIFY_CLI_THEME_TOKEN."
             exit 1
           fi
+          echo "Theme Access credential is configured."
 
       - name: Set up Node.js
+        if: steps.credential.outcome == 'success'
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
-          cache-dependency-path: package-lock.json
 
       - name: Install Shopify CLI
+        if: steps.credential.outcome == 'success'
         run: npm install --global @shopify/cli@latest
 
       - name: Push mobile fixes to unpublished theme
+        id: deploy
+        if: steps.credential.outcome == 'success'
+        continue-on-error: true
         shell: bash
         run: |
+          set -o pipefail
           shopify theme push \
             --store "$SHOPIFY_FLAG_STORE" \
             --password "$SHOPIFY_CLI_THEME_TOKEN" \
@@ -56,4 +62,44 @@ jobs:
             --nodelete \
             --json \
             --only assets/saibai-mobile-pages.css \
-            --only snippets/global-css.liquid
+            --only snippets/global-css.liquid \
+            | tee /tmp/shopify-mobile-draft-result.json
+
+      - name: Record deployment result in repository
+        if: always()
+        shell: bash
+        env:
+          CREDENTIAL_OUTCOME: ${{ steps.credential.outcome }}
+          DEPLOY_OUTCOME: ${{ steps.deploy.outcome }}
+          JOB_STATUS: ${{ job.status }}
+        run: |
+          mkdir -p deploy-status
+          cat > deploy-status/shopify-mobile-draft.json <<EOF
+          {
+            "store": "byinbz-0k.myshopify.com",
+            "theme_id": "187189297470",
+            "theme_name": "ella-saibai-consolidated-2026-08-08",
+            "files": [
+              "assets/saibai-mobile-pages.css",
+              "snippets/global-css.liquid"
+            ],
+            "source_commit": "$GITHUB_SHA",
+            "workflow_run_id": "$GITHUB_RUN_ID",
+            "credential_outcome": "$CREDENTIAL_OUTCOME",
+            "deploy_outcome": "$DEPLOY_OUTCOME",
+            "job_status_before_record": "$JOB_STATUS",
+            "recorded_at_utc": "$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+          }
+          EOF
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add deploy-status/shopify-mobile-draft.json
+          git commit -m "ci: record Shopify mobile draft deploy $GITHUB_RUN_ID" || exit 0
+          git pull --rebase origin main
+          git push origin HEAD:main
+
+      - name: Fail when Shopify deployment did not succeed
+        if: always() && steps.deploy.outcome != 'success'
+        shell: bash
+        run: exit 1
