@@ -1,0 +1,105 @@
+name: Deploy Saibai mobile fixes
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - assets/saibai-mobile-pages.css
+      - snippets/global-css.liquid
+      - .github/workflows/deploy-saibai-mobile.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: saibai-mobile-draft-deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      SHOPIFY_STORE: byinbz-0k.myshopify.com
+      SHOPIFY_THEME_ID: "187189297470"
+      TOKEN_CLI: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
+      TOKEN_THEME_ACCESS: ${{ secrets.SHOPIFY_THEME_ACCESS_PASSWORD }}
+      TOKEN_THEME: ${{ secrets.SHOPIFY_THEME_TOKEN }}
+      TOKEN_ACCESS: ${{ secrets.SHOPIFY_ACCESS_TOKEN }}
+      TOKEN_ADMIN: ${{ secrets.SHOPIFY_ADMIN_API_TOKEN }}
+      TOKEN_PASSWORD: ${{ secrets.SHOPIFY_PASSWORD }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Shopify CLI
+        run: npm install --global @shopify/cli@latest
+
+      - name: Deploy only the responsive fix files
+        id: deploy
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -o pipefail
+
+          TOKEN="${TOKEN_CLI:-}"
+          [ -n "$TOKEN" ] || TOKEN="${TOKEN_THEME_ACCESS:-}"
+          [ -n "$TOKEN" ] || TOKEN="${TOKEN_THEME:-}"
+          [ -n "$TOKEN" ] || TOKEN="${TOKEN_ACCESS:-}"
+          [ -n "$TOKEN" ] || TOKEN="${TOKEN_ADMIN:-}"
+          [ -n "$TOKEN" ] || TOKEN="${TOKEN_PASSWORD:-}"
+
+          if [ -z "$TOKEN" ]; then
+            echo "No Shopify Theme Access/Admin API token is configured in repository secrets." >&2
+            exit 2
+          fi
+
+          shopify theme push \
+            --store "$SHOPIFY_STORE" \
+            --theme "$SHOPIFY_THEME_ID" \
+            --password "$TOKEN" \
+            --only "assets/saibai-mobile-pages.css" \
+            --only "snippets/global-css.liquid" \
+            --nodelete \
+            --json | tee /tmp/saibai-deploy-output.json
+
+      - name: Record deployment result
+        if: always()
+        shell: bash
+        env:
+          DEPLOY_OUTCOME: ${{ steps.deploy.outcome }}
+        run: |
+          mkdir -p .deploy
+          NOW="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+
+          cat > .deploy/saibai-mobile-draft.json <<EOF
+          {
+            "status": "${DEPLOY_OUTCOME}",
+            "deployed_at": "${NOW}",
+            "source_commit": "${GITHUB_SHA}",
+            "store": "${SHOPIFY_STORE}",
+            "theme_id": "${SHOPIFY_THEME_ID}",
+            "files": [
+              "assets/saibai-mobile-pages.css",
+              "snippets/global-css.liquid"
+            ]
+          }
+          EOF
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .deploy/saibai-mobile-draft.json
+          git commit -m "chore: record Saibai mobile draft deploy (${DEPLOY_OUTCOME})" || exit 0
+          git push
+
+      - name: Fail when deployment did not complete
+        if: steps.deploy.outcome != 'success'
+        run: exit 1
