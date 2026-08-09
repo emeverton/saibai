@@ -1,0 +1,15 @@
+{
+  "store": "byinbz-0k.myshopify.com",
+  "theme_id": "187189297470",
+  "theme_name": "ella-saibai-consolidated-2026-08-08",
+  "files": [
+    "assets/saibai-mobile-pages.css",
+    "snippets/global-css.liquid"
+  ],
+  "source_commit": "9d52af66d9609acdff43e3a72c727bcbbaf9009b",
+  "workflow_run_id": "31335169873",
+  "credential_outcome": "failure",
+  "deploy_outcome": "skipped",
+  "job_status_before_record": "failure",
+  "recorded_at_utc": "2026-08-09T20:48:01Z"
+}
