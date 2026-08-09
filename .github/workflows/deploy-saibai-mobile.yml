@@ -49,6 +49,7 @@ jobs:
         shell: bash
         run: |
           set -o pipefail
+          echo "unknown" > /tmp/saibai-deploy-reason
 
           TOKEN="${TOKEN_CLI:-}"
           [ -n "$TOKEN" ] || TOKEN="${TOKEN_THEME_ACCESS:-}"
@@ -58,18 +59,24 @@ jobs:
           [ -n "$TOKEN" ] || TOKEN="${TOKEN_PASSWORD:-}"
 
           if [ -z "$TOKEN" ]; then
+            echo "missing_shopify_theme_token" > /tmp/saibai-deploy-reason
             echo "No Shopify Theme Access/Admin API token is configured in repository secrets." >&2
             exit 2
           fi
 
-          shopify theme push \
+          if shopify theme push \
             --store "$SHOPIFY_STORE" \
             --theme "$SHOPIFY_THEME_ID" \
             --password "$TOKEN" \
             --only "assets/saibai-mobile-pages.css" \
             --only "snippets/global-css.liquid" \
             --nodelete \
-            --json | tee /tmp/saibai-deploy-output.json
+            --json 2>&1 | tee /tmp/saibai-deploy-output.log; then
+            echo "success" > /tmp/saibai-deploy-reason
+          else
+            echo "shopify_cli_push_failed" > /tmp/saibai-deploy-reason
+            exit 3
+          fi
 
       - name: Record deployment result
         if: always()
@@ -79,10 +86,15 @@ jobs:
         run: |
           mkdir -p .deploy
           NOW="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+          REASON="unknown"
+          if [ -f /tmp/saibai-deploy-reason ]; then
+            REASON="$(cat /tmp/saibai-deploy-reason)"
+          fi
 
           cat > .deploy/saibai-mobile-draft.json <<EOF
           {
             "status": "${DEPLOY_OUTCOME}",
+            "reason": "${REASON}",
             "deployed_at": "${NOW}",
             "source_commit": "${GITHUB_SHA}",
             "store": "${SHOPIFY_STORE}",
