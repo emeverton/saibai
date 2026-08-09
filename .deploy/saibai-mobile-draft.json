@@ -1,0 +1,11 @@
+{
+  "status": "failure",
+  "deployed_at": "2026-08-09T21:57:21Z",
+  "source_commit": "449df080ac84ad827b1dbae1f1f96da10141ee58",
+  "store": "byinbz-0k.myshopify.com",
+  "theme_id": "187189297470",
+  "files": [
+    "assets/saibai-mobile-pages.css",
+    "snippets/global-css.liquid"
+  ]
+}
