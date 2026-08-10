@@ -39,21 +39,22 @@ jobs:
         env:
           SHOPIFY_FLAG_STORE: byinbz-0k.myshopify.com
           SHOPIFY_FLAG_NO_COLOR: "1"
+          SHOPIFY_CLI_NO_ANALYTICS: "1"
+          BROWSER: echo
         run: |
           set +e
-          timeout --signal=TERM 120s script -q -e -c \
-            "shopify theme list --store byinbz-0k.myshopify.com --no-color" \
+          timeout --signal=TERM 150s script -q -e -c \
+            "env -u CI BROWSER=echo SHOPIFY_CLI_NO_ANALYTICS=1 shopify theme list --store byinbz-0k.myshopify.com --no-color" \
             /tmp/shopify-auth-raw.log
           STATUS=$?
           echo "exit_code=$STATUS" >> "$GITHUB_OUTPUT"
 
           sed -E 's/\x1B\[[0-9;?]*[ -\/]*[@-~]//g' /tmp/shopify-auth-raw.log \
-            | tr -d '\r' > /tmp/shopify-auth-clean.log
+            | tr -d '\r' \
+            | sed -E 's/[^[:print:]\t]//g' \
+            > /tmp/shopify-auth-clean.log
 
-          grep -Ei \
-            'https?://|log.?in|authenticat|verification|device|user code|one.?time|browser|not authorized|environment does not support|error' \
-            /tmp/shopify-auth-clean.log \
-            | tail -n 40 > /tmp/shopify-auth-summary.log || true
+          tail -n 100 /tmp/shopify-auth-clean.log > /tmp/shopify-auth-summary.log
 
       - name: Record sanitized result
         if: always()
@@ -74,7 +75,7 @@ jobs:
           } > .deploy/shopify-auth-probe.txt
 
           git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.email "418982onoreply.github.com"
           git add .deploy/shopify-auth-probe.txt
           git commit -m "chore: record Shopify auth probe" || exit 0
           git push
