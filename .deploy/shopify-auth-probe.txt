@@ -1,6 +1,7 @@
 status=success
 exit_code=1
-probed_at=2026-08-10T00:18:14Z
+probed_at=2026-08-10T00:19:56Z
 store=byinbz-0k.myshopify.com
 ---
-SyntaxError: The requested module 'node:module' does not provide an export named 'enableCompileCache'
+To run this command, log in to Shopify.
+╭─ error ──────────╮
