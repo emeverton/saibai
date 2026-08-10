@@ -1,0 +1,80 @@
+name: Shopify auth probe
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/shopify-auth-probe.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: shopify-auth-probe
+  cancel-in-progress: true
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Shopify CLI
+        run: npm install --global @shopify/cli@latest
+
+      - name: Probe account authentication
+        id: probe
+        continue-on-error: true
+        shell: bash
+        env:
+          SHOPIFY_FLAG_STORE: byinbz-0k.myshopify.com
+          SHOPIFY_FLAG_NO_COLOR: "1"
+        run: |
+          set +e
+          timeout --signal=TERM 120s script -q -e -c \
+            "shopify theme list --store byinbz-0k.myshopify.com --no-color" \
+            /tmp/shopify-auth-raw.log
+          STATUS=$?
+          echo "exit_code=$STATUS" >> "$GITHUB_OUTPUT"
+
+          sed -E 's/\x1B\[[0-9;?]*[ -\/]*[@-~]//g' /tmp/shopify-auth-raw.log \
+            | tr -d '\r' > /tmp/shopify-auth-clean.log
+
+          grep -Ei \
+            'https?://|log.?in|authenticat|verification|device|user code|one.?time|browser|not authorized|environment does not support|error' \
+            /tmp/shopify-auth-clean.log \
+            | tail -n 40 > /tmp/shopify-auth-summary.log || true
+
+      - name: Record sanitized result
+        if: always()
+        shell: bash
+        env:
+          PROBE_OUTCOME: ${{ steps.probe.outcome }}
+          PROBE_EXIT_CODE: ${{ steps.probe.outputs.exit_code }}
+        run: |
+          mkdir -p .deploy
+          NOW="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+          {
+            echo "status=${PROBE_OUTCOME}"
+            echo "exit_code=${PROBE_EXIT_CODE:-unknown}"
+            echo "probed_at=${NOW}"
+            echo "store=byinbz-0k.myshopify.com"
+            echo "---"
+            cat /tmp/shopify-auth-summary.log 2>/dev/null || true
+          } > .deploy/shopify-auth-probe.txt
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .deploy/shopify-auth-probe.txt
+          git commit -m "chore: record Shopify auth probe" || exit 0
+          git push
