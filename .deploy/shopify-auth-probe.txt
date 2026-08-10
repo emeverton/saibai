@@ -1,7 +1,12 @@
 status=success
-exit_code=1
-probed_at=2026-08-10T00:19:56Z
+exit_code=124
+probed_at=2026-08-10T00:25:29Z
 store=byinbz-0k.myshopify.com
 ---
+Script started on 2026-08-10 00:22:57+00:00 [COMMAND="env -u CI BROWSER=echo SHOPIFY_CLI_NO_ANALYTICS=1 shopify theme list --store byinbz-0k.myshopify.com --no-color" <not executed on terminal>]
+
 To run this command, log in to Shopify.
-╭─ error ──────────╮
+User verification code: SXHD-HCQR
+Opened link to start the auth process: https://accounts.shopify.com/activate-with-code?device_code%5Buser_code%5D=SXHD-HCQR
+
+Script done on 2026-08-10 00:25:29+00:00 [COMMAND_EXIT_CODE="0"]
