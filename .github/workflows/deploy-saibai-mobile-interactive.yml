@@ -1,0 +1,119 @@
+name: Deploy Saibai mobile fixes interactively
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/deploy-saibai-mobile-interactive.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: saibai-mobile-interactive-deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      SHOPIFY_STORE: byinbz-0k.myshopify.com
+      SHOPIFY_THEME_ID: "187189297470"
+      SHOPIFY_CLI_NO_ANALYTICS: "1"
+      SHOPIFY_FLAG_NO_COLOR: "1"
+      BROWSER: echo
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Install Shopify CLI
+        run: npm install --global @shopify/cli@latest
+
+      - name: Start authenticated theme push
+        id: deploy
+        shell: bash
+        run: |
+          set +e
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          mkdir -p .deploy
+          rm -f .deploy/shopify-auth-active.json
+          : > /tmp/shopify-deploy-raw.log
+
+          timeout --signal=TERM 600s script -q -f -e -c \
+            "env -u CI BROWSER=echo SHOPIFY_CLI_NO_ANALYTICS=1 SHOPIFY_FLAG_FORCE=1 shopify theme push --store ${SHOPIFY_STORE} --theme ${SHOPIFY_THEME_ID} --only assets/saibai-mobile-pages.css --only snippets/global-css.liquid --nodelete --json --no-color" \
+            /tmp/shopify-deploy-raw.log &
+          CLI_PID=$!
+
+          AUTH_RECORDED=0
+          for i in $(seq 1 90); do
+            if ! kill -0 "$CLI_PID" 2>/dev/null; then
+              break
+            fi
+
+            CODE="$(grep -oE 'User verification code: [A-Z0-9-]+' /tmp/shopify-deploy-raw.log 2>/dev/null | tail -n 1 | sed 's/User verification code: //' || true)"
+            URL="$(grep -oE 'https://accounts\.shopify\.com/activate-with-code[^[:space:]]+' /tmp/shopify-deploy-raw.log 2>/dev/null | tail -n 1 || true)"
+
+            if [ -n "$CODE" ] && [ -n "$URL" ]; then
+              NOW="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+              jq -n \
+                --arg status "awaiting_authorization" \
+                --arg generated_at "$NOW" \
+                --arg code "$CODE" \
+                --arg url "$URL" \
+                --arg store "$SHOPIFY_STORE" \
+                --arg theme_id "$SHOPIFY_THEME_ID" \
+                '{status:$status,generated_at:$generated_at,code:$code,url:$url,store:$store,theme_id:$theme_id}' \
+                > .deploy/shopify-auth-active.json
+
+              git add .deploy/shopify-auth-active.json
+              git commit -m "chore: expose active Shopify device authorization" || true
+              git push || true
+              AUTH_RECORDED=1
+              break
+            fi
+            sleep 2
+          done
+
+          wait "$CLI_PID"
+          STATUS=$?
+          echo "exit_code=$STATUS" >> "$GITHUB_OUTPUT"
+          echo "auth_recorded=$AUTH_RECORDED" >> "$GITHUB_OUTPUT"
+
+          sed -E 's/\x1B\[[0-9;?]*[ -\/]*[@-~]//g' /tmp/shopify-deploy-raw.log \
+            | tr -d '\r' \
+            | sed -E 's/[^[:print:]\t]//g' \
+            > /tmp/shopify-deploy-clean.log
+
+          if [ "$STATUS" -eq 0 ]; then
+            FINAL_STATUS="success"
+          else
+            FINAL_STATUS="failure"
+          fi
+
+          NOW="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+          jq -n \
+            --arg status "$FINAL_STATUS" \
+            --arg deployed_at "$NOW" \
+            --arg store "$SHOPIFY_STORE" \
+            --arg theme_id "$SHOPIFY_THEME_ID" \
+            --argjson exit_code "$STATUS" \
+            --arg output "$(tail -n 40 /tmp/shopify-deploy-clean.log)" \
+            '{status:$status,deployed_at:$deployed_at,store:$store,theme_id:$theme_id,exit_code:$exit_code,files:["assets/saibai-mobile-pages.css","snippets/global-css.liquid"],output:$output}' \
+            > .deploy/saibai-mobile-interactive-result.json
+
+          rm -f .deploy/shopify-auth-active.json
+          git add -A .deploy
+          git commit -m "chore: record interactive Saibai mobile deploy (${FINAL_STATUS})" || true
+          git push || true
+
+          exit "$STATUS"
