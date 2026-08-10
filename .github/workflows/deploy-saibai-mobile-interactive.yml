@@ -18,7 +18,7 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 25
     env:
       SHOPIFY_STORE: byinbz-0k.myshopify.com
       SHOPIFY_THEME_ID: "187189297470"
@@ -38,7 +38,7 @@ jobs:
       - name: Install Shopify CLI
         run: npm install --global @shopify/cli@latest
 
-      - name: Start authenticated theme push
+      - name: Authenticate and deploy mobile files
         id: deploy
         shell: bash
         run: |
@@ -47,23 +47,26 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           mkdir -p .deploy
           rm -f .deploy/shopify-auth-active.json
-          : > /tmp/shopify-deploy-raw.log
+          : > /tmp/shopify-auth-raw.log
+          : > /tmp/shopify-push-raw.log
 
-          timeout --signal=TERM 600s script -q -f -e -c \
-            "env -u CI BROWSER=echo SHOPIFY_CLI_NO_ANALYTICS=1 SHOPIFY_FLAG_FORCE=1 shopify theme push --store ${SHOPIFY_STORE} --theme ${SHOPIFY_THEME_ID} --only assets/saibai-mobile-pages.css --only snippets/global-css.liquid --nodelete --json --no-color" \
-            /tmp/shopify-deploy-raw.log &
-          CLI_PID=$!
+          # Authenticate first. Keeping this as a separate CLI process makes the
+          # device-code result explicit before the actual theme upload begins.
+          timeout --signal=TERM 900s script -q -f -e -c \
+            "env -u CI BROWSER=echo SHOPIFY_CLI_NO_ANALYTICS=1 shopify theme list --store ${SHOPIFY_STORE} --json --no-color" \
+            /tmp/shopify-auth-raw.log &
+          AUTH_PID=$!
 
           AUTH_RECORDED=0
-          for i in $(seq 1 90); do
-            if ! kill -0 "$CLI_PID" 2>/dev/null; then
+          for i in $(seq 1 180); do
+            if ! kill -0 "$AUTH_PID" 2>/dev/null; then
               break
             fi
 
-            CODE="$(grep -oE 'User verification code: [A-Z0-9-]+' /tmp/shopify-deploy-raw.log 2>/dev/null | tail -n 1 | sed 's/User verification code: //' || true)"
-            URL="$(grep -oE 'https://accounts\.shopify\.com/activate-with-code[^[:space:]]+' /tmp/shopify-deploy-raw.log 2>/dev/null | tail -n 1 || true)"
+            CODE="$(grep -oE 'User verification code: [A-Z0-9-]+' /tmp/shopify-auth-raw.log 2>/dev/null | tail -n 1 | sed 's/User verification code: //' || true)"
+            URL="$(grep -oE 'https://accounts\.shopify\.com/activate-with-code[^[:space:]]+' /tmp/shopify-auth-raw.log 2>/dev/null | tail -n 1 || true)"
 
-            if [ -n "$CODE" ] && [ -n "$URL" ]; then
+            if [ -n "$CODE" ] && [ -n "$URL" ] && [ "$AUTH_RECORDED" -eq 0 ]; then
               NOW="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
               jq -n \
                 --arg status "awaiting_authorization" \
@@ -77,27 +80,36 @@ jobs:
 
               git add .deploy/shopify-auth-active.json
               git commit -m "chore: expose active Shopify device authorization" || true
+              git pull --rebase || true
               git push || true
               AUTH_RECORDED=1
-              break
             fi
             sleep 2
           done
 
-          wait "$CLI_PID"
-          STATUS=$?
-          echo "exit_code=$STATUS" >> "$GITHUB_OUTPUT"
-          echo "auth_recorded=$AUTH_RECORDED" >> "$GITHUB_OUTPUT"
+          wait "$AUTH_PID"
+          AUTH_STATUS=$?
 
-          sed -E 's/\x1B\[[0-9;?]*[ -\/]*[@-~]//g' /tmp/shopify-deploy-raw.log \
-            | tr -d '\r' \
-            | sed -E 's/[^[:print:]\t]//g' \
-            > /tmp/shopify-deploy-clean.log
+          if [ "$AUTH_STATUS" -eq 0 ]; then
+            timeout --signal=TERM 420s script -q -f -e -c \
+              "env -u CI SHOPIFY_CLI_NO_ANALYTICS=1 SHOPIFY_FLAG_FORCE=1 shopify theme push --store ${SHOPIFY_STORE} --theme ${SHOPIFY_THEME_ID} --only assets/saibai-mobile-pages.css --only snippets/global-css.liquid --nodelete --json --no-color" \
+              /tmp/shopify-push-raw.log
+            PUSH_STATUS=$?
+          else
+            PUSH_STATUS=99
+          fi
 
-          if [ "$STATUS" -eq 0 ]; then
+          sed -E 's/\x1B\[[0-9;?]*[ -\/]*[@-~]//g' /tmp/shopify-auth-raw.log \
+            | tr -d '\r' | sed -E 's/[^[:print:]\t]//g' > /tmp/shopify-auth-clean.log
+          sed -E 's/\x1B\[[0-9;?]*[ -\/]*[@-~]//g' /tmp/shopify-push-raw.log \
+            | tr -d '\r' | sed -E 's/[^[:print:]\t]//g' > /tmp/shopify-push-clean.log
+
+          if [ "$AUTH_STATUS" -eq 0 ] && [ "$PUSH_STATUS" -eq 0 ]; then
             FINAL_STATUS="success"
+            EXIT_STATUS=0
           else
             FINAL_STATUS="failure"
+            EXIT_STATUS=1
           fi
 
           NOW="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
@@ -106,14 +118,17 @@ jobs:
             --arg deployed_at "$NOW" \
             --arg store "$SHOPIFY_STORE" \
             --arg theme_id "$SHOPIFY_THEME_ID" \
-            --argjson exit_code "$STATUS" \
-            --arg output "$(tail -n 40 /tmp/shopify-deploy-clean.log)" \
-            '{status:$status,deployed_at:$deployed_at,store:$store,theme_id:$theme_id,exit_code:$exit_code,files:["assets/saibai-mobile-pages.css","snippets/global-css.liquid"],output:$output}' \
+            --argjson auth_exit_code "$AUTH_STATUS" \
+            --argjson push_exit_code "$PUSH_STATUS" \
+            --arg auth_output "$(tail -n 30 /tmp/shopify-auth-clean.log)" \
+            --arg push_output "$(tail -n 40 /tmp/shopify-push-clean.log)" \
+            '{status:$status,deployed_at:$deployed_at,store:$store,theme_id:$theme_id,auth_exit_code:$auth_exit_code,push_exit_code:$push_exit_code,files:["assets/saibai-mobile-pages.css","snippets/global-css.liquid"],auth_output:$auth_output,push_output:$push_output}' \
             > .deploy/saibai-mobile-interactive-result.json
 
           rm -f .deploy/shopify-auth-active.json
           git add -A .deploy
           git commit -m "chore: record interactive Saibai mobile deploy (${FINAL_STATUS})" || true
+          git pull --rebase || true
           git push || true
 
-          exit "$STATUS"
+          exit "$EXIT_STATUS"
