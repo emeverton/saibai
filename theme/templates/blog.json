@@ -1,0 +1,26 @@
+{
+  "sections": {
+    "hero": {
+      "type": "saibai-inst-hero",
+      "settings": {
+        "eyebrow": "Empório Saibai · Piedade, SP",
+        "title": "Receitas",
+        "lead": "Inspirações com alcachofra, conservas artesanais e ingredientes da safra Saibai.",
+        "asset_fallback": "saibai-conservas-jars.webp"
+      }
+    },
+    "list": {
+      "type": "saibai-blog-list",
+      "settings": {
+        "list_title": "Receitas da safra",
+        "list_lead": "Ideias para a cozinha do dia a dia e para ocasiões especiais — com o sabor da alcachofra Saibai.",
+        "posts_per_page": 12,
+        "empty_title": "Receitas em breve",
+        "empty_lead": "Estamos preparando receitas com alcachofra, conservas e ingredientes da safra Saibai. Enquanto isso, conheça nossos produtos.",
+        "empty_cta_label": "Ver produtos",
+        "empty_cta_url": "/collections/todos"
+      }
+    }
+  },
+  "order": ["hero", "list"]
+}

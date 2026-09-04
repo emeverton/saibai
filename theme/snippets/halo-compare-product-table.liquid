@@ -1,0 +1,27 @@
+<div class="halo-compare-product-content">
+	<div class="relative max-w-full max-h-full overflow-x-a">
+		<table class="compareTable relative">
+			<thead>
+				<tr class="compare-table-row">
+					{%- assign headings = 'product,sku,description,collection,availability,product_type,other_details' | split: ',' -%}
+					{%- for heading in headings -%}
+						<th class="compareTable-heading center font-bold uppercase body-l-font-size">
+							<span class="whitespace-nowrap">
+								{%- case heading -%}
+									{%- when 'product' -%}{{ 'content.compare.product' | t }}
+									{%- when 'sku' -%}{{ 'content.compare.sku' | t }}
+									{%- when 'description' -%}{{ 'content.compare.description' | t }}
+									{%- when 'collection' -%}{{ 'content.compare.collection' | t }}
+									{%- when 'availability' -%}{{ 'content.compare.availability' | t }}
+									{%- when 'product_type' -%}{{ 'content.compare.product_type' | t }}
+									{%- when 'other_details' -%}{{ 'content.compare.other_details' | t }}
+								{%- endcase -%}
+							</span>
+						</th>
+					{%- endfor -%}
+				</tr>
+			</thead>
+			<tbody></tbody>
+		</table>
+	</div>
+</div>

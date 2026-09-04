@@ -1,0 +1,108 @@
+{%- comment -%}
+  Header SSR no content_for_layout — o page_cache da IndexController
+  atualiza seções da home, mas pode servir layout/header-group stale.
+  Se #header-group já tiver header, o bloco é removido; senão, move para lá.
+{%- endcomment -%}
+<div id="saibai-home-header-ssr" data-saibai-home-header-ssr>
+  {%- render 'saibai-header-css' -%}
+  {%- render 'saibai-header', section: section -%}
+  <script src="{{ 'saibai-header.js' | asset_url }}" defer="defer"></script>
+</div>
+<script>
+(function () {
+  var block = document.getElementById('saibai-home-header-ssr');
+  if (!block) return;
+  var hg = document.getElementById('header-group');
+  var existing = document.querySelector('#header-group [data-saibai-header]');
+  if (existing) {
+    block.parentNode && block.parentNode.removeChild(block);
+    return;
+  }
+  if (hg) {
+    hg.appendChild(block);
+  }
+})();
+</script>
+
+<script src="{{ 'saibai-hero.js' | asset_url }}" defer="defer"></script>
+
+{% render 'saibai-home-hero', section: section %}
+
+{% schema %}
+{
+  "name": "Saibai Hero",
+  "class": "saibai-hero-section",
+  "enabled_on": {
+    "templates": ["index"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título do box",
+      "default": "Safra 2026"
+    },
+    {
+      "type": "text",
+      "id": "link_1_label",
+      "label": "Categoria 1 texto",
+      "default": "Alcachofras In Natura"
+    },
+    {
+      "type": "url",
+      "id": "link_1_url",
+      "label": "Categoria 1 URL"
+    },
+    {
+      "type": "text",
+      "id": "link_2_label",
+      "label": "Categoria 2 texto",
+      "default": "Conservas"
+    },
+    {
+      "type": "url",
+      "id": "link_2_url",
+      "label": "Categoria 2 URL"
+    },
+    {
+      "type": "text",
+      "id": "link_3_label",
+      "label": "Categoria 3 texto",
+      "default": "Flores Desidratadas"
+    },
+    {
+      "type": "url",
+      "id": "link_3_url",
+      "label": "Categoria 3 URL"
+    },
+    {
+      "type": "text",
+      "id": "link_4_label",
+      "label": "Categoria 4 texto",
+      "default": "Chaveiro Saibai"
+    },
+    {
+      "type": "url",
+      "id": "link_4_url",
+      "label": "Categoria 4 URL"
+    },
+    {
+      "type": "select",
+      "id": "default_tab",
+      "label": "Aba inicial (toggle na dobra de produtos)",
+      "default": "fresca",
+      "options": [
+        { "value": "fresca", "label": "Alcachofras In Natura" },
+        { "value": "conservas", "label": "Conservas" },
+        { "value": "flores", "label": "Flores Desidratadas" },
+        { "value": "chaveiro", "label": "Chaveiro Saibai" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Saibai Hero"
+    }
+  ]
+}
+{% endschema %}

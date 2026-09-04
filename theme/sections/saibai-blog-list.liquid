@@ -1,0 +1,80 @@
+<div class="saibai-inst">
+  <section class="saibai-blog-list" aria-labelledby="saibai-blog-list-title">
+    <div class="saibai-blog-list__inner">
+      <header class="saibai-blog-list__header">
+        <h2 class="saibai-blog-list__title" id="saibai-blog-list-title">
+          {{- section.settings.list_title | default: 'Receitas da safra' -}}
+        </h2>
+        {%- if section.settings.list_lead != blank -%}
+          <p class="saibai-blog-list__lead">{{ section.settings.list_lead }}</p>
+        {%- endif -%}
+      </header>
+
+      {%- paginate blog.articles by section.settings.posts_per_page -%}
+        {%- if blog.articles.size > 0 -%}
+          <div class="saibai-blog-list__grid">
+            {%- for article in blog.articles -%}
+              {% render 'saibai-blog-card', article: article %}
+            {%- endfor -%}
+          </div>
+
+          {%- if paginate.pages > 1 -%}
+            <nav class="saibai-blog-list__pagination" aria-label="Paginação do blog">
+              {%- if paginate.previous -%}
+                <a class="saibai-blog-list__page-link" href="{{ paginate.previous.url }}">Anterior</a>
+              {%- endif -%}
+              <span class="saibai-blog-list__page-status">
+                Página {{ paginate.current_page }} de {{ paginate.pages }}
+              </span>
+              {%- if paginate.next -%}
+                <a class="saibai-blog-list__page-link" href="{{ paginate.next.url }}">Próxima</a>
+              {%- endif -%}
+            </nav>
+          {%- endif -%}
+        {%- else -%}
+          <div class="saibai-blog-list__empty">
+            <h3 class="saibai-blog-list__empty-title">
+              {{- section.settings.empty_title | default: 'Receitas em breve' -}}
+            </h3>
+            <p class="saibai-blog-list__empty-lead">
+              {{- section.settings.empty_lead | default: 'Estamos preparando receitas com alcachofra, conservas e ingredientes da safra Saibai. Enquanto isso, conheça nossos produtos.' -}}
+            </p>
+            <a class="saibai-blog-list__empty-cta" href="{{ section.settings.empty_cta_url | default: '/collections/todos' }}">
+              {{- section.settings.empty_cta_label | default: 'Ver produtos' -}}
+            </a>
+          </div>
+        {%- endif -%}
+      {%- endpaginate -%}
+    </div>
+  </section>
+  {% render 'saibai-inst-nav' %}
+</div>
+
+{% schema %}
+{
+  "name": "Saibai Blog — Listagem",
+  "class": "saibai-inst-section",
+  "enabled_on": { "templates": ["blog"] },
+  "settings": [
+    { "type": "text", "id": "list_title", "label": "Título da listagem", "default": "Receitas da safra" },
+    {
+      "type": "textarea",
+      "id": "list_lead",
+      "label": "Subtítulo",
+      "default": "Inspirações com alcachofra fresca, conservas artesanais e ingredientes da Saibai."
+    },
+    { "type": "range", "id": "posts_per_page", "label": "Posts por página", "min": 3, "max": 24, "step": 3, "default": 12 },
+    { "type": "header", "content": "Estado vazio" },
+    { "type": "text", "id": "empty_title", "label": "Título vazio", "default": "Receitas em breve" },
+    {
+      "type": "textarea",
+      "id": "empty_lead",
+      "label": "Texto vazio",
+      "default": "Estamos preparando receitas com alcachofra, conservas e ingredientes da safra Saibai. Enquanto isso, conheça nossos produtos."
+    },
+    { "type": "text", "id": "empty_cta_label", "label": "Botão vazio", "default": "Ver produtos" },
+    { "type": "url", "id": "empty_cta_url", "label": "Link do botão vazio" }
+  ],
+  "presets": [{ "name": "Saibai Blog Listagem" }]
+}
+{% endschema %}

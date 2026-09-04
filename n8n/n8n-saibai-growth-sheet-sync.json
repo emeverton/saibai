@@ -1,0 +1,118 @@
+{
+  "name": "[SB] Saibai - Growth Sheet Sync",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "saibai-growth-sheet-sync",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "Webhook_Growth_Sync",
+      "name": "Webhook Growth Sync",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [-1200, 0],
+      "webhookId": "saibai-growth-sheet-sync"
+    },
+    {
+      "parameters": {
+        "jsCode": "const expected = $env.SAIBAI_GROWTH_SHEET_TOKEN || '';\nconst headers = $json.headers || {};\nconst received = String(headers['x-veltrus-token'] || headers['X-Veltrus-Token'] || '');\nif (expected && received !== expected) {\n  throw new Error('Unauthorized growth sheet sync request.');\n}\nconst body = $json.body || $json;\nconst data = typeof body === 'string' ? JSON.parse(body) : body;\nif (!data.sheetId || !Array.isArray(data.metaRows)) {\n  throw new Error('Invalid payload: expected sheetId, metaRows, googleRows, dailyRows');\n}\nreturn [{ json: data }];"
+      },
+      "id": "Validate_Token",
+      "name": "Validar token",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-980, 0]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "=https://sheets.googleapis.com/v4/spreadsheets/{{ $('Validar token').item.json.sheetId }}/values/{{ encodeURIComponent('Relatório Diário!1:1') }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleSheetsOAuth2Api",
+        "options": {}
+      },
+      "id": "Get_Daily_Headers",
+      "name": "GET headers diario",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [-760, 0],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "6PyzoBIkdSxxNYqh",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "/**\n * Stub batchUpdate — copiar no Montar batchUpdate o jsCode completo de\n * clients/malhas-e-tramas/n8n/n8n-malhas-growth-sheet-sync.json\n * quando SAIBAI_GROWTH_SHEET_ID estiver live.\n */\nconst payload = $('Validar token').first().json;\nreturn [{ json: {\n  sheetId: payload.sheetId,\n  syncedAt: payload.syncedAt || new Date().toISOString(),\n  metaRows: (payload.metaRows || []).length,\n  googleRows: (payload.googleRows || []).length,\n  dailyRows: (payload.dailyRows || []).length,\n  note: 'Extend Montar batchUpdate from Malhas template before production sync',\n}}];"
+      },
+      "id": "Build_Stub",
+      "name": "Montar batchUpdate (stub)",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-540, 0]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": { "responseCode": 200 }
+      },
+      "id": "Respond_OK",
+      "name": "Responder OK",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [-320, 0]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [{ "field": "cronExpression", "expression": "55 6 * * *" }]
+        }
+      },
+      "id": "Cron_0655",
+      "name": "Cron 06:55 diario",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [-1200, 220]
+    },
+    {
+      "parameters": {
+        "command": "cd /opt/google-ads-mcp-veltrus && node sync-saibai-growth-sheet.mjs --days 7"
+      },
+      "id": "Exec_Sync_Script",
+      "name": "Executar sync script",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [-980, 220]
+    }
+  ],
+  "connections": {
+    "Webhook Growth Sync": {
+      "main": [[{ "node": "Validar token", "type": "main", "index": 0 }]]
+    },
+    "Validar token": {
+      "main": [[{ "node": "GET headers diario", "type": "main", "index": 0 }]]
+    },
+    "GET headers diario": {
+      "main": [[{ "node": "Montar batchUpdate (stub)", "type": "main", "index": 0 }]]
+    },
+    "Montar batchUpdate (stub)": {
+      "main": [[{ "node": "Responder OK", "type": "main", "index": 0 }]]
+    },
+    "Cron 06:55 diario": {
+      "main": [[{ "node": "Executar sync script", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "America/Sao_Paulo"
+  },
+  "staticData": null,
+  "pinData": {},
+  "active": false,
+  "tags": [{ "name": "saibai" }, { "name": "growth-pack" }]
+}

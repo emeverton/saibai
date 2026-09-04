@@ -1,0 +1,39 @@
+{%- doc -%}
+  Hot stock progress bar on the product page.
+
+  @param {object} block - Block object for typography settings
+  @param {object} current_variant - Selected variant
+  @param {number} variant_count - Number of product variants
+  @param {number} product_max_stock - Inventory threshold for hot stock display
+  @param {string} text_color - Text color CSS value
+  @param {string} type_preset - Typography preset class
+  @param {string} progress_bar_height - Progress bar height with unit
+  @param {string} progress_bar_color - Progress bar fill color
+  @param {string} progress_bar_color_2 - Progress bar secondary color
+{%- enddoc -%}
+
+{% liquid
+  if current_variant.inventory_management and current_variant.inventory_quantity > 0 and current_variant.inventory_quantity <= product_max_stock
+    assign check_show_hot_stock = true
+  else
+    assign check_show_hot_stock = false
+  endif
+
+  assign progress_bar_width = current_variant.inventory_quantity | times: 100 | divided_by: product_max_stock
+
+  assign type_preset = type_preset
+  assign progress_bar_height = progress_bar_height
+%}
+
+{% capture attr %}
+  style="--progress-bar-width: {{ progress_bar_width }}%; --progress-bar-height: {{ progress_bar_height }}; --progress-bar-color: {{ progress_bar_color }}; --progress-bar-color_2: {{ progress_bar_color_2 }}; --hot-stock-text-color: {{ text_color }};"
+{% endcapture %}
+
+<div class="productView-hotStock{% if check_show_hot_stock == false %} hidden{% endif %}" data-hot-stock="{{ product_max_stock }}" {% if variant_count < 2 %} data-current-inventory="{{ current_variant.inventory_quantity }}"{% endif %} {{ attr }}>
+  <span class="hotStock-text {{ type_preset }}" style="{% render 'typography-style', settings: block.settings, weight: block.settings.font_weight %}">
+    {{ 'products.product.hot_stock' | t : inventory: current_variant.inventory_quantity }}
+  </span>
+  <div class="hotStock-progress">
+    <span class="hotStock-progress-item"></span>
+  </div>
+</div>

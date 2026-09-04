@@ -1,0 +1,382 @@
+/* Empório Saibai — Header BASE (core+mobile+logo+nav+rwd) | Veltrus — consolidado */
+
+/* --- saibai-header-base-core.css --- */
+/* Empório Saibai — Header core
+ * Veltrus Growth & Technology
+ */
+
+/* ── KV header — tokens em TODOS os viewports (mobile precisa --sh-bg opaco) ── */
+html body .saibai-header {
+  --sh-bg: var(--saibai-bg-header, #F2F5EE);
+  --sh-text: var(--saibai-dark, #2A3A1A);
+  --sh-muted: rgb(42 58 26 / 0.55);
+  --sh-highlight: var(--saibai-primary, #5B7A3A);
+  --sh-accent: var(--saibai-primary, #5B7A3A);
+  --sh-line: rgb(42 58 26 / 0.12);
+  --sh-mega-line: rgb(42 58 26 / 0.09);
+  --sh-rule-edge: var(--saibai-dark, #2A3A1A);
+  --sh-rule-fill: var(--saibai-bg-contrast, #E8EFE2);
+  --sh-transition: opacity 0.25s ease;
+  --sh-pad: clamp(1rem, 4vw, 1.5rem);
+  --sh-shell-max: var(--saibai-lp-shell-max, min(86rem, 1376px));
+  --sh-nav-max: 42rem;
+  --sh-side-w: 9rem;
+  --sh-search-h: 2.625rem;
+  --sh-util-h: 2.25rem;
+  --sh-nav-h: var(--sh-nav-strip-h, 2.75rem);
+  --sh-nav-strip-h: 2.75rem;
+  --sh-nav: 0.9375rem;
+  --sh-util: 0.9375rem;
+  --sh-menu-pad-x: 0.875rem;
+  --sh-logo-pad-top: 1.125rem;
+  --sh-logo-pad-bottom: 0.125rem;
+  --sh-logo-cap: 17.5rem;
+  --sh-logo-cap-mb: 10rem;
+  --sh-icon: 1.125rem;
+  --sh-mb-icon: 18px;
+  --sh-touch: 2.75rem;
+  --sh-mobile-h: 56px;
+  /* C-level LP — gaveta alta · foto editorial · ar no meio */
+  --sh-mega-h: clamp(28rem, 48vh, 34rem);
+  --sh-mega-overlap: 0;
+  --sh-mega-bg: #F7F6F2;
+  --sh-mega-duration: 0.55s;
+  --sh-mega-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --sh-mega-content-delay: 0.1s;
+  --sh-mega-delay: 0s;
+  --sh-mega-delay-close: 0s;
+  --sh-wordmark-mono-ratio: 1024 / 341;
+
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  color: var(--sh-text);
+  background: transparent;
+  font-family: var(--saibai-font-body, inherit);
+}
+
+/* Desktop: padding LP */
+@media (min-width: 1025px) {
+  html body .saibai-header {
+    --sh-pad: var(--saibai-lp-pad-x, clamp(1.5rem, 3vw, 2.5rem));
+  }
+}
+
+/* Ícones: tema força min-size em svg — reset isolado no módulo */
+html body .saibai-header .saibai-header__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--sh-icon);
+  height: var(--sh-icon);
+  line-height: 0;
+  flex-shrink: 0;
+  opacity: 0.92;
+}
+
+html body .saibai-header .saibai-header__icon svg {
+  display: block;
+  width: var(--sh-icon);
+  height: var(--sh-icon);
+  min-width: 0;
+  min-height: 0;
+  max-width: var(--sh-icon);
+  max-height: var(--sh-icon);
+  fill: currentColor;
+  stroke: none;
+}
+
+html body .saibai-header .saibai-header__icon svg[width],
+html body .saibai-header .saibai-header__icon svg[height] {
+  width: var(--sh-icon);
+  height: var(--sh-icon);
+}
+
+html body .saibai-header .saibai-header__icon--heart svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.15px;
+}
+
+/* --- saibai-header-base-mobile.css --- */
+/* Empório Saibai — Header mobile sticky
+ * Veltrus Growth & Technology
+ */
+
+/* ── Mobile ── */
+html body .saibai-header__mobile {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  min-height: var(--sh-mobile-h, 56px);
+  padding: 0 var(--sh-pad);
+  border-bottom: 0;
+  /* Fallback hardcoded: sem --sh-bg a barra ficava translúcida na PDP */
+  background: var(--sh-bg, #F2F5EE);
+}
+
+html body .saibai-header__desktop {
+  display: block;
+}
+
+html body .saibai-header {
+  position: relative;
+  overflow: visible;
+}
+
+html body .saibai-header__body {
+  position: relative;
+  z-index: 2;
+  min-height: 0;
+  background: transparent;
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Sticky permanente — fundo opaco (evita galeria PDP “vazando” pelo header) */
+html body #header-group {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  width: 100%;
+  max-width: 100vw;
+  overflow: visible;
+  background: var(--saibai-bg-header, #F2F5EE);
+  transform: none;
+  pointer-events: auto;
+}
+
+/* --- saibai-header-base-logo.css --- */
+/* Empório Saibai — Header logo
+ * Veltrus Growth & Technology
+ */
+
+
+
+/* ── Logo row LP — header claro + faxinhas duplas abaixo da barra fixa ── */
+html body .saibai-header__logo-row {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding:
+    calc(var(--sh-logo-pad-top) + 1.5px + 3px + 1.5px)
+    var(--sh-pad)
+    var(--sh-logo-pad-bottom);
+  background: var(--sh-bg, var(--saibai-bg-header, #F2F5EE));
+}
+
+html body .saibai-header__logo-row::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: calc(1.5px + 3px + 1.5px);
+  pointer-events: none;
+  background:
+    linear-gradient(var(--sh-rule-edge, #2A3A1A), var(--sh-rule-edge, #2A3A1A)) 0 0 / 100% 1.5px no-repeat,
+    linear-gradient(var(--sh-rule-fill, #E8EFE2), var(--sh-rule-fill, #E8EFE2)) 0 1.5px / 100% 3px no-repeat,
+    linear-gradient(var(--sh-rule-edge, #2A3A1A), var(--sh-rule-edge, #2A3A1A)) 0 4.5px / 100% 1.5px no-repeat;
+}
+
+html body .saibai-header__logo-link {
+  display: inline-flex;
+  line-height: 0;
+  text-decoration: none;
+}
+
+html body .saibai-header__logo:not(.saibai-logo--wordmark-mono),
+html body .saibai-header .saibai-logo:not(.saibai-logo--wordmark-mono) {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: min(var(--sh-logo-size, var(--sh-logo-cap)), var(--sh-logo-cap));
+  max-height: var(--sh-logo-h, 52px);
+  object-fit: contain;
+}
+
+/* LP: wordmark horizontal — recorte sem tagline */
+html body .saibai-header .saibai-logo--wordmark {
+  width: min(var(--sh-logo-size, 200px), var(--sh-logo-cap));
+  height: auto;
+  max-width: min(var(--sh-logo-size, 200px), var(--sh-logo-cap));
+  max-height: var(--sh-wordmark-h, 43px);
+  object-fit: contain;
+  object-position: center;
+}
+
+/* LP: logo oficial — 1024×341 · largura via --sh-logo-size (sem cap de altura herdado) */
+html body .saibai-header .saibai-logo--wordmark-mono {
+  display: block;
+  width: clamp(144px, 17vw, var(--sh-logo-size, var(--sh-logo-cap)));
+  height: auto;
+  max-width: clamp(144px, 17vw, var(--sh-logo-size, var(--sh-logo-cap)));
+  max-height: none;
+  aspect-ratio: var(--sh-wordmark-mono-ratio, 1024 / 341);
+  object-fit: contain;
+  opacity: 0.96;
+  transition: opacity 0.25s ease;
+}
+
+html body .saibai-header__logo-link:hover .saibai-logo--wordmark-mono {
+  opacity: 0.62;
+}
+
+/* --- saibai-header-base-nav.css --- */
+/* Empório Saibai — Header nav
+ * Veltrus Growth & Technology
+ */
+
+/* ── Nav row LP — mesma cor do header (logo); mega open → ver saibai-header-mega-sidebar.css ── */
+html body .saibai-header__nav-row {
+  position: relative;
+  z-index: 2;
+  height: var(--sh-nav-h);
+  min-height: var(--sh-nav-h);
+  padding: 0;
+  border-bottom: 0;
+  background: var(--sh-bg, var(--saibai-bg-header, #F2F5EE));
+  overflow: visible;
+}
+
+html body .saibai-header__shell {
+  display: grid;
+  grid-template-columns: var(--sh-side-w) minmax(0, 1fr) var(--sh-side-w);
+  align-items: end;
+  gap: 0;
+  height: var(--sh-nav-h);
+  min-height: var(--sh-nav-h);
+  max-width: var(--sh-shell-max);
+  margin: 0 auto;
+  padding: 0 var(--sh-pad);
+}
+
+html body .saibai-header__col--start {
+  justify-self: start;
+  width: var(--sh-side-w);
+}
+
+html body .saibai-header__col--center {
+  justify-self: center;
+  width: 100%;
+  max-width: var(--sh-nav-max);
+}
+
+html body .saibai-header__col--end {
+  justify-self: end;
+  width: var(--sh-side-w);
+}
+
+/* ── Menu ── */
+html body .saibai-header__menu {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  height: var(--sh-nav-strip-h);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+html body .saibai-header__menu-item.has-children {
+  position: relative;
+}
+
+html body .saibai-header button.saibai-header__menu-link,
+html body .saibai-header button.saibai-header__menu-trigger,
+html body .saibai-header .saibai-header__menu-link {
+  display: flex;
+  align-items: center;
+  height: var(--sh-nav-strip-h);
+  padding: 0 var(--sh-menu-pad-x, 12px);
+  color: var(--sh-text);
+  font-family: inherit;
+  font-size: var(--sh-nav);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  text-decoration: none;
+  white-space: nowrap;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  transition: opacity 0.25s ease, color 0.25s ease;
+}
+
+html body .saibai-header .saibai-header__menu-trigger[aria-expanded="true"] {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.28em;
+  opacity: 1;
+}
+
+html body .saibai-header .saibai-header__menu-link:hover {
+  color: var(--sh-text);
+  opacity: 0.55;
+}
+
+html body .saibai-header .saibai-header__menu-link.is-active {
+  color: var(--sh-text);
+  font-weight: 400;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.28em;
+  opacity: 1;
+}
+
+html body .saibai-header .saibai-header__menu-link.is-accent {
+  color: var(--sh-text);
+}
+
+html body .saibai-header .saibai-header__menu-link.is-accent:hover {
+  color: var(--sh-text);
+  opacity: 0.55;
+}
+
+/* --- saibai-header-base-rwd.css --- */
+/* Empório Saibai — Header responsive
+ * Veltrus Growth & Technology
+ */
+
+/* ── Responsivo LP · escala fluida C-level ── */
+
+/* Desktop médio: 1200–1439 */
+@media (min-width: 1025px) and (max-width: 1439px) {
+  html body .saibai-header {
+    --sh-pad: clamp(1rem, 2vw, 1.75rem);
+    --sh-side-w: 5.5rem;
+    --sh-nav-strip-h: 2.75rem;
+    --sh-nav-h: var(--sh-nav-strip-h);
+    --sh-logo-pad-top: 1rem;
+    --sh-logo-pad-bottom: 0.125rem;
+  }
+}
+
+/* Desktop compacto: 1025–1199 */
+@media (min-width: 1025px) and (max-width: 1199px) {
+  html body .saibai-header {
+    --sh-side-w: 82px;
+    --sh-search-h: 38px;
+    --sh-util-h: 31px;
+    --sh-nav-strip-h: 2.75rem;
+    --sh-nav-h: var(--sh-nav-strip-h);
+    --sh-nav: 0.9rem;
+    --sh-util: 0.9rem;
+    --sh-menu-pad-x: 10px;
+    --sh-logo-pad-top: 14px;
+    --sh-logo-pad-bottom: 0.125rem;
+  }
+}
+
+/* Tablet landscape: menu ainda desktop, mais denso */
+@media (min-width: 1025px) and (max-width: 1100px) {
+  html body .saibai-header {
+    --sh-menu-pad-x: 8px;
+    --sh-nav: 0.8625rem;
+    --sh-util: 0.8625rem;
+  }
+}
+

@@ -1,0 +1,532 @@
+/* Empório Saibai — PDP MEDIA (gallery+grid) | Veltrus — consolidado */
+
+/* --- saibai-pages-pdp-gallery.css --- */
+/* Empório Saibai — PDP galeria
+ * Veltrus Growth & Technology | Shopify Partner ID 4969609
+ * PROPRIEDADE INTELECTUAL PROTEGIDA
+ */
+
+/* Galeria — adapt · contain · sem faixa branca (critical-css .slideshow ≠ hero) */
+body.saibai-theme.template-product media-gallery.slideshow,
+body.saibai-theme.template-product .product-information__media media-gallery {
+  min-height: 0 !important;
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+  position: relative !important;
+}
+
+body.saibai-theme.template-product media-gallery.slideshow .media,
+body.saibai-theme.template-product media-gallery.slideshow picture.media,
+body.saibai-theme.template-product media-gallery.slideshow .product-media,
+body.saibai-theme.template-product media-gallery.slideshow .slide__img-wrapper {
+  position: relative !important;
+  inset: auto !important;
+  width: 100% !important;
+  height: auto !important;
+}
+
+body.saibai-theme.template-product media-gallery.slideshow img,
+body.saibai-theme.template-product media-gallery.slideshow .product-media__image {
+  position: relative !important;
+  width: 100% !important;
+  height: auto !important;
+  object-fit: contain !important;
+}
+
+body.saibai-theme.template-product .product-information__media {
+  display: block !important;
+  background: var(--saibai-bg, #F2F5EE);
+  border: 0;
+  border-radius: 0;
+  padding: 0 !important;
+  box-shadow: none;
+  width: 100%;
+  max-width: none;
+  height: fit-content !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  overflow: hidden;
+  z-index: 0;
+  --image-padding: 0 !important;
+}
+
+body.saibai-theme.template-product .product-information__grid.product-information--media-left .product-information__media,
+body.saibai-theme.template-product .product-information__grid.product-information--media-right .product-information__media {
+  padding-inline: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+body.saibai-theme.template-product .product-information__media media-gallery,
+body.saibai-theme.template-product .product-information__media .spacing-style {
+  padding: 0 !important;
+  margin: 0 !important;
+  --padding-block-start: 0 !important;
+  --padding-block-end: 0 !important;
+  --padding-inline-start: 0 !important;
+  --padding-inline-end: 0 !important;
+}
+
+body.saibai-theme.template-product .product-information__media:has(.media-gallery--carousel) {
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+}
+
+@media screen and (min-width: 750px) {
+  body.saibai-theme.template-product .product-information__media:has(.media-gallery--carousel) {
+    height: auto !important;
+    min-height: 0 !important;
+  }
+}
+
+body.saibai-theme.template-product .product-information__media media-gallery,
+body.saibai-theme.template-product .product-information__media swiper-component,
+body.saibai-theme.template-product .product-information__media .slideshow,
+body.saibai-theme.template-product .product-information__media slideshow-container,
+body.saibai-theme.template-product .product-information__media .swiper-main,
+body.saibai-theme.template-product .product-information__media .swiper {
+  width: 100%;
+  max-width: 100%;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+body.saibai-theme.template-product .product-information__media .swiper-main .swiper-wrapper {
+  width: 100%;
+  max-width: 100%;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+body.saibai-theme.template-product .product-information__media .swiper-main .swiper-slide.product-media-container {
+  width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-sizing: border-box;
+  display: block !important;
+  position: relative !important;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  height: auto !important;
+  min-height: clamp(20rem, 42vw, 38rem) !important;
+  background: var(--saibai-bg, #F2F5EE);
+  isolation: isolate;
+}
+
+body.saibai-theme.template-product .product-information__media .swiper-slide.product-media-container .slideshow__slide {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  position: absolute !important;
+  inset: 0 !important;
+  display: block !important;
+}
+
+body.saibai-theme.template-product .product-information__media .swiper-slide.product-media-container .slide__img-wrapper,
+body.saibai-theme.template-product .product-information__media .swiper-slide.product-media-container .slideshow__slide > .flex {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-height: none;
+  display: block !important;
+}
+
+body.saibai-theme.template-product .product-information__media .product-media-container,
+body.saibai-theme.template-product .product-information__media .product-media-container.constrain-height {
+  --viewport-offset: 0;
+  --constrained-min-height: 0;
+  --constrained-height: none;
+  display: block !important;
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: unset !important;
+  width: 100%;
+  height: auto !important;
+  min-height: 0 !important;
+  margin: 0;
+  padding: 0 !important;
+  border-radius: 0;
+  background: transparent;
+}
+
+body.saibai-theme.template-product .product-information__media .product-media-container .product-media,
+body.saibai-theme.template-product .product-information__media .product-media-container picture.media,
+body.saibai-theme.template-product .product-information__media .product-media-container .media {
+  position: relative !important;
+  inset: auto !important;
+  width: 100% !important;
+  height: auto !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+body.saibai-theme.template-product .product-information__media .product-media-container .media {
+  padding-top: 0 !important;
+}
+
+body.saibai-theme.template-product .product-information__media .product-media-container .ratio::before {
+  display: none !important;
+  padding: 0 !important;
+}
+
+body.saibai-theme.template-product .product-information__media .product__media img,
+body.saibai-theme.template-product .product-information__media .product-media-container img,
+body.saibai-theme.template-product .product-information__media .product-media-container.media-fit-contain img,
+body.saibai-theme.template-product .product-information__media .product-media-container.media-fit-cover img,
+body.saibai-theme.template-product .product-information__media .media-gallery img,
+body.saibai-theme.template-product .product-information__media .media-gallery picture img,
+body.saibai-theme.template-product .product-information__media .product-media-container .media img,
+body.saibai-theme.template-product .product-information__media .product-media-container .product-media__image {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  max-height: none !important;
+  object-fit: cover !important;
+  object-position: center center;
+  aspect-ratio: unset !important;
+  background: transparent;
+  padding: 0 !important;
+  margin: 0 !important;
+  border-radius: 0;
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  mix-blend-mode: multiply;
+}
+
+body.saibai-theme.template-product .product-information__media .swiper-main .swiper-wrapper {
+  height: auto !important;
+  align-items: stretch;
+}
+
+body.saibai-theme.template-product .product-information__media .swiper-controls__thumbnails-container {
+  padding: 0;
+  margin-top: 0;
+  background: var(--saibai-bg, #F2F5EE);
+  gap: 0;
+  border-top: 1px solid rgb(42 58 26 / 0.08);
+}
+
+body.saibai-theme.template-product .product-information__media .swiper-controls__thumbnails-container .swiper-slide {
+  padding: 0 !important;
+}
+
+body.saibai-theme.template-product .product-information__media .slideshow .slideshow__slides {
+  height: auto !important;
+  min-height: 0 !important;
+}
+
+body.saibai-theme.template-product .product-information__media .swiper-controls__thumbnails-container .swiper-slide {
+  border-right: 1px solid rgb(42 58 26 / 0.08);
+}
+
+body.saibai-theme.template-product .product-information__media .swiper-controls__thumbnails-container .swiper-slide:last-child {
+  border-right: 0;
+}
+
+body.saibai-theme.template-product .thumbnail-list__item img,
+body.saibai-theme.template-product .product-information__media .swiper-controls__thumbnails-container img {
+  object-fit: cover;
+  border: 0;
+  border-radius: 0;
+  aspect-ratio: 1 / 1;
+}
+
+body.saibai-theme.template-product .media-gallery__buttons,
+body.saibai-theme.template-product .slider-buttons {
+  opacity: 0.6;
+}
+
+/* ── PDP galeria LP: grid 2 colunas (desktop) ── */
+body.saibai-theme.template-product media-gallery.media-gallery--grid {
+  --image-gap: 4px;
+}
+
+body.saibai-theme.template-product media-gallery.media-gallery--grid .media-gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--image-gap, 4px);
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+body.saibai-theme.template-product media-gallery.media-gallery--grid .media-gallery__grid-item {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: var(--saibai-bg, #F2F5EE);
+  overflow: hidden;
+  border-radius: 0;
+  aspect-ratio: 1 / 1;
+  min-height: 0;
+}
+
+body.saibai-theme.template-product media-gallery.media-gallery--grid .media-gallery__grid-item.product-media-container {
+  display: block;
+  aspect-ratio: 1 / 1 !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+}
+
+body.saibai-theme.template-product media-gallery.media-gallery--grid .media-gallery__grid-item .product-media,
+body.saibai-theme.template-product media-gallery.media-gallery--grid .media-gallery__grid-item picture.media,
+body.saibai-theme.template-product media-gallery.media-gallery--grid .media-gallery__grid-item .media {
+  position: absolute !important;
+  inset: 0 !important;
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+body.saibai-theme.template-product media-gallery.media-gallery--grid .media-gallery__grid-item .ratio::before {
+  display: none !important;
+}
+
+body.saibai-theme.template-product media-gallery.media-gallery--grid .media-gallery__grid-item img,
+body.saibai-theme.template-product media-gallery.media-gallery--grid .media-gallery__grid-item .product-media__image {
+  position: absolute !important;
+  inset: 0 !important;
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  max-height: none !important;
+  aspect-ratio: unset !important;
+  object-fit: cover !important;
+  object-position: center center;
+  mix-blend-mode: multiply;
+  background: var(--saibai-bg, #F2F5EE);
+  border-radius: 0;
+}
+
+/* 1 imagem: ocupa 1 célula (não estica full-width) */
+body.saibai-theme.template-product media-gallery.media-gallery--two-column .media-gallery__grid-item:only-child {
+  grid-column: span 1;
+}
+
+body.saibai-theme.template-product media-gallery.media-gallery--grid .product-media-container__zoom-button {
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+body.saibai-theme.template-product media-gallery.media-gallery--grid .media-gallery__grid-item:hover .product-media-container__zoom-button,
+body.saibai-theme.template-product media-gallery.media-gallery--grid .media-gallery__grid-item:focus-within .product-media-container__zoom-button {
+  opacity: 1;
+}
+
+@media screen and (min-width: 750px) {
+  body.saibai-theme.template-product media-gallery.media-gallery--grid swiper-component {
+    display: none !important;
+  }
+
+  body.saibai-theme.template-product media-gallery.media-gallery--grid .media-gallery__grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  body.saibai-theme.template-product media-gallery.media-gallery--grid .media-gallery__grid {
+    display: none !important;
+  }
+
+  body.saibai-theme.template-product media-gallery.media-gallery--grid .swiper-controls__thumbnails-container {
+    display: none !important;
+  }
+
+  /* Passadores: 1 linha no rodapé — nunca empilhar no meio da foto */
+  body.saibai-theme.template-product media-gallery.media-gallery--grid .swiper-pagination {
+    bottom: 0.75rem !important;
+    top: auto !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: auto !important;
+    max-width: calc(100% - 2rem) !important;
+    height: auto !important;
+    max-height: 1.5rem !important;
+    overflow: hidden !important;
+    white-space: nowrap !important;
+    line-height: 1 !important;
+    z-index: 2;
+  }
+
+  body.saibai-theme.template-product media-gallery.media-gallery--grid .swiper-pagination.swiper-pagination-bullets {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 0.4rem;
+  }
+
+  body.saibai-theme.template-product media-gallery.media-gallery--grid .swiper-pagination-fraction {
+    position: absolute !important;
+    bottom: 0.75rem !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: auto !important;
+    max-width: none !important;
+    max-height: none !important;
+    padding: 0.35rem 0.7rem !important;
+    border-radius: 999px !important;
+    background: rgb(42 58 26 / 0.72) !important;
+    color: #fff !important;
+    font-family: Jost, sans-serif !important;
+    font-size: 0.75rem !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.02em !important;
+    white-space: nowrap !important;
+  }
+
+  body.saibai-theme.template-product media-gallery.media-gallery--grid .media-gallery__buttons,
+  body.saibai-theme.template-product media-gallery.media-gallery--grid .slider-buttons {
+    display: none !important;
+  }
+}
+
+/* Zoom dialog — isola da galeria PDP (absolute + multiply = tela branca) */
+body.saibai-theme.template-product zoom-dialog .dialog-zoomed-gallery > .product-media-container,
+body.saibai-theme.template-product zoom-dialog .dialog-zoomed-gallery .product-media-container {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: relative !important;
+  width: 100% !important;
+  min-height: 100vh !important;
+  height: auto !important;
+  aspect-ratio: auto !important;
+  overflow: visible !important;
+  background: #fff !important;
+  padding: 2rem !important;
+  box-sizing: border-box !important;
+}
+
+body.saibai-theme.template-product zoom-dialog .dialog-zoomed-gallery .product-media-container .product-media,
+body.saibai-theme.template-product zoom-dialog .dialog-zoomed-gallery .product-media-container picture.media,
+body.saibai-theme.template-product zoom-dialog .dialog-zoomed-gallery .product-media-container .media,
+body.saibai-theme.template-product zoom-dialog .dialog-zoomed-gallery .product-media-container .product-media__drag-zoom-wrapper {
+  position: relative !important;
+  inset: auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: calc(100vh - 4rem) !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+body.saibai-theme.template-product zoom-dialog .dialog-zoomed-gallery .product-media-container img,
+body.saibai-theme.template-product zoom-dialog .dialog-zoomed-gallery .product-media-container .product-media__image,
+body.saibai-theme.template-product zoom-dialog .dialog-zoomed-gallery .product-media-container .media img {
+  position: relative !important;
+  inset: auto !important;
+  display: block !important;
+  width: auto !important;
+  height: auto !important;
+  max-width: min(100%, 1200px) !important;
+  max-height: calc(100vh - 4rem) !important;
+  object-fit: contain !important;
+  mix-blend-mode: normal !important;
+  background: transparent !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+body.saibai-theme.template-product zoom-dialog .dialog-thumbnails-list__thumbnail img {
+  position: relative !important;
+  inset: auto !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  mix-blend-mode: normal !important;
+}
+
+/* --- saibai-pages-pdp-grid.css --- */
+/* Empório Saibai — PDP grid colunas
+ * Veltrus Growth & Technology | Shopify Partner ID 4969609
+ * PROPRIEDADE INTELECTUAL PROTEGIDA
+ */
+
+/* Grid PDP — colunas 50/50 (display:grid obrigatório sem base.css sync) */
+body.saibai-theme.template-product .product-information__grid {
+  display: grid !important;
+  grid-template-columns: 1fr;
+  gap: clamp(1rem, 2vw, 1.5rem);
+  align-items: start;
+  width: 100%;
+}
+
+body.saibai-theme.template-product .product-information__media {
+  min-width: 0;
+  max-width: 100%;
+}
+
+body.saibai-theme.template-product .product-information__media .swiper-slide img,
+body.saibai-theme.template-product .product-information__media .product-media__image {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+@media (min-width: 750px) {
+  body.saibai-theme.template-product .product-information__grid:not(:has(.product-information__media:empty)).product-information--media-left {
+    grid-template-columns: minmax(0, 1.45fr) minmax(18rem, 0.55fr) !important;
+    gap: clamp(2.5rem, 4.5vw, 4.5rem);
+    align-items: start;
+  }
+
+  body.saibai-theme.template-product .product-information__grid:not(:has(.product-information__media:empty)).product-information--media-right {
+    grid-template-columns: minmax(18rem, 0.55fr) minmax(0, 1.45fr) !important;
+    gap: clamp(2.5rem, 4.5vw, 4.5rem);
+    align-items: start;
+  }
+
+  body.saibai-theme.template-product .product-information__media {
+    position: sticky;
+    top: calc(var(--header-height, 5rem) + 1rem);
+    align-self: start;
+    z-index: 0;
+    width: 100%;
+    max-width: none;
+    height: fit-content !important;
+    min-height: 0 !important;
+  }
+
+  /* LP: imagens em coluna descem com o scroll; buy box fica sticky */
+  body.saibai-theme.template-product .product-information__media:has(media-gallery.media-gallery--grid) {
+    position: static;
+    top: auto;
+  }
+
+  body.saibai-theme.template-product .product-information__grid:has(media-gallery.media-gallery--grid) .product-details {
+    position: sticky;
+    top: calc(var(--header-height, 5rem) + 1.25rem);
+  }
+
+  body.saibai-theme.template-product .product-details {
+    width: 100%;
+    max-width: 22.5rem;
+    margin-inline: 0;
+    position: static;
+    top: auto;
+    align-self: start;
+  }
+
+  body.saibai-theme.template-product .product-information__grid {
+    align-items: start;
+  }
+}
+

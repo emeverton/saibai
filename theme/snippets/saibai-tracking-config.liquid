@@ -1,0 +1,22 @@
+{%- comment -%}
+  Empório Saibai — Config de tracking (storefront + referência pixel)
+{%- endcomment -%}
+<script type="application/json" id="SaibaiTrackingConfig">
+  {
+    "meta_pixel_id": {{ settings.meta_pixel_id | json }},
+    "ga4_measurement_id": {{ settings.ga4_measurement_id | json }},
+    "tracking_endpoint": {{ settings.tracking_endpoint | default: '/apps/vlt-tracking/events' | json }},
+    "shop_id": {{ shop.permanent_domain | json }},
+    "currency": {{ cart.currency.iso_code | json }},
+    "page_type": {{ request.page_type | json }},
+    "product": {%- if request.page_type == 'product' and product -%}
+      {
+        "id": {{ product.id | json }},
+        "title": {{ product.title | json }},
+        "price": {{ product.selected_or_first_available_variant.price | divided_by: 100.0 }}
+      }
+    {%- else -%}
+      null
+    {%- endif -%}
+  }
+</script>

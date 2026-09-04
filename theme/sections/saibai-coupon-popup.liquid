@@ -1,0 +1,130 @@
+{%- comment -%}
+  Empório Saibai — Módulo cupom primeira compra (isolado)
+  Markup: snippets/saibai-coupon-popup.liquid
+  CSS:    assets/saibai-coupon-popup.css
+  JS:     assets/saibai-coupon-popup.js
+  Trigger: exit intent (desktop) ou botão voltar (mobile) após consent LGPD
+{%- endcomment -%}
+{%- liquid
+  assign saibai_coupon_skip_popup = false
+
+  if customer and customer.orders_count > 0
+    assign saibai_coupon_skip_popup = true
+  endif
+
+  unless request.design_mode
+    if template.name == 'cart' or template.name == 'password'
+      assign saibai_coupon_skip_popup = true
+    endif
+
+    if request.page_type == 'customers/login' or request.page_type == 'customers/register' or request.page_type == 'customers/account'
+      assign saibai_coupon_skip_popup = true
+    endif
+  endunless
+-%}
+
+{{ 'saibai-coupon-popup.css' | asset_url | stylesheet_tag }}
+{%- if template.name == 'index' -%}
+  <script type="text/saibai-defer" data-src="{{ 'saibai-coupon-popup.js' | asset_url }}"></script>
+{%- else -%}
+  <script src="{{ 'saibai-coupon-popup.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+{%- unless saibai_coupon_skip_popup -%}
+  {% render 'saibai-coupon-popup',
+    saibai_coupon_code: section.settings.coupon_code,
+    saibai_coupon_expire_days: section.settings.expire_days,
+    saibai_coupon_cta_url: section.settings.cta_url,
+    saibai_coupon_arm_delay: section.settings.arm_delay,
+    saibai_coupon_eyebrow: section.settings.eyebrow,
+    saibai_coupon_title: section.settings.title,
+    saibai_coupon_text: section.settings.text,
+    saibai_coupon_cta_label: section.settings.cta_label,
+    saibai_coupon_copy_label: section.settings.copy_label,
+    saibai_coupon_dismiss_label: section.settings.dismiss_label
+  %}
+{%- endunless -%}
+
+{% schema %}
+{
+  "name": "Saibai Cupom",
+  "class": "section-saibai-coupon",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Conteúdo do popup"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Linha superior",
+      "default": "Primeira compra"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "5% off para você"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Descrição",
+      "default": "Use no checkout e descubra alcachofras, conservas e produtos artesanais."
+    },
+    {
+      "type": "text",
+      "id": "coupon_code",
+      "label": "Código do cupom",
+      "default": "5%NOVOCLIENTE"
+    },
+    {
+      "type": "text",
+      "id": "copy_label",
+      "label": "Botão copiar",
+      "default": "Copiar"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Botão principal",
+      "default": "Ver produtos"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Link do CTA"
+    },
+    {
+      "type": "text",
+      "id": "dismiss_label",
+      "label": "Link dispensar",
+      "default": "Agora não"
+    },
+    {
+      "type": "header",
+      "content": "Comportamento"
+    },
+    {
+      "type": "range",
+      "id": "expire_days",
+      "label": "Dias até reaparecer após fechar",
+      "min": 1,
+      "max": 30,
+      "step": 1,
+      "default": 7
+    },
+    {
+      "type": "range",
+      "id": "arm_delay",
+      "label": "Tempo mínimo na página (seg)",
+      "info": "Antes de ativar o gatilho",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "default": 3
+    }
+  ]
+}
+{% endschema %}

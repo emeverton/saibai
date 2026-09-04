@@ -1,0 +1,32 @@
+{
+  "client_key": "saibai",
+  "date": "2026-07-29",
+  "veredito": "LIVE APROVADO",
+  "ekyte": {
+    "workspace_id": 123736,
+    "workspace_name": "Saibai",
+    "task_id": 10033845,
+    "title": "[SAIBAI] Tema LIVE 29/07 — zonas frete planilha · 3x s/juros · frete BR · crédito Eyros",
+    "executor_id": "592834cd-38ef-4ea3-99b8-b4f05f3c2def",
+    "executor_name": "Everton S Ferreira",
+    "task_type_id": 25694,
+    "phase_id": 8657,
+    "start": "2026-07-29",
+    "due": "2026-08-05",
+    "estimated_minutes": 120,
+    "status": "OPEN",
+    "completed": false,
+    "url": "https://app.ekyte.com/#/tasks/10033845"
+  },
+  "ekyte_campaigns": {
+    "task_id": 10033851,
+    "title": "[SAIBAI] Meta Sales — AS bairros planilha · decisão AS BR · acompanhamento",
+    "url": "https://app.ekyte.com/#/tasks/10033851",
+    "status": "OPEN",
+    "completed": false
+  },
+  "notion": "https://app.notion.com/p/3ac968afab6681e98296e0fd99299f1b",
+  "whatsapp": "exports/whatsapp-update-2026-07-29.txt",
+  "theme_id": 186796147006,
+  "store": "emporiosaibai.com.br"
+}

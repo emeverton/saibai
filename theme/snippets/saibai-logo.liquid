@@ -1,0 +1,67 @@
+{%- comment -%}
+  Empório Saibai — Logo (snippet reutilizável)
+  variant: default | inverse
+  layout: square | wordmark | wordmark-mono
+  Assets:
+    - saibai-logo-header.png (oficial editada · 1024×341)
+    - saibai-wordmark-header.png (colorido legado)
+{%- endcomment -%}
+{%- liquid
+  assign logo_variant = variant | default: 'default'
+  assign logo_layout = layout | default: 'square'
+  assign logo_width = width | default: settings.logo_width | default: 172
+  assign logo_height = height | default: settings.logo_width | divided_by: 3.5 | round
+  assign inverse_logo = 'LOGO_SAIBAI_22_fundo_branco_1.png' | file_url
+  assign header_logo_w = 1024
+  assign header_logo_h = 341
+
+  if logo_layout == 'wordmark'
+    assign logo_height = height | default: 40
+  endif
+
+  if logo_layout == 'wordmark-mono'
+    assign logo_width = width | default: 200
+    assign logo_height = logo_width | times: header_logo_h | divided_by: header_logo_w
+  endif
+-%}
+{%- if logo_layout == 'wordmark-mono' -%}
+  <img
+    src="{{ 'saibai-logo-header.png' | asset_url }}"
+    alt="Empório Saibai — cultivando saúde"
+    class="header-logo__image saibai-logo saibai-logo--wordmark-mono{% if class != blank %} {{ class }}{% endif %}"
+    width="{{ logo_width }}"
+    height="{{ logo_height }}"
+    loading="eager"
+    fetchpriority="high"
+  >
+{%- elsif logo_layout == 'wordmark' -%}
+  <img
+    src="{{ 'saibai-wordmark-header.png' | asset_url }}"
+    alt="Empório Saibai"
+    class="header-logo__image saibai-logo saibai-logo--wordmark{% if class != blank %} {{ class }}{% endif %}"
+    width="{{ logo_width }}"
+    height="{{ logo_height }}"
+    loading="eager"
+    fetchpriority="high"
+  >
+{%- elsif logo_variant == 'inverse' -%}
+  <img
+    src="{{ inverse_logo }}"
+    alt="Empório Saibai"
+    class="header-logo__image saibai-logo{% if class != blank %} {{ class }}{% endif %}"
+    width="{{ logo_width }}"
+    height="{{ logo_height }}"
+    loading="eager"
+    fetchpriority="high"
+  >
+{%- else -%}
+  <img
+    src="{{ 'LOGO_SAIBAI_RUCULA_2022_f61dca0b-ac73-4665-a141-c6ecf6689198.png' | file_url }}"
+    alt="Empório Saibai"
+    class="header-logo__image saibai-logo{% if class != blank %} {{ class }}{% endif %}"
+    width="{{ logo_width }}"
+    height="{{ logo_height }}"
+    loading="eager"
+    fetchpriority="high"
+  >
+{%- endif -%}

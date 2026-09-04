@@ -1,0 +1,43 @@
+{
+  "sections": {
+    "hero": {
+      "type": "saibai-inst-hero",
+      "settings": {
+        "eyebrow": "Marca · Parcerias · Comunidade",
+        "title": "Conquistas e parcerias",
+        "lead": "Marcos que consolidam a Saibai como referência em alcachofra fresca, conservas artesanais e relacionamento de proximidade com clientes e parceiros.",
+        "asset_fallback": "saibai-inst-conserva.webp"
+      }
+    },
+    "stats": {
+      "type": "saibai-inst-stats",
+      "settings": {}
+    },
+    "cases": {
+      "type": "saibai-inst-cases",
+      "settings": {}
+    },
+    "parceria": {
+      "type": "saibai-inst-split",
+      "settings": {
+        "reverse": true,
+        "eyebrow": "Food service",
+        "title": "Parceiros da gastronomia",
+        "text": "<p>A Saibai fornece alcachofras frescas e conservas artesanais para cozinhas profissionais que valorizam procedência, consistência e sabor. Nossa relação com chefs e restaurantes de São Paulo é construída sobre entrega confiável, safra controlada e produto selecionado no ponto ideal.</p><p>Se você representa um restaurante, hotel ou operação de food service, fale conosco, temos condições especiais para parceiros B2B.</p>",
+        "asset_fallback": "saibai-inst-harvest.webp",
+        "image_alt": "Alcachofra fresca para restaurantes"
+      }
+    },
+    "nav": {
+      "type": "saibai-inst-nav",
+      "settings": {}
+    }
+  },
+  "order": [
+    "hero",
+    "stats",
+    "cases",
+    "parceria",
+    "nav"
+  ]
+}

@@ -1,0 +1,27 @@
+{{ 'saibai-announcement-bar.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'saibai-announcement-bar.js' | asset_url }}" defer="defer"></script>
+
+{% render 'saibai-announcement-bar' %}
+
+{% schema %}
+{
+  "name": "t:names.announcement_bar",
+  "class": "section-header section-announcement-bar",
+  "limit": 1,
+  "enabled_on": {
+    "groups": ["header"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Barra fixa Saibai — editar mensagens em snippets/saibai-announcement-bar-slides.liquid"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.announcement_bar",
+      "category": "t:categories.storytelling"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,18 @@
+{%- comment -%} Empório Saibai — institucional consolidado (core + pages/blog/article) {%- endcomment -%}
+{%- capture inst_list -%}saibai-inst-core.css{%- endcapture -%}
+{%- if request.page_type == 'page' -%}
+  {%- case page.handle -%}
+    {%- when 'historia', 'sobre', 'fazenda', 'conquistas', 'contato', 'contact' -%}
+      {%- capture inst_list -%}{{ inst_list }},saibai-inst-pages.css{%- endcapture -%}
+    {%- when 'politica-de-entrega', 'politica-de-troca', 'politica-de-privacidade' -%}
+      {%- comment -%} só core (base+hero+hub) {%- endcomment -%}
+  {%- endcase -%}
+{%- elsif request.page_type == 'blog' -%}
+  {%- capture inst_list -%}{{ inst_list }},saibai-inst-blog.css{%- endcapture -%}
+{%- elsif request.page_type == 'article' -%}
+  {%- capture inst_list -%}{{ inst_list }},saibai-inst-article.css{%- endcapture -%}
+{%- endif -%}
+{%- assign inst_files = inst_list | split: ',' -%}
+{%- for file in inst_files -%}
+  {{ file | asset_url | stylesheet_tag }}
+{%- endfor -%}

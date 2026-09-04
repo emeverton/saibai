@@ -1,0 +1,61 @@
+/*
+ * Empório Saibai — Marquee ticker (padrão Loro Piana)
+ * KV Saibai · módulo isolado
+ */
+
+.shopify-section.saibai-marquee-section {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.saibai-mq {
+  --mq-bg: var(--saibai-bg, #F2F5EE);
+  --mq-text: #2A3A1A;
+  --mq-muted: #4E6040;
+  --mq-border: rgb(42 58 26 / 0.12);
+
+  background: var(--mq-bg);
+  border-block: 0;
+  overflow: hidden;
+}
+
+.saibai-mq__track {
+  display: flex;
+  width: max-content;
+  animation: saibai-mq-scroll 40s linear infinite;
+}
+
+.saibai-mq__content {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  padding: 0.8125rem 1.25rem;
+  white-space: nowrap;
+  font-family: var(--font-body--family, 'Jost', sans-serif);
+  font-size: clamp(0.8125rem, 0.95vw, 0.875rem);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mq-text);
+}
+
+.saibai-mq__content span:not(:nth-child(even)) {
+  color: var(--mq-text);
+}
+
+.saibai-mq__content span:nth-child(even) {
+  color: var(--mq-muted);
+  font-size: 0.75em;
+  letter-spacing: 0;
+  opacity: 1;
+}
+
+@keyframes saibai-mq-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .saibai-mq__track { animation: none; }
+}

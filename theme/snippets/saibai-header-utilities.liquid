@@ -1,0 +1,53 @@
+{%- liquid
+  assign compact = compact | default: false
+  assign wishlist_href = settings.link_wishlist | strip
+  if wishlist_href == blank and pages['wish-list'] and pages['wish-list'].url != blank
+    assign wishlist_href = pages['wish-list'].url
+  endif
+-%}
+
+<div class="saibai-header__utilities{% if compact %} saibai-header__utilities--compact{% endif %}">
+  {%- unless compact -%}
+    {%- if shop.customer_accounts_enabled -%}
+      <a
+        href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{% render 'saibai-customer-account-url', context: 'login' %}{%- endif -%}"
+        class="saibai-header__icon-btn"
+        aria-label="{% if customer %}{{ 'customer.account_fallback' | t }}{% else %}{{ 'customer.log_in' | t }}{% endif %}"
+      >
+        <span class="saibai-header__icon" aria-hidden="true">{{- 'icon-account.svg' | inline_asset_content -}}</span>
+      </a>
+    {%- endif -%}
+
+    {%- if settings.show_wishlist and wishlist_href != blank -%}
+      <a href="{{ wishlist_href }}" class="saibai-header__icon-btn" aria-label="{{ 'content.wishlist' | t }}">
+        <span class="saibai-header__icon saibai-header__icon--heart" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.1">
+            <path d="M10 17.5s-6.5-4.35-6.5-8.75C3.5 6.5 5.5 4.5 8 4.5c1.45 0 2.75.75 3.5 1.9.75-1.15 2.05-1.9 3.5-1.9 2.5 0 4.5 2 4.5 4.25 0 4.4-6.5 8.75-6.5 8.75z"/>
+          </svg>
+        </span>
+      </a>
+    {%- endif -%}
+  {%- endunless -%}
+
+  {%- if settings.cart_type == 'drawer' -%}
+    <side-drawer-opener data-side-drawer="#Cart-Drawer">
+      <button type="button" class="saibai-header__icon-btn saibai-header__icon-btn--cart" aria-label="{{ 'content.cart_count' | t: count: cart.item_count }}">
+        <span class="saibai-header__icon saibai-header__icon--cart" aria-hidden="true">
+          {{- 'icon-cart.svg' | inline_asset_content -}}
+          {%- if cart.item_count > 0 -%}
+            <span class="saibai-header__cart-count" data-cart-count>{{ cart.item_count }}</span>
+          {%- endif -%}
+        </span>
+      </button>
+    </side-drawer-opener>
+  {%- else -%}
+    <a href="{{ routes.cart_url }}" class="saibai-header__icon-btn saibai-header__icon-btn--cart" aria-label="{{ 'content.cart_count' | t: count: cart.item_count }}">
+      <span class="saibai-header__icon saibai-header__icon--cart" aria-hidden="true">
+        {{- 'icon-cart.svg' | inline_asset_content -}}
+        {%- if cart.item_count > 0 -%}
+          <span class="saibai-header__cart-count" data-cart-count>{{ cart.item_count }}</span>
+        {%- endif -%}
+      </span>
+    </a>
+  {%- endif -%}
+</div>

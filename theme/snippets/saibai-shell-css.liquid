@@ -1,0 +1,27 @@
+{%- comment -%} Empório Saibai — shell consolidado (core + cards; legacy se sem base.css) {%- endcomment -%}
+{%- liquid
+  assign shell_core = 'saibai-shell-core.css,saibai-shell-cards.css' | split: ','
+  assign saibai_bust = settings.saibai_cache_bust | default: '1'
+-%}
+{%- for file in shell_core -%}
+  {%- capture shell_href -%}{{ file | asset_url }}&saibai={{ saibai_bust }}{%- endcapture -%}
+  {%- if async -%}
+    <link rel="stylesheet" href="{{ shell_href }}" media="print" onload="this.media='all'">
+  {%- else -%}
+    <link rel="stylesheet" href="{{ shell_href }}">
+  {%- endif -%}
+{%- endfor -%}
+{%- if skip_veltrus_base -%}
+  {%- capture legacy_href -%}{{ 'saibai-shell-legacy.css' | asset_url }}&saibai={{ saibai_bust }}{%- endcapture -%}
+  <link rel="stylesheet" href="{{ legacy_href }}">
+{%- endif -%}
+{%- if async -%}
+  <noscript>
+    {%- for file in shell_core -%}
+      <link rel="stylesheet" href="{{ file | asset_url }}&saibai={{ saibai_bust }}">
+    {%- endfor -%}
+    {%- if skip_veltrus_base -%}
+      <link rel="stylesheet" href="{{ 'saibai-shell-legacy.css' | asset_url }}&saibai={{ saibai_bust }}">
+    {%- endif -%}
+  </noscript>
+{%- endif -%}

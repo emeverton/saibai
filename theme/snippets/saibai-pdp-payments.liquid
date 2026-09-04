@@ -1,0 +1,71 @@
+{%- comment -%}
+  Empório Saibai — Pix + parcelamento PDP (stack C-level)
+  Veltrus Growth & Technology | Shopify Partner ID 4969609
+{%- endcomment -%}
+{%- liquid
+  assign pay_product = product | default: closest.product
+  assign pay_variant = pay_product.selected_or_first_available_variant
+
+  assign policy_blob = shop.terms_of_service.body | append: shop.refund_policy.body | append: shop.shipping_policy.body | append: shop.subscription_policy.body
+  assign policy_plain = policy_blob | strip_html | replace: '&nbsp;', ' '
+
+  assign pix_discount_line = ''
+  assign pix_percent = 0
+
+  if policy_plain != blank
+    assign policy_chunks = policy_plain | split: '.'
+    for chunk in policy_chunks
+      assign chunk_lower = chunk | downcase | strip
+      if chunk_lower contains 'pix'
+        if chunk_lower contains 'desconto' or chunk_lower contains '%'
+          assign pix_discount_line = chunk | strip
+          if chunk_lower contains '5%'
+            assign pix_percent = 5
+          elsif chunk_lower contains '10%'
+            assign pix_percent = 10
+          endif
+          break
+        endif
+      endif
+    endfor
+  endif
+
+  assign sale_cents = pay_variant.price
+  assign compare_cents = pay_variant.compare_at_price
+  assign show_compare = false
+  if compare_cents != blank and compare_cents > sale_cents
+    assign show_compare = true
+    assign save_cents = compare_cents | minus: sale_cents
+  endif
+
+  assign pix_cents = sale_cents
+  if pix_percent > 0
+    assign pix_multiplier = 100 | minus: pix_percent
+    assign pix_cents = sale_cents | times: pix_multiplier | divided_by: 100
+  endif
+-%}
+{%- if pay_product != blank and pay_variant != blank -%}
+  <div class="saibai-pdp-pay" data-saibai-pdp-pay aria-label="Formas de pagamento">
+    {%- if show_compare -%}
+      <p class="saibai-pdp-pay__compare-row">
+        <span class="saibai-pdp-pay__compare-label">De</span>
+        <s class="saibai-pdp-pay__compare">{% render 'saibai-money-br', amount: compare_cents %}</s>
+        <span class="saibai-pdp-pay__save">Economize {% render 'saibai-money-br', amount: save_cents %}</span>
+      </p>
+    {%- endif -%}
+
+    {%- if pix_percent > 0 -%}
+      <p class="saibai-pdp-pay__pix-line">
+        <span class="saibai-pdp-pay__pix-amount">{% render 'saibai-money-br', amount: pix_cents %}</span>
+        <span class="saibai-pdp-pay__pix-sep" aria-hidden="true">·</span>
+        <span class="saibai-pdp-pay__pix-meta">no Pix com {{ pix_percent }}% off</span>
+      </p>
+    {%- elsif pix_discount_line != blank -%}
+      <p class="saibai-pdp-pay__pix-line">
+        <span class="saibai-pdp-pay__pix-meta">{{ pix_discount_line | capitalize }}</span>
+      </p>
+    {%- endif -%}
+
+    <p class="saibai-pdp-pay__methods">Em até 3x sem juros no cartão · demais parcelas com juros · Pix · Boleto</p>
+  </div>
+{%- endif -%}

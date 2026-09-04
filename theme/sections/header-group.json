@@ -1,0 +1,27 @@
+{
+  "name": "Header group",
+  "type": "header",
+  "sections": {
+    "announcement_bar_4tGfEp": {
+      "type": "announcement-bar",
+      "settings": {}
+    },
+    "saibai_header_main": {
+      "type": "saibai-header",
+      "settings": {
+        "menu": "main-menu",
+        "logo_width": 240,
+        "logo_width_mobile": 120,
+        "logo_style": "mono",
+        "logo_height_color": 40,
+        "sticky_header": true,
+        "highlight_1": "Produtos",
+        "highlight_2": "Receitas"
+      }
+    }
+  },
+  "order": [
+    "announcement_bar_4tGfEp",
+    "saibai_header_main"
+  ]
+}

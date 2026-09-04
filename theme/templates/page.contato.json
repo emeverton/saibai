@@ -1,0 +1,36 @@
+{
+  "sections": {
+    "hero": {
+      "type": "saibai-inst-hero",
+      "settings": {
+        "eyebrow": "Empório Saibai · Piedade, SP",
+        "title": "Contato",
+        "lead": "Entre em contato com a Saibai. Respondemos em até 24h úteis.",
+        "asset_fallback": "saibai-inst-planta.webp"
+      }
+    },
+    "contact": {
+      "type": "saibai-inst-contact",
+      "settings": {
+        "channels_title": "Fale com a Saibai",
+        "channels_lead": "Dúvidas sobre pedidos, safra ou parcerias? Escolha o canal que preferir.",
+        "whatsapp_url": "https://chat.whatsapp.com/LmGiN0C8QT04AQ4VB9PDdO",
+        "whatsapp_label": "Grupo VIP no WhatsApp",
+        "email": "contato@saibai.com.br",
+        "phone": "(15) 3010-1451",
+        "address_line1": "Estrada dos Lavradores, 7 — Poço",
+        "address_line2": "Piedade, SP — CEP 18176-210",
+        "hours": "Segunda a sexta, 8h às 18h. Resposta por e-mail em até 24h úteis.",
+        "map_query": "Estrada dos Lavradores 7 Piedade SP",
+        "form_title": "Envie uma mensagem",
+        "form_lead": "Preencha o formulário e nossa equipe retorna em breve.",
+        "button_label": "Enviar mensagem"
+      }
+    },
+    "nav": {
+      "type": "saibai-inst-nav",
+      "settings": {}
+    }
+  },
+  "order": ["hero", "contact", "nav"]
+}

@@ -1,0 +1,244 @@
+{
+  "sections": {
+    "s_editorial": {
+      "type": "saibai-home-editorial",
+      "blocks": {
+        "ed_1": {
+          "type": "collection",
+          "settings": {
+            "style": "lifestyle",
+            "label": "Safra 2026",
+            "title": "Alcachofra Fresca",
+            "cta": "Comprar",
+            "url": "/collections/alcachofra-in-natura",
+            "image_asset": "saibai-feature-fresca.webp",
+            "image_alt": "Alcachofra fresca colhida em Piedade, SP"
+          }
+        },
+        "ed_2": {
+          "type": "collection",
+          "settings": {
+            "style": "product",
+            "label": "Artesanal",
+            "title": "Conservas",
+            "cta": "Descobrir",
+            "url": "/collections/em-conserva",
+            "image_asset": "saibai-ed-conserva.webp",
+            "image_alt": "Conserva artesanal Saibai — coração de alcachofra"
+          }
+        },
+        "ed_3": {
+          "type": "collection",
+          "settings": {
+            "style": "lifestyle",
+            "label": "Gourmet",
+            "title": "Flores Desidratadas",
+            "cta": "Descobrir",
+            "url": "/collections/flores-desidratadas",
+            "image_asset": "saibai-banner-flores-hero.webp",
+            "image_alt": "Flores desidratadas Saibai em composição gourmet"
+          }
+        },
+        "ed_4": {
+          "type": "collection",
+          "settings": {
+            "style": "product",
+            "label": "Souvenir",
+            "title": "Chaveiro Saibai",
+            "cta": "Descobrir",
+            "url": "/collections/chaveiro",
+            "image_asset": "saibai-ed-chaveiro.webp",
+            "image_alt": "Chaveiro artesanal Saibai em formato de alcachofra"
+          }
+        }
+      },
+      "block_order": [
+        "ed_1",
+        "ed_2",
+        "ed_3",
+        "ed_4"
+      ],
+      "settings": {}
+    },
+    "marquee_saibai": {
+      "type": "saibai-marquee",
+      "settings": {}
+    },
+    "s_icons": {
+      "type": "saibai-home-services",
+      "settings": {
+        "title": "Safra 2026",
+        "media_label": "Colhida no ponto certo",
+        "cta_label": "Descobrir a safra"
+      }
+    },
+    "s_farm_story": {
+      "type": "saibai-home-farm",
+      "settings": {}
+    },
+    "s_look": {
+      "type": "saibai-home-feature",
+      "settings": {
+        "title": "Na mesa",
+        "featured_product_handle": "alcachofra-mini-saibai-caixa",
+        "cta_label": "Ver todos os produtos"
+      }
+    },
+    "s_products": {
+      "type": "saibai-home-products",
+      "settings": {
+        "lead": "A safra Saibai apresenta alcachofra fresca e conservas artesanais, da terra de Piedade direto para a sua mesa.",
+        "tab_1_label": "Alcachofras In Natura",
+        "tab_2_label": "Conservas",
+        "tab_3_label": "Flores Desidratadas",
+        "tab_4_label": "Chaveiro",
+        "default_tab": "fresca",
+        "title": "Produtos Saibai"
+      }
+    },
+    "s_inside": {
+      "type": "saibai-home-inside",
+      "blocks": {
+        "inside_1": {
+          "type": "story",
+          "settings": {
+            "title": "Colheita em Piedade",
+            "text": "Alcachofras colhidas no ponto certo, direto da terra de Piedade para a sua mesa, com o cuidado de quem produz há décadas.",
+            "url": "/pages/historia",
+            "image_asset": "saibai-inst-colheita.webp"
+          }
+        },
+        "inside_2": {
+          "type": "story",
+          "settings": {
+            "title": "Variedades da safra",
+            "text": "Frescas, higienizadas e congeladas, cada formato pensado para diferentes momentos na cozinha e na mesa.",
+            "url": "/collections/alcachofra-in-natura",
+            "image_asset": "saibai-inst-variedades.webp"
+          }
+        },
+        "inside_3": {
+          "type": "story",
+          "settings": {
+            "title": "Da planta ao campo",
+            "text": "Plantio artesanal e colheita manual em Piedade, SP, onde a alcachofra é tradição de família.",
+            "url": "/pages/historia",
+            "image_asset": "saibai-inst-campo.webp"
+          }
+        },
+        "inside_5": {
+          "type": "story",
+          "settings": {
+            "title": "Flores desidratadas",
+            "text": "Flores comestíveis para finalizar pratos, drinks e sobremesas com cor e delicadeza.",
+            "url": "/collections/flores-desidratadas",
+            "image_asset": "saibai-inst-flores.webp"
+          }
+        },
+        "inside_6": {
+          "type": "story",
+          "settings": {
+            "title": "Plantação Saibai",
+            "text": "Conheça o campo onde nasce cada alcachofra, solo, clima e mão de obra local em harmonia.",
+            "url": "/pages/historia",
+            "image_asset": "saibai-inst-planta.webp"
+          }
+        },
+        "inside_7": {
+          "type": "story",
+          "settings": {
+            "title": "Grupo VIP WhatsApp",
+            "text": "Receba avisos de safra, ofertas exclusivas e novidades direto no WhatsApp, como quem compra direto do produtor.",
+            "url": "https://chat.whatsapp.com/LmGiN0C8QT04AQ4VB9PDdO",
+            "image_asset": "saibai-inst-vip.webp"
+          }
+        }
+      },
+      "block_order": [
+        "inside_1",
+        "inside_2",
+        "inside_3",
+        "inside_5",
+        "inside_6",
+        "inside_7"
+      ],
+      "settings": {
+        "title": "Por dentro da Saibai"
+      }
+    },
+    "s_at_service": {
+      "type": "saibai-home-at-service",
+      "blocks": {
+        "service_1": {
+          "type": "service",
+          "settings": {
+            "icon": "shipping",
+            "image_asset": "saibai-asvc-entrega.jpg",
+            "label": "Entrega refrigerada",
+            "link_label": "Como entregamos",
+            "link_url": "/pages/politica-de-entrega"
+          }
+        },
+        "service_2": {
+          "type": "service",
+          "settings": {
+            "icon": "returns",
+            "image_asset": "saibai-asvc-troca.jpg",
+            "label": "Troca facilitada",
+            "link_label": "Política de troca",
+            "link_url": "/pages/politica-de-troca"
+          }
+        },
+        "service_3": {
+          "type": "service",
+          "settings": {
+            "icon": "whatsapp",
+            "image_asset": "saibai-asvc-whatsapp.jpg",
+            "label": "Grupo VIP WhatsApp",
+            "link_label": "Entrar no grupo",
+            "link_url": "https://chat.whatsapp.com/LmGiN0C8QT04AQ4VB9PDdO"
+          }
+        }
+      },
+      "block_order": [
+        "service_1",
+        "service_2",
+        "service_3"
+      ],
+      "settings": {
+        "title": "Ao seu dispor"
+      }
+    },
+    "s_conservas": {
+      "type": "saibai-home-conservas",
+      "settings": {}
+    },
+    "s_hero_v5": {
+      "type": "saibai-home-hero",
+      "settings": {
+        "title": "Safra 2026",
+        "link_1_label": "Alcachofras In Natura",
+        "link_1_url": "/collections/alcachofra-in-natura",
+        "link_2_label": "Conservas",
+        "link_2_url": "/collections/em-conserva",
+        "link_3_label": "Flores Desidratadas",
+        "link_3_url": "/collections/flores-desidratadas",
+        "link_4_label": "Chaveiro Saibai",
+        "link_4_url": "/collections/chaveiro",
+        "default_tab": "fresca"
+      }
+    }
+  },
+  "order": [
+    "s_hero_v5",
+    "s_products",
+    "s_editorial",
+    "marquee_saibai",
+    "s_farm_story",
+    "s_conservas",
+    "s_look",
+    "s_icons",
+    "s_at_service",
+    "s_inside"
+  ]
+}

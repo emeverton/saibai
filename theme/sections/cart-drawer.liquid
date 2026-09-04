@@ -1,0 +1,135 @@
+{%- if request.page_type != 'cart' and settings.cart_type == 'drawer' -%}
+  <link rel="stylesheet" href="{{ 'component-cart-drawer.css' | asset_url }}" media="print" fetchpriority="low" onload="this.media='all'">
+  <link rel="stylesheet" href="{{ 'component-cart.css' | asset_url }}" media="print" fetchpriority="low" onload="this.media='all'">
+  <link rel="stylesheet" href="{{ 'component-totals.css' | asset_url }}" media="print" fetchpriority="low" onload="this.media='all'">
+  <link rel="stylesheet" href="{{ 'quantity-popover.css' | asset_url }}" media="print" fetchpriority="low" onload="this.media='all'">
+  <link rel="stylesheet" href="{{ 'component-discounts.css' | asset_url }}" media="print" fetchpriority="low" onload="this.media='all'">
+
+  <noscript>
+    <link rel="stylesheet" href="{{ 'component-cart-drawer.css' | asset_url }}">
+    <link rel="stylesheet" href="{{ 'component-cart.css' | asset_url }}">
+    <link rel="stylesheet" href="{{ 'component-totals.css' | asset_url }}">
+    <link rel="stylesheet" href="{{ 'quantity-popover.css' | asset_url }}">
+    <link rel="stylesheet" href="{{ 'component-discounts.css' | asset_url }}">
+  </noscript>
+
+  {% liquid
+    assign section_fetch = false
+    if section.index == nil
+      assign section_fetch = true
+    endif
+  %}
+  
+  {% capture cart_drawer_product_block %}
+    {% content_for 'block', id: 'cart-product', type: '_cart-product' %}
+  {% endcapture %}
+
+  {% capture cart_drawer_popular_products_block %}
+    {% content_for 'block', id: 'cart-popular-products', type: '_cart-popular-products' %}
+  {% endcapture %}
+
+  {%- render 'cart-drawer', cart_drawer_product_block: cart_drawer_product_block, cart_drawer_popular_products_block: cart_drawer_popular_products_block, section_fetch: section_fetch -%}
+
+  {%- if template.name == 'index' -%}
+    <script>
+      (function () {
+        'use strict';
+        var scripts = [
+          {{ 'cart.js' | asset_url | json }},
+          {{ 'cart-drawer.js' | asset_url | json }}
+        ];
+        var loaded = false;
+
+        function loadCartScripts(cb) {
+          if (loaded) {
+            if (cb) cb();
+            return;
+          }
+          loaded = true;
+          var i = 0;
+          function next() {
+            if (i >= scripts.length) {
+              if (cb) cb();
+              return;
+            }
+            var s = document.createElement('script');
+            s.src = scripts[i++];
+            s.defer = true;
+            s.onload = next;
+            s.onerror = next;
+            document.head.appendChild(s);
+          }
+          next();
+        }
+
+        window.saibaiLoadCart = loadCartScripts;
+
+        function onCartIntent() {
+          if (window.saibaiLoadCore) {
+            window.saibaiLoadCore(function () {
+              loadCartScripts();
+            });
+          } else {
+            loadCartScripts();
+          }
+        }
+
+        document.addEventListener('pointerdown', function (e) {
+          if (e.target.closest && e.target.closest('side-drawer-opener,[data-side-drawer="#Cart-Drawer"],.saibai-header__icon-btn--cart')) {
+            onCartIntent();
+          }
+        }, { passive: true });
+
+        function scheduleCart() {
+          if ('requestIdleCallback' in window) {
+            requestIdleCallback(function () {
+              if (window.saibaiLoadCore) window.saibaiLoadCore(function () { loadCartScripts(); });
+              else loadCartScripts();
+            }, { timeout: 6000 });
+          } else {
+            setTimeout(function () {
+              if (window.saibaiLoadCore) window.saibaiLoadCore(function () { loadCartScripts(); });
+              else loadCartScripts();
+            }, 5000);
+          }
+        }
+
+        if (document.readyState === 'complete') scheduleCart();
+        else window.addEventListener('load', scheduleCart, { once: true });
+      })();
+    </script>
+  {%- else -%}
+    <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
+  {%- endif -%}
+{%- endif -%}
+
+{% schema %}
+  {
+    "name": "t:names.cart_drawer",
+    "tag": "section",
+    "class": "section-cart-drawer",
+    "limit": 1,
+    "enabled_on": {
+      "groups": ["custom.popup"]
+    },
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "t:info.cart_drawer_info"
+      },
+      {
+        "type": "collection",
+        "id": "cart_drawer_collection",
+        "label": "t:settings.collection",
+        "info": "t:info.cart_drawer_empty_info"
+      },
+      {
+        "type": "color_scheme",
+        "id": "color_scheme",
+        "label": "t:settings.color_scheme",
+        "default": "scheme-1"
+      }
+    ]
+  }
+{% endschema %}

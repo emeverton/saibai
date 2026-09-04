@@ -1,0 +1,44 @@
+{
+  "client_key": "saibai",
+  "date": "2026-07-22",
+  "veredito": "ESTRUTURA_CRIADA_AGUARDA_RECARGA",
+  "ekyte": {
+    "workspace_id": 123736,
+    "workspace_name": "Saibai",
+    "task_id": 9971373,
+    "title": "[SAIBAI] Meta Sales D2C R$1.500/mês · campanha + 8 ads PAUSED — aguarda recarga",
+    "executor_id": "592834cd-38ef-4ea3-99b8-b4f05f3c2def",
+    "executor_name": "Everton S Ferreira",
+    "task_type_id": 25694,
+    "phase_id": 8657,
+    "start": "2026-07-22",
+    "due": "2026-07-29",
+    "estimated_minutes": 90,
+    "status": "OPEN",
+    "completed": false,
+    "url": "https://app.ekyte.com/#/tasks/9971373"
+  },
+  "notion": "https://app.notion.com/p/3a5968afab668115aa03e9e0f4310d2e",
+  "slack": "https://veltrus.slack.com/archives/C0BD28VMD4N/p1784730116709259",
+  "meta": {
+    "ad_account_id": "act_1199864388174624",
+    "campaign_id": "120253939403590155",
+    "adset_id": "120253939408280155",
+    "ads_count": 8,
+    "daily_budget_brl": 50,
+    "monthly_budget_brl": 1500,
+    "status": "PAUSED"
+  },
+  "deliverables": [
+    "campaign_sales_abo_1500_month",
+    "adset_purchase_advantage_plus",
+    "upload_8_creatives_drive",
+    "8_ads_feed_stories_paused"
+  ],
+  "open_items": [
+    "meta_account_recharge",
+    "activate_campaign_adset_ads",
+    "decide_pause_leads_whatsapp",
+    "archive_empty_cbo_campaign"
+  ]
+}

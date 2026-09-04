@@ -1,0 +1,204 @@
+{%- comment -%}
+  Empório Saibai — Tema Oficial
+  Desenvolvido por Veltrus Growth & Technology
+  Shopify Partner ID: 4969609
+  Versão: 1.2.5 | 2026-07-16
+  PROPRIEDADE INTELECTUAL PROTEGIDA
+  Reprodução proibida sem autorização
+  Hotfix: header SSR estático + cart/PLP polish
+{%- endcomment -%}
+{%- capture direction -%}
+  {%- assign rtl_locales = "ar,ae,arc,fa,he,ur,ps,sd,dv,yi,ug,ha,ckb,ku,ks,pnb,bcc,bqi,azb,mzn,glk,nqo,kwh" | split: "," -%}
+  {%- if rtl_locales contains request.locale.iso_code -%}
+    rtl
+  {%- else -%}
+    ltr
+  {%- endif -%}
+{%- endcapture -%}
+
+<!doctype html>
+<html class="no-js{% if request.design_mode %} shopify-design-mode{% endif %}" lang="{{ request.locale.iso_code }}" dir="{% if settings.enable_rtl_layout %}{{ direction }}{% else %}ltr{% endif %}">
+  <head>
+    <meta charset="utf-8">
+    <!-- saibai-hotfix-20260716-v5-20260716085244 -->
+    <meta name="saibai-build" content="20260716-v5-20260716093031">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    {%- if template.name == 'index' -%}
+      {% comment %}theme-check-disable AssetPreload{% endcomment %}
+      <link
+        rel="preload"
+        as="image"
+        href="{{ 'saibai-hero-fresca-480.webp' | asset_url }}"
+        media="(max-width: 549px)"
+        type="image/webp"
+        fetchpriority="high"
+      >
+      <link
+        rel="preload"
+        as="image"
+        href="{{ 'saibai-hero-fresca-800.webp' | asset_url }}"
+        media="(min-width: 550px) and (max-width: 989px)"
+        type="image/webp"
+        fetchpriority="high"
+      >
+      <link
+        rel="preload"
+        as="image"
+        href="{{ 'saibai-hero-fresca-1200.webp' | asset_url }}"
+        media="(min-width: 990px)"
+        type="image/webp"
+        fetchpriority="high"
+      >
+      {% comment %}theme-check-enable AssetPreload{% endcomment %}
+    {%- else -%}
+      {% comment %}theme-check-disable AssetPreload{% endcomment %}
+      <link
+        rel="preload"
+        as="image"
+        href="{{ 'LOGO_SAIBAI_RUCULA_2022_f61dca0b-ac73-4665-a141-c6ecf6689198.png' | file_url }}"
+        fetchpriority="high"
+      >
+      {% comment %}theme-check-enable AssetPreload{% endcomment %}
+    {%- endif -%}
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+
+    {% render 'critical-css' %}
+
+    <meta name="theme-color" content="#2A3A1A">
+    {%- capture saibai_canonical_url -%}{% render 'saibai-canonical-url' %}{%- endcapture -%}
+    <link
+      rel="canonical"
+      href="{{ saibai_canonical_url | strip }}"
+      canonical-url="{{ shop.url }}/"
+    >
+    {%- if request.path == '/collections/all' -%}
+      <script>
+        if (location.pathname === '/collections/all') location.replace('/collections/todos');
+      </script>
+      <noscript><meta http-equiv="refresh" content="0;url=/collections/todos"></noscript>
+    {%- endif -%}
+    <meta name="robots" content="index, follow">
+
+    {%- if settings.favicon != blank -%}
+      <link
+        rel="icon"
+        type="image/png"
+        href="{{ settings.favicon | image_url: width: 32, height: 32 }}"
+      >
+    {%- endif -%}
+
+    {%- unless settings.type_header_font.system?
+      and settings.type_body_font.system?
+      and settings.type_subheading_font.system?
+    -%}
+      <link
+        rel="preconnect"
+        href="https://fonts.shopifycdn.com"
+        crossorigin
+      >
+    {%- endunless -%}
+
+    <title>
+      {{ page_title -}}
+      {%- unless page_title contains shop.name %} | {{ shop.name }}{% endunless -%}
+    </title>
+
+    {%- capture saibai_meta_description -%}{% render 'saibai-meta-description' %}{%- endcapture -%}
+    <meta name="description" content="{{ saibai_meta_description | strip | escape }}">
+
+    {% render 'seo-meta' %}
+    {% render 'schema-organization' %}
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        analytics_storage: 'denied',
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        personalization_storage: 'denied',
+        functionality_storage: 'granted',
+        security_storage: 'granted',
+        wait_for_update: 500
+      });
+    </script>
+
+    {% render 'global-style' %}
+
+    {% render 'global-css', direction: direction %}
+    {%- if template.name == 'index' -%}
+      <script src="{{ 'saibai-products.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+    {%- render 'global-script' -%}
+
+    {{ content_for_header }}
+  </head>
+
+  <body
+    class="
+      saibai-theme template-{{ request.page_type | replace: 'customers/', '' }}{% if settings.enable_preloading_screen %} has--preload-screen{% endif %}
+      {% if settings.animations_hover_elements != 'none' %} card-hover--{{ settings.animations_hover_elements }}{% endif %}
+      {% if settings.animation_hover_buttons %} button-hover--effect{% endif %}
+    "
+  >
+    {% render 'skip-to-content-link', href: '#MainContent', text: 'accessibility.skip_to_text' %}
+
+    {%- if settings.enable_preloading_screen -%}
+      {% render 'preload-screen' %}
+    {%- endif -%}
+
+    <div id="header-group">
+      {% sections 'header-group' %}
+
+    </div>
+
+    {%- liquid
+      sections 'popup-group'
+      sections 'general-group'
+    -%}
+
+    <main
+      id="MainContent"
+      class="content-for-layout focus-none relative z-2"
+      role="main"
+      tabindex="-1"
+    >
+      {{ content_for_layout }}
+    </main>
+
+    {% sections 'footer-group' %}
+
+    <ul hidden>
+      <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>
+      <li id="a11y-new-window-message">{{ 'accessibility.link_messages.new_window' | t }}</li>
+    </ul>
+
+    {%- if settings.predictive_search_enabled -%}
+      {%- if template.name == 'index' -%}
+        <script>window.__saibaiSearchLazy={src:{{ 'predictive-search.js' | asset_url | json }},loadOnPointer:true};</script>
+        <script src="{{ 'saibai-search-lazy.js' | asset_url }}" defer="defer"></script>
+      {%- else -%}
+        <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
+      {%- endif -%}
+    {%- elsif template.name == 'index' -%}
+      <script>window.__saibaiSearchLazy={src:{{ 'search-form.js' | asset_url | json }},loadOnPointer:false};</script>
+      <script src="{{ 'saibai-search-lazy.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+
+    {% render 'halo-popup' %}
+
+    {% render 'halo-global' %}
+
+    {% render 'saibai-whatsapp-float' %}
+    {% render 'saibai-cart-limits' %}
+    {% render 'saibai-delivery-zones' %}
+    {% section 'saibai-consent-popup' %}
+    {% section 'saibai-coupon-popup' %}
+
+    {%- if template.name == 'index' -%}
+      <script src="{{ 'saibai-index-defer.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+  </body>
+</html>

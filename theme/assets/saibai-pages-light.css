@@ -1,0 +1,67 @@
+/* Empório Saibai — Pages LIGHT (search+blog+list) | Veltrus — consolidado */
+
+/* --- saibai-pages-search.css --- */
+/* Empório Saibai — Search
+ * Veltrus Growth & Technology | Shopify Partner ID 4969609
+ * PROPRIEDADE INTELECTUAL PROTEGIDA
+ */
+
+/* ── Search ── */
+body.saibai-theme.template-search .search__input,
+body.saibai-theme.template-search .field__input {
+  border-color: rgb(42 58 26 / 0.2);
+  background: #fff;
+}
+
+body.saibai-theme.template-search .search__button {
+  color: #2A3A1A;
+}
+
+/* --- saibai-pages-blog.css --- */
+/* Empório Saibai — Blog
+ * Veltrus Growth & Technology | Shopify Partner ID 4969609
+ * PROPRIEDADE INTELECTUAL PROTEGIDA
+ */
+
+/* ── Blog / Article ── */
+body.saibai-theme.template-blog .blog-articles__article,
+body.saibai-theme.template-article .article-template {
+  background: transparent;
+}
+
+body.saibai-theme.template-blog .card__heading a,
+body.saibai-theme.template-article .article-template__title {
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+body.saibai-theme.template-article .article-template__content a {
+  color: #3D2B1F;
+}
+
+body.saibai-theme.template-article .article-template__content a:hover {
+  color: #2A3A1A;
+}
+
+/* --- saibai-pages-list.css --- */
+/* Empório Saibai — List
+ * Veltrus Growth & Technology | Shopify Partner ID 4969609
+ * PROPRIEDADE INTELECTUAL PROTEGIDA
+ */
+
+/* ── List collections ── */
+body.saibai-theme.template-list-collections .collection-list-view-all {
+  font-weight: 400;
+  letter-spacing: 0.04em;
+}
+
+body.saibai-theme.template-blog [class*="blog-post-sidebar-text"],
+body.saibai-theme.template-article [class*="blog-post-sidebar-text"],
+body.saibai-theme.template-blog [class*="blog-post-sidebar-products"],
+body.saibai-theme.template-article [class*="blog-post-sidebar-products"],
+body.saibai-theme.template-blog [class*="blog-post-sidebar-image"],
+body.saibai-theme.template-article [class*="blog-post-sidebar-image"] {
+  display: none !important;
+}
+

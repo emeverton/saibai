@@ -1,0 +1,116 @@
+{%- comment -%} v4 · dobra editorial LP (cm-icons) · CSS via saibai-conditional-assets {%- endcomment -%}
+<!-- saibai-svc-v4 -->
+
+{%- liquid
+  assign svc_title = section.settings.title | default: 'Safra 2026'
+  assign svc_text = section.settings.text | default: 'Seleção cuidadosa de alcachofras frescas e conservas artesanais, da terra de Piedade direto para a sua mesa, com o cuidado de quem produz há décadas.'
+  assign svc_media_label = section.settings.media_label | default: 'Colhida no ponto certo'
+  assign svc_cta_label = section.settings.cta_label | default: 'Descobrir a safra'
+  assign svc_cta_url = section.settings.cta_url | default: '/collections/alcachofra-in-natura'
+  assign svc_image_url = section.settings.image_url | default: '/collections/alcachofra-in-natura'
+  assign svc_image = section.settings.image
+
+  if svc_image == blank
+    assign svc_image_asset = 'saibai-inst-campo.webp'
+  endif
+-%}
+
+<section class="saibai-svc" aria-label="{{ svc_title | escape }}">
+  <div class="saibai-svc__inner">
+    <div class="saibai-svc__caption">
+      {%- if svc_media_label != blank -%}
+        <p class="saibai-svc__eyebrow">{{ svc_media_label }}</p>
+      {%- endif -%}
+      <h2 class="saibai-svc__title">{{ svc_title }}</h2>
+      {%- if svc_text != blank -%}
+        <p class="saibai-svc__text">{{ svc_text }}</p>
+      {%- endif -%}
+    </div>
+
+    <div class="saibai-svc__wrapper">
+      <a href="{{ svc_image_url }}" class="saibai-svc__media-link">
+        <span class="saibai-svc__media">
+          {%- if svc_image != blank -%}
+            {{
+              svc_image
+              | image_url: width: 1200
+              | image_tag:
+                loading: 'lazy',
+                widths: '400, 558, 800, 1200',
+                sizes: '(min-width: 990px) 558px, 88vw',
+                class: 'saibai-svc__img',
+                alt: svc_image.alt | default: svc_title
+            }}
+          {%- else -%}
+            <img
+              src="{{ svc_image_asset | asset_url }}"
+              alt="Plantação Saibai em Piedade, SP"
+              class="saibai-svc__img"
+              loading="lazy"
+              width="558"
+              height="780"
+            >
+          {%- endif -%}
+        </span>
+      </a>
+
+      <a href="{{ svc_cta_url }}" class="saibai-svc__cta">{{ svc_cta_label }}</a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Saibai Services",
+  "class": "saibai-services-section",
+  "enabled_on": {
+    "templates": ["index"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "Safra 2026"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Texto",
+      "default": "Seleção cuidadosa de alcachofras frescas e conservas artesanais, da terra de Piedade direto para a sua mesa, com o cuidado de quem produz há décadas."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Imagem editorial"
+    },
+    {
+      "type": "url",
+      "id": "image_url",
+      "label": "Link da imagem"
+    },
+    {
+      "type": "text",
+      "id": "media_label",
+      "label": "Eyebrow acima do título",
+      "default": "Colhida no ponto certo"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Texto do link",
+      "default": "Descobrir a safra"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Link do CTA"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Saibai Services"
+    }
+  ]
+}
+{% endschema %}

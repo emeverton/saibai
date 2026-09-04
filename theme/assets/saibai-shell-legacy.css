@@ -1,0 +1,344 @@
+/* Empório Saibai — Legacy
+ * Veltrus Growth & Technology | Shopify Partner ID 4969609
+ * PROPRIEDADE INTELECTUAL PROTEGIDA
+ */
+
+/* ── Fase 2d: Veltrus legacy mínimo (templates sem base.css) ── */
+html.no-js .no-js-hidden,
+html.js noscript {
+  display: none !important;
+}
+
+html body .visually-hidden {
+  position: absolute !important;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0 0 0 0);
+  word-wrap: normal !important;
+}
+
+html body .hidden { display: none !important; }
+html body .none { display: none !important; }
+html body .full-unstyled-link {
+  text-decoration: none;
+  color: currentColor;
+  display: block;
+}
+html body .block { display: block; }
+html body .flex { display: flex; }
+html body .flex-column { flex-direction: column; }
+html body .flex-wrap { flex-wrap: wrap; }
+html body .flex-1 { flex: 1; }
+html body .flex-grow { flex-grow: 1; }
+html body .relative { position: relative; }
+html body .fixed { position: fixed; }
+html body .inset-0 { inset: 0; }
+html body .top-0 { inset-block-start: 0; }
+html body .left-0 { inset-inline-start: 0; }
+html body .w-screen { width: 100vw; }
+html body .w-full { width: 100%; }
+html body .h-full { height: 100%; }
+html body .z-9 { z-index: 9; }
+html body .justify-center { justify-content: center; }
+html body .justify-between { justify-content: space-between; }
+html body .justify-end { justify-content: flex-end; }
+html body .items-center { align-items: center; }
+html body .overflow-hidden { overflow: hidden; }
+html body .cursor-pointer { cursor: pointer; }
+html body .rounded-full { border-radius: 999px; }
+html body .bor-none { border: none; }
+html body .m-0 { margin: 0; }
+html body .center { text-align: center; }
+html body .break { word-break: break-word; }
+html body .t-button {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: unset;
+  border: none;
+  padding: 0;
+}
+
+html body .shopify-section-group-popup-group.section-cart-drawer {
+  z-index: var(--layer-sidebar, 50);
+}
+
+html body .drawer,
+html body .modal--popup {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition-property: opacity, background-color, transform;
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
+  z-index: var(--layer-menu-drawer, 40);
+}
+
+html body .drawer.active,
+html body .modal--popup[open] {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+html body .drawer__overlay:empty {
+  display: block;
+  min-height: 100lvh;
+  background-color: rgb(42 58 26 / 0.42);
+  z-index: -1;
+}
+
+html body .drawer__inner {
+  height: 100%;
+  padding: 0 1.5rem;
+  border-right: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+html body .drawer__close {
+  top: var(--top, 0);
+  right: var(--right, 0);
+  z-index: 2;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  color: #2A3A1A;
+  background-color: transparent;
+  padding: 8px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+html body .drawer__header .drawer__close {
+  margin-right: -8px;
+}
+
+html body .drawer__close .icon-close,
+html body .drawer__close .svg-wrapper svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* ── Ícones/SVG — nunca explodem sem base.css (PLP/search/cart) ── */
+html body .svg-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--icon-size, 1.25rem);
+  height: var(--icon-size, 1.25rem);
+  max-width: 2.5rem;
+  max-height: 2.5rem;
+  flex-shrink: 0;
+}
+
+html body .svg-wrapper > svg,
+html body .svg-wrapper svg {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+}
+
+html body .icon-caret-wrapper,
+html body .icon-caret-wrapper.svg-wrapper,
+html body summary .svg-wrapper.icon-caret-wrapper {
+  width: 0.75rem !important;
+  height: 0.5rem !important;
+  max-width: 0.75rem !important;
+  max-height: 0.5rem !important;
+}
+
+html body svg.icon-caret,
+html body .icon-caret svg,
+html body .icon-caret-wrapper svg {
+  width: 0.75rem !important;
+  height: 0.5rem !important;
+  max-width: 0.75rem !important;
+  max-height: 0.5rem !important;
+}
+
+html body .field > .svg-wrapper,
+html body .customer select + .svg-wrapper,
+html body .select .svg-wrapper,
+html body .shipping-calculator-form .svg-wrapper {
+  position: absolute;
+  top: calc(50% + 0.6rem);
+  right: 1rem;
+  width: 0.75rem !important;
+  height: 0.5rem !important;
+  max-width: 0.75rem !important;
+  max-height: 0.5rem !important;
+  margin: 0;
+  pointer-events: none;
+}
+
+@media screen and (max-width: 749px) {
+  html body .small-hide {
+    display: none !important;
+  }
+}
+
+@media screen and (min-width: 750px) and (max-width: 1024px) {
+  html body .medium-hide {
+    display: none !important;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  html body .large-up-hide {
+    display: none !important;
+  }
+}
+
+html body .drawer__container:not(.blog-posts__sidebar-drawer) [data-drawer-content] {
+  width: min(calc(100% - 44px), var(--drawer-max-width, 28rem));
+  height: 100%;
+  background-color: var(--color-background, #F2F5EE);
+  z-index: 1;
+  position: relative;
+}
+
+html body .drawer__container:not(.blog-posts__sidebar-drawer)[data-drawer-direction="right"] [data-drawer-content] {
+  margin-inline-start: auto;
+}
+
+/* ── Fase 2e — Veltrus purge PLP/PDP/cart (sem base.css) ── */
+html body .list-unstyled {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+html body .grid {
+  display: grid;
+}
+
+html body .grid-base {
+  --centered-column-number: 12;
+  --full-width-column-number: 14;
+  --centered: column-1 / span var(--centered-column-number);
+  --full-width: column-0 / span var(--full-width-column-number);
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 750px) {
+  html body .grid-base {
+    display: grid;
+    gap: 0;
+    grid-template-columns:
+      var(--margin-4xl, 1.5rem) repeat(var(--centered-column-number), minmax(0, 1fr)) var(--margin-4xl, 1.5rem);
+    grid-template-areas: "column-0 column-1 column-2 column-3 column-4 column-5 column-6 column-7 column-8 column-9 column-10 column-11 column-12 column-13";
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  html body .grid-base {
+    grid-template-columns:
+      1fr repeat(
+        var(--centered-column-number),
+        minmax(0, calc((var(--page-width, 120rem) - var(--page-margin, 2rem) * 2) / var(--centered-column-number)))
+      )
+      1fr;
+  }
+}
+
+html body .spacing {
+  padding-block: calc(var(--p-spacing-t, 0) * 0.5) calc(var(--p-spacing-b, 0) * 0.5);
+}
+
+@media screen and (min-width: 750px) {
+  html body .spacing {
+    padding-block: calc(var(--p-spacing-t, 0) * 0.75) calc(var(--p-spacing-b, 0) * 0.75);
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  html body .spacing {
+    padding-block: var(--p-spacing-t) var(--p-spacing-b);
+  }
+}
+
+html body .gap-style,
+html body .layout-panel-flex {
+  --gap-scale: var(--spacing-scale-md, 1);
+}
+
+@media screen and (min-width: 990px) {
+  html body .gap-style,
+  html body .layout-panel-flex {
+    --gap-scale: var(--spacing-scale-default, 1);
+  }
+}
+
+html body .layout-panel-flex {
+  display: flex;
+  gap: var(--gap, 0);
+  height: 100%;
+}
+
+html body .layout-panel-flex--row {
+  flex-flow: row var(--flex-wrap, nowrap);
+  justify-content: var(--horizontal-alignment, flex-start);
+  align-items: var(--vertical-alignment, flex-start);
+}
+
+html body .layout-panel-flex--column {
+  flex-flow: column var(--flex-wrap, nowrap);
+  align-items: var(--horizontal-alignment, flex-start);
+  justify-content: var(--vertical-alignment, flex-start);
+}
+
+@media screen and (max-width: 749px) {
+  html body .mobile-column {
+    flex-flow: column nowrap;
+    align-items: var(--horizontal-alignment, flex-start);
+    justify-content: var(--vertical-alignment-mobile, flex-start);
+  }
+}
+
+html body .spacing-style,
+html body .inherit-spacing {
+  --spacing-scale: var(--spacing-scale-md, 1);
+  padding-block: calc((var(--padding-block-start, 0px) * var(--spacing-scale)) + var(--section-top-offset, 0px)) calc(var(--padding-block-end, 0px) * var(--spacing-scale));
+  padding-inline: calc(var(--padding-inline-start, 0px) * var(--spacing-scale)) calc(var(--padding-inline-end, 0px) * var(--spacing-scale));
+  margin-block: calc(var(--margin-block-start, 0px) * var(--spacing-scale)) calc(var(--margin-block-end, 0px) * var(--spacing-scale));
+  margin-inline: calc(var(--margin-inline-start, 0px) * var(--spacing-scale)) calc(var(--margin-inline-end, 0px) * var(--spacing-scale));
+}
+
+@media screen and (min-width: 1025px) {
+  html body .spacing-style {
+    --spacing-scale: var(--spacing-scale-default, 1);
+  }
+}
+
+@media screen and (max-width: 749px) {
+  html body .spacing-style,
+  html body .inherit-spacing {
+    padding-block: calc(var(--padding-block-start-mobile, calc(var(--padding-block-start, 0px) * var(--spacing-scale))) + var(--section-top-offset, 0px)) var(--padding-block-end-mobile, calc(var(--padding-block-end, 0px) * var(--spacing-scale)));
+    padding-inline: var(--padding-inline-start-mobile, calc(var(--padding-inline-start, 0px) * var(--spacing-scale))) var(--padding-inline-end-mobile, calc(var(--padding-inline-end, 0px) * var(--spacing-scale)));
+    margin-block: var(--margin-block-start-mobile, calc(var(--margin-block-start, 0px) * var(--spacing-scale))) var(--margin-block-end-mobile, calc(var(--margin-block-end, 0px) * var(--spacing-scale)));
+    margin-inline: var(--margin-inline-start-mobile, calc(var(--margin-inline-start, 0px) * var(--spacing-scale))) var(--margin-inline-end-mobile, calc(var(--margin-inline-end, 0px) * var(--spacing-scale)));
+  }
+}
+
+html body .product-grid {
+  --product-grid-gap: var(--product-grid-gap-mobile, 1rem);
+  isolation: isolate;
+  display: grid;
+  gap: var(--product-grid-gap);
+}
+
+@media screen and (min-width: 750px) {
+  html body .product-grid {
+    grid-template-columns: var(--product-grid-columns-desktop, repeat(2, minmax(0, 1fr)));
+    --product-grid-gap: var(--product-grid-gap-desktop, 1.25rem);
+  }
+}

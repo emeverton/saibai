@@ -1,0 +1,25 @@
+# Veltrus — Saibai Shopify theme | gitignore
+# Shopify CLI / dados da loja (nunca versionar)
+config/settings_data.json
+.shopify
+.env
+.env.*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Cliente / mídia / staging (fora do repo do tema)
+/Saibai/
+/Saibai imagens/
+/.upload-tmp/
+/.verify-pull/
+/.pull-verify/
+
+# Ops / scripts de loja (fora do runtime do tema)
+/scripts/
+
+# Perf / IDE / exports locais
+.lighthouse-*.json
+.cursor/
+*.zip

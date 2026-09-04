@@ -1,0 +1,71 @@
+{
+  "name": "[SB] Saibai - Shopify Order Paid WhatsApp",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "saibai-shopify-order-paid",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "SB_Shopify_Webhook",
+      "name": "Webhook Shopify",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [-1100, 0],
+      "webhookId": "saibai-shopify-order-paid"
+    },
+    {
+      "parameters": {
+        "jsCode": "const expected = $env.SAIBAI_SHOPIFY_WEBHOOK_TOKEN || $env.SAIBAI_ECOM_WEBHOOK_TOKEN || '';\nconst headers = $json.headers || {};\nconst received = String(headers['x-veltrus-token'] || headers['X-Veltrus-Token'] || '');\nif (expected && received !== expected) {\n  throw new Error('Unauthorized Shopify order webhook.');\n}\nconst raw = $json.body ?? $json;\nconst order = typeof raw === 'string' ? JSON.parse(raw) : raw;\nconst orderId = String(order.id || order.order_id || '').trim();\nif (!orderId) throw new Error('Shopify order id required');\nconst orderNumber = String(order.order_number || order.name || orderId);\nconst revenue = Number(order.total_price || order.current_total_price || 0);\nconst currency = String(order.currency || 'BRL');\nconst email = String(order.email || order.contact_email || '').trim();\nconst noteAttrs = order.note_attributes || [];\nlet utmSource = '';\nfor (const a of noteAttrs) {\n  if (String(a.name || '').toLowerCase() === 'utm_source') utmSource = String(a.value || '');\n}\nconst landing = String(order.landing_site || order.referring_site || '—');\nconst lines = [\n  'Emporio Saibai · PEDIDO PAGO',\n  `#${orderNumber}`,\n  `Shopify ID: ${orderId}`,\n  `Valor: R$ ${revenue.toFixed(2).replace('.', ',')} ${currency}`,\n  email ? `Email: ${email}` : null,\n  utmSource ? `UTM: ${utmSource}` : `Origem: ${landing}`,\n  `Hora: ${new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' })}`,\n  '',\n  'Webhook: orders/paid · byinbz-0k.myshopify.com',\n].filter(Boolean);\nconst phones = String($env.SAIBAI_SALES_WHATSAPP || $env.SAIBAI_ALERT_WHATSAPP_LIST || '')\n  .split(',')\n  .map((p) => p.trim().replace(/\\D/g, ''))\n  .filter(Boolean);\nif (!phones.length) throw new Error('SAIBAI_SALES_WHATSAPP ausente');\nreturn phones.map((phone) => ({ json: { phone, text: lines.join('\\n'), orderId, orderNumber, revenue } }));"
+      },
+      "id": "SB_Shopify_Parse",
+      "name": "Parse pedido Shopify",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-820, 0]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ ($env.EVOLUTION_API_BASE_URL || 'https://api.ehos.com.br').replace(/\\/$/, '') + '/message/sendText/' + ($env.EVOLUTION_INSTANCE_NAME || 'veltrus-agent') }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "apikey", "value": "={{ $env.EVOLUTION_API_KEY }}" },
+            { "name": "Content-Type", "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ number: $json.phone, text: $json.text }) }}",
+        "options": {}
+      },
+      "id": "SB_Shopify_Evolution",
+      "name": "Evolution WhatsApp",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [-520, 0]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ { ok: true, orderId: $('Parse pedido Shopify').first().json.orderId, notified: true } }}",
+        "options": { "responseCode": 200 }
+      },
+      "id": "SB_Shopify_Respond",
+      "name": "Respond OK",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [-220, 0]
+    }
+  ],
+  "connections": {
+    "Webhook Shopify": { "main": [[{ "node": "Parse pedido Shopify", "type": "main", "index": 0 }]] },
+    "Parse pedido Shopify": { "main": [[{ "node": "Evolution WhatsApp", "type": "main", "index": 0 }]] },
+    "Evolution WhatsApp": { "main": [[{ "node": "Respond OK", "type": "main", "index": 0 }]] }
+  },
+  "active": false,
+  "settings": { "executionOrder": "v1", "timezone": "America/Sao_Paulo" },
+  "tags": [{ "name": "saibai" }, { "name": "shopify" }, { "name": "ecom" }]
+}

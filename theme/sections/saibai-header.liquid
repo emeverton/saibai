@@ -1,0 +1,77 @@
+{%- render 'saibai-header-css' -%}
+{% render 'saibai-header', section: section %}
+<script src="{{ 'saibai-header.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "Saibai Header",
+  "class": "saibai-header-section",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu principal",
+      "default": "main-menu"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "label": "Largura logo desktop",
+      "min": 120,
+      "max": 320,
+      "step": 4,
+      "unit": "px",
+      "default": 240
+    },
+    {
+      "type": "range",
+      "id": "logo_width_mobile",
+      "label": "Largura logo mobile",
+      "min": 80,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 120
+    },
+    {
+      "type": "select",
+      "id": "logo_style",
+      "label": "Estilo logo",
+      "default": "mono",
+      "options": [
+        { "value": "mono", "label": "Monocromático" },
+        { "value": "color", "label": "Colorido" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "logo_height_color",
+      "label": "Altura logo colorido",
+      "min": 28,
+      "max": 56,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "checkbox",
+      "id": "sticky_header",
+      "label": "Header fixo ao rolar",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "highlight_1",
+      "label": "Destaque menu 1",
+      "default": "Produtos"
+    },
+    {
+      "type": "text",
+      "id": "highlight_2",
+      "label": "Destaque menu 2",
+      "default": "Receitas"
+    }
+  ],
+  "presets": [{ "name": "Saibai Header" }]
+}
+{% endschema %}

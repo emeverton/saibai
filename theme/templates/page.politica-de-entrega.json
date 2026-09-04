@@ -1,0 +1,22 @@
+{
+  "sections": {
+    "hero": {
+      "type": "saibai-inst-hero",
+      "settings": {
+        "eyebrow": "Empório Saibai · Piedade, SP",
+        "title": "Política de Entrega",
+        "lead": "Transparência do processamento ao rastreamento — para você receber frescos e conservas com segurança.",
+        "asset_fallback": "saibai-asvc-entrega.jpg"
+      }
+    },
+    "policy": {
+      "type": "saibai-policy-entrega",
+      "settings": {}
+    },
+    "nav": {
+      "type": "saibai-inst-nav",
+      "settings": {}
+    }
+  },
+  "order": ["hero", "policy", "nav"]
+}

@@ -1,0 +1,35 @@
+{
+  "name": "@saibai/tracking",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio",
+    "typecheck": "tsc --noEmit",
+    "test:db": "node scripts/test-db.mjs",
+    "test:proxy": "node scripts/test-shopify-proxy.mjs",
+    "test:webhook": "node scripts/test-shopify-webhook.mjs"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.44.2",
+    "inngest": "^3.35.1",
+    "next": "^15.3.3",
+    "postgres": "^3.4.7",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "zod": "^3.25.67"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.30",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "drizzle-kit": "^0.31.1",
+    "typescript": "^5.8.3"
+  }
+}

@@ -1,0 +1,38 @@
+{%- comment -%}
+  Empório Saibai — config JS do limite de caixas de alcachofra (2/pedido).
+  Produtos: type "Alcachofra In Natura" + handles alcachofra-in-natura-*.
+{%- endcomment -%}
+{%- liquid
+  assign saibai_box_max = 2
+  assign saibai_box_variant_ids = ''
+  assign saibai_box_collection = collections['alcachofra-in-natura']
+  if saibai_box_collection != blank
+    for product in saibai_box_collection.products
+      for v in product.variants
+        assign saibai_box_variant_ids = saibai_box_variant_ids | append: v.id | append: ','
+      endfor
+    endfor
+  endif
+  assign saibai_extra_handles = 'alcachofra-in-natura-t8,alcachofra-in-natura-t12,alcachofra-in-natura-t14,alcachofra-in-natura-t20,alcachofra-in-natura-p,alcachofra-in-natura-m,alcachofra-in-natura-g,alcachofra-in-natura-mini' | split: ','
+  for h in saibai_extra_handles
+    assign p = all_products[h]
+    if p != blank
+      for v in p.variants
+        assign sid = v.id | append: ','
+        unless saibai_box_variant_ids contains sid
+          assign saibai_box_variant_ids = saibai_box_variant_ids | append: sid
+        endunless
+      endfor
+    endif
+  endfor
+-%}
+<script>
+  window.saibaiCartLimits = {
+    max: {{ saibai_box_max }},
+    productType: 'Alcachofra In Natura',
+    handlePrefix: 'alcachofra-in-natura',
+    variantIds: [{% assign saibai_first = true %}{% assign saibai_ids = saibai_box_variant_ids | split: ',' %}{% for id in saibai_ids %}{% if id != blank %}{% unless saibai_first %},{% endunless %}{{ id }}{% assign saibai_first = false %}{% endif %}{% endfor %}],
+    message: 'Limite de {{ saibai_box_max }} caixas de alcachofra fresca por pedido. Para volumes maiores (B2B), fale conosco no WhatsApp.'
+  };
+</script>
+<script src="{{ 'saibai-cart-limits.js' | asset_url }}" defer="defer"></script>

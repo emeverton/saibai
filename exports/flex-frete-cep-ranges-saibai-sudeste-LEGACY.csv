@@ -1,0 +1,5 @@
+dia_entrega,cidade,zona_logistica,bairro,cep_inicial,cep_final,frete,regra_frete,pedido_minimo,uf
+Conforme Flex Frete,Sudeste,SP — estado,São Paulo (UF),01000,19999,Pago,Grátis acima de 389.90,100,SP
+Conforme Flex Frete,Sudeste,RJ — estado,Rio de Janeiro (UF),20000,28999,Pago,Grátis acima de 389.90,100,RJ
+Conforme Flex Frete,Sudeste,ES — estado,Espírito Santo (UF),29000,29999,Pago,Grátis acima de 389.90,100,ES
+Conforme Flex Frete,Sudeste,MG — estado,Minas Gerais (UF),30000,39999,Pago,Grátis acima de 389.90,100,MG

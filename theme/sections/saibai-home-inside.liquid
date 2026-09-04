@@ -1,0 +1,228 @@
+{%- comment -%} v5 · Inside LP · CSS via saibai-conditional-assets {%- endcomment -%}
+<!-- saibai-ins-v6 -->
+{%- if template.name == 'index' -%}
+<script type="text/saibai-defer-visible" data-src="{{ 'saibai-inside.js' | asset_url }}" data-root="[data-saibai-inside]"></script>
+{%- else -%}
+<script src="{{ 'saibai-inside.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+{%- liquid
+  assign ins_title = section.settings.title | default: 'Por dentro da Saibai'
+  assign block_count = section.blocks.size
+-%}
+
+<section class="saibai-ins" data-saibai-inside aria-label="{{ ins_title | escape }}">
+  <div class="saibai-ins__shell">
+    <header class="saibai-ins__head">
+      <h2 class="saibai-ins__title">{{ ins_title }}</h2>
+
+      {%- if block_count > 0 -%}
+        <div class="saibai-ins__controls" aria-label="Navegação do carrossel">
+          <button
+            type="button"
+            class="saibai-ins__nav saibai-ins__nav--prev"
+            aria-label="Anterior"
+            hidden
+          >
+            <span aria-hidden="true">&lt;</span>
+          </button>
+          <span class="saibai-ins__counter" aria-live="polite">
+            <span data-saibai-ins-current>1</span>/<span data-saibai-ins-total>{{ block_count }}</span>
+          </span>
+          <button
+            type="button"
+            class="saibai-ins__nav saibai-ins__nav--next"
+            aria-label="Próximo"
+            hidden
+          >
+            <span aria-hidden="true">&gt;</span>
+          </button>
+        </div>
+      {%- endif -%}
+    </header>
+  </div>
+
+  {%- if block_count > 0 -%}
+    <div class="saibai-ins__viewport">
+      <div class="saibai-ins__track" data-saibai-ins-track tabindex="0">
+          {%- for block in section.blocks -%}
+            {%- liquid
+              assign card_title = block.settings.title
+              assign card_text = block.settings.text
+              assign card_url = block.settings.url
+              assign card_image = block.settings.image
+              assign card_asset = block.settings.image_asset | default: 'saibai-inst-harvest.webp'
+            -%}
+
+            <article class="saibai-ins__card" data-saibai-ins-card {{ block.shopify_attributes }}>
+              {%- if card_url != blank -%}
+                <a href="{{ card_url }}" class="saibai-ins__media-link">
+              {%- else -%}
+                <div class="saibai-ins__media-link">
+              {%- endif -%}
+                  <span class="saibai-ins__media">
+                    {%- if card_image != blank -%}
+                      {{
+                        card_image
+                        | image_url: width: 900
+                        | image_tag:
+                          loading: 'lazy',
+                          widths: '320, 480, 558, 780, 900',
+                          sizes: '(min-width: 990px) 24vw, 78vw',
+                          class: 'saibai-ins__img',
+                          alt: card_image.alt | default: card_title
+                      }}
+                    {%- else -%}
+                      <img
+                        src="{{ card_asset | asset_url }}"
+                        alt="{{ card_title | escape }}"
+                        class="saibai-ins__img"
+                        loading="lazy"
+                        width="558"
+                        height="780"
+                      >
+                    {%- endif -%}
+                  </span>
+              {%- if card_url != blank -%}
+                </a>
+              {%- else -%}
+                </div>
+              {%- endif -%}
+
+              <div class="saibai-ins__body">
+                {%- if card_title != blank -%}
+                  {%- if card_url != blank -%}
+                    <h3 class="saibai-ins__card-title">
+                      <a href="{{ card_url }}">{{ card_title }}</a>
+                    </h3>
+                  {%- else -%}
+                    <h3 class="saibai-ins__card-title">{{ card_title }}</h3>
+                  {%- endif -%}
+                {%- endif -%}
+
+                {%- if card_text != blank -%}
+                  <p class="saibai-ins__card-text">{{ card_text }}</p>
+                {%- endif -%}
+              </div>
+            </article>
+          {%- endfor -%}
+        </div>
+      </div>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Saibai Inside",
+  "class": "saibai-inside-section",
+  "enabled_on": {
+    "templates": ["index"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "Por dentro da Saibai"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "story",
+      "name": "História",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Título",
+          "default": "Colheita em Piedade"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Texto",
+          "default": "Alcachofras colhidas no ponto certo, direto da terra de Piedade para a sua mesa, com o cuidado de quem produz há décadas."
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Imagem"
+        },
+        {
+          "type": "text",
+          "id": "image_asset",
+          "label": "Asset fallback (sem imagem)",
+          "default": "saibai-inst-harvest.webp",
+          "info": "Nome do arquivo em assets/, ex: saibai-inst-harvest.webp"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Saibai Inside",
+      "blocks": [
+        {
+          "type": "story",
+          "settings": {
+            "title": "Colheita em Piedade",
+            "text": "Alcachofras colhidas no ponto certo, direto da terra de Piedade para a sua mesa, com o cuidado de quem produz há décadas.",
+            "url": "/pages/historia",
+            "image_asset": "saibai-inst-colheita.webp"
+          }
+        },
+        {
+          "type": "story",
+          "settings": {
+            "title": "Variedades da safra",
+            "text": "Frescas, higienizadas e congeladas, cada formato pensado para diferentes momentos na cozinha e na mesa.",
+            "url": "/collections/alcachofra-in-natura",
+            "image_asset": "saibai-inst-variedades.webp"
+          }
+        },
+        {
+          "type": "story",
+          "settings": {
+            "title": "Da planta ao campo",
+            "text": "Plantio artesanal e colheita manual em Piedade, SP, onde a alcachofra é tradição de família.",
+            "url": "/pages/historia",
+            "image_asset": "saibai-inst-campo.webp"
+          }
+        },
+        {
+          "type": "story",
+          "settings": {
+            "title": "Flores desidratadas",
+            "text": "Flores comestíveis para finalizar pratos, drinks e sobremesas com cor e delicadeza.",
+            "url": "/collections/flores-desidratadas",
+            "image_asset": "saibai-inst-flores.webp"
+          }
+        },
+        {
+          "type": "story",
+          "settings": {
+            "title": "Plantação Saibai",
+            "text": "Conheça o campo onde nasce cada alcachofra, solo, clima e mão de obra local em harmonia.",
+            "url": "/pages/historia",
+            "image_asset": "saibai-inst-planta.webp"
+          }
+        },
+        {
+          "type": "story",
+          "settings": {
+            "title": "Grupo VIP WhatsApp",
+            "text": "Receba avisos de safra, ofertas exclusivas e novidades direto no WhatsApp, como quem compra direto do produtor.",
+            "url": "https://chat.whatsapp.com/LmGiN0C8QT04AQ4VB9PDdO",
+            "image_asset": "saibai-inst-vip.webp"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

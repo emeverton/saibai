@@ -1,0 +1,21 @@
+{
+  "sections": {
+    "hero": {
+      "type": "saibai-inst-hero",
+      "settings": {
+        "eyebrow": "Receitas · Empório Saibai",
+        "title": "",
+        "lead": "",
+        "asset_fallback": "saibai-inst-conserva.webp"
+      }
+    },
+    "article": {
+      "type": "saibai-article-main",
+      "settings": {
+        "shop_label": "Ver produtos Saibai",
+        "shop_url": "/collections/todos"
+      }
+    }
+  },
+  "order": ["hero", "article"]
+}

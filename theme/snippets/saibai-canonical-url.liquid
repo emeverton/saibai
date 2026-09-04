@@ -1,0 +1,8 @@
+{%- comment -%}
+  URL canônica Saibai — consolida /collections/all → /collections/todos.
+{%- endcomment -%}
+{%- if request.path == '/collections/all' -%}
+  {{- shop.url | append: '/collections/todos' -}}
+{%- else -%}
+  {{- canonical_url -}}
+{%- endif -%}

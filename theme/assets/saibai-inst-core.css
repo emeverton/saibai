@@ -1,0 +1,258 @@
+/* Empório Saibai — Inst CORE (base+hero+hub) | Veltrus — consolidado */
+
+/* --- saibai-inst-base.css --- */
+/* Empório Saibai — Institucional base
+ * Veltrus Growth & Technology | Shopify Partner ID 4969609
+ */
+
+.shopify-section.saibai-inst-section { margin: 0; padding: 0; }
+
+.saibai-inst {
+  --inst-bg: var(--saibai-bg, #F2F5EE);
+  --inst-white: #FFFFFF;
+  --inst-dark: #2A3A1A;
+  --inst-muted: rgb(42 58 26 / 0.65);
+  --inst-border: rgb(42 58 26 / 0.08);
+  --inst-accent: #3D2B1F;
+  --inst-green: var(--saibai-primary, #8ABE0A);
+  --inst-pad-x: var(--saibai-lp-pad-x, clamp(1.5rem, 5vw, 3.5rem));
+  --inst-pad-y: var(--saibai-lp-pad-y, clamp(4.5rem, 9vw, 7rem));
+  --inst-max: var(--saibai-lp-max, 86rem);
+  color: var(--inst-dark);
+  background: var(--inst-bg);
+}
+
+/* --- saibai-inst-hero.css --- */
+/* Empório Saibai — Institucional hero (foto + título abaixo)
+ * Veltrus Growth & Technology | Shopify Partner ID 4969609
+ */
+
+.shopify-section.saibai-inst-section {
+  overflow: visible;
+}
+
+.saibai-inst-hero {
+  --inst-hero-aspect: 16 / 9;
+  --inst-hero-box-w: min(26rem, calc(100% - 2rem));
+
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: var(--inst-bg);
+  color: var(--inst-dark);
+  overflow: visible;
+}
+
+.saibai-inst-hero__stage {
+  position: relative;
+  width: 100%;
+  max-width: var(--inst-max);
+  margin: 0 auto;
+  padding-inline: var(--inst-pad-x);
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+.saibai-inst-hero__frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: var(--inst-hero-aspect);
+  overflow: hidden;
+  background: #1a2412;
+}
+
+.saibai-inst-hero__media {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #1a2412;
+}
+
+.saibai-inst-hero__img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.saibai-inst-hero__box {
+  position: relative;
+  z-index: 5;
+  box-sizing: border-box;
+  width: var(--inst-hero-box-w);
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  background: var(--inst-bg);
+  border: 0;
+  box-shadow: none;
+  text-align: center;
+  -webkit-font-smoothing: antialiased;
+}
+
+.saibai-inst-hero__box-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: clamp(1.35rem, 2.8vw, 1.75rem) clamp(1.25rem, 3vw, 1.65rem);
+  box-sizing: border-box;
+}
+
+@media (max-width: 749px) {
+  .saibai-inst-hero__box-body {
+    padding: 1rem 1rem 0.85rem;
+    gap: 0.4rem;
+  }
+}
+
+.saibai-inst-hero__eyebrow {
+  margin: 0;
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--inst-muted);
+}
+
+.saibai-inst-hero__title {
+  margin: 0;
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-size: clamp(1.25rem, 2.2vw, 1.625rem) !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  color: var(--inst-dark) !important;
+  text-transform: none !important;
+}
+
+.saibai-inst-hero__lead {
+  margin: 0;
+  max-width: 38ch;
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: var(--inst-muted);
+}
+
+/* --- saibai-inst-hub.css --- */
+/* Empório Saibai — Institucional hub
+ * Veltrus Growth & Technology | Shopify Partner ID 4969609
+ */
+
+/* ── Hub nav ── */
+.saibai-inst-nav {
+  padding: var(--inst-pad-y) var(--inst-pad-x);
+  background: var(--inst-bg);
+  border-top: 0;
+}
+
+.saibai-inst-nav__inner {
+  max-width: var(--inst-max, 86rem);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.saibai-inst-nav__title {
+  margin: 0 0 1.5rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--inst-muted);
+}
+
+.saibai-inst-nav__links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem 1.25rem;
+}
+
+.saibai-inst-nav__link {
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  color: var(--inst-accent);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.saibai-inst-nav__link:hover { color: var(--inst-green); }
+
+/* ── Hub cards (sobre) ── */
+.saibai-inst-hub {
+  padding: var(--inst-pad-y) var(--inst-pad-x);
+  background: var(--inst-bg);
+}
+
+.saibai-inst-hub__inner {
+  max-width: var(--inst-max);
+  margin: 0 auto;
+}
+
+.saibai-inst-hub__intro {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 3rem;
+}
+
+.saibai-inst-hub__title {
+  margin: 0 0 1rem;
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 400;
+}
+
+.saibai-inst-hub__text {
+  margin: 0;
+  line-height: 1.75;
+  color: var(--inst-muted);
+}
+
+.saibai-inst-hub__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.saibai-inst-hub__card {
+  display: block;
+  padding: 2rem;
+  background: var(--inst-bg);
+  border: 0;
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s ease;
+}
+
+.saibai-inst-hub__card:hover {
+  color: var(--inst-green);
+}
+
+.saibai-inst-hub__card-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--inst-muted);
+}
+
+.saibai-inst-hub__card-title {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--inst-dark);
+}
+
+.saibai-inst-hub__card-desc {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--inst-muted);
+}
+

@@ -1,0 +1,82 @@
+{% doc %}
+  Renders the <img> element using provided image object
+
+  @param {object} image - image object
+  @param {number} [height] - custom image height
+  @param {string} [class] - additional classes
+  @param {string} [text_fallback] - text to display if image is blank
+  @param {boolean} [unset_image_tag] - if true, ignores the image focal point
+  @param {string} [style] - additional styles
+  @param {string} [width] - custom image width
+  @param {string} [widths] - custom image widths
+  @param {string} [sizes] - custom image sizes
+  @param {string} [loading] - custom image loading
+  @param {string} [fetch_priority] - custom image fetch priority
+  @param {string} [alt] - custom image alt
+  @param {boolean} [preload] - custom image preload
+  @param {boolean} [is_lcp] - first/LCP image: eager + high priority
+  @param {string} [animation_type] - entrance animation type
+
+  @example
+  {% render 'image', image: product.featured_image, class: 'product-image', is_lcp: true %}
+{% enddoc %}
+{% if image != blank %}
+  {%- liquid
+    assign image_render_width = width | default: 800
+
+    if is_lcp or preload or fetch_priority == 'high'
+      assign loading_default = 'eager'
+      assign fetch_priority_default = 'high'
+    else
+      assign loading_default = 'lazy'
+      assign fetch_priority_default = 'auto'
+    endif
+
+    assign image_loading = loading | default: loading_default
+    assign image_fetch_priority = fetch_priority | default: fetch_priority_default
+
+    assign alt_default = image.alt | default: 'Image'
+    assign image_alt = alt | default: alt_default
+
+    assign media_width_desktop = '100vw'
+    assign media_width_mobile = '100vw'
+
+    assign sizes_default = 'auto, (min-width: 750px) ' | append: media_width_desktop | append: ', ' | append: media_width_mobile
+    assign image_sizes = sizes | default: sizes_default
+
+    assign widths_default = '300, 450, 600, 750, 800, 900, 1050, 1200, 1500, 1800, 2000'
+    assign image_widths = widths | default: widths_default
+
+    assign image_class = class | default: ''
+    if animation_type != blank
+      assign image_class = image_class | append: ' image--' | append: animation_type
+    endif
+  -%}
+
+  {% assign style_value = style | default: '' %}
+  {% if height != blank %}
+    {% assign style_value = style_value | append: 'height:' | append: height | append: 'px;' %}
+  {% endif %}
+
+  {% if unset_image_tag %}
+    {% assign style_value = style_value | append: 'object-position: inherit;' %}
+  {% endif %}
+
+  {{
+    image
+    | image_url: width: image_render_width, format: 'webp'
+    | image_tag:
+      widths: image_widths,
+      loading: image_loading,
+      class: image_class,
+      sizes: image_sizes,
+      fetchpriority: image_fetch_priority,
+      style: style_value,
+      alt: image_alt,
+      preload: preload,
+      width: image_render_width,
+      height: height
+  }}
+{% elsif text_fallback %}
+  {{ text_fallback }}
+{% endif %}

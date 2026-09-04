@@ -1,0 +1,30 @@
+{%- comment -%}
+  Empório Saibai — Dica cupom no drawer do carrinho
+  Welcome só para quem ainda não comprou. Recompra fica só no e-mail.
+{%- endcomment -%}
+{%- liquid
+  assign saibai_cart_coupon = '5%NOVOCLIENTE'
+  assign saibai_hide_hint = false
+
+  if customer and customer.orders_count > 0
+    assign saibai_hide_hint = true
+  endif
+
+  for discount in cart.cart_level_discount_applications
+    if discount.title == saibai_cart_coupon or discount.title contains 'Boas-vindas'
+      assign saibai_hide_hint = true
+    endif
+  endfor
+-%}
+{%- unless saibai_hide_hint -%}
+<div class="saibai-cart-coupon-hint" data-saibai-cart-coupon-hint data-code="{{ saibai_cart_coupon }}">
+  <p class="saibai-cart-coupon-hint__label">Primeira compra?</p>
+  <div class="saibai-cart-coupon-hint__row">
+    <code class="saibai-cart-coupon-hint__code">{{ saibai_cart_coupon }}</code>
+    <button type="button" class="saibai-cart-coupon-hint__apply button button--secondary" data-saibai-cart-coupon-apply>
+      Aplicar cupom
+    </button>
+  </div>
+  <p class="saibai-cart-coupon-hint__note">5% de desconto na primeira compra. Um uso por cliente.</p>
+</div>
+{%- endunless -%}

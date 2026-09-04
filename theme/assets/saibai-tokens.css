@@ -1,0 +1,162 @@
+/*
+ * Empório Saibai — Tokens KV + utilitários globais únicos
+ * Botões, cards, grid e hovers: snippets/saibai-shell-css.liquid (modular)
+ * Veltrus Growth & Technology | Shopify Partner ID 4969609
+ */
+
+html { overflow-x: clip; max-width: 100vw; font-size: 16px; }
+body { overflow-x: clip; max-width: 100vw; font-family: var(--saibai-font-body); font-size: clamp(1rem, 1.5vw, 1.125rem); }
+
+:root {
+  --saibai-primary: #8ABE0A;
+  --saibai-primary-hover: #7AAA08;
+  --saibai-primary-dark: #729908;
+  /* CTA = grafite do footer (botões, badges, qty) */
+  --saibai-cta: #2A3A1A;
+  --saibai-cta-hover: #384E28;
+  --saibai-cta-rgb: 42 58 26;
+  --saibai-secondary: #4E7E8A;
+  --saibai-accent: #9B8EC4;
+  --saibai-dark: #2A3A1A;
+  --saibai-dark-muted: #4E6040;
+  /* LP: logo bg = página · top bar mais clara · mega/blocos em contraste */
+  --saibai-bg: #F2F5EE;
+  --saibai-bg-top: #FAFBF7;
+  --saibai-bg-header: #F2F5EE;
+  --saibai-bg-contrast: #E8EFE2;
+  --saibai-light: #F2F5EE;
+  --saibai-white: #FFFFFF;
+  --saibai-primary-rgb: 138 190 10;
+  --saibai-dark-rgb: 42 58 26;
+  --saibai-whatsapp: #25D366;
+  --saibai-lp-pad-x: clamp(1rem, 2.5vw, 2.5rem);
+  --saibai-lp-pad-y: clamp(4.5rem, 9vw, 7rem);
+  --saibai-lp-gap-y: clamp(2.5rem, 5vw, 4.5rem);
+  --saibai-lp-max: 90rem;
+  --saibai-lp-shell-max: min(90rem, 1440px);
+  --saibai-lp-hero-aspect: 1440 / 688;
+  --saibai-lp-section-title: clamp(1.375rem, 1.8vw, 1.5rem);
+  --saibai-lp-card-gap: clamp(1.25rem, 1.6vw, 1.75rem);
+  --saibai-tile-aspect: 558 / 780;
+  --color-primary: var(--saibai-primary);
+  --color-primary-dark: var(--saibai-primary-dark);
+  --color-text: var(--saibai-dark-muted);
+  --saibai-font-body: var(--font-body--family, 'Jost', sans-serif);
+  --saibai-font-heading: var(--font-heading--family, 'Jost', sans-serif);
+  --radius: 4px;
+  --saibai-transition: 0.2s ease;
+  --transition: 0.2s ease;
+}
+
+body.saibai-theme h1, body.saibai-theme .h1 {
+  font-family: var(--saibai-font-heading);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  color: var(--saibai-dark);
+}
+
+.saibai-product-card .card__inner { position: relative; overflow: hidden; }
+.saibai-product-card .saibai-card-overlay {
+  position: absolute; inset: 0; z-index: 3; display: flex; align-items: flex-end; justify-content: center;
+  padding: 16px; background: linear-gradient(to top, rgb(42 58 26 / 0.55) 0%, transparent 55%);
+  opacity: 0; pointer-events: none; transition: opacity var(--saibai-transition);
+}
+.saibai-product-card .saibai-card-overlay__btn {
+  width: 100%; max-width: 220px; min-height: 44px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em;
+}
+@media (hover: hover) { .saibai-product-card:hover .saibai-card-overlay { opacity: 1; pointer-events: auto; } }
+@media (max-width: 749px) { .saibai-product-card .saibai-card-overlay { display: none; } }
+
+.saibai-footer-logo { padding-block: 0 24px; text-align: center; }
+.saibai-footer-logo__link { display: inline-block; transition: opacity var(--saibai-transition); }
+.saibai-footer-logo__link:hover { opacity: 0.85; }
+.saibai-footer-logo .saibai-logo { width: 140px; margin: 0 auto; }
+
+.saibai-whatsapp-float {
+  position: fixed; bottom: 24px; right: 24px; z-index: 9999;
+  display: flex; align-items: center; justify-content: center; width: 56px; height: 56px;
+  border-radius: 50%; background: var(--saibai-whatsapp); color: var(--saibai-white);
+  box-shadow: 0 4px 16px rgb(0 0 0 / 0.2); transition: transform var(--saibai-transition), box-shadow var(--saibai-transition);
+}
+.saibai-whatsapp-float:hover { transform: scale(1.06); box-shadow: 0 6px 20px rgb(0 0 0 / 0.25); color: var(--saibai-white); }
+
+.saibai-payment-icons { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; list-style: none; padding: 0; margin: 0; }
+.saibai-payment-icons__item { display: flex; align-items: center; justify-content: center; height: 28px; }
+.saibai-payment-icons__item svg, .saibai-payment-icons__item img { height: 24px; width: auto; max-width: 40px; }
+
+.saibai-urgency { margin: 8px 0 0; font-size: 0.95rem; font-weight: 600; color: var(--saibai-secondary); }
+.saibai-cart-trust { margin: 0 0 12px; font-size: 0.95rem; text-align: center; color: var(--saibai-dark-muted); }
+
+.template-index { background: var(--saibai-bg); }
+.template-index .section { background: transparent; border: 0 !important; }
+.template-index .shopify-section { background: var(--saibai-bg); border: 0 !important; }
+.template-index h1, .template-index h2, .template-index .h1, .template-index .h2 { text-transform: none; letter-spacing: 0.02em; font-weight: 400; }
+.template-index h2, .template-index .h2 {
+  font-size: var(--saibai-lp-section-title);
+  line-height: 1.2;
+}
+.template-index .editorial-grid-layout, .template-index .section-resource-list { background: var(--saibai-bg); }
+.template-index .editorial-header-block .text-block, .template-index .editorial-collection-card__title { font-weight: 400; letter-spacing: 0.02em; }
+.template-index .card__heading a { font-weight: 400; letter-spacing: 0.02em; }
+
+/* Homepage — escala tipográfica C-level (Saibai KV) */
+.template-index .saibai-split__eyebrow,
+.template-index .saibai-ed__label {
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.template-index .saibai-svc__cta,
+.template-index .saibai-feat__cta {
+  letter-spacing: 0.06em;
+}
+
+.template-index .saibai-ab__msg,
+.template-index .saibai-mq__content {
+  letter-spacing: 0.03em;
+}
+
+.template-index .saibai-mq__content {
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 749px) {
+  .saibai-footer-logo .saibai-logo { width: 120px; max-width: 120px; }
+  .swiper-component-mobile .swiper-slide, .collection-carousel-swiper-component .swiper-slide { width: 66.66vw !important; max-width: 66.66vw; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+/* Quick View modal — KV Saibai */
+body.saibai-theme .quick-view-modal .popup__inner {
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 24px 64px rgb(42 58 26 / 0.18);
+}
+
+body.saibai-theme .quick-view-modal .quick-view-modal__toggle {
+  background: #F2F5EE;
+  color: #2A3A1A;
+}
+
+body.saibai-theme .quick-view-modal .product-form__submit,
+body.saibai-theme .quick-view-modal .product-form__buttons .button--primary,
+body.saibai-theme .quick-view-modal button[name="add"] {
+  background: #2A3A1A !important;
+  border-color: #2A3A1A !important;
+  color: #fff !important;
+  border-radius: 8px !important;
+}
+
+body.saibai-theme .quick-view-modal .product-form__submit:hover:not([disabled]),
+body.saibai-theme .quick-view-modal button[name="add"]:hover:not([disabled]) {
+  background: #384E28 !important;
+  border-color: #384E28 !important;
+}

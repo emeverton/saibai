@@ -1,0 +1,247 @@
+/* Empório Saibai — LGPD actions (LP · 2 faixas nos botões)
+ * Veltrus Growth & Technology
+ */
+
+html body .saibai-consent button.saibai-consent__btn {
+  all: unset;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 2.875rem;
+  padding: 0 1.5rem;
+  border-radius: 0;
+  font-family: var(--saibai-font-body, 'Jost', sans-serif);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  letter-spacing: 0.07em;
+  line-height: 1.2;
+  text-align: center;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+/* Sólido LP */
+html body .saibai-consent button.saibai-consent__btn--solid {
+  position: relative;
+  isolation: isolate;
+  background: var(--sc-accent);
+  color: var(--sc-bg);
+  border: 1px solid var(--sc-accent);
+  box-shadow: none;
+}
+
+html body .saibai-consent button.saibai-consent__btn--solid:hover {
+  background: var(--sc-hover);
+  border-color: var(--sc-hover);
+}
+
+/* LP Loro Piana — 2 faixas horizontais internas (topo + base) */
+html body .saibai-consent button.saibai-consent__btn--band::before,
+html body .saibai-consent button.saibai-consent__btn--band::after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  right: 5px;
+  height: 1px;
+  background: var(--sc-bg);
+  opacity: 0.9;
+  pointer-events: none;
+  z-index: 0;
+}
+
+html body .saibai-consent button.saibai-consent__btn--band::before {
+  top: 4px;
+}
+
+html body .saibai-consent button.saibai-consent__btn--band::after {
+  bottom: 4px;
+}
+
+html body .saibai-consent .saibai-consent__btn-text {
+  position: relative;
+  z-index: 1;
+  display: block;
+  max-width: 100%;
+  padding-inline: 2px;
+}
+
+html body .saibai-consent__actions--main button.saibai-consent__btn {
+  min-height: 2.75rem;
+  padding: 0.75rem 1.125rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  line-height: 1.35;
+}
+
+html body .saibai-consent button.saibai-consent__btn--solid:focus-visible {
+  outline: 2px solid var(--sc-accent);
+  outline-offset: 2px;
+}
+
+/* Ghost LP: fundo cream + contorno simples */
+html body .saibai-consent button.saibai-consent__btn--ghost {
+  background: var(--sc-bg);
+  color: var(--sc-text-strong);
+  border: 1px solid var(--sc-accent);
+  box-shadow: none;
+}
+
+html body .saibai-consent button.saibai-consent__btn--ghost:hover {
+  background: #fff;
+  border-color: var(--sc-hover);
+  color: var(--sc-text-strong);
+}
+
+html body .saibai-consent button.saibai-consent__btn--ghost:focus-visible {
+  outline: 2px solid var(--sc-accent);
+  outline-offset: 2px;
+}
+
+html body .saibai-consent__prefs {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+html body .saibai-consent__pref {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding: 1.125rem 0;
+  border-bottom: 1px solid var(--sc-line);
+}
+
+html body .saibai-consent__pref:last-child {
+  border-bottom: 0;
+}
+
+html body .saibai-consent__pref-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  max-width: 26rem;
+  font-size: 0.75rem;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  color: var(--sc-text);
+}
+
+html body .saibai-consent__pref-copy strong {
+  font-family: var(--saibai-font-heading, 'Jost', sans-serif);
+  font-weight: 500;
+  font-size: 0.8125rem;
+  letter-spacing: 0.04em;
+  color: var(--sc-text-strong);
+}
+
+html body .saibai-consent__pref-badge {
+  flex-shrink: 0;
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgb(42 58 26 / 0.5);
+}
+
+html body .saibai-consent__toggle {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+html body .saibai-consent__toggle input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+html body .saibai-consent__toggle-ui {
+  position: relative;
+  display: block;
+  width: 2.5rem;
+  height: 1.375rem;
+  border: 1px solid var(--sc-line);
+  border-radius: 0;
+  background: rgb(42 58 26 / 0.08);
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+html body .saibai-consent__toggle-ui::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 1rem;
+  height: calc(100% - 6px);
+  border-radius: 0;
+  background: var(--sc-bg);
+  border: 1px solid rgb(42 58 26 / 0.12);
+  transition: transform 0.2s ease;
+}
+
+html body .saibai-consent__toggle input:checked + .saibai-consent__toggle-ui {
+  background: var(--sc-accent);
+  border-color: var(--sc-accent);
+  box-shadow: inset 0 0 0 1px var(--sc-bg);
+}
+
+html body .saibai-consent__toggle input:checked + .saibai-consent__toggle-ui::after {
+  transform: translateX(1.125rem);
+  border-color: rgb(42 58 26 / 0.2);
+}
+
+html {
+  scrollbar-gutter: stable;
+}
+
+html body.saibai-modal-scroll-lock {
+  overflow: hidden;
+  padding-right: var(--saibai-scrollbar-w, 0px);
+}
+
+html body.saibai-modal-scroll-lock #header-group {
+  padding-right: var(--saibai-scrollbar-w, 0px);
+}
+
+@media (max-width: 749px) {
+  html body .saibai-consent__dialog {
+    padding: 2rem 1.5rem 1.75rem;
+  }
+
+  html body .saibai-consent__logo-img {
+    width: 168px;
+    max-width: min(168px, 72vw);
+  }
+
+  html body .saibai-consent__body {
+    margin-bottom: 1.5rem;
+  }
+
+  html body .saibai-consent__actions {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  html body .saibai-consent__actions--prefs {
+    grid-template-columns: 1fr;
+  }
+
+  html body .saibai-consent__pref {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  html body .saibai-consent__pref-badge {
+    align-self: flex-end;
+  }
+}

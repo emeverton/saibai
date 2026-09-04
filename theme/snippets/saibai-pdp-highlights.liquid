@@ -1,0 +1,207 @@
+{%- comment -%}
+  Empório Saibai — Principais características PDP (buy box · estilo LG)
+  Veltrus Growth & Technology | Shopify Partner ID 4969609
+{%- endcomment -%}
+{%- liquid
+  assign hl_product = product | default: closest.product
+  assign handle_lower = hl_product.handle | downcase
+  assign title_lower = hl_product.title | downcase
+  assign preview_count = 3
+  assign max_highlights = 8
+
+  assign destaques = hl_product.metafields.custom.destaques.value
+  if destaques == blank
+    assign destaques = hl_product.metafields.custom.highlights.value
+  endif
+
+  assign use_defaults = false
+  assign total_items = 0
+
+  if destaques != blank
+    for item in destaques limit: max_highlights
+      assign text = item | strip
+      if text != blank
+        assign total_items = total_items | plus: 1
+      endif
+    endfor
+  elsif hl_product.description contains '<li'
+    assign desc_chunks = hl_product.description | split: '<li'
+    assign total_items = desc_chunks.size | minus: 1
+    if total_items > max_highlights
+      assign total_items = max_highlights
+    endif
+  elsif hl_product.description != blank
+    assign sentences = hl_product.description | strip_html | replace: '<br>', '.' | replace: '<br/>', '.' | replace: '<br />', '.' | split: '.'
+    for sentence in sentences
+      assign text = sentence | strip
+      if text.size > 2
+        assign total_items = total_items | plus: 1
+        if total_items >= max_highlights
+          break
+        endif
+      endif
+    endfor
+  else
+    assign use_defaults = true
+    assign total_items = 4
+    if handle_lower contains 'fresca' or title_lower contains 'fresca' or title_lower contains 'in-natura'
+      assign total_items = 4
+    elsif handle_lower contains 'conserva' or title_lower contains 'conserva'
+      assign total_items = 4
+    else
+      assign total_items = 3
+    endif
+  endif
+
+  assign has_more = false
+  if total_items > preview_count
+    assign has_more = true
+  endif
+-%}
+{%- if hl_product != blank -%}
+  <div class="saibai-pdp-highlights-wrap" data-saibai-pdp-highlights-wrap>
+    <div class="saibai-pdp-highlights-wrap__head">
+      <h2 class="saibai-pdp-highlights-wrap__title">Principais características</h2>
+      <a class="saibai-pdp-highlights-wrap__specs" href="#saibai-pdp-detalhes">Especificações</a>
+    </div>
+
+    <ul class="saibai-pdp-highlights" data-saibai-pdp-highlights aria-label="Principais características">
+      {%- assign item_index = 0 -%}
+
+      {%- if destaques != blank -%}
+        {%- for item in destaques limit: max_highlights -%}
+          {%- assign text = item | strip -%}
+          {%- if text != blank -%}
+            {%- assign item_index = item_index | plus: 1 -%}
+            {%- if item_index <= preview_count -%}
+              <li class="saibai-pdp-highlights__item">{{ text }}</li>
+            {%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+      {%- elsif hl_product.description contains '<li' -%}
+        {%- assign desc_chunks = hl_product.description | split: '<li' -%}
+        {%- for chunk in desc_chunks offset: 1 limit: max_highlights -%}
+          {%- assign item_text = chunk | split: '</li>' | first | strip_html | strip -%}
+          {%- if item_text contains '>' -%}
+            {%- assign item_parts = item_text | split: '>' -%}
+            {%- assign item_text = item_parts | last | strip -%}
+          {%- endif -%}
+          {%- if item_text != blank -%}
+            {%- assign item_index = item_index | plus: 1 -%}
+            {%- if item_index <= preview_count -%}
+              <li class="saibai-pdp-highlights__item">{{ item_text }}</li>
+            {%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+      {%- elsif hl_product.description != blank -%}
+        {%- assign sentences = hl_product.description | strip_html | replace: '<br>', '.' | replace: '<br/>', '.' | replace: '<br />', '.' | split: '.' -%}
+        {%- for sentence in sentences -%}
+          {%- if item_index >= max_highlights -%}
+            {%- break -%}
+          {%- endif -%}
+          {%- assign text = sentence | strip -%}
+          {%- if text.size > 2 -%}
+            {%- assign item_index = item_index | plus: 1 -%}
+            {%- if item_index <= preview_count -%}
+              <li class="saibai-pdp-highlights__item">{{ text }}</li>
+            {%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+      {%- else -%}
+        {%- if handle_lower contains 'conserva' or title_lower contains 'conserva' -%}
+          <li class="saibai-pdp-highlights__item">Conserva artesanal Saibai, Piedade — SP</li>
+          <li class="saibai-pdp-highlights__item">Alcachofra selecionada da safra</li>
+          <li class="saibai-pdp-highlights__item">Produção própria, do campo à sua mesa</li>
+          {%- assign item_index = 3 -%}
+          {%- if handle_lower contains 'coracao' or title_lower contains 'coração' or title_lower contains 'coracao' -%}
+            {%- assign item_index = 4 -%}
+          {%- elsif handle_lower contains 'pedaco' or title_lower contains 'pedaço' or title_lower contains 'pedaco' -%}
+            {%- assign item_index = 4 -%}
+          {%- else -%}
+            {%- assign item_index = 4 -%}
+          {%- endif -%}
+        {%- elsif handle_lower contains 'fresca' or title_lower contains 'fresca' or title_lower contains 'in-natura' -%}
+          <li class="saibai-pdp-highlights__item">Alcachofra fresca da safra Saibai</li>
+          <li class="saibai-pdp-highlights__item">Colhida em Piedade, capital nacional da alcachofra</li>
+          <li class="saibai-pdp-highlights__item">Embalagem térmica na entrega</li>
+          {%- assign item_index = 3 -%}
+        {%- else -%}
+          <li class="saibai-pdp-highlights__item">Produção própria Saibai · Piedade, SP</li>
+          <li class="saibai-pdp-highlights__item">Qualidade do campo à sua mesa</li>
+          <li class="saibai-pdp-highlights__item">Alcachofra selecionada da safra</li>
+          {%- assign item_index = 3 -%}
+        {%- endif -%}
+      {%- endif -%}
+    </ul>
+
+    {%- if has_more and use_defaults == false -%}
+      <details class="saibai-pdp-highlights-more">
+        <summary class="saibai-pdp-highlights-more__toggle">
+          <span class="saibai-pdp-highlights-more__label">Mais</span>
+        </summary>
+        <ul class="saibai-pdp-highlights saibai-pdp-highlights--more" aria-label="Mais características">
+          {%- assign item_index = 0 -%}
+          {%- if destaques != blank -%}
+            {%- for item in destaques limit: max_highlights -%}
+              {%- assign text = item | strip -%}
+              {%- if text != blank -%}
+                {%- assign item_index = item_index | plus: 1 -%}
+                {%- if item_index > preview_count -%}
+                  <li class="saibai-pdp-highlights__item">{{ text }}</li>
+                {%- endif -%}
+              {%- endif -%}
+            {%- endfor -%}
+          {%- elsif hl_product.description contains '<li' -%}
+            {%- assign desc_chunks = hl_product.description | split: '<li' -%}
+            {%- for chunk in desc_chunks offset: 1 limit: max_highlights -%}
+              {%- assign item_text = chunk | split: '</li>' | first | strip_html | strip -%}
+              {%- if item_text contains '>' -%}
+                {%- assign item_parts = item_text | split: '>' -%}
+                {%- assign item_text = item_parts | last | strip -%}
+              {%- endif -%}
+              {%- if item_text != blank -%}
+                {%- assign item_index = item_index | plus: 1 -%}
+                {%- if item_index > preview_count -%}
+                  <li class="saibai-pdp-highlights__item">{{ item_text }}</li>
+                {%- endif -%}
+              {%- endif -%}
+            {%- endfor -%}
+          {%- else -%}
+            {%- assign sentences = hl_product.description | strip_html | replace: '<br>', '.' | replace: '<br/>', '.' | replace: '<br />', '.' | split: '.' -%}
+            {%- for sentence in sentences -%}
+              {%- if item_index >= max_highlights -%}
+                {%- break -%}
+              {%- endif -%}
+              {%- assign text = sentence | strip -%}
+              {%- if text.size > 2 -%}
+                {%- assign item_index = item_index | plus: 1 -%}
+                {%- if item_index > preview_count -%}
+                  <li class="saibai-pdp-highlights__item">{{ text }}</li>
+                {%- endif -%}
+              {%- endif -%}
+            {%- endfor -%}
+          {%- endif -%}
+        </ul>
+      </details>
+    {%- elsif use_defaults and item_index > preview_count -%}
+      <details class="saibai-pdp-highlights-more">
+        <summary class="saibai-pdp-highlights-more__toggle">
+          <span class="saibai-pdp-highlights-more__label">Mais</span>
+        </summary>
+        <ul class="saibai-pdp-highlights saibai-pdp-highlights--more" aria-label="Mais características">
+          {%- if handle_lower contains 'conserva' or title_lower contains 'conserva' -%}
+            {%- if handle_lower contains 'coracao' or title_lower contains 'coração' or title_lower contains 'coracao' -%}
+              <li class="saibai-pdp-highlights__item">Corações de alcachofra selecionados</li>
+            {%- elsif handle_lower contains 'pedaco' or title_lower contains 'pedaço' or title_lower contains 'pedaco' -%}
+              <li class="saibai-pdp-highlights__item">Fundos em pedaços, práticos para o dia a dia</li>
+            {%- else -%}
+              <li class="saibai-pdp-highlights__item">Fundos inteiros, sabor e textura preservados</li>
+            {%- endif -%}
+          {%- elsif handle_lower contains 'fresca' or title_lower contains 'fresca' or title_lower contains 'in-natura' -%}
+            <li class="saibai-pdp-highlights__item">Consumir refrigerado em até 5 dias</li>
+          {%- endif -%}
+        </ul>
+      </details>
+    {%- endif -%}
+  </div>
+{%- endif -%}

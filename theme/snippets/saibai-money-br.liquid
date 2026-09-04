@@ -1,0 +1,9 @@
+{%- comment -%}
+  Empório Saibai — Moeda BR com R$ maiúsculo
+  @param {number} amount — valor em centavos
+{%- endcomment -%}
+{%- liquid
+  assign formatted = amount | money
+  assign formatted = formatted | replace: 'r$', 'R$' | replace: 'R$  ', 'R$ '
+-%}
+{{- formatted -}}

@@ -1,0 +1,29 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "Footer group",
+  "type": "footer",
+  "sections": {
+    "saibai_footer": {
+      "type": "saibai-footer",
+      "settings": {
+        "nl_title": "Receba novidades da safra",
+        "nl_text": "Ofertas exclusivas, receitas com alcachofra e avisos de safra direto no seu e-mail.",
+        "nl_legal": "Ao inscrever-se, você concorda em receber comunicações da Saibai. Consulte nossa",
+        "menu_shop": "footer-shop-classic",
+        "menu_content": "footer-about-classic",
+        "menu_help": "footer-help-classic"
+      }
+    }
+  },
+  "order": [
+    "saibai_footer"
+  ]
+}

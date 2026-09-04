@@ -1,0 +1,1466 @@
+/* Empório Saibai — Shell CORE (kv+layout+cta) | Veltrus — consolidado */
+
+/* --- saibai-shell-kv.css --- */
+/* Empório Saibai — KV global
+ * Veltrus Growth & Technology | Shopify Partner ID 4969609
+ * PROPRIEDADE INTELECTUAL PROTEGIDA
+ */
+
+/* ── KV Saibai — 100% das páginas ── */
+/* Empório Saibai — shell core | Veltrus | bust:20260729qty5 */
+body.saibai-theme {
+  --saibai-primary: #8ABE0A;
+  --saibai-primary-hover: #7AAA08;
+  --saibai-primary-dark: #729908;
+  --saibai-primary-rgb: 138 190 10;
+  --saibai-secondary: #4E7E8A;
+  --saibai-accent: #9B8EC4;
+  --saibai-dark: #2A3A1A;
+  --saibai-light: var(--saibai-bg, #F2F5EE);
+  --saibai-white: #FFFFFF;
+  --saibai-transition: all 0.2s ease;
+  --saibai-tile-aspect: 558 / 780;
+  --saibai-tile-img-max-w: 78%;
+  --saibai-tile-img-max-h: 82%;
+  background: var(--saibai-bg, #F2F5EE);
+  color: var(--saibai-dark);
+  overflow-x: clip;
+  max-width: 100vw;
+}
+
+/* Sobrescreve color-scheme inline do Veltrus (scheme_primary / botões) */
+body.saibai-theme,
+body.saibai-theme .product-details,
+body.saibai-theme .shopify-section,
+body.saibai-theme .color-scheme-custom,
+body.saibai-theme [class*="color-scheme"] {
+  --saibai-primary: #8ABE0A !important;
+  --saibai-primary-hover: #7AAA08 !important;
+  --saibai-primary-dark: #729908 !important;
+  --saibai-primary-rgb: 138 190 10 !important;
+  --color-primary: #8ABE0A !important;
+  --color-primary-rgb: 138 190 10 !important;
+  --color-primary-hover: #7AAA08 !important;
+  --color-primary-hover-rgb: 122 170 8 !important;
+  --color-primary-button-background: #2A3A1A !important;
+  --color-primary-button-background-rgb: 42 58 26 !important;
+  --color-primary-button-border: #2A3A1A !important;
+  --color-primary-button-text: #ffffff !important;
+  --color-primary-button-text-rgb: 255 255 255 !important;
+  --color-primary-button-hover-background: #384E28 !important;
+  --color-primary-button-hover-border: #384E28 !important;
+  --color-primary-button-hover-text: #ffffff !important;
+  --button-background-color: #2A3A1A !important;
+  --button-border-color: #2A3A1A !important;
+  --button-color: #ffffff !important;
+  --color-sale-badge-background: #2A3A1A !important;
+  --color-sale-badge-border: #2A3A1A !important;
+  --color-sale-badge-foreground: #ffffff !important;
+  --color-badge-sale-background: #2A3A1A !important;
+  --color-badge-sale-border: #2A3A1A !important;
+  --color-badge-sale-foreground: #ffffff !important;
+}
+
+body.saibai-theme .content-for-layout,
+body.saibai-theme main,
+body.saibai-theme .gradient {
+  background-color: var(--saibai-bg, #F2F5EE);
+}
+
+/* ── Neutraliza widgets demo Veltrus ── */
+body.saibai-theme .section-multitasking-bar,
+body.saibai-theme .section-toolbar-mobile,
+body.saibai-theme .section-promotion-popup,
+body.saibai-theme .section-before-you-leave,
+body.saibai-theme .multitasking-bar,
+body.saibai-theme .toolbar-mobile,
+body.saibai-theme promotion-popup,
+body.saibai-theme before-you-leave {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  height: 0 !important;
+  overflow: hidden !important;
+}
+
+/* ── Regra 5 — Hovers padronizados ── */
+body.saibai-theme a:not(.button):not(.saibai-whatsapp-float):not(.saibai-header__logo-link):not([class*="saibai-header__"]) {
+  transition: var(--saibai-transition);
+}
+
+body.saibai-theme a:not(.button):not(.saibai-whatsapp-float):not(.saibai-header__logo-link):not([class*="saibai-header__"]):hover {
+  color: var(--saibai-primary);
+}
+
+body.saibai-theme .rte a:hover,
+body.saibai-theme .link--text:hover,
+body.saibai-theme .text-block a:hover,
+body.saibai-theme .copyright__content a:hover,
+body.saibai-theme .underlined-link:hover {
+  color: var(--saibai-primary);
+  text-decoration: underline;
+  text-decoration-color: var(--saibai-primary);
+}
+
+/* Secondary hover: grafite suave (não limão #8ABE0A — cart/CTA outline) */
+body.saibai-theme .button-secondary:hover {
+  background: rgb(42 58 26 / 0.06);
+  border-color: #2A3A1A;
+  color: #2A3A1A;
+}
+
+/* ── Regra 10 — Ícones ── */
+body.saibai-theme .icon,
+body.saibai-theme svg.icon,
+body.saibai-theme .list-social svg,
+body.saibai-theme .footer__list-social svg {
+  color: var(--saibai-dark);
+  stroke-width: 1.5px;
+  fill: currentColor;
+  transition: var(--saibai-transition);
+}
+
+body.saibai-theme .list-social a:hover svg,
+body.saibai-theme .footer__list-social a:hover svg,
+body.saibai-theme a:hover .icon {
+  color: var(--saibai-primary);
+}
+
+/* Ícones qty — PDP (quantity-input) + cart drawer (quantity-selector-component) */
+body.saibai-theme .quantity__button .icon,
+body.saibai-theme .quantity__button svg.icon,
+body.saibai-theme .quantity__button .svg-wrapper,
+body.saibai-theme .quantity__button .svg-wrapper svg,
+body.saibai-theme .quantity__button svg,
+body.saibai-theme .quantity__button svg path,
+body.saibai-theme quantity-input .quantity__button .svg-wrapper,
+body.saibai-theme quantity-input .quantity__button svg,
+body.saibai-theme quantity-input .quantity__button svg path,
+body.saibai-theme quantity-selector-component .quantity__button .svg-wrapper,
+body.saibai-theme quantity-selector-component .quantity__button svg,
+body.saibai-theme quantity-selector-component .quantity__button svg path,
+body.saibai-theme .quantity-selector .quantity__button .svg-wrapper,
+body.saibai-theme .quantity-selector .quantity__button svg,
+body.saibai-theme .quantity-selector .quantity__button svg path {
+  color: #fff !important;
+  fill: currentColor !important;
+  stroke: currentColor;
+}
+
+body.saibai-theme .quantity__button.disabled {
+  opacity: 1 !important;
+  cursor: not-allowed;
+}
+
+body.saibai-theme .quantity__button.disabled .svg-wrapper,
+body.saibai-theme .quantity__button.disabled svg,
+body.saibai-theme .quantity__button.disabled svg path {
+  opacity: 0.6;
+}
+
+/* --- saibai-shell-layout.css --- */
+/* Empório Saibai — Layout
+ * Veltrus Growth & Technology | Shopify Partner ID 4969609
+ * PROPRIEDADE INTELECTUAL PROTEGIDA
+ */
+
+/* ── Regra 7 — Controles slideshow ── */
+body.saibai-theme .saibai-slideshow-toggle,
+body.saibai-theme .slideshow__autoplay,
+body.saibai-theme .slider-buttons .slider-button {
+  opacity: 1;
+  visibility: visible;
+}
+
+body.saibai-theme .saibai-slideshow-toggle,
+body.saibai-theme .slideshow__autoplay button {
+  background: rgb(42 58 26 / 0.65);
+  color: var(--saibai-white);
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  transition: var(--saibai-transition);
+}
+
+body.saibai-theme .saibai-slideshow-toggle:hover,
+body.saibai-theme .slideshow__autoplay button:hover {
+  background: rgb(42 58 26 / 0.85);
+}
+
+body.saibai-theme .swiper-pagination-bullet-active,
+body.saibai-theme .pagination__item--current {
+  background: var(--saibai-primary) !important;
+  border-color: var(--saibai-primary) !important;
+}
+
+/* ── Regra 8 — Banner cover ── */
+body.saibai-theme .slideshow .media img,
+body.saibai-theme .banner__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ── Header + hero sem gap ── */
+body.saibai-theme.template-index #MainContent > .shopify-section.saibai-hero-section:first-child,
+body.saibai-theme.template-index .content-for-layout > .shopify-section.saibai-hero-section:first-child {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+body.saibai-theme.template-index .shopify-section.saibai-header-section {
+  margin-bottom: 0 !important;
+  border-bottom: 0 !important;
+}
+
+body.saibai-theme.template-index .content-for-layout > .shopify-section:first-child,
+body.saibai-theme.template-index #MainContent > .shopify-section:first-child {
+  margin-top: 0;
+}
+
+body.saibai-theme.template-index .content-for-layout > .shopify-section:first-child .spacing {
+  --p-spacing-t: 0px;
+  padding-top: 0;
+}
+
+body.saibai-theme .saibai-hero {
+  margin-top: 0;
+}
+
+/* body overflow-hidden não corta barra fixa */
+body.saibai-theme.overflow-hidden {
+  overflow-x: clip;
+  overflow-y: hidden;
+}
+
+body.saibai-theme.overflow-hidden #header-group,
+body.saibai-theme #header-group {
+  overflow: visible;
+}
+
+body.saibai-theme .shopify-section.section-announcement-bar {
+  overflow: visible;
+  padding: 0;
+  margin: 0;
+}
+
+/* ── Footer — Veltrus discreto ── */
+body.saibai-theme .saibai-credit {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.25rem 0.35rem;
+  font-size: 0.75rem;
+  color: rgb(42 58 26 / 0.45);
+  letter-spacing: 0.03em;
+}
+
+body.saibai-theme .saibai-credit__label {
+  color: rgb(42 58 26 / 0.4);
+}
+
+body.saibai-theme .saibai-credit__sep {
+  color: rgb(42 58 26 / 0.35);
+}
+
+body.saibai-theme .saibai-credit a,
+body.saibai-theme .saibai-credit__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: rgb(42 58 26 / 0.5);
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: var(--saibai-transition);
+}
+
+body.saibai-theme .saibai-credit a:hover,
+body.saibai-theme .saibai-credit__link:hover {
+  color: var(--saibai-primary);
+  text-decoration: underline;
+}
+
+body.saibai-theme .saibai-credit__badge-link {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgb(42 58 26 / 0.5);
+  text-decoration: none;
+  transition: var(--saibai-transition);
+}
+
+body.saibai-theme .saibai-credit__badge-link:hover {
+  color: var(--saibai-primary);
+  text-decoration: underline;
+}
+
+/* ── Contraste + overflow ── */
+body.saibai-theme .color-scheme-1,
+body.saibai-theme .color-scheme-2 {
+  --color-foreground: var(--saibai-dark);
+}
+
+body.saibai-theme #header-group,
+body.saibai-theme .section-announcement-bar {
+  overflow: visible;
+}
+
+/* Sticky permanente: saibai-header-base.css */
+
+/* Ultra-wide: contenção elegante */
+@media (min-width: 1920px) {
+  body.saibai-theme .page-width {
+    max-width: 1440px;
+    margin-inline: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.saibai-theme * {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Cupom no drawer do carrinho */
+.saibai-cart-coupon-hint {
+  margin-top: 1rem;
+  padding: 14px;
+  border: 1px solid #E2EDDA;
+  background: var(--saibai-bg, #F2F5EE);
+  text-align: left;
+}
+
+.saibai-cart-coupon-hint__label {
+  margin: 0 0 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--saibai-primary);
+}
+
+.saibai-cart-coupon-hint__row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.saibai-cart-coupon-hint__code {
+  flex: 1;
+  min-width: 120px;
+  padding: 8px 10px;
+  border: 1px dashed #C5DBA8;
+  background: #fff;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #2A3A1A;
+}
+
+.saibai-cart-coupon-hint__apply {
+  min-height: 40px !important;
+  padding: 0 14px !important;
+  background: var(--saibai-primary) !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 4px !important;
+  font-weight: 600 !important;
+}
+
+.saibai-cart-coupon-hint__apply:hover {
+  background: var(--saibai-primary-hover) !important;
+}
+
+.saibai-cart-coupon-hint__note {
+  margin: 8px 0 0;
+  font-size: 0.8125rem;
+  color: #4E6040;
+}
+
+/* ── Cart drawer LP — largura Cleveland (compacta) ── */
+/* Overlay do drawer: só com .active (não .open — evita travar scroll se close falhar) */
+html body.saibai-theme cart-drawer.drawer.active {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+html body.saibai-theme cart-drawer [data-drawer-content] {
+  --drawer-max-width: 26rem;
+  width: min(calc(100% - 1.25rem), 26rem) !important;
+  max-width: 26rem !important;
+  background-color: var(--saibai-bg, #F2F5EE) !important;
+}
+
+@media screen and (max-width: 749px) {
+  html body.saibai-theme cart-drawer [data-drawer-content] {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  html body.saibai-theme cart-drawer .drawer__inner {
+    padding-inline: 1rem;
+  }
+
+  html body.saibai-theme cart-drawer .cart-items__table-row,
+  html body.saibai-theme .cart-drawer .cart-items__table-row {
+    grid-template-columns: 4.5rem minmax(0, 1fr) max-content !important;
+    column-gap: 0.625rem !important;
+  }
+
+  html body.saibai-theme cart-drawer .cart-item__media,
+  html body.saibai-theme .cart-drawer .cart-item__media {
+    width: 4.5rem !important;
+    max-width: 4.5rem !important;
+  }
+
+  html body.saibai-theme cart-drawer .cart-item__media img,
+  html body.saibai-theme cart-drawer .cart-item__image {
+    max-height: 4.5rem !important;
+  }
+}
+
+html body.saibai-theme cart-drawer .drawer__inner {
+  padding-inline: clamp(1.25rem, 4vw, 2rem);
+}
+
+html body.saibai-theme cart-drawer .drawer__header {
+  padding-top: clamp(1rem, 3vw, 1.5rem);
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgb(42 58 26 / 0.08);
+}
+
+html body.saibai-theme cart-drawer .saibai-cart-drawer__heading,
+html body.saibai-theme cart-drawer .drawer__heading {
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-size: clamp(1.125rem, 2.2vw, 1.375rem);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #2A3A1A;
+}
+
+html body.saibai-theme cart-drawer .saibai-cart-drawer__count,
+html body.saibai-theme cart-drawer .wrapper-cart-count {
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgb(42 58 26 / 0.5);
+}
+
+html body.saibai-theme cart-drawer.is-empty .drawer__inner-empty {
+  display: flex;
+  flex-direction: column;
+}
+
+html body.saibai-theme cart-drawer.is-empty .drawer__inner-empty > .drawer__header {
+  border-bottom: none;
+  flex-shrink: 0;
+}
+
+html body.saibai-theme cart-drawer .saibai-cart-drawer__warnings {
+  flex: 1;
+  min-height: 0;
+  padding-block: clamp(1.5rem, 8vh, 4rem);
+}
+
+html body.saibai-theme cart-drawer .saibai-cart-drawer__empty {
+  width: 100%;
+  max-width: 22rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+html body.saibai-theme cart-drawer .saibai-cart-drawer__eyebrow {
+  margin: 0 0 0.75rem;
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgb(42 58 26 / 0.45);
+}
+
+html body.saibai-theme cart-drawer .saibai-cart-drawer__title,
+html body.saibai-theme cart-drawer .cart__empty-text {
+  margin: 0 0 1.75rem;
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-size: clamp(1.375rem, 3vw, 1.75rem);
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: #2A3A1A;
+}
+
+html body.saibai-theme cart-drawer .saibai-cart-drawer__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 48px;
+  padding: 0 1.5rem;
+  background: #2A3A1A !important;
+  border: 1px solid #2A3A1A !important;
+  border-radius: 4px !important;
+  color: #fff !important;
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+html body.saibai-theme cart-drawer .saibai-cart-drawer__cta:hover {
+  background: #384E28 !important;
+  border-color: #384E28 !important;
+  color: #fff !important;
+}
+
+html body.saibai-theme cart-drawer .saibai-cart-drawer__login {
+  margin-top: 2.5rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid rgb(42 58 26 / 0.08);
+}
+
+html body.saibai-theme cart-drawer .cart__login-title {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: rgb(42 58 26 / 0.55);
+}
+
+html body.saibai-theme cart-drawer .cart__login-paragraph {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: rgb(42 58 26 / 0.55);
+}
+
+html body.saibai-theme cart-drawer .cart__login-paragraph .link,
+html body.saibai-theme cart-drawer .cart__login-paragraph a {
+  color: #2A3A1A !important;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+html body.saibai-theme cart-drawer .cart-drawer__collection {
+  display: none !important;
+}
+
+html body.saibai-theme cart-drawer .cart-item__name {
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  color: #2A3A1A !important;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.35;
+  font-size: 0.9375rem !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  transition: color 0.2s ease !important;
+  position: relative;
+  z-index: 1;
+}
+
+html body.saibai-theme cart-drawer .cart-item__name .text {
+  visibility: visible !important;
+  color: inherit !important;
+}
+
+html body.saibai-theme cart-drawer .cart-items__table-row,
+html body.saibai-theme .cart-drawer .cart-items__table-row {
+  --cart-item-price-width: 5rem;
+  display: grid !important;
+  grid-template-columns: 5rem minmax(0, 1fr) max-content !important;
+  grid-template-areas:
+    "media details totals"
+    "media quantity remove" !important;
+  column-gap: 0.75rem !important;
+  row-gap: 0.5rem !important;
+  align-items: start !important;
+  place-items: start stretch !important;
+  border-bottom-color: rgb(42 58 26 / 0.08) !important;
+}
+
+html body.saibai-theme cart-drawer .cart-item__media,
+html body.saibai-theme .cart-drawer .cart-item__media {
+  grid-area: media !important;
+  grid-column: media !important;
+  grid-row: media !important;
+  width: 5rem !important;
+  max-width: 5rem !important;
+  min-width: 0 !important;
+  overflow: hidden !important;
+  position: relative;
+  z-index: 0;
+}
+
+html body.saibai-theme cart-drawer .cart-item__media .cart-item__image-container,
+html body.saibai-theme cart-drawer .cart-item__media .cart-item__link {
+  width: 100% !important;
+  max-width: 100% !important;
+  inset: 0;
+}
+
+html body.saibai-theme cart-drawer .cart-item__details,
+html body.saibai-theme .cart-drawer .cart-item__details {
+  grid-area: details !important;
+  grid-column: details !important;
+  grid-row: details !important;
+  min-width: 0 !important;
+  width: auto !important;
+  max-width: none !important;
+  overflow: hidden !important;
+  position: relative;
+  z-index: 1;
+}
+
+html body.saibai-theme cart-drawer .cart-item__details .product-option,
+html body.saibai-theme cart-drawer .cart-item__details .cart-item__variant,
+html body.saibai-theme .cart-drawer .cart-item__details .product-option,
+html body.saibai-theme .cart-drawer .cart-item__details .cart-item__variant {
+  font-size: 0.8125rem !important;
+  line-height: 1.3 !important;
+  white-space: nowrap !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+html body.saibai-theme cart-drawer .cart-item__totals,
+html body.saibai-theme .cart-drawer .cart-item__totals {
+  grid-area: totals !important;
+  grid-column: totals !important;
+  grid-row: totals !important;
+  justify-self: end !important;
+  position: relative;
+  z-index: 1;
+}
+
+html body.saibai-theme cart-drawer .cart-item__quantity,
+html body.saibai-theme .cart-drawer .cart-item__quantity {
+  grid-area: quantity !important;
+  /* Ella component-cart-drawer força grid-column: 2 / 5 — anular */
+  grid-column: quantity !important;
+  grid-row: quantity !important;
+  width: auto !important;
+  max-width: 100%;
+  place-self: start stretch !important;
+  position: relative;
+  z-index: 1;
+}
+
+html body.saibai-theme cart-drawer .cart-item__price,
+html body.saibai-theme .cart-drawer .cart-item__price {
+  display: none !important;
+}
+
+html body.saibai-theme cart-drawer .cart-item__remove,
+html body.saibai-theme .cart-drawer .cart-item__remove {
+  grid-area: remove !important;
+  grid-column: remove !important;
+  grid-row: remove !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  width: auto !important;
+  min-height: 2.75rem !important;
+  height: 2.75rem !important;
+  max-height: 2.75rem !important;
+  place-self: start end !important;
+  position: relative;
+  z-index: 1;
+}
+
+/* Imagem NÃO pode vazar da coluna 5rem (causava texto “picado” no mobile) */
+html body.saibai-theme cart-drawer .cart-item__media img,
+html body.saibai-theme cart-drawer .cart-item__image {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  max-height: 5rem !important;
+  aspect-ratio: 1 / 1;
+  background: #fff;
+  object-fit: contain !important;
+}
+
+html body.saibai-theme cart-drawer .drawer--function-blocks {
+  border-color: rgb(42 58 26 / 0.12);
+  border-radius: 4px;
+  overflow: hidden;
+  background: #fff;
+}
+
+/* Function blocks: fundo claro + ícones sempre visíveis (evita bloco verde vazio) */
+html body.saibai-theme cart-drawer .drawer--function-blocks .function-block,
+html body.saibai-theme cart-drawer .drawer--function-blocks .function-block.button {
+  background: #fff !important;
+  background-color: #fff !important;
+  border-right-color: rgb(42 58 26 / 0.12) !important;
+  color: #2A3A1A !important;
+  --button-background-color: #fff !important;
+  --button-border-color: transparent !important;
+  --button-color: #2A3A1A !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 48px !important;
+  height: 48px !important;
+  max-height: 48px !important;
+  padding: 0 !important;
+  overflow: hidden;
+}
+
+html body.saibai-theme cart-drawer .drawer--function-blocks .function-block .svg-wrapper,
+html body.saibai-theme cart-drawer .drawer--function-blocks .function-block .icon,
+html body.saibai-theme cart-drawer .drawer--function-blocks .function-block svg,
+html body.saibai-theme cart-drawer .drawer--function-blocks .function-block svg path {
+  color: #2A3A1A !important;
+  fill: currentColor !important;
+  stroke: currentColor;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+html body.saibai-theme cart-drawer .drawer--function-blocks .function-block .svg-wrapper {
+  width: 1.25rem !important;
+  height: 1.25rem !important;
+  max-width: 1.25rem !important;
+  max-height: 1.25rem !important;
+}
+
+html body.saibai-theme cart-drawer .drawer--function-blocks .function-block:hover,
+html body.saibai-theme cart-drawer .drawer--function-blocks .function-block.button:hover {
+  background: #2A3A1A !important;
+  background-color: #2A3A1A !important;
+  color: #fff !important;
+  --button-background-color: #2A3A1A !important;
+  --button-color: #fff !important;
+}
+
+html body.saibai-theme cart-drawer .drawer--function-blocks .function-block:hover .svg-wrapper,
+html body.saibai-theme cart-drawer .drawer--function-blocks .function-block:hover .icon,
+html body.saibai-theme cart-drawer .drawer--function-blocks .function-block:hover svg,
+html body.saibai-theme cart-drawer .drawer--function-blocks .function-block:hover svg path {
+  color: #fff !important;
+  fill: currentColor !important;
+}
+
+/* X fechar / remover — sempre visíveis (não só no hover) */
+html body.saibai-theme cart-drawer .drawer__close,
+html body.saibai-theme cart-drawer .button-close-circle,
+html body.saibai-theme cart-drawer .cart-item__remove .button {
+  color: #2A3A1A !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+html body.saibai-theme cart-drawer .drawer__close .icon,
+html body.saibai-theme cart-drawer .drawer__close svg,
+html body.saibai-theme cart-drawer .drawer__close svg path,
+html body.saibai-theme cart-drawer .button-close-circle .icon,
+html body.saibai-theme cart-drawer .button-close-circle svg,
+html body.saibai-theme cart-drawer .button-close-circle svg path,
+html body.saibai-theme cart-drawer .cart-item__remove .svg-wrapper,
+html body.saibai-theme cart-drawer .cart-item__remove svg,
+html body.saibai-theme cart-drawer .cart-item__remove svg path {
+  color: #2A3A1A !important;
+  fill: currentColor !important;
+  stroke: currentColor;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Preço duplicado no drawer: mantém unitário nos details, total à direita */
+html body.saibai-theme cart-drawer .cart-item__details .cart-item__price-wrapper {
+  display: none !important;
+}
+
+html body.saibai-theme cart-drawer .drawer__footer {
+  padding-block: 1.25rem 0;
+  border-top: 1px solid rgb(42 58 26 / 0.08);
+  background: var(--saibai-bg, #F2F5EE);
+}
+
+html body.saibai-theme cart-drawer .cart-drawer__footer .totals__total {
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgb(42 58 26 / 0.55);
+}
+
+html body.saibai-theme cart-drawer .cart-drawer__footer .totals__total-value {
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #2A3A1A;
+}
+
+html body.saibai-theme cart-drawer .tax-note {
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: rgb(42 58 26 / 0.45);
+}
+
+html body.saibai-theme cart-drawer .saibai-cart-trust {
+  margin: 0.75rem 0 0;
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  text-align: center;
+  color: rgb(42 58 26 / 0.45);
+}
+
+html body.saibai-theme cart-drawer .cart__checkout-button {
+  min-height: 48px;
+  background: #2A3A1A !important;
+  border: 1px solid #2A3A1A !important;
+  border-radius: 4px !important;
+  color: #fff !important;
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+html body.saibai-theme cart-drawer .cart__checkout-button:hover:not(:disabled) {
+  background: #384E28 !important;
+  border-color: #384E28 !important;
+}
+
+/* ── Delivery zone gate (CEP SP/Sorocaba) ── */
+html body.saibai-theme .saibai-delivery-gate {
+  margin: 0 0 1rem;
+  padding: 0.85rem 0.9rem;
+  border: 1px solid rgb(42 58 26 / 0.12);
+  border-radius: 4px;
+  background: #FAFBF7;
+}
+
+html body.saibai-theme .saibai-delivery-gate__label {
+  margin: 0 0 0.25rem;
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #2A3A1A;
+}
+
+html body.saibai-theme .saibai-delivery-gate__hint {
+  margin: 0 0 0.65rem;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: rgb(42 58 26 / 0.55);
+}
+
+html body.saibai-theme .saibai-delivery-gate__form {
+  display: flex;
+  gap: 0.5rem;
+  align-items: stretch;
+}
+
+html body.saibai-theme .saibai-delivery-gate__input {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 2.5rem;
+  padding: 0 0.75rem;
+  border: 1px solid rgb(42 58 26 / 0.18);
+  border-radius: 4px;
+  background: #fff;
+  color: #2A3A1A;
+  font-size: 0.875rem;
+}
+
+html body.saibai-theme .saibai-delivery-gate__btn {
+  flex: 0 0 auto;
+  height: 2.5rem;
+  padding: 0 0.9rem;
+  border: 1px solid #2A3A1A;
+  border-radius: 4px;
+  background: #2A3A1A;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+html body.saibai-theme .saibai-delivery-gate__btn:hover {
+  background: #384E28;
+  border-color: #384E28;
+}
+
+html body.saibai-theme .saibai-delivery-gate__msg {
+  margin: 0.65rem 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: #2A3A1A;
+}
+
+html body.saibai-theme .saibai-delivery-gate__msg.is-ok {
+  color: #2A3A1A;
+}
+
+html body.saibai-theme .saibai-delivery-gate__msg.is-err {
+  color: #8B3A2A;
+}
+
+html body.saibai-theme .saibai-delivery-gate__transit {
+  margin: 0.5rem 0 0;
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: #8B5E4A;
+}
+
+html body.saibai-theme .saibai-delivery-gate__out {
+  margin: 0.45rem 0 0;
+  font-size: 0.75rem;
+  line-height: 1.45;
+}
+
+html body.saibai-theme .saibai-delivery-gate__out a {
+  color: #2A3A1A;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+html body.saibai-theme.saibai-delivery-locked .additional-checkout-buttons,
+html body.saibai-theme.saibai-delivery-locked .cart__dynamic-checkout-buttons {
+  display: none !important;
+}
+
+html body.saibai-theme a.saibai-delivery-locked-link {
+  pointer-events: none;
+  opacity: 0.45;
+}
+
+html body.saibai-theme cart-drawer .cart__viewcart-button {
+  min-height: 44px;
+  background: transparent !important;
+  background-color: transparent !important;
+  border: 1px solid rgb(42 58 26 / 0.2) !important;
+  border-radius: 4px !important;
+  color: #2A3A1A !important;
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  --color-effect-background: transparent !important;
+  --button-background-color: transparent !important;
+  --color-secondary-button-hover-background: rgb(42 58 26 / 0.06) !important;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Sem wipe limão #8ABE0A — hover Cleveland grafite suave */
+html body.saibai-theme cart-drawer .cart__viewcart-button:hover,
+html body.saibai-theme.button-hover--effect cart-drawer .cart__viewcart-button:hover,
+html body.saibai-theme cart-drawer .button-secondary.cart__viewcart-button:hover {
+  border-color: #2A3A1A !important;
+  background: rgb(42 58 26 / 0.06) !important;
+  background-color: rgb(42 58 26 / 0.06) !important;
+  color: #2A3A1A !important;
+}
+
+html body.saibai-theme cart-drawer .cart__viewcart-button::after,
+html body.saibai-theme.button-hover--effect cart-drawer .cart__viewcart-button::after {
+  display: none !important;
+  content: none !important;
+}
+
+html body.saibai-theme:has(cart-drawer.active) .saibai-whatsapp-float {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+html body.saibai-theme cart-drawer .cart-drawer__recommendations-header h3,
+html body.saibai-theme cart-drawer .cart-drawer__recommendations-header .h4 {
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: #2A3A1A;
+}
+
+html body.saibai-theme cart-drawer .previewCartMessage {
+  padding-block: 1rem 1.125rem;
+  margin: 0;
+  border-bottom: 1px solid rgb(42 58 26 / 0.08);
+}
+
+/* ── Frete grátis — KV C-level (sem vermelho Ella) ── */
+html body.saibai-theme .haloCalculatorShipping,
+html body.saibai-theme cart-drawer .haloCalculatorShipping,
+html body.saibai-theme.template-cart .haloCalculatorShipping {
+  --free-shipping-height: 6px;
+  --free-shipping-border-radius: 999px;
+  --free-shipping-color: #2A3A1A;
+  --free-shipping-bg: #E8EFE2;
+  --free-shipping-bg-1: #B5D46A;
+  --free-shipping-bg-2: #8ABE0A;
+  --free-shipping-bg-3: #76BD22;
+  --free-shipping-bg-4: #2A3A1A;
+  --free_shipping_color3: #76BD22;
+  margin: 0 0 0.25rem !important;
+  min-height: 0 !important;
+}
+
+/* Estimativa frete — Brasil fixo (sem lista mundial de países) */
+html body.saibai-theme .saibai-ship-calc__note {
+  margin: 0;
+  font-size: 1.3rem;
+  line-height: 1.45;
+  color: #444643;
+}
+
+html body.saibai-theme .saibai-ship-calc__country-fixed {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0;
+  padding: 1rem 1.2rem;
+  border: 1px solid rgba(42, 58, 26, 0.14);
+  border-radius: 4px;
+  background: #f7f8f5;
+}
+
+html body.saibai-theme .saibai-ship-calc__country-label {
+  font-size: 1.2rem;
+  color: #6b6e68;
+}
+
+html body.saibai-theme .saibai-ship-calc__country-value {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #2a3a1a;
+}
+
+html body.saibai-theme .haloCalculatorShipping .progress {
+  margin: 0 0 0.75rem !important;
+  padding-right: 1.25rem;
+}
+
+html body.saibai-theme .haloCalculatorShipping .progress .progress_shipping {
+  height: var(--free-shipping-height) !important;
+  background-color: var(--free-shipping-bg) !important;
+  border-radius: var(--free-shipping-border-radius) !important;
+  border: none !important;
+  overflow: visible;
+}
+
+html body.saibai-theme .haloCalculatorShipping .progress .progress-meter {
+  height: 100% !important;
+  border-radius: var(--free-shipping-border-radius) !important;
+  background-image: none !important;
+  animation: none !important;
+  transition: width 0.55s ease, background-color 0.35s ease !important;
+}
+
+html body.saibai-theme .haloCalculatorShipping .progress.progress-30 .progress-meter {
+  background-color: var(--free-shipping-bg-1) !important;
+}
+
+html body.saibai-theme .haloCalculatorShipping .progress.progress-60 .progress-meter {
+  background-color: var(--free-shipping-bg-2) !important;
+}
+
+html body.saibai-theme .haloCalculatorShipping .progress.progress-100 .progress-meter {
+  background-color: var(--free-shipping-bg-3) !important;
+}
+
+html body.saibai-theme .haloCalculatorShipping .progress.progress-free .progress-meter {
+  background-color: var(--free-shipping-bg-4) !important;
+}
+
+html body.saibai-theme .haloCalculatorShipping .progress .progress-meter .circle-wrapper {
+  width: 12px !important;
+  height: 12px !important;
+  right: -6px !important;
+  bottom: -3px !important;
+  border: 2px solid #2A3A1A !important;
+  background: #fff !important;
+  box-shadow: 0 0 0 2px #E8EFE2;
+}
+
+html body.saibai-theme .haloCalculatorShipping .progress.progress-30 .progress-meter .circle-wrapper {
+  border-color: var(--free-shipping-bg-1) !important;
+}
+
+html body.saibai-theme .haloCalculatorShipping .progress.progress-60 .progress-meter .circle-wrapper {
+  border-color: var(--free-shipping-bg-2) !important;
+}
+
+html body.saibai-theme .haloCalculatorShipping .progress.progress-100 .progress-meter .circle-wrapper {
+  border-color: var(--free-shipping-bg-3) !important;
+}
+
+html body.saibai-theme .haloCalculatorShipping .progress.progress-free .progress-meter .circle-wrapper {
+  border-color: var(--free-shipping-bg-4) !important;
+}
+
+html body.saibai-theme .haloCalculatorShipping .progress-truck-wrapper {
+  right: -0.35rem !important;
+  bottom: calc(var(--free-shipping-height) + 2px) !important;
+}
+
+html body.saibai-theme .haloCalculatorShipping .progress-truck-wrapper .icon-shipping-truck {
+  width: 1.25rem !important;
+  height: 0.875rem !important;
+  max-width: 1.25rem !important;
+  fill: #2A3A1A !important;
+  color: #2A3A1A !important;
+  transition: fill 0.35s ease, color 0.35s ease !important;
+}
+
+html body.saibai-theme .haloCalculatorShipping .progress.progress-30 .progress-meter .progress-truck-wrapper .icon-shipping-truck {
+  fill: #4E6040 !important;
+  color: #4E6040 !important;
+}
+
+html body.saibai-theme .haloCalculatorShipping .progress.progress-60 .progress-meter .progress-truck-wrapper .icon-shipping-truck {
+  fill: #729908 !important;
+  color: #729908 !important;
+}
+
+html body.saibai-theme .haloCalculatorShipping .progress.progress-100 .progress-meter .progress-truck-wrapper .icon-shipping-truck,
+html body.saibai-theme .haloCalculatorShipping .progress.progress-free .progress-meter .progress-truck-wrapper .icon-shipping-truck {
+  fill: #2A3A1A !important;
+  color: #2A3A1A !important;
+}
+
+html body.saibai-theme .haloCalculatorShipping .progress-truck-wrapper .icon-shipping-truck .wheel {
+  fill: #F2F5EE !important;
+}
+
+html body.saibai-theme .haloCalculatorShipping .message,
+html body.saibai-theme .haloCalculatorShipping .progress.progress-free + .message {
+  margin: 0 !important;
+  font-family: var(--font-heading--family, 'Jost', sans-serif) !important;
+  font-size: 0.75rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.02em !important;
+  line-height: 1.45 !important;
+  text-transform: none !important;
+  color: #2A3A1A !important;
+}
+
+html body.saibai-theme .haloCalculatorShipping .message .text {
+  text-transform: none !important;
+}
+
+html body.saibai-theme .haloCalculatorShipping .progress.progress-free + .message {
+  color: #2A3A1A !important;
+}
+
+html body.saibai-theme cart-drawer .haloCalculatorShipping .message strong,
+html body.saibai-theme .haloCalculatorShipping .message strong {
+  font-weight: 600;
+  color: #2A3A1A;
+}
+
+/* --- saibai-shell-cta.css --- */
+/* Empório Saibai — CTA
+ * Veltrus Growth & Technology | Shopify Partner ID 4969609
+ * PROPRIEDADE INTELECTUAL PROTEGIDA
+ */
+
+/* ── Regra 0 — CTA grafite #2A3A1A (cor do footer) · cascade final ── */
+/* Exclui .function-block / .button-close-circle — ícones do cart drawer */
+html body.saibai-theme .button:not(.button-secondary):not(.button--tertiary):not(.button-unstyled):not(.header__icon):not(.sold-out--button):not(.function-block):not(.button-close-circle):not([disabled]),
+html body.saibai-theme .quick-add__submit:not(.link):not([disabled]),
+html body.saibai-theme button.product-form__submit:not([disabled]),
+html body.saibai-theme .add-to-cart-button .product-form__submit:not([disabled]),
+html body.saibai-theme .shopify-payment-button__button--unbranded:not([disabled]),
+html body.saibai-theme .button-hover--effect .button:not(.button-unstyled):not(.header__icon):not(.button--outline):not(.function-block):not(.button-close-circle):not([disabled]) {
+  background: #2A3A1A !important;
+  background-color: #2A3A1A !important;
+  border-color: #2A3A1A !important;
+  --button-background-color: #2A3A1A !important;
+  --button-border-color: #2A3A1A !important;
+  --color-primary-button-background: #2A3A1A !important;
+  --color-primary-button-border: #2A3A1A !important;
+  --color-effect-background: #384E28 !important;
+  color: #fff !important;
+  --button-color: #fff !important;
+}
+
+html body.saibai-theme .button:not(.button-secondary):not(.button--tertiary):not(.button-unstyled):not(.header__icon):not(.function-block):not(.button-close-circle):not([disabled]):hover,
+html body.saibai-theme .quick-add__submit:not(.link):not([disabled]):hover,
+html body.saibai-theme button.product-form__submit:not([disabled]):hover,
+html body.saibai-theme .shopify-payment-button__button--unbranded:not([disabled]):hover {
+  background: #384E28 !important;
+  background-color: #384E28 !important;
+  border-color: #384E28 !important;
+  --button-background-color: #384E28 !important;
+  --color-primary-button-hover-background: #384E28 !important;
+  color: #fff !important;
+}
+
+html body.saibai-theme .quantity__button:not([disabled]),
+html body.saibai-theme quantity-input .quantity__button:not([disabled]),
+html body.saibai-theme quantity-selector-component .quantity__button:not([disabled]),
+html body.saibai-theme .quantity-selector .quantity__button:not([disabled]),
+html body.saibai-theme .sticky-atc .quantity__button:not([disabled]) {
+  background: #2A3A1A !important;
+  background-color: #2A3A1A !important;
+  border-color: #2A3A1A !important;
+  color: #fff !important;
+}
+
+html body.saibai-theme .sale-badge,
+html body.saibai-theme .badge.sale-badge,
+html body.saibai-theme .badge--sale,
+html body.saibai-theme .price__badge-sale,
+html body.saibai-theme .card__badge .badge.sale-badge {
+  background-color: #2A3A1A !important;
+  border-color: #2A3A1A !important;
+  color: #fff !important;
+  --color-badge-background: #2A3A1A !important;
+  --color-badge-border: #2A3A1A !important;
+  --color-badge-foreground: #fff !important;
+}
+
+html body.saibai-theme .price__sale > span:first-of-type,
+html body.saibai-theme .price-item--percent {
+  color: #2A3A1A !important;
+}
+
+html body.saibai-theme .color-scheme-custom,
+html body.saibai-theme [class*="color-scheme"],
+html body.saibai-theme .shopify-section,
+html body.saibai-theme .product-details {
+  --color-primary-button-background: #2A3A1A !important;
+  --color-primary-button-border: #2A3A1A !important;
+  --color-primary-button-hover-background: #384E28 !important;
+  --color-sale-badge-background: #2A3A1A !important;
+}
+
+/* ── Hotfix 2026-07-29 — qty selector sem base.css (home/PLP/skip) ── */
+/* Causa: consolidação skip base.css; .quantity-selector vivia só no Ella base */
+html body.saibai-theme .quantity-selector,
+html body.saibai-theme quantity-selector-component.quantity-selector,
+html body.saibai-theme quantity-input.quantity-selector,
+html body.saibai-theme cart-drawer .quantity-selector,
+html body.saibai-theme cart-drawer quantity-selector-component.quantity-selector,
+html body.saibai-theme cart-drawer quantity-selector-component.quantity.cart-quantity {
+  --quantity-selector-width: 7.5rem;
+  position: relative !important;
+  display: inline-flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex: 0 0 auto !important;
+  width: var(--quantity-selector-width) !important;
+  min-width: var(--quantity-selector-width) !important;
+  max-width: 9rem;
+  height: 2.75rem !important;
+  min-height: 2.75rem !important;
+  max-height: 2.75rem !important;
+  box-sizing: border-box;
+  overflow: hidden !important;
+  border-radius: 4px;
+  background: #fff !important;
+  border: 1px solid rgb(42 58 26 / 0.15);
+}
+
+html body.saibai-theme .quantity-selector .quantity__button,
+html body.saibai-theme quantity-selector-component .quantity__button,
+html body.saibai-theme quantity-input .quantity__button,
+html body.saibai-theme cart-drawer .quantity-selector .quantity__button,
+html body.saibai-theme cart-drawer quantity-selector-component .quantity__button {
+  position: absolute !important;
+  top: 0 !important;
+  z-index: 2;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 2.5rem !important;
+  height: 2.75rem !important;
+  min-width: 2.5rem !important;
+  min-height: 2.75rem !important;
+  max-height: 2.75rem !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  flex-shrink: 0 !important;
+  box-shadow: none !important;
+  cursor: pointer;
+}
+
+html body.saibai-theme .quantity-selector .quantity__button.quantity-minus,
+html body.saibai-theme quantity-selector-component .quantity__button.quantity-minus,
+html body.saibai-theme quantity-input .quantity__button.quantity-minus,
+html body.saibai-theme cart-drawer .quantity__button.quantity-minus {
+  left: 0 !important;
+  right: auto !important;
+}
+
+html body.saibai-theme .quantity-selector .quantity__button.quantity-plus,
+html body.saibai-theme quantity-selector-component .quantity__button.quantity-plus,
+html body.saibai-theme quantity-input .quantity__button.quantity-plus,
+html body.saibai-theme cart-drawer .quantity__button.quantity-plus {
+  right: 0 !important;
+  left: auto !important;
+}
+
+html body.saibai-theme .quantity-selector .quantity__input,
+html body.saibai-theme quantity-selector-component .quantity__input,
+html body.saibai-theme quantity-input .quantity__input,
+html body.saibai-theme cart-drawer .quantity-selector .quantity__input,
+html body.saibai-theme cart-drawer quantity-selector-component .quantity__input {
+  width: 100% !important;
+  max-width: none !important;
+  height: 2.75rem !important;
+  min-height: 2.75rem !important;
+  max-height: 2.75rem !important;
+  margin: 0 !important;
+  padding: 0 2.5rem !important;
+  border: none !important;
+  background: transparent !important;
+  text-align: center !important;
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #2A3A1A !important;
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+html body.saibai-theme .quantity-selector .quantity__input::-webkit-outer-spin-button,
+html body.saibai-theme .quantity-selector .quantity__input::-webkit-inner-spin-button,
+html body.saibai-theme quantity-selector-component .quantity__input::-webkit-outer-spin-button,
+html body.saibai-theme quantity-selector-component .quantity__input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+html body.saibai-theme cart-drawer .cart-item__quantity,
+html body.saibai-theme .cart-drawer .cart-item__quantity {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  align-content: flex-start !important;
+  gap: 0.5rem !important;
+  min-height: 2.75rem !important;
+  max-height: none;
+  overflow: visible;
+}
+
+/* Erro de linha: zero altura por padrão (evita salto no +) */
+html body.saibai-theme cart-drawer .cart-item__error,
+html body.saibai-theme .cart-drawer .cart-item__error {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  max-height: 0 !important;
+  min-height: 0 !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  border: 0 !important;
+  pointer-events: none !important;
+}
+
+html body.saibai-theme cart-drawer .cart-item__error:not(.hidden):not([hidden]),
+html body.saibai-theme .cart-drawer .cart-item__error:not(.hidden):not([hidden]) {
+  display: flex !important;
+  visibility: visible !important;
+  height: auto !important;
+  max-height: none !important;
+  margin-top: 0.35rem !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  pointer-events: auto !important;
+  align-items: flex-start !important;
+  gap: 0.35rem;
+  color: #8B5E4A !important;
+}
+
+html body.saibai-theme cart-drawer .cart-item__error .cart-item__error-text,
+html body.saibai-theme .cart-drawer .cart-item__error .cart-item__error-text {
+  margin: 0 !important;
+  font-size: 0.75rem !important;
+  line-height: 1.35 !important;
+  letter-spacing: 0.01em !important;
+  order: 0 !important;
+}
+
+html body.saibai-theme cart-drawer .cart-item__error .svg-wrapper,
+html body.saibai-theme .cart-drawer .cart-item__error .svg-wrapper {
+  flex-shrink: 0 !important;
+  width: 0.875rem !important;
+  height: 0.875rem !important;
+  margin: 0.1rem 0 0 !important;
+}
+
+html body.saibai-theme cart-drawer .cart-item__remove .button,
+html body.saibai-theme .cart-drawer .cart-item__remove .button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 2.75rem !important;
+  height: 2.75rem !important;
+  min-width: 2.75rem !important;
+  min-height: 2.75rem !important;
+  max-height: 2.75rem !important;
+  padding: 0 !important;
+  border: 1px solid rgb(42 58 26 / 0.15) !important;
+  border-radius: 4px !important;
+  background: #fff !important;
+  background-color: #fff !important;
+  color: #2A3A1A !important;
+  box-sizing: border-box !important;
+}
+
+html body.saibai-theme cart-drawer .cart-item__remove .svg-wrapper,
+html body.saibai-theme .cart-drawer .cart-item__remove .svg-wrapper {
+  width: 1rem !important;
+  height: 1rem !important;
+}
+
+/* Spinner do line item: não empurra o grid */
+html body.saibai-theme cart-drawer .cart-item__totals .loading__spinner,
+html body.saibai-theme .cart-drawer .cart-item__totals .loading__spinner {
+  position: absolute !important;
+  inset: 0 !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 0 !important;
+}
+

@@ -1,0 +1,72 @@
+{%- comment -%} Card LP — tile 5:7 + info com lift no hover {%- endcomment -%}
+<article class="saibai-prod__card">
+  <div class="saibai-prod__tile">
+    <a href="{{ product.url }}" class="saibai-prod__media">
+      <span class="saibai-prod__media-inner">
+        {%- if product.featured_media -%}
+          {%- assign product_img_alt = product.featured_media.alt | default: product.title | escape -%}
+          {%- assign hover_media = product.media[1] | default: nil -%}
+          {{
+            product.featured_media
+            | image_url: width: 960
+            | image_tag:
+              loading: 'lazy',
+              widths: '480, 600, 780, 960',
+              sizes: '(min-width: 990px) calc((min(90rem, 100vw - 4rem) - 3 * 1.625rem) / 4), (min-width: 550px) 46vw, 72vw',
+              class: 'saibai-prod__img saibai-prod__img--main',
+              alt: product_img_alt
+          }}
+          {%- if hover_media != blank and hover_media.id != product.featured_media.id -%}
+            {%- assign hover_alt = hover_media.alt | default: product.title | escape -%}
+            {{
+              hover_media
+              | image_url: width: 960
+              | image_tag:
+                loading: 'lazy',
+                widths: '480, 600, 780, 960',
+                sizes: '(min-width: 990px) calc((min(90rem, 100vw - 4rem) - 3 * 1.625rem) / 4), (min-width: 550px) 46vw, 72vw',
+                class: 'saibai-prod__img saibai-prod__img--hover',
+                alt: hover_alt
+            }}
+          {%- endif -%}
+        {%- else -%}
+          {{ 'product-apparel-2' | placeholder_svg_tag: 'saibai-prod__placeholder' }}
+        {%- endif -%}
+      </span>
+    </a>
+    <div class="saibai-prod__info">
+      <h3 class="saibai-prod__name">
+        <a href="{{ product.url }}" class="saibai-prod__name-link">
+          {%- liquid
+            assign card_title = product.title
+            assign card_title_lower = card_title | downcase
+            assign show_frescas_sub = false
+            if card_title_lower contains 'caixa'
+              assign show_frescas_sub = true
+              assign caixa_parts = card_title | split: ' Caixa'
+            endif
+          -%}
+          {%- if show_frescas_sub -%}
+            <span class="saibai-prod__name-line">{{ caixa_parts[0] | escape }} Caixa</span>
+            <span class="saibai-prod__name-sub">frescas</span>
+            {%- if caixa_parts.size > 1 and caixa_parts[1] != blank -%}
+              <span class="saibai-prod__name-extra">{{ caixa_parts[1] | strip | escape }}</span>
+            {%- endif -%}
+          {%- else -%}
+            <span class="saibai-prod__name-line">{{ card_title | escape }}</span>
+          {%- endif -%}
+        </a>
+      </h3>
+      {%- if product.type != blank -%}
+        <p class="saibai-prod__meta">{{ product.type }}</p>
+      {%- endif -%}
+      <p class="saibai-prod__price">
+        {%- if product.compare_at_price > product.price -%}
+          <span class="saibai-prod__compare">{{ product.compare_at_price | money }}</span>
+        {%- endif -%}
+        <span class="saibai-prod__amount">{{ product.price | money }}</span>
+      </p>
+      {%- render 'saibai-quick-add', product: product, class: 'saibai-prod__quick-btn' -%}
+    </div>
+  </div>
+</article>

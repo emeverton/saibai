@@ -1,0 +1,66 @@
+<div class="saibai-inst">
+  <article class="saibai-article" itemscope itemtype="https://schema.org/BlogPosting">
+    <div class="saibai-article__inner">
+      {%- if article.image != blank -%}
+        <div class="saibai-article__media">
+          {{
+            article.image
+            | image_url: width: 1400, format: 'webp'
+            | image_tag:
+              class: 'saibai-article__img',
+              loading: 'eager',
+              fetchpriority: 'high',
+              widths: '700, 1000, 1400',
+              sizes: '(min-width: 990px) 72rem, 100vw',
+              alt: article.image.alt | default: article.title,
+              itemprop: 'image'
+          }}
+        </div>
+      {%- endif -%}
+
+      <div class="saibai-article__meta">
+        {%- if article.published_at != blank -%}
+          <time class="saibai-article__date" datetime="{{ article.published_at | date: '%Y-%m-%d' }}" itemprop="datePublished">
+            {{- article.published_at | date: '%d/%m/%Y' -}}
+          </time>
+        {%- endif -%}
+        {%- if article.author != blank -%}
+          <span class="saibai-article__author" itemprop="author">{{ article.author }}</span>
+        {%- endif -%}
+      </div>
+
+      <div class="saibai-article__content rte" itemprop="articleBody">
+        {{ article.content }}
+      </div>
+
+      {%- if article.tags.size > 0 -%}
+        <ul class="saibai-article__tags" aria-label="Tags">
+          {%- for tag in article.tags -%}
+            <li><span class="saibai-article__tag">{{ tag }}</span></li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+
+      <footer class="saibai-article__footer">
+        <a class="saibai-article__back" href="{{ blog.url }}">← Voltar para receitas</a>
+        <a class="saibai-article__shop" href="{{ section.settings.shop_url | default: '/collections/todos' }}">
+          {{- section.settings.shop_label | default: 'Ver produtos Saibai' -}}
+        </a>
+      </footer>
+    </div>
+  </article>
+  {% render 'saibai-inst-nav' %}
+</div>
+
+{% schema %}
+{
+  "name": "Saibai Article — Conteúdo",
+  "class": "saibai-inst-section",
+  "enabled_on": { "templates": ["article"] },
+  "settings": [
+    { "type": "text", "id": "shop_label", "label": "Link loja", "default": "Ver produtos Saibai" },
+    { "type": "url", "id": "shop_url", "label": "URL loja" }
+  ],
+  "presets": [{ "name": "Saibai Article Conteúdo" }]
+}
+{% endschema %}

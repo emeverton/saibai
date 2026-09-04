@@ -1,0 +1,253 @@
+/* Empório Saibai — Cart (página /cart · padrão Cleveland)
+ * Veltrus Growth & Technology | Shopify Partner ID 4969609
+ * PROPRIEDADE INTELECTUAL PROTEGIDA
+ */
+
+/* ── Cart shell ── */
+body.saibai-theme.template-cart .cart__items,
+body.saibai-theme.template-cart .cart__footer {
+  background: transparent;
+}
+
+body.saibai-theme.template-cart .cart-item__name {
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: #2A3A1A;
+}
+
+body.saibai-theme.template-cart .cart__checkout-button,
+body.saibai-theme.template-cart button[name="checkout"] {
+  background: #2A3A1A !important;
+  border-color: #2A3A1A !important;
+  color: #fff !important;
+}
+
+body.saibai-theme.template-cart .cart__checkout-button:hover,
+body.saibai-theme.template-cart button[name="checkout"]:hover {
+  background: #384E28 !important;
+  border-color: #384E28 !important;
+  color: #fff !important;
+}
+
+body.saibai-theme.template-cart .cart__empty-text {
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+body.saibai-theme.template-cart .cart-countdown {
+  display: none !important;
+}
+
+body.saibai-theme.template-cart .image-with-content {
+  display: none !important;
+}
+
+body.saibai-theme.template-cart .breadcrumb,
+body.saibai-theme.template-cart [class*="breadcrumb"],
+body.saibai-theme.template-cart .featured-collection,
+body.saibai-theme.template-cart [id*="featured_collection"] {
+  display: none !important;
+}
+
+/* Título Cleveland — não herói gigante */
+body.saibai-theme.template-cart .cart-title .title--primary,
+body.saibai-theme.template-cart .cart-title h1 {
+  color: #2A3A1A;
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-size: clamp(1.375rem, 2.4vw, 1.75rem) !important;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  line-height: 1.2;
+}
+
+body.saibai-theme.template-cart .cart-title .cart-bubble {
+  min-width: 1.75rem !important;
+  min-height: 1.75rem !important;
+  width: 1.75rem !important;
+  height: 1.75rem !important;
+  padding: 0 !important;
+  font-size: 0.75rem !important;
+}
+
+body.saibai-theme.template-cart .cart-title .cart-bubble__text,
+body.saibai-theme.template-cart .cart-title .cart-bubble__text-count {
+  font-size: 0.75rem !important;
+  line-height: 1 !important;
+}
+
+/* Preço duplicado sob o nome — só coluna PREÇO/TOTAL */
+body.saibai-theme.template-cart .cart-item__details .cart-item__price-wrapper {
+  display: none !important;
+}
+
+/* Qty +/- — ícones brancos, botão grafite, tamanho controlado */
+body.saibai-theme.template-cart quantity-selector-component .quantity__button:not([disabled]),
+body.saibai-theme.template-cart .quantity-selector .quantity__button:not([disabled]) {
+  background: #2A3A1A !important;
+  background-color: #2A3A1A !important;
+  border-color: #2A3A1A !important;
+  color: #fff !important;
+  width: 2.25rem !important;
+  height: 2.25rem !important;
+  min-width: 2.25rem !important;
+  min-height: 2.25rem !important;
+}
+
+body.saibai-theme.template-cart .quantity__button .svg-wrapper {
+  width: 0.875rem !important;
+  height: 0.875rem !important;
+  max-width: 0.875rem !important;
+  max-height: 0.875rem !important;
+}
+
+body.saibai-theme.template-cart .quantity__button .svg-wrapper svg,
+body.saibai-theme.template-cart .quantity__button svg {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 0.875rem !important;
+  max-height: 0.875rem !important;
+  color: #fff !important;
+  fill: currentColor !important;
+  stroke: currentColor;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+body.saibai-theme.template-cart .quantity__button svg path {
+  color: #fff !important;
+  fill: currentColor !important;
+}
+
+/* X remover — sempre visível, tamanho fixo */
+body.saibai-theme.template-cart .cart-item__remove .button,
+body.saibai-theme.template-cart .button-close-circle {
+  color: #2A3A1A !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  background: transparent !important;
+  width: 2.5rem !important;
+  height: 2.5rem !important;
+  min-width: 2.5rem !important;
+  min-height: 2.5rem !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+body.saibai-theme.template-cart .cart-item__remove .svg-wrapper {
+  width: 1rem !important;
+  height: 1rem !important;
+}
+
+body.saibai-theme.template-cart .cart-item__remove svg,
+body.saibai-theme.template-cart .cart-item__remove svg path,
+body.saibai-theme.template-cart .button-close-circle svg,
+body.saibai-theme.template-cart .button-close-circle svg path {
+  width: 1rem !important;
+  height: 1rem !important;
+  max-width: 1rem !important;
+  max-height: 1rem !important;
+  color: #2A3A1A !important;
+  fill: currentColor !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Safety net: caret do frete nunca explode (mesmo sem base.css) */
+body.saibai-theme.template-cart .shipping-calculator-form .field,
+body.saibai-theme.template-cart .customer .field {
+  position: relative;
+}
+
+body.saibai-theme.template-cart .shipping-calculator-form .svg-wrapper,
+body.saibai-theme.template-cart .customer select + .svg-wrapper,
+body.saibai-theme.template-cart .field > .svg-wrapper {
+  position: absolute !important;
+  top: 50% !important;
+  right: 1rem !important;
+  width: 0.75rem !important;
+  height: 0.5rem !important;
+  max-width: 0.75rem !important;
+  max-height: 0.5rem !important;
+  margin: 0 !important;
+  pointer-events: none;
+  transform: translateY(-50%);
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+body.saibai-theme.template-cart .shipping-calculator-form .svg-wrapper svg,
+body.saibai-theme.template-cart .customer select + .svg-wrapper svg,
+body.saibai-theme.template-cart .field > .svg-wrapper svg,
+body.saibai-theme.template-cart .icon-caret {
+  width: 0.75rem !important;
+  height: 0.5rem !important;
+  max-width: 0.75rem !important;
+  max-height: 0.5rem !important;
+  color: #2A3A1A !important;
+  fill: currentColor !important;
+}
+
+/* Hide utilities (belt se base atrasar) */
+@media screen and (max-width: 749px) {
+  body.saibai-theme.template-cart .small-hide {
+    display: none !important;
+  }
+}
+
+@media screen and (min-width: 750px) and (max-width: 1024px) {
+  body.saibai-theme.template-cart .medium-hide {
+    display: none !important;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  body.saibai-theme.template-cart .large-up-hide {
+    display: none !important;
+  }
+}
+
+/* Resumo — tipografia Cleveland */
+body.saibai-theme.template-cart .cart-shipping-calculator--title,
+body.saibai-theme.template-cart .totals__total,
+body.saibai-theme.template-cart .cart__summary h2,
+body.saibai-theme.template-cart .cart__summary .h2 {
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: #2A3A1A;
+}
+
+/* Estimativa de frete — Brasil fixo (sem lista mundial de países) */
+.saibai-ship-calc__note {
+  margin: 0;
+  font-size: 1.3rem;
+  line-height: 1.45;
+  color: #444643;
+}
+
+.saibai-ship-calc__country-fixed {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0;
+  padding: 1rem 1.2rem;
+  border: 1px solid rgba(42, 58, 26, 0.14);
+  border-radius: 4px;
+  background: #f7f8f5;
+}
+
+.saibai-ship-calc__country-label {
+  font-size: 1.2rem;
+  color: #6b6e68;
+}
+
+.saibai-ship-calc__country-value {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #2a3a1a;
+}

@@ -1,0 +1,218 @@
+/* Empório Saibai — Customer accounts LP
+ * Veltrus Growth & Technology | Shopify Partner ID 4969609
+ * Requer contas clássicas OU branding em Admin → Customer accounts
+ */
+
+body.saibai-theme[class*="template-customers"] {
+  background: var(--saibai-bg, #F2F5EE);
+}
+
+body.saibai-theme[class*="template-customers"] .section-breadcrumb,
+body.saibai-theme[class*="template-customers"] .breadcrumb {
+  display: none !important;
+}
+
+body.saibai-theme[class*="template-customers"] .customer.saibai-customer {
+  max-width: var(--saibai-lp-max, 90rem);
+  margin-inline: auto;
+  padding: clamp(3rem, 7vw, 5.5rem) var(--saibai-lp-pad-x, clamp(1rem, 2.5vw, 2.5rem)) clamp(4rem, 8vw, 6rem);
+  background: transparent;
+  color: #2A3A1A;
+}
+
+body.saibai-theme[class*="template-customers"] h1,
+body.saibai-theme[class*="template-customers"] h2,
+body.saibai-theme[class*="template-customers"] .h1,
+body.saibai-theme[class*="template-customers"] .customer__title,
+body.saibai-theme[class*="template-customers"] .login-title {
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  color: #2A3A1A;
+}
+
+body.saibai-theme[class*="template-customers"] .login-title,
+body.saibai-theme[class*="template-customers"] .customer__title {
+  font-size: clamp(1.5rem, 2.5vw, 1.875rem);
+  margin-bottom: 0.75rem;
+}
+
+body.saibai-theme[class*="template-customers"] .login-text,
+body.saibai-theme[class*="template-customers"] .customer p,
+body.saibai-theme[class*="template-customers"] label {
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  color: rgb(42 58 26 / 0.72);
+}
+
+body.saibai-theme[class*="template-customers"] label {
+  margin-bottom: 0.5rem;
+  color: rgb(42 58 26 / 0.65);
+}
+
+/* ── Login LP — coluna única centrada ── */
+body.saibai-theme.template-customers-login .customer.login > div:last-child > .flex {
+  display: block;
+}
+
+body.saibai-theme.template-customers-login .login-row--item-left {
+  width: 100%;
+  max-width: 26rem;
+  margin: 0 auto;
+  padding: 0;
+}
+
+body.saibai-theme.template-customers-login .login-row--item-right {
+  display: none;
+}
+
+body.saibai-theme.template-customers-login .login-row--item {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+body.saibai-theme.template-customers-login [name="sign-in-with-shop-provider"] {
+  display: none !important;
+}
+
+body.saibai-theme.template-customers-login .login .field.items-center.gap-xl,
+body.saibai-theme.template-customers-login .login .field.items-center.gap-4xl {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1rem;
+}
+
+body.saibai-theme.template-customers-login .login .field.items-center.gap-xl .link,
+body.saibai-theme.template-customers-login .login .field.items-center.gap-4xl .link {
+  align-self: flex-start;
+  margin-top: 0.25rem;
+}
+
+/* ── Campos ── */
+body.saibai-theme[class*="template-customers"] .customer input[type="email"],
+body.saibai-theme[class*="template-customers"] .customer input[type="password"],
+body.saibai-theme[class*="template-customers"] .customer input[type="text"],
+body.saibai-theme[class*="template-customers"] .customer input[type="tel"] {
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0.75rem 0.875rem;
+  border: 1px solid rgb(42 58 26 / 0.14);
+  border-radius: 0;
+  background: #fff;
+  color: #2A3A1A;
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-size: 0.9375rem;
+  letter-spacing: 0.02em;
+  box-shadow: none;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+body.saibai-theme[class*="template-customers"] .customer input:focus {
+  border-color: rgb(42 58 26 / 0.35);
+}
+
+body.saibai-theme[class*="template-customers"] .customer .field {
+  margin-top: 1.25rem;
+}
+
+/* ── Botões ── */
+body.saibai-theme[class*="template-customers"] .customer .button,
+body.saibai-theme[class*="template-customers"] .customer button.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  background: #2A3A1A !important;
+  border: 1px solid #2A3A1A !important;
+  border-radius: 0;
+  color: #fff !important;
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  box-shadow: none;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+body.saibai-theme[class*="template-customers"] .customer .button:hover,
+body.saibai-theme[class*="template-customers"] .customer button.button:hover {
+  background: #384E28 !important;
+  border-color: #384E28 !important;
+}
+
+body.saibai-theme[class*="template-customers"] .customer .link,
+body.saibai-theme[class*="template-customers"] .customer a.link {
+  color: rgb(42 58 26 / 0.62);
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  border-bottom: 1px solid rgb(42 58 26 / 0.2);
+}
+
+body.saibai-theme[class*="template-customers"] .customer .link:hover {
+  color: #2A3A1A;
+}
+
+/* ── Register ── */
+body.saibai-theme.template-customers-register .customer.register {
+  max-width: 26rem;
+  margin-inline: auto;
+}
+
+/* ── Account / pedidos ── */
+body.saibai-theme.template-customers-account .customer.account > div:first-child {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgb(42 58 26 / 0.08);
+}
+
+body.saibai-theme.template-customers-account .customer.account a[href*="logout"] {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+  color: rgb(42 58 26 / 0.62);
+  text-decoration: none;
+}
+
+body.saibai-theme.template-customers-account .customer table {
+  border: 0;
+  box-shadow: none;
+  font-size: 0.875rem;
+}
+
+body.saibai-theme.template-customers-account .customer thead {
+  border-bottom: 1px solid rgb(42 58 26 / 0.1);
+}
+
+body.saibai-theme.template-customers-account .customer th,
+body.saibai-theme.template-customers-account .customer td {
+  padding: 0.875rem 0.5rem;
+  border-color: rgb(42 58 26 / 0.08);
+}
+
+body.saibai-theme.template-customers-account .customer a {
+  color: #2A3A1A;
+  text-decoration: none;
+  border-bottom: 1px solid rgb(42 58 26 / 0.15);
+}
+
+body.saibai-theme[class*="template-customers"] .alertBox--error,
+body.saibai-theme[class*="template-customers"] .form__message {
+  font-size: 0.875rem;
+  color: #8B5E4A;
+}

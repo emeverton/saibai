@@ -1,0 +1,147 @@
+{
+  "client_key": "saibai",
+  "date": "2026-06-28",
+  "mode": "audit",
+  "auditSource": "chatgpt_meta_oficial_validated_2026_06_28",
+  "chatgpt_validated_at": "2026-06-28",
+  "period": { "from": "2026-06-14", "to": "2026-06-28" },
+  "veredito": "BLOQUEADO",
+  "veredito_d2c": "BLOQUEADO",
+  "veredito_b2b_whatsapp": "PODE MANTER",
+  "veredito_execute": "HOLD",
+  "veredito_detail": "D2C bloqueado GA4+go-live P0 · B2B WhatsApp manter R$20/d sem escala · Google gateway 500",
+  "kpi_primary": "purchase_ga4",
+  "kpi_secondary": "whatsapp_b2b_lead_grupo",
+  "kpi_never_use": "meta_platform_conversions_as_purchase",
+  "dual_track": {
+    "b2c_purchase_pct_media_h2": 70,
+    "b2b_whatsapp_pct_media_h2": 20,
+    "status_d2c": "HOLD",
+    "status_b2b": "ACTIVE_FUNCIONAL",
+    "escala": "BLOQUEADA"
+  },
+  "mcp_status": {
+    "meta": { "ok": true, "adAccountId": "act_1199864388174624", "source": "meta_mcp_oficial_chatgpt" },
+    "google": { "ok": false, "code": 500, "reason": "gateway_error customerId 9513237350" },
+    "ga4": {
+      "ok": false,
+      "measurementId": "G-VWX77SGD1W",
+      "clientKey": "saibai",
+      "reason": "property_not_in_ga4_list_properties_oauth",
+      "purchase_auditable": false,
+      "begin_checkout_auditable": false
+    },
+    "reportei": { "ok": false, "projectId": "pending", "reason": "not_used_this_round" }
+  },
+  "meta_summary_14d": {
+    "active_campaigns": 1,
+    "spend_brl": 163.22,
+    "impressions": 7771,
+    "reach": 6629,
+    "clicks": 330,
+    "ctr_pct": 4.25,
+    "cpc_brl": 0.49,
+    "platform_conversions_raw": 2040,
+    "platform_conversions_note": "inflated messaging events — ignore for KPI",
+    "lead_grupo_whats_results": 46,
+    "cost_per_lead_grupo_whats_brl": 3.55
+  },
+  "meta_campaigns_validated": [
+    {
+      "campaign_id": "120248254459350155",
+      "name": "22.04.2026 [V4] [WB] [LEADS-GRUPO-WHATS] 02",
+      "status": "ACTIVE",
+      "daily_budget_brl": 20,
+      "objective": "OUTCOME_LEADS",
+      "spend_brl": 163.22,
+      "impressions": 7771,
+      "reach": 6629,
+      "clicks": 330,
+      "ctr_pct": 4.25,
+      "cpc_brl": 0.49,
+      "results_lead_grupo_whats": 46,
+      "cost_per_result_brl": 3.55,
+      "decision": "MANTER · sem escalar agressivamente · B2B secundário"
+    },
+    {
+      "campaign_id": "120250647777130155",
+      "name": "[SAIBAI] Hortaliças — WhatsApp Direto",
+      "status": "PAUSED",
+      "decision": "MANTER PAUSADA · legacy"
+    }
+  ],
+  "sales_d2c_paused_hold": [
+    {
+      "campaign_id": "120237873462540155",
+      "name": "[F][SALES] - Venda Direta E-com 05-10-25",
+      "decision": "NAO ATIVAR · SB-M-002"
+    },
+    {
+      "campaign_id": "120237596031000155",
+      "name": "[F][SALES] - Venda Direta E-com Brasil 30-09-25",
+      "decision": "NAO ATIVAR · SB-M-002"
+    },
+    {
+      "campaign_id": "120237169476030155",
+      "name": "[F][SALES] - Venda Direta E-com 23-09-25",
+      "decision": "NAO ATIVAR · SB-M-002"
+    }
+  ],
+  "planoAprovado": {
+    "SB-AI-INFRA-001": "GA4 property OAuth + eventos purchase/begin_checkout/add_to_cart/view_item/revenue",
+    "SB-AI-INFRA-002": "Google gateway 500 + MCC 9513237350",
+    "SB-AI-P0-001": "Go-live Shopify P0 — checkout · pagamento · GA4 purchase · pixel/CAPI · UTMs",
+    "SB-M-001": "HOLD escala B2B WhatsApp — manter R$20/d",
+    "SB-M-002": "NO Sales D2C · NO Advantage+ Sales · NO remarketing purchase"
+  },
+  "planoAprovadoIds": [
+    "SB-AI-INFRA-001",
+    "SB-AI-INFRA-002",
+    "SB-AI-P0-001",
+    "SB-M-001",
+    "SB-M-002"
+  ],
+  "do_not_execute_now": [
+    "activate_sales_d2c",
+    "create_purchase_campaign",
+    "advantage_plus_sales",
+    "remarketing_purchase",
+    "budget_increase",
+    "trust_meta_platform_conversions",
+    "google_ads_while_gateway_500"
+  ],
+  "go_live_blockers_p0": [
+    "GA4 G-VWX77SGD1W fora OAuth Veltrus",
+    "GA4_API_SECRET Vercel pendente",
+    "Google MCC 9513237350 gateway 500",
+    "Shopify checkout/pagamento/frete merchant",
+    "App Saibai Tracking read_orders",
+    "Reportei projectId pending"
+  ],
+  "approvalRequiredForExecute": true,
+  "mutations_executed": false,
+  "chatgpt_validation": {
+    "validated_at": "2026-06-28",
+    "status": "BLOQUEADO_D2C_PODE_MANTER_B2B",
+    "mutations": "ZERO",
+    "concordancia_cursor": true,
+    "refinement": "KPI B2B = 46 lead_grupo_whats CPL R$3,55 (≠ 2040 conv infladas)"
+  },
+  "chatgpt_flow": "AUDIT validado → EXECUTE HOLD · infra P0 paralelo",
+  "sync": {
+    "notion_hub": "https://app.notion.com/p/38a968afab6681bb8a03e2d2e6848147",
+    "notion_audit": "https://app.notion.com/p/38d968afab6681bca003eb06677fad76",
+    "slack": "C0BD28VMD4N",
+    "ekyte_workspace": 123736,
+    "ekyte_strategy_h2": 9713234,
+    "ekyte_golive_p0": 9712969,
+    "ekyte_infra_ga4": 9738308,
+    "sync_doc": "clients/saibai/docs/SYNC-NOTION-SLACK-EKYTE-2026-06-28.md"
+  },
+  "refs": [
+    "clients/saibai/CLIENT_CONTEXT.md",
+    "clients/saibai/docs/GO-LIVE-RUNBOOK-P0.md",
+    "clients/saibai/docs/ESTRATEGIA-ABERTURA-ECOM-H2-2026.md",
+    "clients/saibai/docs/DELIVERY-2026-06-28-CHATGPT-AUDIT-VALIDATED.md"
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "creatives": {
+    "CR1_feed": "2570776506675733",
+    "CR1_story": "1385716780188121",
+    "CR2_feed": "1404198248191100",
+    "CR2_story": "1507741883986810",
+    "CR3_feed": "1640071487677957",
+    "CR3_story": "1078856184474512",
+    "CR4_feed": "1239832271518266",
+    "CR4_story": "1772674327423185"
+  },
+  "ads": [
+    {
+      "name": "[SAIBAI] AD1 · CR1 Feed · jul/2026",
+      "id": "120253939618010155",
+      "creative_id": "2570776506675733",
+      "kind": "feed",
+      "n": 1
+    },
+    {
+      "name": "[SAIBAI] AD1 · CR1 Stories · jul/2026",
+      "id": "120253939618730155",
+      "creative_id": "1385716780188121",
+      "kind": "story",
+      "n": 1
+    },
+    {
+      "name": "[SAIBAI] AD2 · CR2 Feed · jul/2026",
+      "id": "120253939620130155",
+      "creative_id": "1404198248191100",
+      "kind": "feed",
+      "n": 2
+    },
+    {
+      "name": "[SAIBAI] AD2 · CR2 Stories · jul/2026",
+      "id": "120253939621250155",
+      "creative_id": "1507741883986810",
+      "kind": "story",
+      "n": 2
+    },
+    {
+      "name": "[SAIBAI] AD3 · CR3 Feed · jul/2026",
+      "id": "120253939622570155",
+      "creative_id": "1640071487677957",
+      "kind": "feed",
+      "n": 3
+    },
+    {
+      "name": "[SAIBAI] AD3 · CR3 Stories · jul/2026",
+      "id": "120253939624240155",
+      "creative_id": "1078856184474512",
+      "kind": "story",
+      "n": 3
+    },
+    {
+      "name": "[SAIBAI] AD4 · CR4 Feed · jul/2026",
+      "id": "120253939625620155",
+      "creative_id": "1239832271518266",
+      "kind": "feed",
+      "n": 4
+    },
+    {
+      "name": "[SAIBAI] AD4 · CR4 Stories · jul/2026",
+      "id": "120253939626670155",
+      "creative_id": "1772674327423185",
+      "kind": "story",
+      "n": 4
+    }
+  ]
+}

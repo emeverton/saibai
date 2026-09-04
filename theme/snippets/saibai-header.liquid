@@ -1,0 +1,144 @@
+{%- comment -%}
+  Empório Saibai — Header LP + mega menu
+  Logo: snippets/saibai-logo.liquid
+  Mega: snippets/saibai-header-mega-panel.liquid
+  CSS: snippets/saibai-header-css.liquid
+  JS:  assets/saibai-header.js
+{%- endcomment -%}
+
+{%- liquid
+  assign menu_handle = section.settings.menu | default: 'main-menu'
+  assign nav = linklists[menu_handle]
+  assign logo_w = section.settings.logo_width | default: 240
+  assign logo_w_mb = section.settings.logo_width_mobile | default: 120
+  assign logo_style = section.settings.logo_style | default: 'mono'
+  assign hl1_raw = section.settings.highlight_1 | default: 'Produtos'
+  assign hl2_raw = section.settings.highlight_2 | default: 'Receitas'
+  assign hl1 = hl1_raw | downcase | strip | handle
+  assign hl2 = hl2_raw | downcase | strip | handle
+  assign sticky_header = true
+  if section.settings.sticky_header == false
+    assign sticky_header = false
+  endif
+
+  if logo_style == 'color'
+    assign logo_layout_desktop = 'wordmark'
+    assign logo_layout_mobile = 'square'
+    assign logo_h = section.settings.logo_height_color | default: 40
+    assign logo_h_mb = logo_w_mb | divided_by: 3.6 | round
+    assign header_vars = '--sh-logo-size: ' | append: logo_w | append: 'px; --sh-logo-size-mb: ' | append: logo_w_mb | append: 'px; --sh-wordmark-h: ' | append: logo_h | append: 'px;'
+  else
+    assign logo_layout_desktop = 'wordmark-mono'
+    assign logo_layout_mobile = 'wordmark-mono'
+    assign logo_h = logo_w | times: 341 | divided_by: 1024
+    assign logo_h_mb = logo_w_mb | times: 341 | divided_by: 1024
+    assign header_vars = '--sh-logo-size: ' | append: logo_w | append: 'px; --sh-logo-size-mb: ' | append: logo_w_mb | append: 'px;'
+  endif
+-%}
+
+<header-component
+  id="header-component"
+  class="saibai-header{% if sticky_header %} is-sticky{% endif %}"
+  data-saibai-header
+  style="{{ header_vars }}"
+>
+  {%- if request.page_type == 'index' -%}
+    <h1 class="visually-hidden">{{ shop.name }}</h1>
+  {%- endif -%}
+  {%- comment -%} Mobile {%- endcomment -%}
+  <div class="saibai-header__mobile">
+    <button
+      type="button"
+      class="saibai-header__icon-btn saibai-header__menu-open"
+      data-saibai-header-open
+      aria-label="{{ 'accessibility.menu' | t }}"
+      aria-expanded="false"
+      aria-controls="SaibaiHeaderDrawer"
+    >
+      <span class="saibai-header__icon" aria-hidden="true">
+        {{- 'icon-hamburger.svg' | inline_asset_content -}}
+      </span>
+    </button>
+
+    <a href="{{ routes.root_url }}" class="saibai-header__logo-link" aria-label="Empório Saibai — Início">
+      {% render 'saibai-logo', layout: logo_layout_mobile, width: logo_w_mb, height: logo_h_mb, class: 'saibai-header__logo' %}
+    </a>
+
+    <div class="saibai-header__mobile-actions">
+      {% render 'saibai-header-utilities', compact: true %}
+    </div>
+  </div>
+
+  {%- comment -%} Desktop — Loro Piana {%- endcomment -%}
+  <div class="saibai-header__desktop">
+    <div class="saibai-header__body">
+      <div class="saibai-header__logo-row">
+        <a href="{{ routes.root_url }}" class="saibai-header__logo-link" aria-label="Empório Saibai — Início">
+          {% render 'saibai-logo', layout: logo_layout_desktop, width: logo_w, height: logo_h, class: 'saibai-header__logo' %}
+        </a>
+      </div>
+
+      <div class="saibai-header__nav-row">
+      <div class="saibai-header__shell">
+        <div class="saibai-header__col saibai-header__col--start">
+          {% render 'saibai-header-search' %}
+        </div>
+
+        <nav class="saibai-header__col saibai-header__col--center" aria-label="{{ 'accessibility.menu' | t }}">
+          {%- if nav.links.size > 0 -%}
+            <ul class="saibai-header__menu" role="list">
+              {%- for link in nav.links -%}
+                {%- liquid
+                  assign link_key = link.title | downcase | strip | handle
+                  assign is_hl = false
+                  if link_key == hl1 or link_key == hl2
+                    assign is_hl = true
+                  endif
+                  assign mega_id = 'SaibaiMega-' | append: link.handle
+                -%}
+                <li class="saibai-header__menu-item{% if link.links != blank %} has-children{% endif %}">
+                  {%- if link.links != blank -%}
+                    <button
+                      type="button"
+                      class="saibai-header__menu-link saibai-header__menu-trigger{% if is_hl %} is-accent{% endif %}{% if link.active or link.child_active %} is-active{% endif %}"
+                      data-saibai-mega-trigger
+                      aria-controls="{{ mega_id }}"
+                      aria-haspopup="dialog"
+                      aria-expanded="false"
+                    >
+                      {{ link.title }}
+                    </button>
+                  {%- else -%}
+                    <a
+                      href="{{ link.url }}"
+                      class="saibai-header__menu-link{% if is_hl %} is-accent{% endif %}{% if link.active %} is-active{% endif %}"
+                      {% if link.current %}aria-current="page"{% endif %}
+                    >
+                      {{ link.title }}
+                    </a>
+                  {%- endif -%}
+                </li>
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+        </nav>
+
+        <div class="saibai-header__col saibai-header__col--end">
+          {% render 'saibai-header-utilities' %}
+        </div>
+      </div>
+
+      <div class="saibai-mega-layer" data-saibai-mega-layer hidden>
+        <div class="saibai-mega-layer__backdrop" data-saibai-mega-close tabindex="-1" aria-hidden="true"></div>
+        {%- for link in nav.links -%}
+          {%- if link.links != blank -%}
+            {% render 'saibai-header-mega-panel', link: link, section: section %}
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+      </div>
+    </div>
+  </div>
+
+  {% render 'saibai-header-drawer', nav: nav %}
+</header-component>

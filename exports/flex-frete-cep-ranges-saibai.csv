@@ -1,0 +1,31 @@
+dia_entrega,cidade,zona_logistica,bairro,cep_inicial,cep_final,frete,regra_frete,pedido_minimo,uf
+Conforme Flex Frete,Brasil,SP — estado,São Paulo (UF),01000,19999,Pago,Grátis acima de 389.90,100,SP
+Conforme Flex Frete,Brasil,RJ — estado,Rio de Janeiro (UF),20000,28999,Pago,Grátis acima de 389.90,100,RJ
+Conforme Flex Frete,Brasil,ES — estado,Espírito Santo (UF),29000,29999,Pago,Grátis acima de 389.90,100,ES
+Conforme Flex Frete,Brasil,MG — estado,Minas Gerais (UF),30000,39999,Pago,Grátis acima de 389.90,100,MG
+Conforme Flex Frete,Brasil,BA — estado,Bahia (UF),40000,48999,Pago,Grátis acima de 389.90,100,BA
+Conforme Flex Frete,Brasil,SE — estado,Sergipe (UF),49000,49999,Pago,Grátis acima de 389.90,100,SE
+Conforme Flex Frete,Brasil,PE — estado,Pernambuco (UF),50000,56999,Pago,Grátis acima de 389.90,100,PE
+Conforme Flex Frete,Brasil,AL — estado,Alagoas (UF),57000,57999,Pago,Grátis acima de 389.90,100,AL
+Conforme Flex Frete,Brasil,PB — estado,Paraíba (UF),58000,58999,Pago,Grátis acima de 389.90,100,PB
+Conforme Flex Frete,Brasil,RN — estado,Rio Grande do Norte (UF),59000,59999,Pago,Grátis acima de 389.90,100,RN
+Conforme Flex Frete,Brasil,CE — estado,Ceará (UF),60000,63999,Pago,Grátis acima de 389.90,100,CE
+Conforme Flex Frete,Brasil,PI — estado,Piauí (UF),64000,64999,Pago,Grátis acima de 389.90,100,PI
+Conforme Flex Frete,Brasil,MA — estado,Maranhão (UF),65000,65999,Pago,Grátis acima de 389.90,100,MA
+Conforme Flex Frete,Brasil,PA — estado,Pará (UF),66000,68899,Pago,Grátis acima de 389.90,100,PA
+Conforme Flex Frete,Brasil,AP — estado,Amapá (UF),68900,68999,Pago,Grátis acima de 389.90,100,AP
+Conforme Flex Frete,Brasil,AM — estado,Amazonas (UF),69000,69299,Pago,Grátis acima de 389.90,100,AM
+Conforme Flex Frete,Brasil,RR — estado,Roraima (UF),69300,69399,Pago,Grátis acima de 389.90,100,RR
+Conforme Flex Frete,Brasil,AM — estado,Amazonas (UF),69400,69899,Pago,Grátis acima de 389.90,100,AM
+Conforme Flex Frete,Brasil,AC — estado,Acre (UF),69900,69999,Pago,Grátis acima de 389.90,100,AC
+Conforme Flex Frete,Brasil,DF — estado,Distrito Federal (UF),70000,72799,Pago,Grátis acima de 389.90,100,DF
+Conforme Flex Frete,Brasil,GO — estado,Goiás (UF),72800,72999,Pago,Grátis acima de 389.90,100,GO
+Conforme Flex Frete,Brasil,DF — estado,Distrito Federal (UF),73000,73699,Pago,Grátis acima de 389.90,100,DF
+Conforme Flex Frete,Brasil,GO — estado,Goiás (UF),73700,76799,Pago,Grátis acima de 389.90,100,GO
+Conforme Flex Frete,Brasil,RO — estado,Rondônia (UF),76800,76999,Pago,Grátis acima de 389.90,100,RO
+Conforme Flex Frete,Brasil,TO — estado,Tocantins (UF),77000,77999,Pago,Grátis acima de 389.90,100,TO
+Conforme Flex Frete,Brasil,MT — estado,Mato Grosso (UF),78000,78899,Pago,Grátis acima de 389.90,100,MT
+Conforme Flex Frete,Brasil,MS — estado,Mato Grosso do Sul (UF),79000,79999,Pago,Grátis acima de 389.90,100,MS
+Conforme Flex Frete,Brasil,PR — estado,Paraná (UF),80000,87999,Pago,Grátis acima de 389.90,100,PR
+Conforme Flex Frete,Brasil,SC — estado,Santa Catarina (UF),88000,89999,Pago,Grátis acima de 389.90,100,SC
+Conforme Flex Frete,Brasil,RS — estado,Rio Grande do Sul (UF),90000,99999,Pago,Grátis acima de 389.90,100,RS

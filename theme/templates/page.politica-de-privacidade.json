@@ -1,0 +1,22 @@
+{
+  "sections": {
+    "hero": {
+      "type": "saibai-inst-hero",
+      "settings": {
+        "eyebrow": "Empório Saibai · Piedade, SP",
+        "title": "Política de Privacidade",
+        "lead": "Transparência sobre seus dados — do pedido ao marketing, sempre com base legal e controle nas suas mãos.",
+        "asset_fallback": "saibai-inst-campo.webp"
+      }
+    },
+    "policy": {
+      "type": "saibai-policy-privacidade",
+      "settings": {}
+    },
+    "nav": {
+      "type": "saibai-inst-nav",
+      "settings": {}
+    }
+  },
+  "order": ["hero", "policy", "nav"]
+}

@@ -1,0 +1,12 @@
+{%- comment -%}
+  Empório Saibai — zonas de entrega (Brasil, todas as UFs).
+  Carrega allowlist + trava de checkout. Build 2026-09-02.
+{%- endcomment -%}
+<script>
+  window.saibaiDeliveryZones = {
+    whatsapp: 'https://wa.me/551530101451',
+    policyUrl: '/pages/politica-de-entrega',
+    ufs: ['AC','AL','AP','AM','BA','CE','DF','ES','GO','MA','MT','MS','MG','PA','PB','PR','PE','PI','RJ','RN','RS','RO','RR','SC','SP','SE','TO']
+  };
+</script>
+<script src="{{ 'saibai-delivery-zones.js' | asset_url }}" defer="defer"></script>

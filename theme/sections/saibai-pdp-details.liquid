@@ -1,0 +1,27 @@
+{%- comment -%}
+  Empório Saibai — Detalhes PDP (dobra inferior)
+  Veltrus Growth & Technology | Shopify Partner ID 4969609
+{%- endcomment -%}
+
+<section
+  class="saibai-pdp-details shopify-section"
+  id="saibai-pdp-detalhes"
+  aria-label="Detalhes do produto"
+>
+  <div class="saibai-pdp-details__inner">
+    {% render 'saibai-pdp-accordions', product: product %}
+  </div>
+</section>
+
+<script src="{{ 'saibai-pdp-details.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "Saibai PDP Detalhes",
+  "class": "saibai-pdp-details-section",
+  "enabled_on": {
+    "templates": ["product"]
+  },
+  "settings": []
+}
+{% endschema %}

@@ -1,0 +1,23 @@
+{%- comment -%}
+  Empório Saibai — Marquee ticker
+  CSS: assets/saibai-marquee.css
+{%- endcomment -%}
+<!-- saibai-mq-v2 -->
+<div class="saibai-mq" aria-hidden="true">
+  <div class="saibai-mq__track">
+    {%- for i in (1..2) -%}
+      <div class="saibai-mq__content">
+        <span>Alcachofra Fresca</span>
+        <span>·</span>
+        <span>Produção Própria</span>
+        <span>·</span>
+        <span>Piedade, SP</span>
+        <span>·</span>
+        <span>50 Anos de Tradição</span>
+        <span>·</span>
+        <span>Safra Controlada</span>
+        <span>·</span>
+      </div>
+    {%- endfor -%}
+  </div>
+</div>

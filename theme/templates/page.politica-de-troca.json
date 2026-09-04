@@ -1,0 +1,22 @@
+{
+  "sections": {
+    "hero": {
+      "type": "saibai-inst-hero",
+      "settings": {
+        "eyebrow": "Empório Saibai · Piedade, SP",
+        "title": "Troca e Devolução",
+        "lead": "Seu direito, nosso compromisso — processo claro para conservas, desidratados e alcachofras frescas.",
+        "asset_fallback": "saibai-asvc-troca.jpg"
+      }
+    },
+    "policy": {
+      "type": "saibai-policy-troca",
+      "settings": {}
+    },
+    "nav": {
+      "type": "saibai-inst-nav",
+      "settings": {}
+    }
+  },
+  "order": ["hero", "policy", "nav"]
+}

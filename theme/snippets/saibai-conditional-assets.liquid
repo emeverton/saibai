@@ -1,0 +1,21 @@
+{%- comment -%} Empório Saibai — CSS homepage/inst (1× via global-css). Hero sync; demais async. {%- endcomment -%}
+{%- if template.name == 'index' -%}
+  {{ 'saibai-hero.css' | asset_url | stylesheet_tag }}
+  <link rel="stylesheet" href="{{ 'saibai-prod-home.css' | asset_url }}" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="{{ 'saibai-home-sections.css' | asset_url }}" media="print" onload="this.media='all'">
+  <noscript>
+    {{ 'saibai-prod-home.css' | asset_url | stylesheet_tag }}
+    {{ 'saibai-home-sections.css' | asset_url | stylesheet_tag }}
+  </noscript>
+{%- endif -%}
+
+{%- if request.page_type == 'page' -%}
+  {%- assign saibai_inst_handles = 'historia,sobre,fazenda,conquistas,contato,contact,politica-de-entrega,politica-de-troca,politica-de-privacidade' | split: ',' -%}
+  {%- if saibai_inst_handles contains page.handle -%}
+    {%- render 'saibai-inst-css' -%}
+  {%- endif -%}
+{%- elsif request.page_type == 'blog' or request.page_type == 'article' -%}
+  {%- render 'saibai-inst-css' -%}
+{%- elsif template.name == 'collection' -%}
+  {{ 'saibai-inst-plp.css' | asset_url | stylesheet_tag }}
+{%- endif -%}

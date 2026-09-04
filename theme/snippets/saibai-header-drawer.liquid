@@ -1,0 +1,45 @@
+<div id="SaibaiHeaderDrawer" class="saibai-header__drawer" data-saibai-header-drawer hidden>
+  <div class="saibai-header__drawer-overlay" data-saibai-header-close tabindex="-1"></div>
+  <div class="saibai-header__drawer-panel" role="dialog" aria-modal="true" aria-label="{{ 'accessibility.menu' | t }}">
+    <div class="saibai-header__drawer-head">
+      <span class="saibai-header__drawer-title">Menu</span>
+      <button type="button" class="saibai-header__icon-btn" data-saibai-header-close aria-label="{{ 'accessibility.close' | t }}">
+        <span class="saibai-header__icon" aria-hidden="true">{{- 'icon-close.svg' | inline_asset_content -}}</span>
+      </button>
+    </div>
+    <nav class="saibai-header__drawer-nav">
+      <ul class="saibai-header__drawer-menu" role="list">
+        {%- for link in nav.links -%}
+          <li>
+            <a href="{{ link.url }}" class="saibai-header__drawer-link{% if link.active %} is-active{% endif %}">{{ link.title }}</a>
+            {%- if link.links != blank -%}
+              <ul class="saibai-header__drawer-submenu" role="list">
+                {%- for childlink in link.links -%}
+                  {%- liquid
+                    assign view_all = false
+                    if childlink.title contains 'Ver todos'
+                      assign view_all = true
+                    endif
+                  -%}
+                  <li{% if view_all %} class="saibai-header__drawer-item--view-all"{% endif %}>
+                    <a href="{{ childlink.url }}" class="saibai-header__drawer-sublink{% if view_all %} is-view-all{% endif %}{% if childlink.active %} is-active{% endif %}">
+                      {% render 'saibai-menu-label', title: childlink.title %}
+                    </a>
+                  </li>
+                {%- endfor -%}
+              </ul>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    </nav>
+    <div class="saibai-header__drawer-foot">
+      {% render 'saibai-header-search' %}
+      {%- if shop.customer_accounts_enabled -%}
+        <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{% render 'saibai-customer-account-url', context: 'login' %}{%- endif -%}" class="saibai-header__drawer-account">
+          {% if customer %}{{ 'customer.account_fallback' | t }}{% else %}{{ 'customer.log_in' | t }}{% endif %}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</div>

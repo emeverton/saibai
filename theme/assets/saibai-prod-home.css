@@ -1,0 +1,657 @@
+/* Empório Saibai — Prod home (shell+cards+nav) | Veltrus — consolidado */
+
+/* --- saibai-prod-home-shell.css --- */
+/* Empório Saibai — Prod home shell
+ * Veltrus Growth & Technology
+ */
+
+/*
+ * Empório Saibai — Carousel safra (padrão Loro Piana)
+ * Tile LP ~340×477 (558/780) · hover = tile inteiro sobe (easing hero box)
+ * ÚNICA fonte — carregado via saibai-conditional-assets.liquid (index)
+ */
+
+html body .shopify-section.saibai-products-section {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 6;
+}
+
+html body .shopify-section.saibai-products-section .saibai-prod {
+  --pd-cream: var(--saibai-bg, #F2F5EE);
+  --pd-dark: #2A3A1A;
+  --pd-muted: #4E6040;
+  --pd-terra: #8B5E4A;
+  --pd-max: var(--saibai-lp-max, 90rem);
+  --pd-pad: var(--saibai-lp-pad-x, clamp(1rem, 2.5vw, 2.5rem));
+  --pd-gap: clamp(0.75rem, 1.35vw, 1.625rem);
+  --pd-info-slot: 5.25rem;
+  --pd-info-box-h: 8.75rem;
+  --pd-lift-dur: 1.15s;
+  --pd-lift-ease: cubic-bezier(0.33, 0, 0.2, 1);
+  --pd-fade-dur: 1.05s;
+  --pd-aspect: 334 / 468;
+  --pd-tile-max: 24rem;
+  --pd-tile-bg: var(--pd-cream);
+  --pd-info-box-bg: #FFFFFF;
+  --pd-tab-active: #FFFFFF;
+
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  padding: 0 var(--pd-pad) var(--saibai-lp-pad-y, clamp(4.5rem, 9vw, 7rem));
+  background: var(--pd-cream);
+  color: var(--pd-dark);
+}
+
+html body .shopify-section.saibai-products-section .saibai-prod__intro {
+  width: 100%;
+  max-width: var(--pd-max);
+  margin-inline: auto;
+  padding-top: clamp(2rem, 4vw, 3rem);
+  padding-bottom: clamp(1.75rem, 3vw, 2.5rem);
+  text-align: center;
+}
+
+html body .shopify-section.saibai-products-section .saibai-prod__lead {
+  max-width: 38rem;
+  margin: 0 auto clamp(2rem, 3.5vw, 2.75rem);
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-size: clamp(0.9375rem, 1.1vw, 1.0625rem);
+  font-weight: 400;
+  line-height: 1.7;
+  letter-spacing: 0.015em;
+  color: var(--pd-dark);
+}
+
+html body .shopify-section.saibai-products-section .saibai-prod__switch {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: center;
+  gap: 0;
+  max-width: 100%;
+  border: 1px solid rgb(42 58 26 / 0.14);
+  background: rgb(255 255 255 / 0.28);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.55);
+}
+
+html body .shopify-section.saibai-products-section .saibai-prod__switch-btn {
+  box-sizing: border-box;
+  min-width: 0;
+  flex: 1 1 auto;
+  height: 2.875rem;
+  padding: 0 0.85rem;
+  border: 0;
+  border-right: 1px solid rgb(42 58 26 / 0.14);
+  background: rgb(232 239 226 / 0.45);
+  color: rgb(42 58 26 / 0.58);
+  font-family: var(--font-body--family, 'Jost', sans-serif);
+  font-size: 0.6875rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  text-transform: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background 0.32s ease,
+    color 0.32s ease,
+    box-shadow 0.32s ease;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+html body .shopify-section.saibai-products-section .saibai-prod__switch-btn:last-child {
+  border-right: 0;
+}
+
+html body .shopify-section.saibai-products-section .saibai-prod__switch-btn.is-active {
+  background: #FFFFFF;
+  color: var(--pd-dark);
+  box-shadow:
+    inset 0 0 0 1px rgb(42 58 26 / 0.04),
+    0 1px 4px rgb(42 58 26 / 0.05);
+}
+
+html body .shopify-section.saibai-products-section .saibai-prod__switch-btn:not(.is-active):hover {
+  color: var(--pd-dark);
+  background: rgb(255 255 255 / 0.62);
+}
+
+html body .shopify-section.saibai-products-section .saibai-prod__switch-btn:focus-visible {
+  outline: 2px solid var(--pd-terra);
+  outline-offset: 2px;
+}
+
+html body .shopify-section.saibai-products-section .saibai-prod__panels {
+  width: 100%;
+  max-width: var(--pd-max);
+  margin-inline: auto;
+  padding-top: 0.25rem;
+}
+
+html body .shopify-section.saibai-products-section .saibai-prod__wrap {
+  position: relative;
+  width: 100%;
+}
+
+html body .shopify-section.saibai-products-section .saibai-prod__track {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--pd-gap);
+  width: 100%;
+  padding-block: 1rem 1.5rem;
+}
+
+html body .shopify-section.saibai-products-section .saibai-prod__panel[hidden] {
+  display: none !important;
+}
+
+@media (max-width: 749px) {
+  html body .shopify-section.saibai-products-section .saibai-prod__switch {
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 100%;
+  }
+
+  html body .shopify-section.saibai-products-section .saibai-prod__switch-btn {
+    min-width: 0;
+    flex: 1 1 auto;
+    height: 2.625rem;
+    padding-inline: 0.75rem;
+    font-size: 0.6875rem;
+  }
+}
+
+/* --- saibai-prod-home-cards.css --- */
+/* Empório Saibai — Prod cards tile
+ * LP ref: tile 334×468 · bg = packshot · hover = info box sobe sobre imagem
+ * Veltrus Growth & Technology
+ */
+
+/* ── Card LP — products grid + Na mesa carousel ── */
+html body .shopify-section.saibai-products-section .saibai-prod__card,
+html body .shopify-section.saibai-feature-section .saibai-prod__card {
+  min-width: 0;
+  overflow: visible;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+html body .shopify-section.saibai-products-section .saibai-prod__tile,
+html body .shopify-section.saibai-feature-section .saibai-prod__tile {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding-bottom: var(--pd-info-slot);
+  overflow: visible;
+}
+
+html body .shopify-section.saibai-products-section .saibai-prod__media,
+html body .shopify-section.saibai-feature-section .saibai-prod__media {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: var(--pd-aspect);
+  overflow: hidden;
+  background: var(--pd-tile-bg) !important;
+  margin: 0;
+  text-decoration: none;
+  box-shadow: none;
+}
+
+html body .shopify-section.saibai-products-section .saibai-prod__media-inner,
+html body .shopify-section.saibai-feature-section .saibai-prod__media-inner {
+  position: absolute;
+  inset: 0;
+  display: block;
+  overflow: hidden;
+  padding: 0;
+  background: var(--pd-tile-bg) !important;
+  isolation: isolate;
+}
+
+html body .shopify-section.saibai-products-section .saibai-prod__placeholder,
+html body .shopify-section.saibai-feature-section .saibai-prod__placeholder,
+html body .shopify-section.saibai-products-section img.saibai-prod__img--main,
+html body .shopify-section.saibai-feature-section img.saibai-prod__img--main,
+html body .shopify-section.saibai-products-section img.saibai-prod__img--hover,
+html body .shopify-section.saibai-feature-section img.saibai-prod__img--hover {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none !important;
+  max-height: none !important;
+  object-fit: contain !important;
+  object-position: center center;
+  padding: 0.75rem !important;
+  box-sizing: border-box !important;
+  background: transparent !important;
+  mix-blend-mode: multiply;
+  transform: scale(1);
+  transform-origin: center center;
+}
+
+html body .shopify-section.saibai-products-section img.saibai-prod__img--main,
+html body .shopify-section.saibai-feature-section img.saibai-prod__img--main {
+  transition:
+    opacity var(--pd-fade-dur) var(--pd-lift-ease),
+    transform var(--pd-lift-dur) var(--pd-lift-ease);
+}
+
+html body .shopify-section.saibai-products-section img.saibai-prod__img--hover,
+html body .shopify-section.saibai-feature-section img.saibai-prod__img--hover {
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  transition:
+    opacity var(--pd-fade-dur) var(--pd-lift-ease),
+    transform var(--pd-lift-dur) var(--pd-lift-ease);
+}
+
+html body .shopify-section.saibai-products-section .saibai-prod__info,
+html body .shopify-section.saibai-feature-section .saibai-prod__info {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: var(--pd-info-slot);
+  margin: 0;
+  padding: 0.875rem 0.5rem 0;
+  text-align: center;
+  background: transparent;
+  transition:
+    bottom var(--pd-lift-dur) var(--pd-lift-ease),
+    padding var(--pd-lift-dur) var(--pd-lift-ease),
+    background var(--pd-lift-dur) var(--pd-lift-ease),
+    box-shadow var(--pd-lift-dur) var(--pd-lift-ease);
+}
+
+html body .shopify-section.saibai-products-section .saibai-prod__name,
+html body .shopify-section.saibai-feature-section .saibai-prod__name {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-size: clamp(0.8125rem, 0.95vw, 0.9375rem);
+  font-weight: 400;
+  line-height: 1.45;
+  letter-spacing: 0.045em;
+}
+
+html body .shopify-section.saibai-products-section .saibai-prod__name a,
+html body .shopify-section.saibai-feature-section .saibai-prod__name a,
+html body .shopify-section.saibai-products-section .saibai-prod__name-link,
+html body .shopify-section.saibai-feature-section .saibai-prod__name-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.125rem;
+  color: var(--pd-dark);
+  text-decoration: none;
+  transition: opacity var(--pd-lift-dur) var(--pd-lift-ease);
+}
+
+html body .shopify-section.saibai-products-section .saibai-prod__name-line,
+html body .shopify-section.saibai-feature-section .saibai-prod__name-line {
+  display: block;
+  line-height: 1.4;
+}
+
+html body .shopify-section.saibai-products-section .saibai-prod__name-sub,
+html body .shopify-section.saibai-feature-section .saibai-prod__name-sub {
+  display: block;
+  font-family: var(--font-body--family, 'Jost', sans-serif);
+  font-size: 0.6875rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  line-height: 1.35;
+  text-transform: lowercase;
+  color: var(--pd-muted);
+}
+
+html body .shopify-section.saibai-products-section .saibai-prod__name-extra,
+html body .shopify-section.saibai-feature-section .saibai-prod__name-extra {
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  line-height: 1.35;
+  color: rgb(42 58 26 / 0.62);
+}
+
+html body .shopify-section.saibai-products-section .saibai-prod__meta,
+html body .shopify-section.saibai-feature-section .saibai-prod__meta {
+  margin: 0;
+  min-height: 1.2em;
+  font-family: var(--font-body--family, 'Jost', sans-serif);
+  font-size: 0.6875rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  line-height: 1.35;
+  text-transform: uppercase;
+  color: var(--pd-terra);
+}
+
+html body .shopify-section.saibai-products-section .saibai-prod__price,
+html body .shopify-section.saibai-feature-section .saibai-prod__price {
+  margin: 0;
+  font-family: var(--font-body--family, 'Jost', sans-serif);
+  font-size: 0.6875rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  line-height: 1.35;
+  color: var(--pd-muted);
+  opacity: 0;
+  visibility: hidden;
+  max-height: 0;
+  overflow: hidden;
+  transition:
+    opacity var(--pd-lift-dur) var(--pd-lift-ease),
+    visibility var(--pd-lift-dur) var(--pd-lift-ease),
+    max-height var(--pd-lift-dur) var(--pd-lift-ease),
+    margin var(--pd-lift-dur) var(--pd-lift-ease);
+}
+
+html body .shopify-section.saibai-products-section .saibai-prod__compare,
+html body .shopify-section.saibai-feature-section .saibai-prod__compare {
+  margin-inline-end: 0.35rem;
+  text-decoration: line-through;
+  opacity: 0.55;
+}
+
+html body .shopify-section.saibai-products-section .saibai-prod__amount,
+html body .shopify-section.saibai-feature-section .saibai-prod__amount {
+  color: var(--pd-dark);
+}
+
+html body .shopify-section.saibai-products-section .saibai-quick-add,
+html body .shopify-section.saibai-feature-section .saibai-quick-add {
+  width: 100%;
+  max-width: 12.5rem;
+  margin: 0.55rem auto 0;
+  opacity: 0;
+  visibility: hidden;
+  max-height: 0;
+  overflow: hidden;
+  transition:
+    opacity var(--pd-lift-dur) var(--pd-lift-ease),
+    visibility var(--pd-lift-dur) var(--pd-lift-ease),
+    max-height var(--pd-lift-dur) var(--pd-lift-ease),
+    margin var(--pd-lift-dur) var(--pd-lift-ease);
+}
+
+html body .shopify-section.saibai-products-section .saibai-prod__quick-btn,
+html body .shopify-section.saibai-feature-section .saibai-prod__quick-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 2.5rem;
+  padding: 0 1rem;
+  border: 0;
+  border-radius: 8px;
+  background: #2A3A1A;
+  color: #fff;
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  line-height: 1.2;
+  text-transform: none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+html body .shopify-section.saibai-products-section .saibai-prod__quick-btn:hover:not([disabled]),
+html body .shopify-section.saibai-feature-section .saibai-prod__quick-btn:hover:not([disabled]) {
+  background: #384E28;
+  color: #fff;
+}
+
+html body .shopify-section.saibai-products-section .saibai-prod__quick-btn[disabled],
+html body .shopify-section.saibai-feature-section .saibai-prod__quick-btn[disabled],
+html body .shopify-section.saibai-products-section .saibai-prod__quick-btn.is-sold-out,
+html body .shopify-section.saibai-feature-section .saibai-prod__quick-btn.is-sold-out {
+  background: #c5cebc;
+  color: #fff;
+  cursor: not-allowed;
+}
+
+html body .shopify-section.saibai-products-section .saibai-prod__quick-btn .loading__spinner,
+html body .shopify-section.saibai-feature-section .saibai-prod__quick-btn .loading__spinner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+html body .shopify-section.saibai-products-section .saibai-prod__quick-btn.loading .saibai-quick-add__label,
+html body .shopify-section.saibai-feature-section .saibai-prod__quick-btn.loading .saibai-quick-add__label {
+  opacity: 1;
+  transition: opacity 0.12s ease;
+}
+
+html body .shopify-section.saibai-products-section .saibai-prod__empty {
+  margin: 2rem 0 0;
+  text-align: center;
+  font-size: 0.8125rem;
+  color: var(--pd-muted);
+}
+
+/* --- saibai-prod-home-nav.css --- */
+/* Empório Saibai — Prod cards nav + hover LP
+ * Veltrus Growth & Technology
+ */
+
+html body .shopify-section.saibai-products-section .saibai-prod__nav {
+  position: absolute;
+  top: 38%;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--pd-terra);
+  font-size: 1.75rem;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0.85;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+html body .shopify-section.saibai-products-section .saibai-prod__nav:hover:not(:disabled) {
+  opacity: 1;
+  transform: scale(1.06);
+}
+
+html body .shopify-section.saibai-products-section .saibai-prod__nav:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+html body .shopify-section.saibai-products-section .saibai-prod__nav--prev {
+  left: -0.5rem;
+}
+
+html body .shopify-section.saibai-products-section .saibai-prod__nav--next {
+  right: -0.5rem;
+}
+
+@media (hover: hover) {
+  /* LP: card mantém tamanho — só info sobe em box branco sobre a imagem */
+  html body .shopify-section.saibai-products-section .saibai-prod__card:hover .saibai-prod__info,
+  html body .shopify-section.saibai-feature-section .saibai-prod__card:hover .saibai-prod__info {
+    bottom: var(--pd-info-slot);
+    min-height: var(--pd-info-box-h);
+    padding: 1rem 0.875rem 0.875rem;
+    background: var(--pd-info-box-bg);
+    box-shadow: 0 -6px 28px rgb(42 58 26 / 0.05);
+  }
+
+  html body .shopify-section.saibai-products-section .saibai-prod__card:hover img.saibai-prod__img--main,
+  html body .shopify-section.saibai-products-section .saibai-prod__card:hover img.saibai-prod__img--hover,
+  html body .shopify-section.saibai-feature-section .saibai-prod__card:hover img.saibai-prod__img--main,
+  html body .shopify-section.saibai-feature-section .saibai-prod__card:hover img.saibai-prod__img--hover {
+    transform: scale(1.006) !important;
+  }
+
+  html body .shopify-section.saibai-products-section .saibai-prod__card:hover .saibai-prod__price,
+  html body .shopify-section.saibai-feature-section .saibai-prod__card:hover .saibai-prod__price {
+    opacity: 1;
+    visibility: visible;
+    max-height: 2rem;
+    margin-top: 0.5rem;
+    transition:
+      opacity var(--pd-lift-dur) var(--pd-lift-ease),
+      visibility var(--pd-lift-dur) var(--pd-lift-ease),
+      max-height var(--pd-lift-dur) var(--pd-lift-ease),
+      margin var(--pd-lift-dur) var(--pd-lift-ease);
+  }
+
+  html body .shopify-section.saibai-products-section .saibai-prod__card:hover .saibai-quick-add,
+  html body .shopify-section.saibai-feature-section .saibai-prod__card:hover .saibai-quick-add {
+    opacity: 1;
+    visibility: visible;
+    max-height: 3rem;
+    margin-top: 0.55rem;
+  }
+
+  html body .shopify-section.saibai-products-section .saibai-prod__card:hover img.saibai-prod__img--hover,
+  html body .shopify-section.saibai-feature-section .saibai-prod__card:hover img.saibai-prod__img--hover {
+    opacity: 1;
+  }
+
+  html body .shopify-section.saibai-products-section .saibai-prod__card:hover .saibai-prod__media-inner:has(img.saibai-prod__img--hover) img.saibai-prod__img--main,
+  html body .shopify-section.saibai-feature-section .saibai-prod__card:hover .saibai-prod__media-inner:has(img.saibai-prod__img--hover) img.saibai-prod__img--main {
+    opacity: 0;
+  }
+}
+
+@media (hover: none) {
+  html body .shopify-section.saibai-products-section .saibai-prod__price,
+  html body .shopify-section.saibai-feature-section .saibai-prod__price {
+    opacity: 1;
+    visibility: visible;
+    max-height: none;
+    margin-top: 0.5rem;
+  }
+
+  html body .shopify-section.saibai-products-section .saibai-quick-add,
+  html body .shopify-section.saibai-feature-section .saibai-quick-add {
+    opacity: 1;
+    visibility: visible;
+    max-height: none;
+    margin-top: 0.55rem;
+    overflow: visible;
+  }
+
+  html body .shopify-section.saibai-products-section .saibai-prod,
+  html body .shopify-section.saibai-feature-section .saibai-feat {
+    --pd-info-slot: 7.75rem;
+    --pd-info-box-h: 7.75rem;
+  }
+}
+
+@media (min-width: 990px) {
+  html body .shopify-section.saibai-products-section .saibai-prod__nav {
+    display: none !important;
+  }
+}
+
+html body .shopify-section.saibai-products-section .saibai-prod__nav:not([hidden]) {
+  opacity: 1;
+  visibility: visible;
+}
+
+@media (max-width: 989px) {
+  html body .shopify-section.saibai-products-section .saibai-prod__panels,
+  html body .shopify-section.saibai-products-section .saibai-prod__wrap,
+  html body .shopify-section.saibai-products-section .saibai-prod__track {
+    max-width: none;
+  }
+
+  html body .shopify-section.saibai-products-section .saibai-prod__track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  html body .shopify-section.saibai-products-section .saibai-prod__track::-webkit-scrollbar {
+    display: none;
+  }
+
+  html body .shopify-section.saibai-products-section .saibai-prod__card {
+    flex: 0 0 clamp(17.5rem, 46vw, var(--pd-tile-max));
+    scroll-snap-align: start;
+  }
+
+  html body .shopify-section.saibai-products-section .saibai-prod__nav:not([hidden]) {
+    display: flex;
+  }
+}
+
+@media (max-width: 549px) {
+  html body .shopify-section.saibai-products-section .saibai-prod {
+    padding-bottom: 3.5rem;
+  }
+
+  html body .shopify-section.saibai-products-section .saibai-prod__card {
+    flex: 0 0 clamp(260px, 72vw, var(--pd-tile-max));
+    max-width: var(--pd-tile-max);
+  }
+
+  html body .shopify-section.saibai-products-section .saibai-prod__nav {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html body .shopify-section.saibai-products-section .saibai-prod__info,
+  html body .shopify-section.saibai-products-section .saibai-prod__price,
+  html body .shopify-section.saibai-products-section img.saibai-prod__img--main,
+  html body .shopify-section.saibai-products-section img.saibai-prod__img--hover,
+  html body .shopify-section.saibai-feature-section .saibai-prod__info,
+  html body .shopify-section.saibai-feature-section .saibai-prod__price,
+  html body .shopify-section.saibai-feature-section img.saibai-prod__img--main,
+  html body .shopify-section.saibai-feature-section img.saibai-prod__img--hover {
+    transition: none;
+  }
+
+  html body .shopify-section.saibai-products-section .saibai-prod__card:hover .saibai-prod__info,
+  html body .shopify-section.saibai-feature-section .saibai-prod__card:hover .saibai-prod__info {
+    bottom: var(--pd-info-slot);
+    background: var(--pd-info-box-bg);
+  }
+
+  html body .shopify-section.saibai-products-section .saibai-prod__card:hover img.saibai-prod__img--main,
+  html body .shopify-section.saibai-products-section .saibai-prod__card:hover img.saibai-prod__img--hover,
+  html body .shopify-section.saibai-feature-section .saibai-prod__card:hover img.saibai-prod__img--main,
+  html body .shopify-section.saibai-feature-section .saibai-prod__card:hover img.saibai-prod__img--hover {
+    transform: scale(1) !important;
+  }
+
+  html body .shopify-section.saibai-products-section .saibai-prod__nav {
+    transition: none;
+  }
+}
+

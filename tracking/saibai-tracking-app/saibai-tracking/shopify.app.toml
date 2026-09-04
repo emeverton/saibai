@@ -1,0 +1,31 @@
+# Saibai Tracking — App Proxy para server-side tracking (Veltrus)
+# Docs: https://shopify.dev/docs/apps/build/online-store/app-proxies
+
+client_id = "0f5ea7f8dd46a060c5416f21573c9256"
+name = "Saibai Tracking"
+application_url = "https://tracking-eta-eight.vercel.app"
+embedded = false
+handle = "saibai-tracking"
+
+[build]
+automatically_update_urls_on_dev = false
+
+[access_scopes]
+scopes = "write_app_proxy,read_orders"
+
+[auth]
+redirect_urls = [
+  "https://tracking-eta-eight.vercel.app/api/auth/callback"
+]
+
+[app_proxy]
+url = "https://tracking-eta-eight.vercel.app/api/shopify-proxy"
+prefix = "apps"
+subpath = "vlt-tracking"
+
+[webhooks]
+api_version = "2025-04"
+
+  [[webhooks.subscriptions]]
+  topics = [ "orders/paid" ]
+  uri = "/api/shopify/webhooks/orders-paid"

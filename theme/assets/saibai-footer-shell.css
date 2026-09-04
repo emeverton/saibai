@@ -1,0 +1,69 @@
+/* Empório Saibai — Footer shell
+ * Veltrus Growth & Technology
+ */
+
+/*
+ * Empório Saibai — Footer C-level (KV Saibai)
+ * Bloco grafite · newsletter + colunas · barra cream
+ * saibai-ft-v4 · inset LP (pad lateral + max 86rem)
+ * Veltrus Growth & Technology | Shopify Partner ID 4969609
+ */
+
+html body .shopify-section.saibai-footer-section {
+  margin: 0;
+  padding: 0;
+}
+
+html body .saibai-ft {
+  --ft-dark: #2A3A1A;
+  --ft-muted-light: rgb(255 255 255 / 0.72);
+  --ft-line: rgb(255 255 255 / 0.35);
+  --ft-primary: var(--saibai-primary, #8ABE0A);
+  --ft-primary-soft: #C8E6A0;
+  --ft-terra: #8B5E4A;
+  --ft-cream: var(--saibai-bg, #F2F5EE);
+  --ft-wool: var(--saibai-bg-contrast, #E8EFE2);
+  --ft-text-muted: #4E6040;
+  --ft-max: var(--saibai-lp-shell-max, min(86rem, 1376px));
+  --ft-pad: var(--saibai-lp-pad-x, clamp(1rem, 2.5vw, 2rem));
+  --ft-pad-y: var(--saibai-lp-pad-y, clamp(4.5rem, 9vw, 7rem));
+  --ft-rule: rgb(42 58 26 / 0.14);
+
+  box-sizing: border-box;
+  width: 100%;
+  color: #FFFFFF;
+  font-family: var(--font-body--family, 'Jost', sans-serif);
+  background: var(--ft-cream);
+  padding-inline: var(--ft-pad);
+}
+
+/* LP inset: blocos centralizados — cream visível nas laterais */
+html body .saibai-ft__bridge,
+html body .saibai-ft__main,
+html body .saibai-ft__bar {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--ft-max);
+  margin-inline: auto;
+}
+
+/* LP: hairline entre inside e newsletter */
+html body .saibai-ft__bridge {
+  background: transparent;
+  padding-block: 0;
+}
+
+html body .saibai-ft__rule-line {
+  margin: 0;
+  border: 0;
+  border-top: 1px solid var(--ft-rule);
+}
+
+/* LP: shell — pad interno dentro do bloco inset */
+html body .saibai-ft__shell {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+  padding-inline: var(--ft-pad);
+}

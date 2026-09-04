@@ -1,0 +1,191 @@
+/* Empório Saibai — LGPD shell
+ * Veltrus Growth & Technology
+ */
+
+html body .shopify-section.section-saibai-consent {
+  margin: 0;
+  padding: 0;
+  height: 0;
+  min-height: 0;
+  overflow: visible;
+  border: 0;
+}
+
+html body .saibai-consent {
+  --sc-bg: var(--saibai-light, var(--saibai-bg, #F2F5EE));
+  --sc-accent: var(--saibai-dark, #2A3A1A);
+  --sc-text: var(--saibai-dark-muted, #4E6040);
+  --sc-text-strong: var(--saibai-dark, #2A3A1A);
+  --sc-hover: var(--saibai-cta-hover, #384E28);
+  --sc-line: rgb(42 58 26 / 0.14);
+
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  contain: layout style;
+  will-change: opacity;
+}
+
+html body .saibai-consent:not([hidden]) {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+html body .saibai-consent[hidden] {
+  display: flex !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+html body .saibai-consent__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgb(242 245 238 / 0.94);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+html body .saibai-consent__dialog {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 41.25rem);
+  max-height: min(90vh, 40rem);
+  overflow: auto;
+  padding: clamp(2.5rem, 5vw, 3rem) clamp(2.5rem, 6vw, 3.5rem) clamp(2rem, 4vw, 2.5rem);
+  background: var(--sc-bg);
+  border: 1px solid var(--sc-accent);
+  box-shadow: inset 0 0 0 1px var(--sc-accent);
+  font-family: var(--saibai-font-body, 'Jost', sans-serif);
+  text-align: center;
+  -webkit-font-smoothing: antialiased;
+}
+
+html body .saibai-consent__logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: clamp(1.5rem, 4vw, 2rem);
+}
+
+html body .saibai-consent__logo-img {
+  display: block;
+  width: 200px;
+  max-width: min(200px, 78vw);
+  height: auto;
+  object-fit: contain;
+}
+
+html body .saibai-consent__title {
+  margin: 0 0 clamp(1.25rem, 3vw, 1.75rem);
+  font-family: var(--saibai-font-heading, 'Jost', sans-serif);
+  font-size: clamp(1rem, 2vw, 1.125rem);
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+  color: var(--sc-text-strong);
+}
+
+html body .saibai-consent__body {
+  margin: 0 auto 26px;
+  max-width: 480px;
+  font-size: 0.6875rem;
+  line-height: 1.72;
+  letter-spacing: 0.008em;
+  color: var(--sc-text);
+}
+
+html body .saibai-consent__body--main {
+  max-width: 34rem;
+  margin-bottom: clamp(1.5rem, 4vw, 2rem);
+}
+
+html body .saibai-consent__title--main {
+  font-size: clamp(1.0625rem, 2.2vw, 1.1875rem);
+  letter-spacing: 0.01em;
+}
+
+html body .saibai-consent__body p {
+  margin: 0;
+}
+
+html body .saibai-consent__more {
+  margin-top: 14px;
+}
+
+html body .saibai-consent__more a {
+  color: var(--sc-text-strong);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.2s ease;
+}
+
+html body .saibai-consent__more a:hover {
+  color: var(--sc-hover);
+}
+
+html body .saibai-consent__legal {
+  margin-top: 12px;
+  font-size: 0.625rem;
+  line-height: 1.65;
+  letter-spacing: 0.01em;
+  color: rgb(42 58 26 / 0.72);
+}
+
+html body .saibai-consent__legal a {
+  color: var(--sc-text-strong);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+html body .saibai-consent__legal a:hover {
+  color: var(--sc-hover);
+}
+
+html body .saibai-consent__body--main p + p {
+  margin-top: 0.75rem;
+}
+
+html body .saibai-consent__prefs-lead {
+  margin: 0 0 1rem;
+  font-size: 0.6875rem;
+  line-height: 1.65;
+  letter-spacing: 0.01em;
+  text-align: left;
+  color: var(--sc-text);
+}
+
+html body .saibai-consent__prefs-lead a {
+  color: var(--sc-text-strong);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+html body .saibai-consent__prefs-lead a:hover {
+  color: var(--sc-hover);
+}
+
+html body .saibai-consent__actions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+html body .saibai-consent__actions--main {
+  gap: 10px;
+  max-width: 36rem;
+  margin-inline: auto;
+}
+
+html body .saibai-consent__actions--prefs {
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: clamp(1.5rem, 4vw, 2rem);
+}

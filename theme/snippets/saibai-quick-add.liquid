@@ -1,0 +1,84 @@
+{%- comment -%}
+  Empório Saibai — Adicionar rápido.
+  1 variante (default) → ATC direto (drawer).
+  Várias variantes → Visualização rápida.
+{%- endcomment -%}
+{%- liquid
+  assign card_product = product
+  if card_product == blank
+    assign card_product = closest.product
+  endif
+  assign btn_class = class | default: 'saibai-quick-add__btn'
+  assign sid = section.id | default: 'saibai'
+  assign product_form_id = 'saibai-qa-' | append: sid | append: '-' | append: card_product.id
+-%}
+{%- if card_product != blank and card_product != empty -%}
+  <div class="saibai-quick-add">
+    {%- if card_product.available == false -%}
+      <button type="button" class="{{ btn_class }} is-sold-out" disabled>
+        <span class="saibai-quick-add__label">{{ 'products.product.sold_out' | t }}</span>
+      </button>
+    {%- elsif card_product.has_only_default_variant == false -%}
+      <product-form-component data-section-id="{{ sid }}">
+        {%- form 'product',
+          card_product,
+          id: product_form_id,
+          class: 'form saibai-quick-add__form',
+          novalidate: 'novalidate',
+          data-type: 'add-to-cart-form'
+        -%}
+          <input
+            type="hidden"
+            name="id"
+            value="{{ card_product.selected_or_first_available_variant.id }}"
+            class="product-variant-id"
+          >
+          <button
+            id="{{ product_form_id }}-submit"
+            type="submit"
+            name="add"
+            class="add-to-cart-button {{ btn_class }}"
+            aria-label="{{ 'products.product.add_to_cart' | t }} — {{ card_product.title | escape }}"
+            aria-live="polite"
+            data-sold-out-message="true"
+          >
+            <span class="saibai-quick-add__label">Adicionar</span>
+            <span class="sold-out-message hidden">{{ 'products.product.sold_out' | t }}</span>
+            {%- render 'loading-spinner' -%}
+          </button>
+        {%- endform -%}
+      </product-form-component>
+    {%- else -%}
+      <product-form-component data-section-id="{{ sid }}">
+        {%- form 'product',
+          card_product,
+          id: product_form_id,
+          class: 'form saibai-quick-add__form',
+          novalidate: 'novalidate',
+          data-type: 'add-to-cart-form'
+        -%}
+          <input
+            type="hidden"
+            name="id"
+            value="{{ card_product.selected_or_first_available_variant.id }}"
+            class="product-variant-id"
+          >
+          <button
+            id="{{ product_form_id }}-submit"
+            type="submit"
+            name="add"
+            class="add-to-cart-button {{ btn_class }}"
+            aria-haspopup="dialog"
+            aria-label="{{ 'products.product.add_to_cart' | t }} — {{ card_product.title | escape }}"
+            aria-live="polite"
+            data-sold-out-message="true"
+          >
+            <span class="saibai-quick-add__label">Adicionar</span>
+            <span class="sold-out-message hidden">{{ 'products.product.sold_out' | t }}</span>
+            {%- render 'loading-spinner' -%}
+          </button>
+        {%- endform -%}
+      </product-form-component>
+    {%- endif -%}
+  </div>
+{%- endif -%}

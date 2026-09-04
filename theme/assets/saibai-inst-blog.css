@@ -1,0 +1,176 @@
+/* Empório Saibai — Institucional blog
+ * Veltrus Growth & Technology | Shopify Partner ID 4969609
+ */
+
+/* ── Blog listagem ── */
+.saibai-blog-list {
+  padding: var(--inst-pad-y) var(--inst-pad-x);
+  background: var(--inst-bg);
+}
+
+.saibai-blog-list__inner {
+  max-width: var(--inst-max);
+  margin: 0 auto;
+}
+
+.saibai-blog-list__header {
+  text-align: center;
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+}
+
+.saibai-blog-list__title {
+  margin: 0 0 0.75rem;
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-size: clamp(1.25rem, 2.2vw, 1.625rem);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.saibai-blog-list__lead {
+  margin: 0 auto;
+  max-width: 52ch;
+  color: var(--inst-muted);
+  line-height: 1.65;
+}
+
+.saibai-blog-list__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.25rem, 3vw, 2rem);
+}
+
+.saibai-blog-card {
+  background: var(--inst-white);
+}
+
+.saibai-blog-card__link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.saibai-blog-card__link:hover {
+  opacity: 0.92;
+}
+
+.saibai-blog-card__media {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--inst-bg);
+}
+
+.saibai-blog-card__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.saibai-blog-card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1.35rem 1.25rem 1.5rem;
+}
+
+.saibai-blog-card__date {
+  margin-bottom: 0.5rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--inst-muted);
+}
+
+.saibai-blog-card__title {
+  margin: 0 0 0.65rem;
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-size: 1.15rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1.35;
+}
+
+.saibai-blog-card__excerpt {
+  margin: 0 0 1rem;
+  flex: 1;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--inst-muted);
+}
+
+.saibai-blog-card__cta {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--inst-green);
+}
+
+.saibai-blog-list__pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+}
+
+.saibai-blog-list__page-link {
+  color: var(--inst-dark);
+  text-decoration: none;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.saibai-blog-list__page-link:hover {
+  color: var(--inst-green);
+}
+
+.saibai-blog-list__page-status {
+  font-size: 0.85rem;
+  color: var(--inst-muted);
+}
+
+.saibai-blog-list__empty {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: clamp(2rem, 5vw, 3.5rem);
+  text-align: center;
+  background: var(--inst-white);
+}
+
+.saibai-blog-list__empty-title {
+  margin: 0 0 0.75rem;
+  font-family: var(--font-heading--family, 'Jost', sans-serif);
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.saibai-blog-list__empty-lead {
+  margin: 0 0 1.5rem;
+  color: var(--inst-muted);
+  line-height: 1.7;
+}
+
+.saibai-blog-list__empty-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0.85rem 1.75rem;
+  background: #2A3A1A;
+  color: #FFFFFF;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  border-radius: 2px;
+  transition: background 0.2s ease;
+}
+
+.saibai-blog-list__empty-cta:hover {
+  background: #384E28;
+  color: #FFFFFF;
+}

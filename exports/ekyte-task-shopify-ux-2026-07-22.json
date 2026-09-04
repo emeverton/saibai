@@ -1,0 +1,35 @@
+{
+  "client_key": "saibai",
+  "date": "2026-07-22",
+  "veredito": "LIVE APROVADO",
+  "ekyte": {
+    "workspace_id": 123736,
+    "workspace_name": "Saibai",
+    "task_id": 9975680,
+    "title": "[SAIBAI] Shopify UX LIVE 22/07 — menu mobile · fotos conservas M/G · chaveiro home · tel/CEP",
+    "executor_id": "592834cd-38ef-4ea3-99b8-b4f05f3c2def",
+    "executor_name": "Everton S Ferreira",
+    "task_type_id": 25694,
+    "phase_id": 8657,
+    "start": "2026-07-22",
+    "due": "2026-07-29",
+    "estimated_minutes": 90,
+    "status": "OPEN",
+    "completed": false,
+    "url": "https://app.ekyte.com/#/tasks/9975680"
+  },
+  "notion": "https://app.notion.com/p/3a5968afab6681008685d344442c1c62",
+  "slack": "https://veltrus.slack.com/archives/C0BD28VMD4N/p1784749102008469",
+  "theme_id": 186796147006,
+  "store": "emporiosaibai.com.br",
+  "deliverables": [
+    "fix_mobile_menu_freeze",
+    "conserva_size_packshots_drive_mg",
+    "chaveiro_home_hero_tab_editorial",
+    "phone_3010_1451_cep_18176_210"
+  ],
+  "open_items": [
+    "client_smoke_mobile",
+    "coracao_tamanho_p_when_available"
+  ]
+}

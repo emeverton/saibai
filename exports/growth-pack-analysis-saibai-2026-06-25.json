@@ -1,0 +1,92 @@
+{
+  "clientKey": "saibai",
+  "clientName": "Empório Saibai",
+  "generatedAt": "2026-06-25",
+  "source": "meta_ads_mcp + growth_pack_blueprint",
+  "reporteiProjectId": null,
+  "growthSheetId": "PENDING_CREATE",
+  "periods": {
+    "ytd": { "from": "2026-01-01", "to": "2026-06-25" },
+    "junPartial": { "from": "2026-06-01", "to": "2026-06-25" }
+  },
+  "metaAccountId": "act_1199864388174624",
+  "googleCustomerId": "9513237350",
+  "ga4MeasurementId": "G-VWX77SGD1W",
+  "ga4PropertyId": "PENDING_ACCESS",
+  "metaYtd": {
+    "spend": 2322.4,
+    "impressions": 256369,
+    "clicks": 4542,
+    "platformConversions": 97374,
+    "platformConversionValue": 4572.45,
+    "ctr": 0.0177,
+    "cpc": 0.51,
+    "note": "platform conversions inflated — messaging/engagement, not purchase"
+  },
+  "metaMonthly": [
+    {
+      "month": "2026-01",
+      "label": "Jan–Mar Q1",
+      "spend": 318.56,
+      "impressions": 57073,
+      "clicks": 74,
+      "platformConversions": 21236,
+      "ctr": 0.0013,
+      "cpc": 4.3,
+      "topCampaign": "ENGAJAMENTO - INSTA 01",
+      "verdict": "WASTE — engagement sem clique"
+    },
+    {
+      "month": "2026-04",
+      "spend": 1225.32,
+      "impressions": 146676,
+      "clicks": 2629,
+      "platformConversions": 53246,
+      "ctr": 0.0179,
+      "cpc": 0.47,
+      "topCampaigns": ["ENGAJAMENTO - INSTA", "LEADS-GRUPO-WHATS 01", "LEADS-GRUPO-WHATS 02"],
+      "verdict": "TRANSITION — mix engagement + WhatsApp leads"
+    },
+    {
+      "month": "2026-05",
+      "spend": 618.32,
+      "impressions": 43105,
+      "clicks": 1430,
+      "platformConversions": 19915,
+      "ctr": 0.0332,
+      "cpc": 0.43,
+      "topCampaign": "LEADS-GRUPO-WHATS 02",
+      "verdict": "B2B FOCUS — CTR ok · still not e-com"
+    },
+    {
+      "month": "2026-06",
+      "spend": 160.09,
+      "impressions": 9511,
+      "clicks": 409,
+      "platformConversions": 2977,
+      "ctr": 0.043,
+      "cpc": 0.39,
+      "activeCampaigns": 1,
+      "topCampaign": "LEADS-GRUPO-WHATS 02 R$20/d",
+      "verdict": "LOW SPEND — single B2B camp active"
+    }
+  ],
+  "googleAds": {
+    "mcpStatus": "PENDING_PERMISSION",
+    "mccInvite": "pending",
+    "spendYtd": null
+  },
+  "ga4": {
+    "mcpStatus": "PENDING_ACCESS",
+    "purchaseYtd": null,
+    "revenueYtd": null
+  },
+  "growthPackPlan": {
+    "phase0MonthlyBudget": 600,
+    "phase1MonthlyBudget": 3750,
+    "splitDailyTarget": { "meta": 60, "google": 65 },
+    "kpiPrimary": "purchase",
+    "kpiSecondary": ["add_to_cart", "whatsapp_click", "b2b_lead"]
+  },
+  "verdict": "PRECISA AUDITORIA"
+}

@@ -1,0 +1,59 @@
+{%- comment -%} Markup do módulo cupom — assets em sections/saibai-coupon-popup.liquid {%- endcomment -%}
+{%- liquid
+  assign saibai_coupon_code = saibai_coupon_code | default: '5%NOVOCLIENTE'
+  assign saibai_coupon_expire_days = saibai_coupon_expire_days | default: 7
+  assign saibai_coupon_cta_url = saibai_coupon_cta_url | default: '/collections/todos'
+  assign saibai_coupon_arm_delay = saibai_coupon_arm_delay | default: 3 | times: 1000
+  assign saibai_coupon_eyebrow = saibai_coupon_eyebrow | default: 'Primeira compra'
+  assign saibai_coupon_title = saibai_coupon_title | default: '5% off para você'
+  assign saibai_coupon_text = saibai_coupon_text | default: 'Use no checkout e descubra alcachofras, conservas e produtos artesanais.'
+  assign saibai_coupon_cta_label = saibai_coupon_cta_label | default: 'Ver produtos'
+  assign saibai_coupon_copy_label = saibai_coupon_copy_label | default: 'Copiar'
+  assign saibai_coupon_dismiss_label = saibai_coupon_dismiss_label | default: 'Agora não'
+-%}
+<div
+  class="saibai-coupon"
+  id="SaibaiCouponPopup"
+  data-saibai-coupon
+  data-expire-days="{{ saibai_coupon_expire_days }}"
+  data-arm-delay="{{ saibai_coupon_arm_delay }}"
+  hidden
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="SaibaiCouponPopupTitle"
+  aria-hidden="true"
+>
+  <button type="button" class="saibai-coupon__overlay" data-saibai-coupon-close aria-label="Fechar"></button>
+  <div class="saibai-coupon__dialog">
+    <button type="button" class="saibai-coupon__close" data-saibai-coupon-close aria-label="Fechar">
+      <span class="saibai-coupon__close-icon" aria-hidden="true"></span>
+    </button>
+
+    <p class="saibai-coupon__eyebrow">{{ saibai_coupon_eyebrow }}</p>
+    <h2 class="saibai-coupon__title" id="SaibaiCouponPopupTitle">{{ saibai_coupon_title }}</h2>
+    <p class="saibai-coupon__text">{{ saibai_coupon_text }}</p>
+
+    <div class="saibai-coupon__ticket">
+      <input
+        class="saibai-coupon__code"
+        type="text"
+        value="{{ saibai_coupon_code }}"
+        readonly
+        aria-label="Cupom de desconto"
+        id="SaibaiCouponCode"
+      >
+      <button type="button" class="saibai-coupon__copy" data-saibai-coupon-copy data-code="{{ saibai_coupon_code }}" data-copy-label="{{ saibai_coupon_copy_label }}">
+        {{ saibai_coupon_copy_label }}
+      </button>
+    </div>
+    <p class="saibai-coupon__status" data-saibai-coupon-status aria-live="polite" hidden></p>
+
+    <button type="button" class="saibai-coupon__cta" data-saibai-coupon-cta data-href="{{ saibai_coupon_cta_url }}">
+      {{ saibai_coupon_cta_label }}
+    </button>
+
+    <button type="button" class="saibai-coupon__dismiss" data-saibai-coupon-close>
+      {{ saibai_coupon_dismiss_label }}
+    </button>
+  </div>
+</div>

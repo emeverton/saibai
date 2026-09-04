@@ -1,0 +1,62 @@
+{%- comment -%}
+  Empório Saibai — configuração única de políticas do carrinho.
+  Limite: 2 caixas frescas. Entrega: Brasil (todas as UFs).
+{%- endcomment -%}
+{%- liquid
+  assign saibai_box_max = 2
+  assign saibai_box_ids = '|'
+  assign saibai_box_collection = collections['alcachofra-in-natura']
+
+  if saibai_box_collection != blank
+    for product in saibai_box_collection.products
+      for variant in product.variants
+        assign token = '|' | append: variant.id | append: '|'
+        unless saibai_box_ids contains token
+          assign saibai_box_ids = saibai_box_ids | append: variant.id | append: '|'
+        endunless
+      endfor
+    endfor
+  endif
+
+  assign extra_handles = 'alcachofra-in-natura-t8,alcachofra-in-natura-t12,alcachofra-in-natura-t14,alcachofra-in-natura-t20,alcachofra-in-natura-p,alcachofra-in-natura-m,alcachofra-in-natura-g,alcachofra-in-natura-mini' | split: ','
+
+  for handle in extra_handles
+    assign product = all_products[handle]
+    if product != blank
+      for variant in product.variants
+        assign token = '|' | append: variant.id | append: '|'
+        unless saibai_box_ids contains token
+          assign saibai_box_ids = saibai_box_ids | append: variant.id | append: '|'
+        endunless
+      endfor
+    endif
+  endfor
+
+  assign id_list = saibai_box_ids | split: '|'
+-%}
+<script>
+  window.saibaiCartPolicy = {
+    maxBoxes: {{ saibai_box_max }},
+    boxProductType: {{ 'Alcachofra In Natura' | json }},
+    boxHandlePrefix: {{ 'alcachofra-in-natura' | json }},
+    boxVariantIds: [
+      {%- assign first_id = true -%}
+      {%- for id in id_list -%}
+        {%- if id != blank -%}
+          {%- unless first_id -%},{%- endunless -%}{{ id }}
+          {%- assign first_id = false -%}
+        {%- endif -%}
+      {%- endfor -%}
+    ],
+    limitMessage: {{ 'Limite de 2 caixas de alcachofra fresca por pedido. Para volumes maiores (B2B), fale conosco no WhatsApp.' | json }},
+    allowedStates: {{ 'AC,AL,AP,AM,BA,CE,DF,ES,GO,MA,MT,MS,MG,PA,PB,PR,PE,PI,RJ,RN,RS,RO,RR,SC,SP,SE,TO' | split: ',' | json }},
+    allowedState: {{ 'BR' | json }},
+    outMessage: {{ 'Informe um CEP válido no Brasil. Entregamos em todo o território nacional.' | json }},
+    transitMessage: {{ 'Fora de São Paulo, o produto pode sofrer algumas alterações devido ao tempo de entrega.' | json }},
+    okPrefix: {{ 'Entregamos em ' | json }},
+    whatsapp: {{ 'https://wa.me/551530101451' | json }},
+    policyUrl: {{ '/pages/politica-de-entrega' | json }}
+  };
+</script>
+<script src="{{ 'saibai-cart-limit.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'saibai-delivery.js' | asset_url }}" defer="defer"></script>

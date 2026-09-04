@@ -1,0 +1,101 @@
+{%- liquid
+  if direction == 'rtl'
+    echo 'rtl.css' | asset_url | stylesheet_tag: preload: true
+  endif
+-%}
+
+{%- liquid
+  # Cart fora do skip: sem base.css a /cart quebra (SVG caret, hide, grid)
+  assign saibai_perf_skip_veltrus = 'index,blog,article,page,404,list-collections,password,collection,search' | split: ','
+  assign saibai_perf_defer_veltrus = 'product' | split: ','
+  assign saibai_perf_async_pages = 'index,collection,search,cart,page,blog,article,404,list-collections' | split: ','
+  assign saibai_skip_veltrus_base = false
+  if saibai_perf_skip_veltrus contains template.name
+    assign saibai_skip_veltrus_base = true
+  endif
+  assign saibai_defer_veltrus_base = false
+  if saibai_perf_defer_veltrus contains template.name
+    assign saibai_defer_veltrus_base = true
+  endif
+  assign saibai_async_pages_css = false
+  if saibai_perf_async_pages contains template.name
+    assign saibai_async_pages_css = true
+  endif
+-%}
+{%- comment -%} Fase 2d/2e: skip base.css em templates Saibai; PDP mantém base+vendor async {%- endcomment -%}
+{%- if saibai_defer_veltrus_base -%}
+  <link rel="stylesheet" href="{{ 'vendor.css' | asset_url }}" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="{{ 'base.css' | asset_url }}" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="{{ 'vendor.css' | asset_url }}">
+    <link rel="stylesheet" href="{{ 'base.css' | asset_url }}">
+  </noscript>
+{%- elsif saibai_skip_veltrus_base == false -%}
+  {{ 'vendor.css' | asset_url | stylesheet_tag }}
+  {{ 'base.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
+
+<link rel="stylesheet" href="{{ 'section.css' | asset_url }}" media="print" onload="this.media='all'">
+{%- unless saibai_skip_veltrus_base -%}
+<link rel="stylesheet" href="{{ 'component-slider.css' | asset_url }}" media="print" onload="this.media='all'">
+{%- endunless -%}
+
+{%- if settings.show_countdown -%}
+  <link rel="stylesheet" href="{{ 'component-card-countdown.css' | asset_url }}" media="print" onload="this.media='all'">
+{%- endif -%}
+{%- if settings.show_calculator_free_shipping_message -%}
+  <link rel="stylesheet" href="{{ 'component-calculator-shipping.css' | asset_url }}" media="print" onload="this.media='all'">
+{%- endif -%}
+{%- if settings.swatch != blank -%}
+  <link rel="stylesheet" href="{{ 'component-swatch.css' | asset_url }}"  media="print" onload="this.media='all'">
+{%- endif -%}
+{%- if settings.predictive_search_enabled -%}
+  <link rel="stylesheet" href="{{ 'component-predictive-search.css' | asset_url }}"  media="print" onload="this.media='all'">
+{%- endif -%}
+
+{%- comment -%} Card Ella só onde base.css entra; home/PLP/inst usam cards Saibai {%- endcomment -%}
+{%- unless saibai_skip_veltrus_base -%}
+<link rel="stylesheet" href="{{ 'component-card.css' | asset_url }}"  media="print" onload="this.media='all'">
+{%- endunless -%}
+{%- comment -%} price + cart-items: drawer global — manter em todos os templates {%- endcomment -%}
+<link rel="stylesheet" href="{{ 'component-price.css' | asset_url }}"  media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-cart-items.css' | asset_url }}"  media="print" onload="this.media='all'">
+{%- unless saibai_skip_veltrus_base or saibai_defer_veltrus_base or template.name == 'index' -%}
+<link rel="stylesheet" href="{{ 'animation.css' | asset_url }}"  media="print" onload="this.media='all'">
+{%- endunless -%}
+
+{%- comment -%} Saibai KV — após base Veltrus/components {%- endcomment -%}
+{{ 'saibai-tokens.css' | asset_url | stylesheet_tag }}
+{%- render 'saibai-shell-css', async: saibai_async_pages_css, skip_veltrus_base: saibai_skip_veltrus_base -%}
+{%- render 'saibai-pages-css', async: saibai_async_pages_css -%}
+{%- render 'saibai-conditional-assets' -%}
+
+{% comment %} Fallback for browsers that don't support preload {% endcomment %}
+<noscript>
+  <link rel="stylesheet" href="{{ 'section.css' | asset_url }}">
+  {%- unless saibai_skip_veltrus_base -%}
+  <link rel="stylesheet" href="{{ 'component-slider.css' | asset_url }}">
+  {%- endunless -%}
+
+  {%- if settings.show_countdown -%}
+      <link rel="stylesheet" href="{{ 'component-card-countdown.css' | asset_url }}">
+  {%- endif -%}
+  {%- if settings.show_calculator_free_shipping_message -%}
+      <link rel="stylesheet" href="{{ 'component-calculator-shipping.css' | asset_url }}">
+  {%- endif -%}
+  {%- if settings.swatch != blank -%}
+      <link rel="stylesheet" href="{{ 'component-swatch.css' | asset_url }}">
+  {%- endif -%}
+  {%- if settings.predictive_search_enabled -%}
+      <link rel="stylesheet" href="{{ 'component-predictive-search.css' | asset_url }}">
+  {%- endif -%}
+
+  {%- unless saibai_skip_veltrus_base -%}
+  <link rel="stylesheet" href="{{ 'component-card.css' | asset_url }}">
+  {%- endunless -%}
+  <link rel="stylesheet" href="{{ 'component-price.css' | asset_url }}">
+  <link rel="stylesheet" href="{{ 'component-cart-items.css' | asset_url }}">
+  {%- unless saibai_skip_veltrus_base or saibai_defer_veltrus_base or template.name == 'index' -%}
+  <link rel="stylesheet" href="{{ 'animation.css' | asset_url }}">
+  {%- endunless -%}
+</noscript>

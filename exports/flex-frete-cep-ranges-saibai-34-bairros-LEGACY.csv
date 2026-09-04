@@ -1,0 +1,35 @@
+dia_entrega,cidade,zona_logistica,bairro,cep_inicial,cep_final,frete,regra_frete,pedido_minimo
+Segunda,São Paulo,Sul/Oeste Premium,Itaim Bibi,04530,04539,Pago,Grátis acima de 389.90,100
+Segunda,São Paulo,Sul/Oeste Premium,Moema,04077,04094,Pago,Grátis acima de 389.90,100
+Segunda,São Paulo,Sul/Oeste Premium,Vila Mariana,04010,04120,Pago,Grátis acima de 389.90,100
+Segunda,São Paulo,Oeste Premium,Pinheiros,05400,05449,Pago,Grátis acima de 389.90,100
+Segunda,São Paulo,Oeste Premium,Perdizes,05010,05019,Pago,Grátis acima de 389.90,100
+Segunda,São Paulo,Centro Nobre,Jardim Paulista,01400,01499,Pago,Grátis acima de 389.90,100
+Quarta,São Paulo,Oeste,Butantã,05503,05519,Pago,Grátis acima de 389.90,100
+Quarta,São Paulo,Oeste,Vila Sônia,05626,05629,Pago,Grátis acima de 389.90,100
+Quarta,São Paulo,Oeste,Rio Pequeno,05379,05379,Pago,Grátis acima de 389.90,100
+Quarta,São Paulo,Oeste,Lapa,05070,05099,Pago,Grátis acima de 389.90,100
+Quarta,São Paulo,Centro,Consolação,01300,01309,Pago,Grátis acima de 389.90,100
+Quarta,São Paulo,Centro,Santa Cecília,01200,01249,Pago,Grátis acima de 389.90,100
+Sexta,São Paulo,Centro,Sé,01000,01049,Pago,Grátis acima de 389.90,100
+Sexta,São Paulo,Centro,República,01050,01249,Pago,Grátis acima de 389.90,100
+Sexta,São Paulo,Centro,Bela Vista,01310,01329,Pago,Grátis acima de 389.90,100
+Sexta,São Paulo,Centro,Liberdade,01500,01599,Pago,Grátis acima de 389.90,100
+Sexta,São Paulo,Centro,Brás,03000,03049,Pago,Grátis acima de 389.90,100
+Sexta,São Paulo,Centro,Pari,03020,03039,Pago,Grátis acima de 389.90,100
+Sexta,São Paulo,Centro,Bom Retiro,01120,01129,Pago,Grátis acima de 389.90,100
+Sexta,São Paulo,Leste,Mooca,03100,03189,Pago,Grátis acima de 389.90,100
+Sexta,São Paulo,Leste,Água Rasa,03345,03349,Pago,Grátis acima de 389.90,100
+Sorocaba,Sorocaba,Centro,Centro,18000,18019,,Grátis acima de 389.90,100
+Sorocaba,Sorocaba,Zona Norte,Éden,18103,18109,,Grátis acima de 389.90,100
+Sorocaba,Sorocaba,Zona Norte,Cajuru,18105,18109,,Grátis acima de 389.90,100
+Sorocaba,Sorocaba,Zona Norte,Parque São Bento,18072,18073,,Grátis acima de 389.90,100
+Sorocaba,Sorocaba,Zona Sul,Campolim,18047,18048,,Grátis acima de 389.90,100
+Sorocaba,Sorocaba,Zona Sul,Jardim América,18046,18046,,Grátis acima de 389.90,100
+Sorocaba,Sorocaba,Zona Sul,Vila Jardini,18044,18044,,Grátis acima de 389.90,100
+Sorocaba,Sorocaba,Zona Oeste,Wanel Ville,18055,18057,,Grátis acima de 389.90,100
+Sorocaba,Sorocaba,Zona Oeste,Jardim Simus,18055,18055,,Grátis acima de 389.90,100
+Sorocaba,Sorocaba,Zona Leste,Além Ponte,18013,18013,,Grátis acima de 389.90,100
+Sorocaba,Sorocaba,Zona Leste,Vila Haro,18015,18015,,Grátis acima de 389.90,100
+Sorocaba,Sorocaba,Zona Industrial,Aparecidinha,18087,18087,,Grátis acima de 389.90,100
+Sorocaba,Sorocaba,Zona Industrial,Industrial,18087,18088,,Grátis acima de 389.90,100

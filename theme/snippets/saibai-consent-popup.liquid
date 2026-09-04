@@ -1,0 +1,99 @@
+{%- comment -%} Markup do módulo LGPD — assets carregados em sections/saibai-consent-popup.liquid {%- endcomment -%}
+<div
+  class="saibai-consent"
+  id="SaibaiConsent"
+  data-saibai-consent
+  hidden
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="SaibaiConsentTitle"
+  aria-describedby="SaibaiConsentDesc"
+  aria-hidden="true"
+>
+  <div class="saibai-consent__overlay" aria-hidden="true"></div>
+  <div class="saibai-consent__dialog">
+    <div class="saibai-consent__logo">
+      {% render 'saibai-logo', width: 200, layout: 'wordmark-mono', class: 'saibai-consent__logo-img' %}
+    </div>
+
+    <div class="saibai-consent__view saibai-consent__view--main" data-saibai-consent-main>
+      <h2 class="saibai-consent__title saibai-consent__title--main" id="SaibaiConsentTitle">Valorizamos sua privacidade</h2>
+
+      <div class="saibai-consent__body saibai-consent__body--main" id="SaibaiConsentDesc">
+        <p>
+          Utilizamos cookies e tecnologias semelhantes. Os <strong>cookies essenciais</strong> são necessários para o funcionamento da loja (carrinho, checkout e segurança) e não dependem de consentimento.
+        </p>
+        <p>
+          Com a sua autorização, utilizamos cookies de <strong>análise</strong> (Google Analytics) e de <strong>marketing</strong> (Meta Pixel) para medir visitas e exibir anúncios. Você pode aceitar, recusar os cookies opcionais ou configurar categorias separadamente. O tratamento segue a Lei Geral de Proteção de Dados (LGPD, Lei nº 13.709/2018).
+        </p>
+        <p class="saibai-consent__more">
+          <a href="/pages/politica-de-privacidade">Mais informações</a>
+        </p>
+        <p class="saibai-consent__legal">
+          Controlador: Empório Saibai · Encarregado: <a href="mailto:contato@saibai.com.br">contato@saibai.com.br</a>. Você pode revogar o consentimento a qualquer momento pelo link &ldquo;Preferências de cookies&rdquo; no rodapé.
+        </p>
+      </div>
+
+      <div class="saibai-consent__actions saibai-consent__actions--main">
+        <button type="button" class="saibai-consent__btn saibai-consent__btn--ghost" data-saibai-consent-prefs-open>
+          <span class="saibai-consent__btn-text">Preferências de cookies</span>
+        </button>
+        <button type="button" class="saibai-consent__btn saibai-consent__btn--solid" data-saibai-consent-reject>
+          <span class="saibai-consent__btn-text">Recusar todos os cookies</span>
+        </button>
+        <button type="button" class="saibai-consent__btn saibai-consent__btn--solid saibai-consent__btn--band" data-saibai-consent-accept>
+          <span class="saibai-consent__btn-text">Aceitar todos os cookies</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="saibai-consent__view" data-saibai-consent-prefs hidden>
+      <h2 class="saibai-consent__title">Preferências de cookies</h2>
+
+      <p class="saibai-consent__prefs-lead">
+        Escolha as categorias opcionais. Cookies essenciais permanecem sempre ativos. Consulte a <a href="/pages/politica-de-privacidade">Política de Privacidade</a>.
+      </p>
+
+      <ul class="saibai-consent__prefs list-unstyled">
+        <li class="saibai-consent__pref">
+          <div class="saibai-consent__pref-copy">
+            <strong>Essenciais</strong>
+            <span>Necessários para o funcionamento da loja (carrinho, checkout, segurança).</span>
+          </div>
+          <span class="saibai-consent__pref-badge">Sempre ativos</span>
+        </li>
+        <li class="saibai-consent__pref">
+          <div class="saibai-consent__pref-copy">
+            <strong>Análise</strong>
+            <span>Google Analytics (Google LLC), páginas visitadas e desempenho da loja. Dados podem ser tratados no Brasil e no exterior.</span>
+          </div>
+          <label class="saibai-consent__toggle">
+            <input type="checkbox" data-saibai-consent-analytics>
+            <span class="saibai-consent__toggle-ui" aria-hidden="true"></span>
+            <span class="visually-hidden">Cookies de análise</span>
+          </label>
+        </li>
+        <li class="saibai-consent__pref">
+          <div class="saibai-consent__pref-copy">
+            <strong>Marketing</strong>
+            <span>Meta Pixel (Meta Platforms), anúncios e remarketing. Dados podem ser tratados no Brasil e no exterior, somente com consentimento.</span>
+          </div>
+          <label class="saibai-consent__toggle">
+            <input type="checkbox" data-saibai-consent-marketing>
+            <span class="saibai-consent__toggle-ui" aria-hidden="true"></span>
+            <span class="visually-hidden">Cookies de marketing</span>
+          </label>
+        </li>
+      </ul>
+
+      <div class="saibai-consent__actions saibai-consent__actions--prefs">
+        <button type="button" class="saibai-consent__btn saibai-consent__btn--ghost" data-saibai-consent-prefs-back>
+          Voltar
+        </button>
+        <button type="button" class="saibai-consent__btn saibai-consent__btn--solid saibai-consent__btn--band" data-saibai-consent-save>
+          <span class="saibai-consent__btn-text">Salvar preferências</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

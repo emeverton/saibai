@@ -1,0 +1,71 @@
+{
+  "name": "[SB] Saibai - E-com Sale WhatsApp",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "saibai-ecom-sale-notify",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "SB_Sale_Webhook",
+      "name": "Webhook Venda",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [-900, 0],
+      "webhookId": "saibai-ecom-sale-notify"
+    },
+    {
+      "parameters": {
+        "jsCode": "const expected = $env.SAIBAI_ECOM_WEBHOOK_TOKEN || '';\nconst headers = $json.headers || {};\nconst received = String(headers['x-veltrus-token'] || headers['X-Veltrus-Token'] || '');\nif (expected && received !== expected) {\n  throw new Error('Unauthorized e-com sale webhook.');\n}\nconst raw = $json.body ?? $json;\nconst b = typeof raw === 'string' ? JSON.parse(raw) : raw;\nconst orderId = String(b.order_id || b.orderId || b.transaction_id || b.txId || '').trim();\nif (!orderId) throw new Error('order_id required');\nconst revenue = Number(b.revenue ?? b.value ?? b.total_price ?? 0);\nconst currency = String(b.currency || 'BRL').toUpperCase();\nconst source = String(b.utm_source || b.source || b.session_source || '—').trim();\nconst orderNumber = String(b.order_number || b.orderNumber || orderId).trim();\nconst lines = [\n  'Emporio Saibai · NOVA VENDA',\n  `Pedido: ${orderNumber}`,\n  `ID: ${orderId}`,\n  `Valor: R$ ${revenue.toFixed(2).replace('.', ',')}`,\n  `Moeda: ${currency}`,\n  `Canal: ${source}`,\n  `Detectado: ${new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' })}`,\n  '',\n  'Fonte: n8n webhook · Shopify/GA4/Supabase',\n];\nconst phones = String($env.SAIBAI_SALES_WHATSAPP || $env.SAIBAI_ALERT_WHATSAPP_LIST || $env.NOTIFY_PHONE_NUMBER || '')\n  .split(',')\n  .map((p) => p.trim().replace(/\\D/g, ''))\n  .filter(Boolean);\nif (!phones.length) throw new Error('SAIBAI_SALES_WHATSAPP ausente');\nreturn phones.map((phone) => ({ json: { phone, text: lines.join('\\n'), orderId, revenue } }));"
+      },
+      "id": "SB_Sale_Normalize",
+      "name": "Normalizar venda",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-640, 0]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ ($env.EVOLUTION_API_BASE_URL || 'https://api.ehos.com.br').replace(/\\/$/, '') + '/message/sendText/' + ($env.EVOLUTION_INSTANCE_NAME || 'veltrus-agent') }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "apikey", "value": "={{ $env.EVOLUTION_API_KEY }}" },
+            { "name": "Content-Type", "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ number: $json.phone, text: $json.text }) }}",
+        "options": {}
+      },
+      "id": "SB_Sale_Evolution",
+      "name": "Evolution WhatsApp",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [-360, 0]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ { ok: true, orderId: $('Normalizar venda').first().json.orderId, sent: $input.all().length } }}",
+        "options": { "responseCode": 200 }
+      },
+      "id": "SB_Sale_Respond",
+      "name": "Respond OK",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [-80, 0]
+    }
+  ],
+  "connections": {
+    "Webhook Venda": { "main": [[{ "node": "Normalizar venda", "type": "main", "index": 0 }]] },
+    "Normalizar venda": { "main": [[{ "node": "Evolution WhatsApp", "type": "main", "index": 0 }]] },
+    "Evolution WhatsApp": { "main": [[{ "node": "Respond OK", "type": "main", "index": 0 }]] }
+  },
+  "active": false,
+  "settings": { "executionOrder": "v1", "timezone": "America/Sao_Paulo" },
+  "tags": [{ "name": "saibai" }, { "name": "ecom" }, { "name": "whatsapp" }]
+}

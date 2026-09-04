@@ -1,0 +1,136 @@
+{%- comment -%}
+  PLP — Hero editorial por coleção (padrão saibai-inst-hero)
+  Redirect /collections/all → theme.liquid (canonical + meta refresh)
+{%- endcomment -%}
+{%- liquid
+  assign ch = collection.handle
+  assign show_editorial_hero = true
+  assign hero_asset = ''
+  assign hero_label = ''
+  assign hero_lead = ''
+  assign hero_use_collection_image = false
+
+  case ch
+    when 'todos', 'frontpage'
+      assign hero_asset = 'saibai-farm-harvest.webp'
+      assign hero_label = 'Empório Saibai'
+      assign hero_lead = 'Alcachofras frescas, conservas artesanais e flores desidratadas — direto do produtor em Piedade, SP.'
+    when 'em-conserva'
+      assign hero_asset = 'saibai-conservas-jars.webp'
+      assign hero_label = 'Artesanal'
+      assign hero_lead = 'Corações e fundos de alcachofra em conserva artesanal, preparados com a receita da família Saibai em Piedade, SP.'
+    when 'in-natura-1'
+      assign hero_asset = 'saibai-hero-fresca-1200.webp'
+      assign hero_label = 'Safra 2026'
+      assign hero_lead = 'Alcachofras frescas colhidas no ponto certo, da terra de Piedade direto para a sua mesa.'
+    when 'alcachofras'
+      assign hero_asset = 'saibai-feature-fresca.webp'
+      assign hero_label = 'Safra'
+      assign hero_lead = 'Alcachofras da produção própria Saibai, com tradição de mais de 50 anos em Piedade, SP.'
+    when 'flores-desidratadas'
+      assign hero_asset = 'saibai-banner-flores-hero.webp'
+      assign hero_label = 'Gourmet'
+      assign hero_lead = 'Flores comestíveis desidratadas para finalizar pratos, drinks e sobremesas com cor e delicadeza.'
+    when 'frutas-desidratadas'
+      assign hero_asset = 'saibai-frutas.webp'
+      assign hero_label = 'Natural'
+      assign hero_lead = 'Frutas desidratadas artesanais, sem conservantes, para snacks e receitas especiais.'
+    when 'congelados'
+      assign hero_asset = 'saibai-inst-harvest.webp'
+      assign hero_label = 'Congelados'
+      assign hero_lead = 'Alcachofras congeladas com qualidade de safra, prontas para sua cozinha o ano inteiro.'
+    when 'chaveiro'
+      assign hero_asset = 'saibai-ed-chaveiro.webp'
+      assign hero_label = 'Souvenir'
+      assign hero_lead = 'Chaveiro artesanal em formato de alcachofra — uma lembrança da safra Saibai.'
+    when 'decoracao-e-enfeites'
+      assign hero_asset = 'saibai-ed-chaveiro.webp'
+      assign hero_label = 'Acessórios'
+      assign hero_lead = 'Acessórios e souvenirs inspirados na alcachofra e na identidade Saibai.'
+    when 'microverdes'
+      assign hero_asset = 'saibai-inst-planta.webp'
+      assign hero_label = 'Frescor'
+      assign hero_lead = 'Microverdes cultivados com cuidado para elevar saladas, pratos e harmonizações.'
+    when 'higienizados'
+      assign hero_asset = 'saibai-inst-campo.webp'
+      assign hero_label = 'Praticidade'
+      assign hero_lead = 'Alcachofras higienizadas e prontas para o preparo, com o padrão de qualidade Saibai.'
+    when 'salgados', 'salgados-de-alcachofra'
+      assign hero_asset = 'saibai-inst-conserva.webp'
+      assign hero_label = 'Salgados'
+      assign hero_lead = 'Salgados de alcachofra artesanais, ideais para lanches, eventos e degustações.'
+    else
+      if collection.image != blank
+        assign hero_use_collection_image = true
+        assign hero_lead = collection.description | strip_html | strip | truncate: 180
+      elsif collection.description != blank
+        assign hero_lead = collection.description | strip_html | strip | truncate: 180
+        assign hero_asset = 'saibai-inst-campo.webp'
+      else
+        assign hero_asset = 'saibai-inst-campo.webp'
+        assign hero_label = 'Empório Saibai'
+        assign hero_lead = collection.title
+      endif
+  endcase
+
+  if hero_lead == blank and collection.description != blank
+    assign hero_lead = collection.description | strip_html | strip | truncate: 180
+  endif
+
+  assign hero_title = collection.title
+  assign hero_count = 'products.facets.product_count_simple' | t: count: results_size
+-%}
+
+{%- if show_editorial_hero -%}
+  <div class="saibai-inst saibai-plp-hero-wrap">
+    <section class="saibai-inst-hero saibai-plp-hero-inst" data-saibai-inst-hero aria-label="{{ hero_title | escape }}">
+      <div class="saibai-inst-hero__stage">
+        <div class="saibai-inst-hero__frame">
+          <div class="saibai-inst-hero__media">
+            {%- if hero_use_collection_image -%}
+              {{
+                collection.image
+                | image_url: width: 1600, format: 'webp'
+                | image_tag:
+                  class: 'saibai-inst-hero__img',
+                  loading: 'eager',
+                  fetchpriority: 'high',
+                  widths: '800, 1200, 1600',
+                  sizes: '(min-width: 990px) 86rem, 100vw',
+                  alt: hero_title
+              }}
+            {%- else -%}
+              <img
+                class="saibai-inst-hero__img"
+                src="{{ hero_asset | asset_url }}"
+                alt="{{ hero_title | escape }}"
+                width="1600"
+                height="900"
+                loading="eager"
+                fetchpriority="high"
+              >
+            {%- endif -%}
+          </div>
+        </div>
+
+        <div class="saibai-inst-hero__box">
+          <div class="saibai-inst-hero__box-body">
+            {%- if hero_label != blank -%}
+              <p class="saibai-inst-hero__eyebrow">{{ hero_label }}</p>
+            {%- endif -%}
+            <h1 class="saibai-inst-hero__title">{{ hero_title }}</h1>
+            {%- if hero_lead != blank -%}
+              <p class="saibai-inst-hero__lead">{{ hero_lead }}</p>
+            {%- endif -%}
+            <p class="saibai-plp-hero-inst__count">{{ hero_count }}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+{%- else -%}
+  <div class="saibai-plp-toolbar">
+    <h1 class="saibai-plp-toolbar__title">{{ collection.title }}</h1>
+    <span class="saibai-plp-toolbar__count">{{ hero_count }}</span>
+  </div>
+{%- endif -%}

@@ -1,0 +1,35 @@
+{
+  "sections": {
+    "hero": {
+      "type": "saibai-inst-hero",
+      "settings": {
+        "eyebrow": "Empório Saibai",
+        "title": "Sobre nós",
+        "lead": "Produtora e distribuidora de alcachofras frescas desde Piedade, SP, a Capital Nacional da Alcachofra no Brasil."
+      }
+    },
+    "hub": {
+      "type": "saibai-inst-hub",
+      "settings": {}
+    },
+    "stats": {
+      "type": "saibai-inst-stats",
+      "settings": {}
+    },
+    "resumo": {
+      "type": "saibai-inst-split",
+      "settings": {
+        "reverse": true,
+        "eyebrow": "Compromisso",
+        "title": "Produção própria, origem garantida",
+        "text": "<p>Produzimos nossas próprias alcachofras com safra controlada, seleção rigorosa e embalagem especial. Chefs de São Paulo e consumidores exigentes escolhem a Saibai pela consistência, sabor e procedência.</p><p><strong>Endereço:</strong> Estrada dos Lavradores, 7, Poço, Piedade, SP — CEP 18176-210<br><strong>Telefone:</strong> <a href=\"tel:+551530101451\">(15) 3010-1451</a><br><strong>E-mail:</strong> <a href=\"mailto:contato@saibai.com.br\">contato@saibai.com.br</a></p>",
+        "image_alt": "Campo de alcachofras Saibai"
+      }
+    },
+    "nav": {
+      "type": "saibai-inst-nav",
+      "settings": {}
+    }
+  },
+  "order": ["hero", "hub", "stats", "resumo", "nav"]
+}

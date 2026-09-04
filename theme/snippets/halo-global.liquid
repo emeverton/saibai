@@ -1,0 +1,9 @@
+{%- if settings.show_floating_icons -%}
+  {%- render 'floating-icons' -%}
+  {{ 'floating-icons.css' | asset_url | stylesheet_tag }}
+  {%- if template.name == 'index' -%}
+    <script type="text/saibai-defer" data-src="{{ 'floating-icons.js' | asset_url }}"></script>
+  {%- else -%}
+    <script src="{{ 'floating-icons.js' | asset_url }}" defer="defer"></script>
+  {%- endif -%}
+{%- endif -%}

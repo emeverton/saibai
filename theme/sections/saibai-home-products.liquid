@@ -1,0 +1,79 @@
+{%- comment -%} v11 · CSS/JS no layout (index) — sem fill cruzado entre coleções {%- endcomment -%}
+{% render 'saibai-home-products', section: section %}
+
+{% schema %}
+{
+  "name": "Saibai Products",
+  "class": "saibai-products-section",
+  "enabled_on": { "templates": ["index"] },
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "lead",
+      "label": "Texto introdutório",
+      "default": "A safra Saibai apresenta alcachofra fresca e conservas artesanais, da terra de Piedade direto para a sua mesa."
+    },
+    {
+      "type": "text",
+      "id": "tab_1_label",
+      "label": "Toggle 1",
+      "default": "Alcachofras In Natura"
+    },
+    {
+      "type": "text",
+      "id": "tab_2_label",
+      "label": "Toggle 2",
+      "default": "Conservas"
+    },
+    {
+      "type": "text",
+      "id": "tab_3_label",
+      "label": "Toggle 3",
+      "default": "Flores Desidratadas"
+    },
+    {
+      "type": "text",
+      "id": "tab_4_label",
+      "label": "Toggle 4",
+      "default": "Chaveiro"
+    },
+    {
+      "type": "select",
+      "id": "default_tab",
+      "label": "Aba inicial",
+      "default": "fresca",
+      "options": [
+        { "value": "fresca", "label": "Alcachofras In Natura" },
+        { "value": "conservas", "label": "Conservas" },
+        { "value": "flores", "label": "Flores Desidratadas" },
+        { "value": "chaveiro", "label": "Chaveiro" }
+      ]
+    },
+    {
+      "type": "collection",
+      "id": "collection_fresca",
+      "label": "Coleção Alcachofras In Natura"
+    },
+    {
+      "type": "collection",
+      "id": "collection_conservas",
+      "label": "Coleção Conservas"
+    },
+    {
+      "type": "collection",
+      "id": "collection_flores",
+      "label": "Coleção Flores Desidratadas"
+    },
+    {
+      "type": "collection",
+      "id": "collection_chaveiro",
+      "label": "Coleção Chaveiro"
+    },
+    {
+      "type": "paragraph",
+      "content": "A aba inicial também pode ser definida na seção Saibai Hero (prioridade via JavaScript)."
+    }
+  ],
+  "presets": [{ "name": "Saibai Products" }]
+}
+{% endschema %}

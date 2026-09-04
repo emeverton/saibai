@@ -1,0 +1,31 @@
+{
+  "client_key": "saibai",
+  "date": "2026-07-21",
+  "veredito": "LIVE APROVADO",
+  "ekyte": {
+    "workspace_id": 123736,
+    "workspace_name": "Saibai",
+    "task_id": 9959655,
+    "title": "[SAIBAI] Shopify ops LIVE 21/07 — limite 2 caixas · pacote · frete 389,90 · T8 · menu",
+    "executor_id": "592834cd-38ef-4ea3-99b8-b4f05f3c2def",
+    "executor_name": "Everton S Ferreira",
+    "task_type_id": 25694,
+    "phase_id": 8657,
+    "start": "2026-07-21",
+    "due": "2026-07-21",
+    "estimated_minutes": 120,
+    "url": "https://app.ekyte.com/#/tasks/9959655"
+  },
+  "notion": "https://app.notion.com/p/3a4968afab66814bbcfce11f8baa4b10",
+  "slack": "https://veltrus.slack.com/archives/C0BD28VMD4N/p1784647395835769",
+  "theme_id": 186796147006,
+  "store": "emporiosaibai.com.br",
+  "deliverables": [
+    "limit_2_boxes_per_order",
+    "shipping_weight_5kg",
+    "package_30x14x50",
+    "remove_frutas_menu",
+    "t8_in_collection",
+    "free_shipping_389.90"
+  ]
+}

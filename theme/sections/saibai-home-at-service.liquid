@@ -1,0 +1,157 @@
+{%- comment -%} v1 · cm-our-services LP · Ao seu dispor · CSS via saibai-conditional-assets {%- endcomment -%}
+<!-- saibai-asvc-v1 -->
+
+{%- liquid
+  assign asvc_title = section.settings.title | default: 'Ao seu dispor'
+-%}
+
+<section class="saibai-asvc" aria-label="{{ asvc_title | escape }}">
+  <div class="saibai-asvc__inner">
+    <h2 class="saibai-asvc__title">{{ asvc_title }}</h2>
+
+    <div class="saibai-asvc__grid">
+      {%- for block in section.blocks -%}
+        <article class="saibai-asvc__item" {{ block.shopify_attributes }}>
+          {%- liquid
+            assign asvc_asset = block.settings.image_asset
+            if asvc_asset == blank
+              case block.settings.icon
+                when 'shipping'
+                  assign asvc_asset = 'saibai-asvc-entrega.jpg'
+                when 'returns'
+                  assign asvc_asset = 'saibai-asvc-troca.jpg'
+                when 'whatsapp'
+                  assign asvc_asset = 'saibai-asvc-whatsapp.jpg'
+              endcase
+            endif
+          -%}
+          <div class="saibai-asvc__icon" aria-hidden="true">
+            {%- if asvc_asset != blank -%}
+              <img
+                src="{{ asvc_asset | asset_url }}"
+                alt=""
+                class="saibai-asvc__illus"
+                loading="lazy"
+                width="280"
+                height="280"
+                decoding="async"
+              >
+            {%- endif -%}
+          </div>
+
+          {%- if block.settings.label != blank -%}
+            <p class="saibai-asvc__label">{{ block.settings.label }}</p>
+          {%- endif -%}
+
+          {%- if block.settings.link_label != blank and block.settings.link_url != blank -%}
+            <a
+              href="{{ block.settings.link_url }}"
+              class="saibai-asvc__link"
+              {% if block.settings.link_url contains 'http' %}target="_blank" rel="noopener"{% endif %}
+            >
+              {{ block.settings.link_label }}
+            </a>
+          {%- endif -%}
+        </article>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Saibai At Service",
+  "class": "saibai-at-service-section",
+  "enabled_on": {
+    "templates": ["index"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "Ao seu dispor"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "service",
+      "name": "Serviço",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Ícone (fallback)",
+          "default": "shipping",
+          "options": [
+            { "value": "shipping", "label": "Entrega" },
+            { "value": "returns", "label": "Troca" },
+            { "value": "whatsapp", "label": "Atendimento" },
+            { "value": "calendar", "label": "Agenda" }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "image_asset",
+          "label": "Ilustração (assets/)",
+          "info": "Ex.: saibai-asvc-entrega.jpg"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Título do serviço",
+          "default": "Entrega refrigerada"
+        },
+        {
+          "type": "text",
+          "id": "link_label",
+          "label": "Texto do link",
+          "default": "Saiba mais"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Saibai At Service",
+      "blocks": [
+        {
+          "type": "service",
+          "settings": {
+            "icon": "shipping",
+            "image_asset": "saibai-asvc-entrega.jpg",
+            "label": "Entrega refrigerada",
+            "link_label": "Como entregamos",
+            "link_url": "/pages/politica-de-entrega"
+          }
+        },
+        {
+          "type": "service",
+          "settings": {
+            "icon": "returns",
+            "image_asset": "saibai-asvc-troca.jpg",
+            "label": "Troca facilitada",
+            "link_label": "Política de troca",
+            "link_url": "/pages/politica-de-troca"
+          }
+        },
+        {
+          "type": "service",
+          "settings": {
+            "icon": "whatsapp",
+            "image_asset": "saibai-asvc-whatsapp.jpg",
+            "label": "Grupo VIP WhatsApp",
+            "link_label": "Entrar no grupo",
+            "link_url": "https://chat.whatsapp.com/LmGiN0C8QT04AQ4VB9PDdO"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

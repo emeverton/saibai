@@ -1,0 +1,44 @@
+<div class="saibai-inst">
+  {% render 'saibai-inst-contact', section: section %}
+</div>
+
+{% schema %}
+{
+  "name": "Saibai Inst — Contato",
+  "class": "saibai-inst-section",
+  "enabled_on": { "templates": ["page"] },
+  "settings": [
+    { "type": "header", "content": "Canais" },
+    { "type": "text", "id": "channels_title", "label": "Título", "default": "Fale com a Saibai" },
+    {
+      "type": "textarea",
+      "id": "channels_lead",
+      "label": "Subtítulo",
+      "default": "Dúvidas sobre pedidos, safra ou parcerias? Escolha o canal que preferir."
+    },
+    { "type": "url", "id": "whatsapp_url", "label": "Link WhatsApp" },
+    { "type": "text", "id": "whatsapp_label", "label": "Texto WhatsApp", "default": "Grupo VIP no WhatsApp" },
+    { "type": "text", "id": "email", "label": "E-mail", "default": "contato@saibai.com.br" },
+    { "type": "text", "id": "phone", "label": "Telefone", "default": "(15) 3010-1451" },
+    { "type": "text", "id": "address_line1", "label": "Endereço linha 1", "default": "Estrada dos Lavradores, 7 — Poço" },
+    { "type": "text", "id": "address_line2", "label": "Endereço linha 2", "default": "Piedade, SP — CEP 18176-210" },
+    {
+      "type": "text",
+      "id": "hours",
+      "label": "Horário",
+      "default": "Segunda a sexta, 8h às 18h. Resposta por e-mail em até 24h úteis."
+    },
+    { "type": "text", "id": "map_query", "label": "Busca Google Maps", "default": "Estrada dos Lavradores 7 Piedade SP" },
+    { "type": "header", "content": "Formulário" },
+    { "type": "text", "id": "form_title", "label": "Título do formulário", "default": "Envie uma mensagem" },
+    {
+      "type": "text",
+      "id": "form_lead",
+      "label": "Texto do formulário",
+      "default": "Preencha o formulário e nossa equipe retorna em breve."
+    },
+    { "type": "text", "id": "button_label", "label": "Botão enviar", "default": "Enviar mensagem" }
+  ],
+  "presets": [{ "name": "Saibai Inst Contato" }]
+}
+{% endschema %}
